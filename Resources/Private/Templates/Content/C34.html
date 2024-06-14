@@ -1,0 +1,14 @@
+<div class="c34-frame">
+	<f:if condition="{poster}">
+		<f:then>
+			<div class="c34-frame-wrap">
+				<div class="c34-frame-item" data-iframe="{iframe_encoded}">
+					<f:image image="{poster.0}" width="{settings.width}" height="{settings.height}" />
+				</div>
+			</div>
+		</f:then>
+		<f:else>
+			<div class="c34-frame-wrap no-img"><f:format.raw>{settings.iframe}</f:format.raw></div>
+		</f:else>
+	</f:if>
+</div>

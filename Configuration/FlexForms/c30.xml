@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+	<sheets>
+		<sJoEvents>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Veranstaltungen</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.layout>
+						<TCEforms>
+							<label>Anordnung der Bilder</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<size>1</size> 
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">Slideshow</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">Grid</numIndex>
+										<numIndex index="1">2</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">Option 3</numIndex>
+										<numIndex index="1">3</numIndex>
+									</numIndex>
+								</items>
+								<default>1</default>
+								<minitems>1</minitems>
+							</config>
+						</TCEforms>
+					</settings.layout>
+					<settings.bildweite>
+						<TCEforms>
+							<label>Weite des Teaserbilder in px</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+							</config>
+						</TCEforms>
+					</settings.bildweite>
+					<settings.bildhoehe>
+						<TCEforms>
+							<label>Höhe des Teaserbilder in px</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+							</config>
+						</TCEforms>
+					</settings.bildhoehe>
+					<settings.anzahl>
+						<TCEforms>
+							<label>Anzahl auszugebender Events</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+							</config>
+						</TCEforms>
+					</settings.anzahl>
+					<settings.link>
+					    <TCEforms>
+					        <label>Link zur Veranstaltungsübersicht</label>
+					        <config>
+					            <type>input</type>
+					            <renderType>inputLink</renderType>
+					        </config>
+					    </TCEforms>
+					</settings.link>
+					<settings.showfromtoday>
+					    <TCEforms>
+					        <label>Events ab heute auslesen</label>
+							<config>
+								<type>check</type>
+							</config>
+					    </TCEforms>
+					</settings.showfromtoday>
+				</el>
+			</ROOT>
+		</sJoEvents>
+		<eventDetails>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Detailansicht</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.bildweitedetail>
+						<TCEforms>
+							<label>bildweitedetail -> muss noch in Sprachdatei</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+							</config>
+						</TCEforms>
+					</settings.bildweitedetail>
+					<settings.bildhoehedetail>
+						<TCEforms>
+							<label>bildhöhedetail -> muss noch in Sprachdatei</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+							</config>
+						</TCEforms>
+					</settings.bildhoehedetail>
+					<settings.archive>
+						<TCEforms>
+							<label>Archivfunktion -> muss noch in Sprachdatei</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.archive>
+				</el>
+			</ROOT>
+		</eventDetails>
+	</sheets>
+</T3DataStructure>

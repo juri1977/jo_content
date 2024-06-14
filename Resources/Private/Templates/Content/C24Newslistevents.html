@@ -1,0 +1,145 @@
+{namespace joPluginbasehelper=JO\JoSolrsystem\ViewHelpers}
+<div class="joSlidePane-container">
+	<f:comment>
+		<!--
+		<div class="ibims" style="display: none;"></div>
+		-->
+	</f:comment>
+	<f:if condition="{settings.showdatepicker}">
+		<div class="datepicker"></div>
+	</f:if>
+	<ul class="joSlidePane joNewsPlugin joNewsList events">
+		<f:for each="{newsByCategories}" as="teaseritems" iteration="iterated">
+		    <li id="c{teaseritems.uid}" class="joNewsbox <f:if condition="{iterated.isLast}">joLast</f:if>"> 
+				<div class="joListWrapper row no-gutters">
+		            <div class="joNewsTextContent col-sm-12">
+		            	<div class="joNewsHeaderdata">
+							<p>
+								<f:if condition="{teaseritems.txJopluginbaseDatetoshow}">
+									<f:then>
+										{teaseritems.txJopluginbaseDatetoshow}
+									</f:then>
+									<f:else>
+										<f:if condition="{settings.killregulardate}">
+											<f:then>
+												<f:if condition="{teaseritems.short}">{teaseritems.short}</f:if>
+											</f:then>
+											<f:else>	            			
+												<f:if condition="{settings.dformatdirekt}">
+													<f:then>		            			
+														<f:format.date format="{settings.dformatdirekt}">@{teaseritems.datetime}</f:format.date>
+													</f:then>
+													<f:else>
+															<f:if condition="{settings.dateformat}">
+																<f:then>
+																	<f:format.date format="{settings.dateformat}">@{teaseritems.datetime}</f:format.date>
+																</f:then>
+																<f:else>
+																	<f:format.date format="%B %Y">@{teaseritems.datetime}</f:format.date>
+																</f:else>
+															</f:if>
+													</f:else>
+												</f:if>
+												<f:if condition="{teaseritems.short}"><p>{teaseritems.short}</p></f:if>
+											</f:else>
+										</f:if>
+									</f:else>
+								</f:if>
+								<f:if condition="{teaseritems.notes}"><span class="jalert">{teaseritems.notes}</span></f:if>
+							</p>
+				        </div>
+						<f:if condition="{settings.kategorieanzeigen}">
+							<div class="joNewsCategory"><h3>{teaseritems.storagename.title}</h3></div>
+						</f:if>	
+						<f:if condition="{teaseritems.title} && {teaseritems.title} != '.'">
+							<h2 class="joNewsHeadline">
+								<f:if condition="{settings.link}">
+									<f:then>
+										<f:link.action pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{teaseritems.uid}',joTitle:'{teaseritems.title}'}">
+											{teaseritems.title}
+										</f:link.action>
+									</f:then>
+									<f:else>
+										{teaseritems.title}
+									</f:else>
+								</f:if>
+							</h2>
+						</f:if>	
+						<f:if condition="{teaseritems.teaser}">
+							<f:then>
+								<div class="joNewsTeasertext joFliesstext">
+									<f:if condition="{settings.anzahlzeichen}">
+										<f:then>
+											<f:link.action pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{teaseritems.uid}',joTitle:'{teaseritems.title}'}">
+												<f:format.crop maxCharacters="{settings.anzahlzeichen}" respectWordBoundaries="true" respectHtml="true" append="<span class=\"joMore\"> [...mehr]</span>"><f:format.stripTags>{teaseritems.teaser}</f:format.stripTags></f:format.crop>
+											</f:link.action>
+										</f:then>
+										<f:else>
+											<f:format.html>{teaseritems.teaser}</f:format.html>
+										</f:else>
+									</f:if>
+								</div>
+							</f:then>
+							<f:else>
+								<f:if condition="{teaseritems.bodytext}">
+									<div class="joNewsTeasertext joFliesstext">
+										<f:if condition="{settings.anzahlzeichen}">
+											<f:then>
+												<f:link.action pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{teaseritems.uid}',joTitle:'{teaseritems.title}'}">
+													<f:format.crop maxCharacters="{settings.anzahlzeichen}" respectWordBoundaries="true" respectHtml="true" append="<span class=\"joMore\"> [...mehr]</span>"><f:format.stripTags>{teaseritems.bodytext}</f:format.stripTags></f:format.crop>
+												</f:link.action>
+											</f:then>
+											<f:else>
+												<f:format.html>{teaseritems.bodytext}</f:format.html>
+											</f:else>
+										</f:if>
+									</div>
+								</f:if>
+							</f:else>
+						</f:if> 
+						 <f:if condition="{teaseritems.falRelatedFiles}">
+							<div class="joNewsDownloadtext">
+								<f:for each="{teaseritems.falRelatedFiles}" as="newsFilesitem">
+									<f:link.action pageType="125" class="joDownloadFile" action="download" controller="Elements" arguments="{downloadfile:'{newsFilesitem.uid}'}">
+										{newsFilesitem}
+									</f:link.action>
+								</f:for>
+							</div>
+						</f:if>
+		            </div>
+					<f:if condition="{teaseritems.falMedia}">
+						<f:then>
+							<f:for each="{teaseritems.falMedia}" as="teasersubitems" iteration="subiterated">
+								<f:if condition="{subiterated.isFirst}">
+									<div class="joNewsBild_container col-sm-2">
+										<f:if condition="{settings.anzahlzeichen}">
+											<f:then>
+												<f:link.action pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{teaseritems.uid}',joTitle:'{teaseritems.title}'}">
+													<div class="joNewsBild" style="background-image:url('<f:uri.image image="{teasersubitems}" width="500c" height="500c" />');">&nbsp;</div>
+												</f:link.action>
+											</f:then>
+											<f:else>
+												<div class="joNewsBild" style="background-image:url('<f:uri.image image="{teasersubitems}" width="500c" height="500c" />');">&nbsp;</div>
+											</f:else>
+										</f:if>
+									</div>
+								</f:if>
+							</f:for>
+						</f:then>
+						<f:else>
+							
+						</f:else>
+					</f:if>
+		        </div>
+		    </li>
+		</f:for>
+	</ul>
+	<f:if condition="{settings.linktofulllist}">
+		<div class="joLinkToNewsList col-sm-12">
+			<f:link.page pageUid="{settings.linktofulllist}" title="<f:translate key='c24.fulloverview' />">
+				<span class="joLinkToNewsList-icon"></span>
+				<span class="joLinkToNewsList-txt"><f:translate key="c24.fulloverview" /></span>
+			</f:link.page>
+		</div>
+	</f:if>
+</div>

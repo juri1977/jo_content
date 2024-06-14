@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+	<ROOT>
+	    <TCEforms>
+	        <sheetTitle>Videoloader</sheetTitle>
+	    </TCEforms>
+	    <type>array</type>
+	    <el>
+	    	<settings.layout>
+				<TCEforms>
+					<label>Player auswahl</label>
+					<onChange>reload</onChange>
+					<config>
+						<type>select</type>
+						<renderType>selectSingle</renderType>
+						<size>1</size>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">Video Player</numIndex>
+								<numIndex index="1">1</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">Audio Player</numIndex>
+								<numIndex index="1">2</numIndex>
+							</numIndex>
+						</items>
+						<default>1</default>
+						<minitems>1</minitems>
+					</config>
+				</TCEforms>
+			</settings.layout>
+	    	<settings.alsHintergrund>
+                <TCEforms>
+                    <label>Als Hintergrund Video? (Autostart, ohne Controls nur bei normal Video)</label>
+                    <displayCond>FIELD:settings.layout:=:1</displayCond>
+                    <config>
+                        <type>check</type>
+                    </config>
+                </TCEforms>
+            </settings.alsHintergrund>
+	    	<settings.iframe>
+                <TCEforms>
+                    <label>Iframe</label>
+                    <displayCond>FIELD:settings.layout:=:1</displayCond>
+                    <config>
+                        <type>text</type>
+                    </config>
+                </TCEforms>
+            </settings.iframe>
+	        <settings.video>
+	            <TCEforms>
+	                <label>Video / Audio</label>
+	                <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>video</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>mp3,mp4,ogg,webm</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>1</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+	            </TCEforms>
+	        </settings.video>
+			<settings.vorschaubild>
+		        <TCEforms>
+		            <label>Vorschaubilder</label>
+		            <displayCond>FIELD:settings.layout:=:1</displayCond>
+		            <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>preview_image</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>jpg,jpeg,png,svg</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>3</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+		        </TCEforms>
+		    </settings.vorschaubild>
+			<settings.backgroundnotdark>
+	            <TCEforms>
+	                <label>Video Hintergrund nicht abdunkeln</label>
+	                <displayCond>FIELD:settings.layout:=:1</displayCond>
+	                <config>
+	                    <type>check</type>
+	                </config>
+	            </TCEforms>
+	        </settings.backgroundnotdark>
+			<settings.linkurl>
+	            <TCEforms>
+	                <label>Link Url</label>
+	                <displayCond>FIELD:settings.layout:=:1</displayCond>
+	                <config>
+	                    <type>input</type>
+	                    <renderType>inputLink</renderType>
+	                </config>
+	            </TCEforms>
+	        </settings.linkurl>
+	        <settings.alternativview>
+	            <TCEforms>
+	                <label>Alternative Player ansicht</label>
+	                <displayCond>FIELD:settings.layout:=:2</displayCond>
+	                <onChange>reload</onChange>
+	                <config>
+	                    <type>check</type>
+	                </config>
+	            </TCEforms>
+	        </settings.alternativview>
+	        <settings.background>
+	            <TCEforms>
+	                <label>Hintergrundfarbe</label>
+	                <displayCond>FIELD:settings.alternativview:=:1</displayCond>
+	                <config>
+	                    <type>input</type>
+	                    <renderType>colorpicker</renderType>
+	                </config>
+	            </TCEforms>
+	        </settings.background>
+	        <settings.color>
+	            <TCEforms>
+	                <label>Schriftfarbe</label>
+	                <displayCond>FIELD:settings.alternativview:=:1</displayCond>
+	                <config>
+	                    <type>input</type>
+	                    <renderType>colorpicker</renderType>
+	                </config>
+	            </TCEforms>
+	        </settings.color>
+	        <settings.progresscolor>
+	            <TCEforms>
+	                <label>Balken Vordergrund</label>
+	                <displayCond>FIELD:settings.alternativview:=:1</displayCond>
+	                <config>
+	                    <type>input</type>
+	                    <renderType>colorpicker</renderType>
+	                </config>
+	            </TCEforms>
+	        </settings.progresscolor>
+	        <settings.progresscolorbg>
+	            <TCEforms>
+	                <label>Balken Hintergrund</label>
+	                <displayCond>FIELD:settings.alternativview:=:1</displayCond>
+	                <config>
+	                    <type>input</type>
+	                    <renderType>colorpicker</renderType>
+	                </config>
+	            </TCEforms>
+	        </settings.progresscolorbg>
+	        <settings.iconcolor>
+	            <TCEforms>
+	                <label>Icon Farben</label>
+	                <displayCond>FIELD:settings.alternativview:=:1</displayCond>
+	                <config>
+	                    <type>select</type>
+	                    <renderType>selectSingle</renderType>
+						<size>1</size>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">Weiß</numIndex>
+								<numIndex index="1">white</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">Schwarz</numIndex>
+								<numIndex index="1">black</numIndex>
+							</numIndex>
+							<!--
+							<numIndex index="2" type="array">
+								<numIndex index="0">Rot (#E51008)</numIndex>
+								<numIndex index="1">red</numIndex>
+							</numIndex>
+							-->
+						</items>
+	                </config>
+	            </TCEforms>
+	        </settings.iconcolor>
+	    </el>
+	</ROOT>
+</T3DataStructure>

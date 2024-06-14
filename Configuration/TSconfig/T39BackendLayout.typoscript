@@ -1,0 +1,95 @@
+mod.web_layout.BackendLayouts {
+  t39_layout {
+    title = T39: Template: Logo - Banner - Content - Footer (jo_content layout)
+    icon = EXT:jo_content/Resources/Public/Icons/Extension.svg
+    config {
+      backend_layout {
+        colCount = 1
+        rowCount = 4
+        rows {
+          1 {
+            columns {
+              1 {
+                name = Logo
+                colPos = 2
+              }
+            }
+          }
+          2 {
+            columns {
+              1 {
+                name = Banner
+                colPos = 3
+              }
+            }
+          }
+          3 {
+            columns {
+              1 {
+                name = Content
+                colPos = 0
+              }
+            }
+          }
+          4 {
+            columns {
+              1 {
+                name = Footer
+                colPos = 4
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+TCEFORM.pages.layout {
+  addItems {
+    #100 = Abstand Links 0 / Rechts 0
+    100 = Abstand Links 5% / Rechts 5%
+    101 = Abstand Links 10% / Rechts 10%
+    102 = Abstand Links 15% / Rechts 15%
+    103 = Abstand Links 20% / Rechts 20%
+    104 = Abstand Links 20% / Rechts 5%
+    105 = Abstand Links 5% / Rechts 20%
+    120 = Inhalt Weite 1200px Zentriert
+    121 = Inhalt Weite 1600px Zentriert
+  }
+}
+
+TCEFORM.tt_content {
+  layout.label.de = Gestaltung
+}
+
+TCEFORM.tt_content {
+  layout {
+    addItems {
+      100 = Auf- und Zuklappbare Inhalte - offen (nur gridelements 100% und 50% 50%)
+      101 = Auf- und Zuklappbare Inhalte - geschlossen (nur gridelements 100% und 50% 50%)
+    }
+  }
+  frame_class {
+    label.de = Abstand zum Rand
+    removeItems = ruler-before, ruler-after, indent, indent-left, indent-right
+    altLabels {
+      default = Abstand Links 0 / Rechts 0
+    }
+    addItems {
+      #0 = Abstand Links 0 / Rechts 0
+      1 = Abstand Links 5% / Rechts 5%
+      2 = Abstand Links 10% / Rechts 10%
+      3 = Abstand Links 15% / Rechts 15%
+      4 = Abstand Links 20% / Rechts 20%
+      5 = Abstand Links 20% / Rechts 5%
+      6 = Abstand Links 5% / Rechts 20%
+      7 = Abstand Links 0 / Rechts 20%
+      8 = Abstand Links 0 / Rechts 33%
+      9 = Abstand Links 20% / Rechts 0
+      10 = Abstand Links 33% / Rechts 0
+    }
+  }
+}
+
+

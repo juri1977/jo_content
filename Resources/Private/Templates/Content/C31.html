@@ -1,0 +1,135 @@
+<f:if condition="{settings.layout} == 1">
+	<f:then>
+		<div class="c31-el videoShowcaseOuter">
+			<div class="video-container{f:if(condition: '{settings.backgroundnotdark}', then: ' not-dark')}">
+				<f:if condition="{video}">
+					<div class="embed-responsive embed-responsive-16by9">
+						<f:if condition="{settings.alsHintergrund}">
+							<f:then>
+								<f:media class="embed-responsive-item" file="{video}" additionalConfig="{loop: '1', autoplay: '1', controls: '0', muted: '1'}" />
+							</f:then>
+							<f:else>
+								<f:media class="embed-responsive-item" file="{video}" />
+							</f:else>
+						</f:if>
+					</div>
+					<f:if condition="{video.title} || {video.description}">
+						<div class="video-text">
+							<f:if condition="{video.description}">
+								<div class="video-text-d"><f:format.raw>{video.description}</f:format.raw></div>
+							</f:if>
+							<f:if condition="{video.title}">
+								<div class="video-text-t">
+									<f:if condition="{settings.linkurl}">
+										<f:then>
+											<f:link.typolink parameter="{settings.linkurl}"><f:format.raw>{video.title}</f:format.raw></f:link.typolink>
+										</f:then>
+										<f:else>
+											<f:format.raw>{video.title}</f:format.raw>
+										</f:else>
+									</f:if>
+								</div>
+							</f:if>
+						</div>
+					</f:if>
+				</f:if>
+			</div>
+		</div>
+	</f:then>
+	<f:else>
+		<f:if condition="{settings.alternativview}">
+			<f:then>
+				<div class="c31-el audioShowcaseOuter alternativ-player">
+					<div class="audio-container">
+
+						<f:if condition="{settings.background}">
+							<f:then>
+								<div class="audio-item w-100" style="background-color: {settings.background}">
+							</f:then>
+							<f:else>
+								<div class="audio-item w-100">
+							</f:else>
+						</f:if>
+							<div class="audio-btn-group d-flex justify-content-center">
+								<f:if condition="{settings.iconcolor}">
+									<f:then>
+										<div class="audio-btn-back joSprite" aria-label="Player zurückspulen" style="background-image: url('/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_{settings.iconcolor}.svg')"></div>
+										<div class="audio-btn-prev joSprite unselected" aria-label="Vorheriger Track" style="background-image: url('/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_{settings.iconcolor}.svg')"></div>
+										<div class="audio-btn-start joSprite" aria-label="Player starten" style="background-image: url('/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_{settings.iconcolor}.svg')"></div>
+										<div class="audio-btn-next joSprite unselected" aria-label="Nächster Track" style="background-image: url('/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_{settings.iconcolor}.svg')"></div>
+										<div class="audio-btn-forw joSprite" aria-label="Player vorspulen" style="background-image: url('/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_{settings.iconcolor}.svg')"></div>
+									</f:then>
+									<f:else>
+										<div class="audio-btn-back joSprite" aria-label="Player zurückspulen"></div>
+										<div class="audio-btn-prev joSprite unselected" aria-label="Vorheriger Track"></div>
+										<div class="audio-btn-start joSprite" aria-label="Player starten"></div>
+										<div class="audio-btn-next joSprite unselected" aria-label="Nächster Track"></div>
+										<div class="audio-btn-forw joSprite" aria-label="Player vorspulen"></div>
+									</f:else>
+								</f:if>
+
+							</div>
+							<div class="progress-wraper">
+								<f:if condition="{settings.color}">
+									<f:then>
+										<div class="progress-text text-center progress-text-start" style="color: {settings.color}">00:00</div>
+									</f:then>
+									<f:else>
+										<div class="progress-text text-center progress-text-start">00:00</div>
+									</f:else>
+								</f:if>
+								<f:if condition="{settings.progresscolorbg}">
+									<f:then>
+										<div class="progress" style="background-color: {settings.progresscolorbg}">
+									</f:then>
+									<f:else>
+										<div class="progress">
+									</f:else>
+								</f:if>
+									<f:if condition="{settings.progresscolor}">
+										<f:then>
+											<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="background-color: {settings.progresscolor}"></div>
+										</f:then>
+										<f:else>
+											<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+										</f:else>
+									</f:if>
+								</div>
+
+								<f:if condition="{settings.color}">
+									<f:then>
+										<div class="progress-text text-center progress-text-end" style="color: {settings.color}">00:00</div>
+									</f:then>
+									<f:else>
+										<div class="progress-text text-center progress-text-end">00:00</div>
+									</f:else>
+								</f:if>
+							</div>
+							<f:media class="audio-player" file="{video}" additionalAttributes="{controlsList: 'nodownload'}" />
+						</div>
+					</div>
+				</div>
+			</f:then>
+			<f:else>
+				<div class="c31-el audioShowcaseOuter">
+					<div class="audio-container">
+						<div class="audio-item w-100">
+							<div class="audio-btn-group d-flex justify-content-center">
+								<div class="audio-btn-back joSprite" aria-label="Player zurückspulen"></div>
+								<div class="audio-btn-start joSprite" aria-label="Player starten"></div>
+								<div class="audio-btn-forw joSprite" aria-label="Player vorspulen"></div>
+							</div>
+							<div class="progress-wraper">
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div class="progress-text text-center">00:00 / 00:00</div>
+							</div>
+							<f:media class="audio-player" file="{video}" additionalAttributes="{controlsList: 'nodownload'}" />
+						</div>
+					</div>
+				</div>
+			</f:else>
+		</f:if>
+	</f:else>
+</f:if>

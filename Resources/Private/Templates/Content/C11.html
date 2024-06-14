@@ -1,0 +1,1002 @@
+{namespace jo=JO\JoMuseo\ViewHelpers}
+<f:variable name="allowedTags" value="<p><span><div><h1><h2><h3><h4><h5><ul><li>" />
+
+<f:if condition="{items}">
+    <f:variable name="list_col" value="col-md-4"/> 
+    <f:if condition="{settings.col}">
+        <f:variable name="list_col" value="{settings.col}"/>
+    </f:if>
+    <f:if condition="{detail}">
+        <f:then>
+            <f:switch expression="{detail}">
+                <f:case value="1"><f:render section="detail_view_1" arguments="{_all}"/></f:case>
+                <f:case value="2"><f:render section="detail_view_2" arguments="{_all}"/></f:case>
+                <f:defaultCase><f:render section="detail_view_1" arguments="{_all}"/></f:defaultCase>
+            </f:switch>
+        </f:then>
+        <f:else>
+            <f:variable name="overview_template" value="{settings.view}"/>
+            <f:if condition="{tp}"><f:variable name="overview_template" value="{tp}"/></f:if>
+            <f:switch expression="{overview_template}">
+                <f:case value="1"><f:render section="list_view_1" arguments="{_all}"/></f:case>
+                <f:case value="2"><f:render section="list_view_2" arguments="{_all}"/></f:case>
+                <f:case value="3"><f:render section="list_view_3" arguments="{_all}"/></f:case>
+                <f:case value="4"><f:render section="list_view_4" arguments="{_all}"/></f:case>
+               <f:defaultCase><f:render section="list_view_1" arguments="{_all}"/></f:defaultCase>
+            </f:switch>
+        </f:else>
+    </f:if>
+</f:if>
+
+<f:comment>
+    <!--
+        Abbildung des Sucharrays
+    -->
+</f:comment>
+<f:section name="searchfilter">
+    <f:if condition="{searcharray.content}">
+        <div class="search_filter_wrap">
+            <div class="search_result"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.search.criteria.match" /></div>
+            <div class="d-flex flex-wrap">
+                <ul> 
+                    <f:for each="{searcharray.content}" as="searchitems" key="searchkey">
+                        <li class="search_key">{searchkey}:</li>
+                        <f:for each="{searchitems}" as="subsearchitems">
+                            <li>
+                                <f:link.action pageType="{ajaxpagetype}" class="c_button d-inline-block{ajaxpagetypecssclass}" noCache="1" arguments="{jo:jomakearray(arraykey:'remove{searchkey}', arrayvalue:'{subsearchitems}')}" additionalParams="{ceid:'{extbase_config.ce_uid}'}" title="{subsearchitems} entfernen">{subsearchitems}</f:link.action>
+                            </li>
+                        </f:for>
+                    </f:for>
+                    <li>
+                        <f:link.action pageType="{ajaxpagetype}" noCache="1" class="del_button{ajaxpagetypecssclass}" additionalParams="{ceid:'{extbase_config.ce_uid}'}" arguments="{del:'1'}" title="{f:translate(key: 'LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.delete.all')}">
+                            <div class="delete_all"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.delete.all" /></div>
+                        </f:link.action>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </f:if>
+</f:section>
+
+<f:comment>
+    <!--
+        Horizontale Accordion-Darstellung der Objekte
+    -->
+</f:comment>
+<f:section name="list_view_1">
+    <f:render section="headline_and_text" arguments="{_all}"/>
+    <ul class="list_view_1 list-unstyled row no-gutters">
+        <f:for each="{items}" as="item" iteration="iterated">
+            <li class="col">
+                <div class="c11_v1_item_wrap">
+                    <f:if condition="{item.image}">
+                        <f:image image="{item.image.0}" alt="{item.title}" width="{settings.width}c" height="{settings.height}"/>
+                    </f:if>
+                    <div class="c11_v1_text_wrap">
+                        <h3 class="c11-header">{item.title}</h3>
+                        <div class="desc"><f:format.crop maxCharacters="200"><f:format.html>{item.description}</f:format.html></f:format.crop></div>
+
+                        <f:if condition="{settings.link} || {item.outerlink}">
+                            <f:if condition="{item.outerlink}">
+                                <f:then>
+                                    <f:link.typolink parameter="{item.outerlink}" class="c11_v1_link"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.collection.to" /></f:link.typolink>
+                                </f:then>
+                                <f:else>
+                                    <f:link.action class="c11_v1_link" pageUid="{settings.link}" arguments="{detailview:'{item.uid}'}"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.collection.to" /></f:link.action>
+                                </f:else>
+                            </f:if>
+                        </f:if>
+                    </div>
+                </div>
+            </li>
+        </f:for>
+    </ul>
+</f:section>
+
+<f:comment>
+    <!--
+        Vertikale Objektdarstellung
+    -->
+</f:comment>
+<f:section name="list_view_2">
+    <f:variable name="bgcolor" value="#ffffff"/>
+    <f:if condition="{settings.background}"><f:variable name="bgcolor" value="{settings.background}"/></f:if>
+    <ul class="list_view_2 list-unstyled" style="background-color:{bgcolor};">
+        <f:for each="{items}" as="item" iteration="iterated">
+            <li class="row">
+                <div class="{list_col}">
+                    <f:if condition="{item.image}">
+                        <f:then>
+                            <f:if condition="{settings.link} && {settings.linkwrap}">
+                                <f:then>
+                                    <f:if condition="{item.outerlink}">
+                                        <f:then>
+                                            <f:link.typolink parameter="{item.outerlink}">
+                                                <f:image image="{item.image.0}" alt="{item.title}" width="{settings.width}c" height="{settings.height}"/>
+                                            </f:link.typolink>
+                                        </f:then>
+                                        <f:else>
+                                            <f:link.action pageUid="{settings.link}" arguments="{detailview:'{item.uid}'}">
+                                                <f:image image="{item.image.0}" alt="{item.title}" width="{settings.width}c" height="{settings.height}"/>
+                                            </f:link.action>
+                                        </f:else>
+                                    </f:if>
+                                </f:then>
+                                <f:else>
+                                    <f:image image="{item.image.0}" alt="{item.title}" width="{settings.width}c" height="{settings.height}"/>
+                                </f:else>
+                            </f:if>
+                        </f:then>
+                        <f:else>
+                            <div class="w-100 h-100 placeholder_wrap"></div>
+                        </f:else>
+                    </f:if>
+                </div>
+                <div class="col-md-9">
+                    <f:if condition="{settings.link} && {settings.linkwrap}">
+                        <f:then>
+                            <f:if condition="{item.outerlink}">
+                                <f:then>
+                                    <f:link.typolink parameter="{item.outerlink}">
+                                        <f:render section="textblock_list_view_2" arguments="{_all}"/>
+                                    </f:link.typolink>
+                                </f:then>
+                                <f:else>
+                                    <f:link.action pageUid="{settings.link}" arguments="{detailview:'{item.uid}'}">
+                                        <f:render section="textblock_list_view_2" arguments="{_all}"/>
+                                    </f:link.action>
+                                </f:else>
+                            </f:if>
+                        </f:then>
+                        <f:else>
+                            <f:render section="textblock_list_view_2" arguments="{_all}"/>
+                            <f:if condition="{settings.link} && !{settings.linkwrap}">
+                                <f:if condition="{item.outerlink}">
+                                    <f:then>
+                                        <f:link.typolink parameter="{item.outerlink}" class="detail-link">links</f:link.typolink>
+                                    </f:then>
+                                    <f:else>
+                                        <f:link.action class="detail-link" pageUid="{settings.link}" arguments="{detailview:'{item.uid}'}">links</f:link.action>
+                                    </f:else>
+                                </f:if>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                </div>
+            </li>
+        </f:for>
+    </ul>
+</f:section>
+
+<f:section name="textblock_list_view_2">
+    <h3 class="c11-header">{item.title}</h3>
+    <div class="desc"><f:format.html>{item.description}</f:format.html></div>
+</f:section>
+
+<f:comment>
+    <!--
+        Kacheldarstellung der Objektübersicht
+    -->
+</f:comment>
+<f:section name="list_view_3">
+    <f:variable name="bgcolor" value="#ffffff"/>
+    <f:if condition="{settings.background}"><f:variable name="bgcolor" value="{settings.background}"/></f:if>
+    <f:render section="headline_and_text" arguments="{_all}"/>
+    <div class="list_view_3_wrap {settings.previewimgfit}" style="background-color:{bgcolor};">
+        <f:render section="filter" arguments="{_all}"/>
+        <f:render section="searchfilter" arguments="{_all}"/>
+        <ul class="list_view_3 list-unstyled row">
+            <f:for each="{items}" as="item" iteration="iterated">
+                <li class="{list_col} list_view_3_item">
+                    <f:if condition="{settings.link} || {item.outerlink}">
+                        <f:then>
+                            <f:if condition="{item.outerlink}">
+                                <f:then>
+                                    <f:link.typolink parameter="{item.outerlink}" class="d-block h-100">
+                                        <f:render section="list_view_3_content" arguments="{_all}"/>
+                                    </f:link.typolink>
+                                </f:then>
+                                <f:else>
+                                    <f:link.action class="d-block h-100" pageUid="{settings.link}" arguments="{detailview:'{item.uid}',detail:'2',tp:'{tp}'}">
+                                        <f:render section="list_view_3_content" arguments="{_all}"/>
+                                    </f:link.action>
+                                </f:else>
+                            </f:if>
+                        </f:then>
+                        <f:else>
+                            <f:render section="list_view_3_content" arguments="{_all}"/>
+                        </f:else>
+                    </f:if>
+                </li>
+            </f:for>
+        </ul>
+    </div>
+</f:section>
+
+<f:comment>
+    <!--
+        Listendarstellung der Objektübersicht
+    -->
+</f:comment>
+<f:section name="list_view_4">
+    <f:variable name="bgcolor" value="#ffffff"/>
+    <f:if condition="{settings.background}"><f:variable name="bgcolor" value="{settings.background}"/></f:if>
+    <f:render section="headline_and_text" arguments="{_all}"/>
+    <div class="list_view_4_wrap {settings.previewimgfit}" style="background-color:{bgcolor};">
+        <f:render section="filter" arguments="{_all}"/>
+        <f:render section="searchfilter" arguments="{_all}"/>
+        <ul class="list_view_4 list-unstyled d-block">
+            <f:for each="{items}" as="item" iteration="iterated">
+                <li class="row list_view_4_item no-gutters">
+                    <div class="col-md-3 position-relative classification_wrap">
+                        <f:render section="list_classification" arguments="{_all}"/>
+                    </div>
+                    <div class="col-md-8">
+                         <f:if condition="{settings.link} || {item.outerlink}">
+                            <f:then>
+                                <f:if condition="{item.outerlink}">
+                                    <f:then>
+                                        <f:link.typolink parameter="{item.outerlink}" class="d-block h-100">
+                                            <f:render section="list_view_4_content" arguments="{_all}"/>
+                                        </f:link.typolink>
+                                    </f:then>
+                                    <f:else>
+                                        <f:link.action class="d-block h-100" pageUid="{settings.link}" arguments="{detailview:'{item.uid}',detail:'2',tp:'{tp}'}">
+                                             <f:render section="list_view_4_content" arguments="{_all}"/>
+                                        </f:link.action>
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <f:render section="list_view_4_content" arguments="{_all}"/>
+                            </f:else>
+                        </f:if>
+                    </div>
+                </li>
+            </f:for>
+        </ul>
+    </div>
+</f:section>
+
+<f:section name="filter">
+    <f:if condition="{settings.showfilter}">
+        <f:variable name="filter_wrap_class" value=' collapse'/>
+        <f:variable name="toggle_button_class" value=' collapsed'/>
+        <f:variable name="toggle_button_aria_expanded" value='false'/>
+        <f:if condition="{selected_item}">
+            <f:variable name="filter_wrap_class" value=' collapse show'/>
+            <f:variable name="toggle_button_class" value=''/>
+            <f:variable name="toggle_button_aria_expanded" value='true'/>
+        </f:if>
+        <div class="show_filter_wrap">
+            <a class="show_filter position-relative d-inline-block{toggle_button_class}" data-toggle="collapse" href="#filterblock" aria-expanded="{toggle_button_aria_expanded}" aria-controls="filterblock">
+                <span><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.filter" /></span>
+                <f:if condition="{searcharray.content}">
+                    <span> (aktiv)</span>
+                    <div class="joKreis"></div>
+                </f:if> 
+                <span class="minus"> -</span>
+                <span class="plus"> +</span>
+            </a>
+        </div>
+        <div class="c11_filter alt_view{filter_wrap_class}" id="filterblock">
+            <div class="c11_filter_wrap">
+                <div class="row w-100">
+                    <div class="col-3">
+                        <f:render section="tablefield_dropdown" arguments="{alldata:'{_all}',varname:'topicdb', active_id:'1'}"/>
+                    </div>
+                    <div class="col-3">
+                        <f:render section="tablefield_dropdown" arguments="{alldata:'{_all}',varname:'keywords', active_id:'1'}"/>
+                    </div>
+                    <div class="col-3">
+                        <f:render section="tablefield_dropdown" arguments="{alldata:'{_all}',varname:'times', active_id:'1'}"/>
+                    </div>
+                    <div class="col-3">
+                        <f:render section="tablefield_dropdown" arguments="{alldata:'{_all}',varname:'classfication', active_id:'1'}"/>
+                    </div>
+                    <div class="col-12 text-center">
+                        <f:render section="aktive_field" arguments="{_all}"/>
+                    </div>
+                </div>
+            </div>
+            <f:if condition="!{settings.differentviews}">
+                <div class="c11_controlswrap">
+                    <f:render section="sort_dropdown" arguments="{_all}"/>
+                    <f:render section="differentviews" arguments="{_all}"/>
+                </div>
+            </f:if>
+        </div>
+        <f:if condition="{settings.differentviews}">
+            <div class="c11_differentviews">
+                <div class="c11_controlswrap">
+                    <f:render section="sort_dropdown" arguments="{_all}"/>
+                    <f:render section="differentviews" arguments="{_all}"/>
+                </div>
+            </div>
+        </f:if>
+    </f:if>
+</f:section>
+
+<f:section name="aktive_field">
+    <div class="c11-aktive-field">
+        <div class="aktive-field-title"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.project.status" /></div>
+        <div class="aktive-field-switch">
+            <label class="switch">
+
+                <f:comment>
+                    <f:link.action pageType="{ajaxpagetype}" noCache="1" additionalParams="{ceid:'{extbase_config.ce_uid}'}" arguments="{jo:jomakearray(arraykey:'active', arrayvalue:'1')}" title="aktive/alle" class="{ajaxpagetypecssclass}{tablefieldactive}" />
+                </f:comment>
+
+
+                
+                <f:if condition="{searcharray.content.active}">
+                    <f:then>
+                        <f:variable name="link"><f:uri.action pageType="{ajaxpagetype}" noCache="1" additionalParams="{ceid:'{extbase_config.ce_uid}'}" arguments="{jo:jomakearray(arraykey:'removeactive', arrayvalue:'1')}" /></f:variable>
+
+                        <input class="check" type="checkbox" onchange="window.location.href='{link}'" checked>
+                    </f:then>
+                    <f:else>
+                        <f:variable name="link"><f:uri.action pageType="{ajaxpagetype}" noCache="1" additionalParams="{ceid:'{extbase_config.ce_uid}'}" arguments="{jo:jomakearray(arraykey:'active', arrayvalue:'1')}" /></f:variable>
+
+                        <input class="check" type="checkbox" onchange="window.location.href='{link}'">
+                    </f:else>
+                </f:if>
+                <span class="slider round"></span>
+                <span class="falseText"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.slider.false" /></span>
+                <span class="trueText"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.slider.true" /></span>
+            </label>
+        </div>
+    </div>
+</f:section>
+
+<f:section name="tablefield_dropdown">
+    <f:if condition="{varname}">
+        <div class="item_tablefield_con {varname}_dropdown position-relative">
+            <f:variable name="current_tablefield_name" value='{varname}'/>
+            <f:if condition="{jo:translate(key:'LLL:{alldata.langPath}:c11.{varname}')}">
+                <f:variable name="current_tablefield_name" value="{jo:translate(key:'LLL:{alldata.langPath}:c11.{varname}')}"/>
+            </f:if>
+            <a class="dropdown-toggle" href="#" role="button" id="{varname}_button_id" data-toggle="dropdown" data-flip="false" aria-haspopup="true" aria-expanded="false">{current_tablefield_name}</a>
+            <ul class="dropdown-menu classification_values list-unstyled" aria-labelledby="{varname}_button_id">
+                <f:if condition="{alldata.{varname}}">
+                    <f:then>
+                        <f:for each="{alldata.{varname}}" as="subitem" key="subitemkey">
+                            <f:variable name="tablefieldactive" value=''/>
+                            <f:if condition="{alldata.demand.data.{varname}} == {subitem}">
+                                <f:variable name="tablefieldactive" value=' active'/>
+                            </f:if>
+                            <li>
+                                <f:link.action pageType="{ajaxpagetype}" noCache="1" additionalParams="{ceid:'{extbase_config.ce_uid}'}" arguments="{jo:jomakearray(arraykey:'{varname}', arrayvalue:'{subitem}')}" title="Klassifikation ändern" class="{ajaxpagetypecssclass}{tablefieldactive}">{subitem}</f:link.action>
+                            </li>
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        <li><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.found.nothing" /></li>
+                    </f:else>
+                </f:if>
+            </ul>
+        </div>
+    </f:if>
+</f:section>
+
+<f:section name="differentviews">
+    <ul class="nav joListandtable">
+        <li {f:if(condition:'{tp}=="4"',then:'class="active"',else:'')}>
+            <f:link.action noCache="1" pageType="{ajaxpagetype}" class="list_icon{ajaxpagetypecssclass}" title="{f:translate(key: 'LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.listview')}" arguments="{tp:'4'}" additionalParams="{ceid:'{extbase_config.ce_uid}'}"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.listview" /></f:link.action>          
+        </li>
+        <li {f:if(condition:'{tp}=="3"',then:'class="active"',else:'')}>
+            <f:link.action noCache="1" pageType="{ajaxpagetype}" class="grid_icon{ajaxpagetypecssclass}" title="{f:translate(key: 'LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.gridview')}" arguments="{tp:'{settings.view}'}" additionalParams="{ceid:'{extbase_config.ce_uid}'}"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.gridview" /></f:link.action>
+        </li>   
+    </ul>
+</f:section>
+
+<f:section name="sort_dropdown">
+    <f:comment>
+        <!--
+        <div class="item_sorting_con sort_view_dropdown position-relative">
+            <f:variable name="current_sort_name" value=''/>
+            <f:variable name="current_sort_direction" value=''/>
+            <f:if condition="{sorting.active}">
+                <f:for each="{sorting.active}" as="activesort" key="activesortkey">
+                    <f:variable name="current_sort_direction" value='{activesort.0}'/>
+                    <f:variable name="current_sort_name" value='{activesortkey}'/>
+                    <f:if condition="{jo:translate(key:'{alldata.langPath}:jo_bkr_base.sort.{current_sort_name}')}">
+                        <f:variable name="current_sort_name" value="{jo:translate(key:'{alldata.langPath}:jo_bkr_base.sort.{current_sort_name}')}"/>
+                    </f:if>
+                    <f:if condition="{jo:translate(key:'{alldata.langPath}:jo_bkr_base.breadcrumbs.{current_sort_direction}')}">
+                        <f:variable name="current_sort_direction" value="{jo:translate(key:'{alldata.langPath}:jo_bkr_base.breadcrumbs.{current_sort_direction}')}"/>
+                    </f:if>
+                </f:for>
+            </f:if>
+            <a class="dropdown-toggle" href="#" role="button" id="sort_view_button_id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sortierung:<span> {current_sort_name}</span><span> {current_sort_direction}</span>
+             </a>
+            <ul class="dropdown-menu" aria-labelledby="sort_view_button_id">
+                <f:for each="{config.init.searchconfig.sorting.alloptions}" as="sort" key="sortkey">
+                    <f:variable name="sortactive" value=''/>
+                    <f:if condition="{sorting.active.{sortkey}}">
+                        <f:variable name="sortactive" value='active'/>
+                    </f:if>
+                    <f:variable name="sortlabel" value='{sortkey}'/>
+                    <f:if condition="{jo:translate(key:'{alldata.langPath}:jo_bkr_base.sort.{sortkey}')}"><f:variable name="sortlabel" value="{jo:translate(key:'{alldata.langPath}:jo_bkr_base.sort.{sortkey}')}"/></f:if>
+                    <li class="sort direction_{sort.0} {sortactive}">
+                        <f:link.action pageType="{ajaxpagetype}" noCache="1" additionalParams="{ceid:'{extbase_config.ce_uid}'}" arguments="{sortvar:'{sortkey}',direction:'{sort.1}'}" title="Sortierung ändern - {sortlabel}" class="{ajaxpagetypecssclass}">
+                            {sortlabel}
+                        </f:link.action>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+        -->
+    </f:comment>
+</f:section>
+
+<f:comment>
+    <!--
+        Klassifikation Listenansicht 3
+    -->
+</f:comment>
+<f:section name="list_classification">
+    <f:if condition="{item.classfication}">
+        <ul class="list-unstyled classification">
+            <f:for each="{item.classfication}" as="class">
+                <li><span>{class.title}</span></li>
+            </f:for>
+        </ul>
+    </f:if>
+</f:section>
+
+<f:comment>
+    <!--
+        Datenmaske Listenansicht 3
+    -->
+</f:comment>
+<f:section name="list_view_3_content">
+    <div class="c11_v3_item_wrap">
+        <div class="position-relative">
+            <f:render section="item_image" arguments="{_all}"/>
+            <f:render section="list_classification" arguments="{_all}"/>
+        </div>
+        <div class="c11_v3_text_wrap">
+            <f:render section="item_headline_and_text" arguments="{_all}"/>
+        </div>
+    </div>
+</f:section>
+
+<f:comment>
+    <!--
+        Datenmaske Listenansicht 4
+    -->
+</f:comment>
+<f:section name="list_view_4_content">
+    <div class="c11_v4_text_wrap">
+        <f:render section="item_headline_and_text" arguments="{_all}"/>
+    </div>
+</f:section>
+
+<f:comment>
+    <!--
+        Image EINES Items
+    -->
+</f:comment>
+<f:section name="item_image">
+    <div class="img-wrapper">
+        <f:if condition="{settings.active}">
+            <f:if condition="{item.active}">
+                <div class="item-aktiv"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.slider.true" /></div>
+            </f:if>
+        </f:if>
+        <f:if condition="{item.image}">
+            <f:image image="{item.image.0}" alt="{item.title}" width="{settings.width}c" height="{settings.height}"/>
+        </f:if>
+    </div>
+</f:section>
+
+<f:comment>
+    <!--
+        Überschrift und Textblock EINES Items
+    -->
+</f:comment>
+<f:section name="item_headline_and_text">
+    <h3 class="c11-header">{item.title}</h3>
+    <div class="desc"><f:format.crop maxCharacters="200"><f:format.stripTags allowedTags="{allowedTags}"><f:format.html>{item.description}</f:format.html></f:format.stripTags></f:format.crop></div>
+</f:section>
+
+<f:comment>
+    <!--
+        Überschrift und Textblock über dem gesamten Modul
+    -->
+</f:comment>
+<f:section name="headline_and_text">
+    <f:if condition="{settings.bodytext} || {settings.headline}">
+        <f:variable name="bgcolor" value="#ffffff"/>
+        <f:if condition="{settings.background}"><f:variable name="bgcolor" value="{settings.background}"/></f:if>
+        <div class="textblock v_{settings.view}">
+            <f:if condition="{settings.headline}">
+                <h2>{settings.headline}</h2>
+            </f:if>
+            <f:if condition="{settings.bodytext}">
+                <div class="bodytext">
+                    <f:format.html>{settings.bodytext}</f:format.html>
+                </div>
+            </f:if>
+        </div>
+    </f:if>
+</f:section>
+
+<f:comment>
+    <!--
+        Unterobjekte
+    -->
+</f:comment>
+<f:section name="subobjectsection">
+    <div class="item">
+        <f:if condition="{object.image}">
+            <div class="img-wrapper"><f:image class="img" image="{object.image.0}" alt="{object.title}" width="500m" height="800"/></div>
+        </f:if>
+        <div class="item-text">
+            <h4 class="title">{object.title}</h4>
+            <div class="teaser">
+                <f:format.crop maxCharacters="200"><f:format.html><f:format.stripTags allowedTags="{allowedTags}">{object.description}</f:format.stripTags></f:format.html></f:format.crop>
+            </div>
+        </div>
+    </div>
+</f:section>
+
+<f:comment>
+    <!--
+        Detailview 1 - z.B. gotha.digital Sammlungen
+    -->
+</f:comment>
+<f:section name="detail_view_1">
+    <f:variable name="bgcolor" value="#ffffff"/>
+    <f:if condition="{settings.background}"><f:variable name="bgcolor" value="{settings.background}"/></f:if>
+    <div class="detail_view_1">
+        <f:for each="{items}" as="item" iteration="iterated">
+            <div class="row">
+                <div class="col-md-12">
+                    <f:if condition="{item.bannerimage}">
+                        <f:image class="detail-banner" image="{item.bannerimage.0}" alt="{item.title}" width="1650c" height="450"/>
+                    </f:if>
+                </div>
+                <div class="col-md-12">
+                    <f:if condition="{item.title}">
+                        <h3 class="c11-header{f:if(condition: '{item.subtitle}', then: ' with-subheader', else: '')}">{item.title}</h3>
+                    </f:if>
+                    <f:if condition="{item.subtitle}">
+                        <h4 class="c11-subheader">{item.subtitle}</h4>
+                    </f:if>
+                    <f:if condition="{item.descriptionlong}">
+                        <div class="descriptionlong" data-more="{f:translate(key: 'LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.more')}" data-less="{f:translate(key: 'LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.less')}">
+                            <f:format.html>{item.descriptionlong}</f:format.html>
+                        </div>
+                    </f:if>
+                    <f:if condition="{subobjects}">
+                        <f:variable name="subobject_classes" value="c11-subobjects"/>
+                        <f:variable name="subobject_item_classes" value="col-md-4"/>
+                        <f:if condition="{subobjects-> f:count()} == 1">
+                            <f:variable name="subobject_item_classes" value="col-md-12 solo-item"/>
+                        </f:if>
+                        <f:if condition="{subobjects-> f:count()} == 2">
+                            <f:variable name="subobject_item_classes" value="col-md-6"/>
+                        </f:if>
+                        <f:comment>
+                            <!--
+                                Wenn mehr als drei Unterobjekte enthalten sind, wird eine Slideshow gebaut
+                            -->
+                        </f:comment>
+                        <f:if condition="{subobjects-> f:count()} > 3">
+                            <f:variable name="subobject_classes" value="c11-slide-subobjects"/>
+                            <f:variable name="subobject_item_classes" value=""/>
+                        </f:if>
+                        <div class="object_wrap" style="background-color:{bgcolor};">
+                            <f:if condition="{item.subobjectstitle} || {settings.subobjectstitle}">
+                                <h3 class="b-header"><f:format.html><f:if condition="{item.subobjectstitle}"><f:then>{item.subobjectstitle}</f:then><f:else>{settings.subobjectstitle}</f:else></f:if></f:format.html></h3>
+                            </f:if>
+                            <div class="{subobject_classes} list-unstyled row{f:if(condition: '{item.subobjectstitle} == \'\' && {settings.subobjectstitle} == \'\'', then: ' without-header')}">
+                                 <f:for each="{subobjects}" as="object">
+                                    <div class="subobject_item_wrap {subobject_item_classes}">
+                                        <f:if condition="{settings.link} || {object.outerlink}">
+                                            <f:then>
+                                                <f:if condition="{object.outerlink}">
+                                                    <f:then>
+                                                        <f:link.typolink parameter="{object.outerlink}" class="d-block link">
+                                                            <f:render section="subobjectsection" arguments="{_all}" />
+                                                        </f:link.typolink>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:link.action class="d-block link" pageUid="{settings.link}" arguments="{detailview:'{object.uid}'}">
+                                                            <f:render section="subobjectsection" arguments="{_all}" />
+                                                        </f:link.action>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:then>
+                                            <f:else>
+                                                <f:render section="subobjectsection" arguments="{_all}" />
+                                            </f:else>
+                                        </f:if>
+                                    </div>
+                                </f:for>
+                            </div>
+                        </div>
+                    </f:if>
+                    <f:if condition="{item.moreimages}">
+                        <f:render section="slick-slide-highlight" arguments="{_all}"/>
+                    </f:if>
+                </div>
+                <f:render section="relatedsingleitems" arguments="{_all}" />
+                
+                <f:if condition="{item.morelinkimg}">
+                    <div class="col-12">
+                        <f:if condition="{item.morelinklabel} || {settings.morelinklabel}">
+                            <h3 class="c11-slide-header"><f:format.html><f:if condition="{item.morelinklabel}"><f:then>{item.morelinklabel}</f:then><f:else>{settings.morelinklabel}</f:else></f:if></f:format.html></h3>
+                        </f:if>
+                        <div class="morelinkimg row{f:if(condition: '!{item.morelinklabel} && !{settings.morelinklabel}', then: ' without-header')}">
+                            <f:variable name="img_class" value="col-6" />
+                            <f:if condition="{item.morelinkimg -> f:count()} == 1">
+                                <f:variable name="img_class" value="col-12 solo-img" />
+                            </f:if>
+                            <f:for each="{item.morelinkimg}" as="image" key="img_key">
+                                <div class="{img_class}">
+                                    <f:if condition="{image.originalResource.link}">
+                                        <f:then>
+                                            <f:link.typolink parameter="{image.originalResource.link}" title="{image.originalResource.title}">
+                                                <f:image class="img" image="{image}" width="500c" />
+                                                <f:if condition="{image.originalResource.title} || {image.originalResource.description}">
+                                                    <figcaption>
+                                                        <f:if condition="{image.originalResource.title}">
+                                                            <h4 class="title">{image.originalResource.title}</h4>
+                                                        </f:if>
+                                                        <f:if condition="{image.originalResource.description}">
+                                                            <div class="desc"><f:format.html>{image.originalResource.description}</f:format.html></div>
+                                                        </f:if>
+                                                    </figcaption>
+                                                </f:if>
+                                            </f:link.typolink>
+                                        </f:then>
+                                        <f:else>
+                                            <f:image class="img" image="{image}" width="500c" />
+                                            <f:if condition="{image.originalResource.title} || {image.originalResource.description}">
+                                                <figcaption>
+                                                    <f:if condition="{image.originalResource.title}">
+                                                        <h4 class="title">{image.originalResource.title}</h4>
+                                                    </f:if>
+                                                    <f:if condition="{image.originalResource.description}">
+                                                        <div class="desc"><f:format.html>{image.originalResource.description}</f:format.html></div>
+                                                    </f:if>
+                                                </figcaption>
+                                            </f:if>
+                                        </f:else>
+                                    </f:if>
+                                </div>
+                            </f:for>
+                        </div>
+                    </div>
+                </f:if>
+
+                <f:if condition="{item.tenantreference}">
+                    <div class="col-12">
+                        <h3 class="c11-slide-header"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.inventory" /></h3>
+                        <div class="link">
+                             <f:link.action pageUid="31" noCache="1" action="list" pluginName="pi1009" controller="Museo" extensionName="JoMuseo" arguments="{classProject:'{item.tenantreference}'}"><span><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.show.inventory" /></span></f:link.action>
+                        </div>
+                    </div>
+                </f:if>
+
+                <f:if condition="{item.metas}">
+                    <div class="col-12">
+                        <h3 class="c11-slide-header"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.digital.service" /></h3>
+                        <div class="angebote-container c11-angebote row">
+                            <f:for each="{item.metas}" as="meta">
+                                <div class="angebote-item col-md-6 col-12">
+                                    <div class="row inner_wrap no-gutters">
+                                         <f:if condition="{meta.image} || {meta.video} || {meta.audio}">
+                                            <div class="col-12 col-md-6 angebote-img">
+                                                <f:if condition="{meta.image}">
+                                                    <f:if condition="{meta.image.0.originalResource.link}">
+                                                        <f:then>
+                                                            <f:link.typolink class="img-link" parameter="{meta.image.0.originalResource.link}" title="{meta.image.0.originalResource.title}">
+                                                                <f:image class="img" image="{meta.image.0}" width="500c" />
+                                                            </f:link.typolink>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <f:image class="img" image="{meta.image.0}" width="500c" />
+                                                        </f:else>
+                                                    </f:if>
+                                                </f:if>
+                                                <f:if condition="{meta.video}">
+                                                    <div class="embed-responsive embed-responsive-16by9 meta-video-con">
+                                                        <f:media class="embed-responsive-item meta-video" file="{meta.video.0}" />
+                                                    </div>
+                                                </f:if>
+                                                <f:if condition="{meta.audio}">
+                                                    <div class="embed-responsive embed-responsive-16by9 meta-audio-con">
+                                                        <f:media class="embed-responsive-item meta-audio" file="{meta.audio.0}" />
+                                                    </div>
+                                                </f:if>
+                                            </div>
+                                        </f:if>
+                                        <div class="col col-md angebote-text">
+                                            <f:if condition="{meta.title}">
+                                                <h3>{meta.title}</h3>
+                                            </f:if>
+                                            <f:if condition="{meta.description}">
+                                                <div class="desc"><f:format.html>{meta.description}</f:format.html></div>
+                                            </f:if>
+                                            <f:if condition="{meta.otherlink} && {meta.otherlinktext}">
+                                                <div>
+                                                    <f:link.typolink class="otherlink ang-btn" parameter="{meta.otherlink}">{meta.otherlinktext}</f:link.typolink>
+                                                </div>
+                                            </f:if>
+                                            <f:if condition="{meta.audio}">
+                                                <div>
+                                                    <button class="play-meta-audio pl-btn"><span class="i-icon">&nbsp;</span><span class="start"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.trailer.exhibition" /></span><span class="stop"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.trailer.exhibition.hide" /></span></button>
+                                                </div>
+                                            </f:if>
+                                            <f:if condition="{meta.video}">
+                                                <div>
+                                                    <button class="play-meta-video pl-btn"><span class="i-icon">&nbsp;</span><span class="start"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.audio.listen" /></span><span class="stop"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.audio.hide" /></span></button>
+                                                </div>
+                                            </f:if>
+                                            <f:if condition="{meta.audiolink} || {meta.videolink} || ({meta.image} && {meta.image.0.originalResource.link})">
+                                                <div class="mt-auto">
+                                                    <f:if condition="{meta.image} && {meta.image.0.originalResource.link}">
+                                                        <f:link.typolink class="img-link ang-btn" parameter="{meta.image.0.originalResource.link}" title="{meta.image.0.originalResource.title}"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.digitalisat" /></f:link.typolink>
+                                                    </f:if>
+                                                    <f:if condition="{meta.videolink}">
+                                                        <f:link.typolink class="videolink ang-btn" parameter="{meta.videolink}"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.show.video" /></f:link.typolink>
+                                                    </f:if>
+                                                    <f:if condition="{meta.audiolink}">
+                                                        <f:link.typolink class="videolink ang-btn" parameter="{meta.audiolink}"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.show.audio" /></f:link.typolink>
+                                                    </f:if>
+                                                </div>
+                                            </f:if>
+                                        </div>
+                                    </div>
+                                </div>
+                            </f:for>
+                        </div>
+                    </div>
+                </f:if>
+                <f:if condition="{item.contact}">
+                    <div class="col-12">
+                        <div class="contact-container c11-contact row">
+                            <div class="contact-item col-md-6 col-12">
+                                <div class="inner_wrap"><f:format.html>{item.contact}</f:format.html></div>
+                            </div>
+                        </div>
+                    </div>
+                </f:if>
+                <f:if condition="{settings.backlink}">
+                    <div class="col-6 c11-back-to-list">
+                        <f:link.typolink parameter="{settings.backlink}" title="{f:translate(key: 'LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.backToOverview')}"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.backToOverview" /></f:link.typolink>
+                    </div>
+                </f:if>
+                <div class="{f:if(condition: '{settings.backlink}', then: 'col-6', else: 'col-12')} c11-zitierlink">
+                    <f:link.action pageUid="{settings.link}" absolute="1" arguments="{detailview:'{item.uid}'}" title="{f:translate(key: 'LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.citation.link')}"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.citation.link" /></f:link.action>
+                </div>
+                <div class="col-12 row no-gutters detail_browser">
+                    <div class="col-md-6 px-0{f:if(condition: '{objectlist.next}', then: '', else: ' no-next')}">
+                        <f:if condition="{objectlist.prev}">
+                            <f:link.action class="obj-prev" pageUid="{settings.link}" arguments="{detailview:'{objectlist.prev}'}" title="{f:translate(key: 'LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.collection.prev')}vorige Sammlung"><span><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.collection.prev" /></span></f:link.action>
+                        </f:if>
+                    </div>
+                    <div class="col-md-6 px-0">
+                        <f:if condition="{objectlist.next}">
+                            <f:link.action class="obj-next" pageUid="{settings.link}" arguments="{detailview:'{objectlist.next}'}" title="{f:translate(key: 'LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.collection.next')}nächste Sammlung"><span><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.collection.next" /></span></f:link.action>
+                        </f:if>
+                    </div>
+                </div>
+            </div>
+        </f:for>
+    </div>
+</f:section>
+
+
+
+<f:comment>
+    <!--
+        Detailansicht 2 -> z.B. Projektübersicht für gotha.digital
+    -->
+</f:comment>
+<f:section name="detail_view_2">
+    <f:variable name="bgcolor" value="#ffffff"/>
+    <f:if condition="{settings.background}"><f:variable name="bgcolor" value="{settings.background}"/></f:if>
+    <div class="detail_view_2 list-unstyled">
+        <f:for each="{items}" as="item" iteration="iterated">
+            <div class="row no-gutters">
+                <div class="col-md-12 position-relative">
+                    <f:if condition="{item.bannerimage}">
+                        <f:image image="{item.bannerimage.0}" alt="{item.title}" width="1650c" height="450"/>
+                        <f:if condition="{item.bannerimage.0.originalResource.description}">
+                            <figcaption class="img-desc">
+                                <f:format.html>{item.bannerimage.0.originalResource.description}</f:format.html>
+                            </figcaption>
+                        </f:if>
+                    </f:if>
+                </div>
+                <div class="text col-md-12">
+                    <h1 class="c11-header{f:if(condition: '{item.subtitle}', then: ' with-subheader', else: '')}">{item.title}</h1>
+                    <f:if condition="{item.subtitle}">
+                        <h2 class="c11-subheader">{item.subtitle}</h2>
+                    </f:if>
+                    <div class="row no-gutters desclong_wrap">    
+                        <div class="col-md-8 maininfo">
+                            <div class="desc"><f:format.html>{item.description}</f:format.html></div>
+                            <f:if condition="{item.descriptionlong}">
+                                <div class="desc-long"><f:format.html>{item.descriptionlong}</f:format.html></div>
+                            </f:if>
+                        </div>
+                        <div class="col-md-4 moreinfo-con">
+                            <div class="moreinfo">
+                                <f:if condition="{item.contact}">
+                                    <f:format.html>{item.contact}</f:format.html>
+                                </f:if>
+                                <br/>
+                                <strong><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.cite.link" /></strong>
+                                <br/>
+                                <div class="joRisContainer"><f:uri.action pageUid="{settings.link}" absolute="1" arguments="{detailview:'{item.uid}', detail:'2'}" /></div>
+                                <div class="joRisKopy"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.copy.clipboard" /></div>
+                                <f:if condition="{item.social}">
+                                    <div class="social-links">
+                                        <f:for each="{item.social}" as="social-item" iteration="s-it">
+                                            <div class="social-links-item">
+                                                <f:link.typolink parameter="{social-item.uri}" title="{social-item.title}"><span class="social-icon {social-item.type}">&nbsp;</span>{social-item.title}</f:link.typolink>
+                                            </div>
+                                        </f:for>
+                                    </div>
+                                </f:if>
+                            </div>
+                            <f:if condition="{settings.backlink}">
+                                <div class="c11-back"><f:link.typolink parameter="{settings.backlink}" title="{f:translate(key: 'LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:backToOverview')}"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:backToOverview" /></f:link.typolink></div>
+                            </f:if>
+                        </div>
+                    </div>
+                </div>
+                <f:if condition="{objects}">
+                    <div class="object_wrap col-md-12" style="background-color:{bgcolor};">
+                        <ul class="objects list-unstyled row no-gutters">
+                             <f:for each="{objects}" as="object">
+                                <li class="col-md-3">
+                                    <h4>{object.title}</h4>
+                                    <div><f:format.html><f:format.stripTags allowedTags="{allowedTags}">{object.teaser}</f:format.stripTags></f:format.html></div>
+                                    <f:if condition="{object.falmedia}">
+                                        <f:image image="{object.falmedia.0}" alt="{object.title}" width="500c" height="800"/>
+                                    </f:if>
+                                </li>
+                            </f:for>
+                        </ul>
+                    </div>
+                </f:if>
+
+                <f:if condition="{item.moreimages}">
+                    <div class="col-12">
+                        <f:render section="slick-slide-highlight" arguments="{_all}"/>
+                    </div>
+                </f:if>
+
+                <f:render section="relatedsingleitems" arguments="{_all}"/>
+            </div>
+        </f:for>
+    </div>
+    <div class="row no-gutters detail_browser">
+        <div class="col-md-6 navleft{f:if(condition: '{objectlist.next}', then: '', else: ' no-next')}">
+            <f:if condition="{objectlist.prev}">
+                <f:variable name="prevname" value="voriges Projekt"/>
+                <f:if condition="{objectlist.prevname}"><f:variable name="prevname" value="{objectlist.prevname}"/></f:if>
+                <f:if condition="{objectlist.prevnameShort}"><f:variable name="prevname" value="{objectlist.prevnameShort}"/></f:if>
+                <f:link.action class="obj-prev" pageUid="{settings.link}" arguments="{detailview:'{objectlist.prev}',detail:'2'}"><span class="p-arrow"></span><span class="position-relative">{prevname}</span></f:link.action>
+            </f:if>
+        </div>
+        <div class="col-md-6 navright">
+            <f:if condition="{objectlist.next}">
+                <f:variable name="nextname" value="nächstes Projekt"/>
+                <f:if condition="{objectlist.nextname}"><f:variable name="nextname" value="{objectlist.nextname}"/></f:if>
+                <f:if condition="{objectlist.nextnameShort}"><f:variable name="nextname" value="{objectlist.nextnameShort}"/></f:if>
+                <f:link.action class="obj-next" pageUid="{settings.link}" arguments="{detailview:'{objectlist.next}',detail:'2'}"><span class="position-relative">{nextname}</span><span class="p-arrow"></span></f:link.action>
+            </f:if>
+        </div>
+    </div>
+</f:section>
+
+<f:comment>
+    <!--
+        Slick Slider für item.moreimages
+    -->
+</f:comment>
+<f:section name="slick-slide-highlight">
+    <f:if condition="{item.moreimagestitle} || {settings.moreimagestitle}">
+        <h3 class="c11-slide-header"><f:format.html><f:if condition="{item.moreimagestitle}"><f:then>{item.moreimagestitle}</f:then><f:else>{settings.moreimagestitle}</f:else></f:if></f:format.html></h3>
+    </f:if>
+    <div class="c11-slide-show{f:if(condition: '!{item.moreimagestitle} && !{settings.moreimagestitle}', then: ' without-header')}">
+        <f:for each="{item.moreimages}" as="moreimages">
+            <div>
+                <f:if condition="{moreimages.originalResource.link}">
+                    <f:then>
+                        <f:link.typolink parameter="{moreimages.originalResource.link}" title="{moreimages.originalResource.title}">
+                            <f:image class="moreimg" image="{moreimages}" alt="" width="{settings.sliderwidth}" height="{settings.sliderheight}"/>
+                            <f:if condition="{moreimages.originalResource.title} || {moreimages.originalResource.description}">
+                                <div class="moreimg-text">
+                                    <f:if condition="{moreimages.originalResource.title}">
+                                        <h4>{moreimages.originalResource.title}</h4>
+                                    </f:if>
+                                    <f:if condition="{moreimages.originalResource.description}">
+                                        <div class="desc"><f:format.html>{moreimages.originalResource.description}</f:format.html></div>
+                                    </f:if>
+                                </div>
+                            </f:if>
+                        </f:link.typolink>
+                    </f:then>
+                    <f:else>
+                        <f:image class="moreimg" image="{moreimages}" alt="" width="{settings.sliderwidth}" height="{settings.sliderwidth}"/>
+                        <f:if condition="{moreimages.originalResource.title} || {moreimages.originalResource.description}">
+                            <div class="moreimg-text">
+                                <f:if condition="{moreimages.originalResource.title}">
+                                    <h4>{moreimages.originalResource.title}</h4>
+                                </f:if>
+                                <f:if condition="{moreimages.originalResource.description}">
+                                    <div class="desc"><f:format.html>{moreimages.originalResource.description}</f:format.html></div>
+                                </f:if>
+                            </div>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:for>
+    </div>
+</f:section>
+
+<f:comment>
+    <!--
+        Ausgabe für item.relatedsingleitems
+    -->
+</f:comment>
+<f:section name="relatedsingleitems">
+    <f:if condition="{item.relatedsingleitems}">
+        <div class="object_wrap col-md-12" style="background-color:{bgcolor};">
+            <f:if condition="{item.relatedsingleitemstitle} || {settings.relatedsingleitemstitle}">
+                <h3 class="b-header"><f:format.html><f:if condition="{item.relatedsingleitemstitle}"><f:then>{item.relatedsingleitemstitle}</f:then><f:else>{settings.relatedsingleitemstitle}</f:else></f:if></f:format.html></h3>
+            </f:if>
+            <ul class="objects list-unstyled row no-gutters {settings.previewimgfit}{f:if(condition: '!{item.relatedsingleitemstitle} && !{settings.relatedsingleitemstitle}', then: ' without-header')}">
+                <f:for each="{item.relatedsingleitems}" as="item">
+                    <li class="col-md-3 item">
+                        <f:if condition="{item.outerlink}">
+                            <f:then>
+                                <f:link.typolink parameter="{item.outerlink}" class="d-block">
+                                    <f:render section="relatedsingleitems_linkbody" arguments="{_all}"/>
+                                </f:link.typolink>
+                            </f:then>
+                            <f:else>
+                                <f:link.action class="d-block" pageUid="{settings.link}" arguments="{detailview:'{item.uid}', detail:'2'}">
+                                    <f:render section="relatedsingleitems_linkbody" arguments="{_all}"/>
+                                </f:link.action>
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+    </f:if>
+</f:section>
+
+<f:section name="relatedsingleitems_linkbody">
+    <f:if condition="{item.image}"> 
+        <div class="image-wrapper">
+            <f:if condition="{settings.active}">
+                <f:if condition="{item.active}">
+                    <div class="item-aktiv"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11.slider.true" /></div>
+                </f:if>
+            </f:if>
+            <f:image class="img" image="{item.image.0}" alt="{item.title}" width="500m" height="800"/>
+            <f:render section="list_classification" arguments="{_all}"/>
+        </div>
+    </f:if>
+    <div class="text-wrapper">
+        <h4 class="title">{item.title}</h4>
+        <div class="teaser"><f:format.crop maxCharacters="200"><f:format.stripTags allowedTags="{allowedTags}"><f:format.html>{item.description}</f:format.html></f:format.stripTags></f:format.crop></div>
+    </div>
+</f:section>
+
+<f:comment>
+<f:debug>{item}</f:debug>
+</f:comment>

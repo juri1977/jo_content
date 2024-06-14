@@ -1,0 +1,251 @@
+#news-effekt {
+    padding: 0;
+}
+#news-effekt > li .news-effekt-text {
+    position: absolute;
+    left: -100%;
+    top: 0;
+    right: 0;
+    background: rgba(75,75,75,0.7);
+    width: 100%;
+    height: 100%;
+}
+#news-effekt > li .news-effekt-text span {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: rgba(255,255,255,0.9);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 130%;
+}
+.joRelatedListContainer #news-effekt > li > a {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.joRelatedListContainer #news-effekt > li > a .news-effekt-text span {
+    font-size: 30px;
+}
+.joKachelview.joClearfix.joSpaceLeftRight.container {
+    padding: 0;
+}
+.industrie-news {
+    width: 100%;
+    height: auto;
+}
+.industrie-news .news-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.news-image .outer img {
+    width: 100%;
+    height: auto;
+}
+h2.news-header {
+}
+.download-btn a {
+    display: block;
+    background-color: #0db1ef;
+    color: white;
+    padding: 5px 0;
+}
+.download-btn a:hover {
+    color: white;
+}
+.joCursor-default {
+    cursor: default;
+}
+.joTextContainer {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.46);
+}
+@media (max-width: 767px) {
+    #news-effekt .news-effekt-text span {
+        font-size: 11px;
+    }
+}
+.joWithMore .less,
+.joWithMore.active .more {
+    display: none;
+}
+.joWithMore.active .less,
+.joWithMore .more {
+    display: block;
+}
+.joWithMore .bodytext {
+    max-height: 50px;
+    overflow: hidden;
+}
+.showMore-container {
+    text-align: center;
+    margin-top: 15px;
+}
+.joWithMore .showMore {
+    display: inline-block;
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #cecece;
+}
+.joWithMore .showMore:hover span {
+    color: black;
+}
+.joRelatedListContainer .detail_controls {
+    margin: 0;
+}
+.joRelatedListContainer .detail_controls .back {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.joRelatedListContainer .detail_controls .back a {
+    font-size: 0.95rem;
+}
+
+/*Player*/
+.jp-type-single {
+    /*display: flex;*/
+}
+.jp-interface {
+    position: relative;
+    width: 100%;
+}
+.jp-details {
+    font-size: .7em;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+.jp-details .jp-title {
+    padding: 0;
+    padding-top: 6px;
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+    cursor: default;
+    display: flex;
+}
+.jp-audio .jp-volume-controls, .jp-audio-stream .jp-volume-controls {
+    height: 30px;
+    display: none;
+}
+.jp-volume-controls button {
+    position: absolute;
+    display: block;
+    overflow: hidden;
+    text-indent: -9999px;
+    margin: 0;
+    padding: 0;
+    width: 16px;
+    height: 11px;
+    border: none;
+    cursor: pointer;
+}
+.jp-audio-stream .jp-interface .jp-volume-bar {
+    width: 97px;
+    border-right: 1px solid #180920;
+    padding-right: 1px;
+}
+.jp-volume-bar {
+    background-color: green;
+    position: absolute;
+    width: 197px;
+    height: 4px;
+    padding: 2px 2px 1px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.jp-volume-bar-value {
+    background-color: red;
+    height: 4px;
+}
+.jp-audio-stream .jp-controls {
+    width: 31px;
+}
+.jp-controls {
+    display: inline-block;
+    float: left;
+    padding: 1px 0 2px 1px;
+    overflow: hidden;
+    height: 34px;
+}
+.jp-type-single .jp-controls button {
+    width: 29px;
+    outline: none;
+}
+.jp-controls button {
+    display: block;
+    overflow: hidden;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+.jp-progress {
+    background-color: #cecece;
+    width: 100%;
+    height: 13px;
+    padding: 0 2px 2px;
+    margin-bottom: 4px;
+    overflow: hidden;
+}
+.jp-seek-bar {
+    background-color: #cecece;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.jp-play-bar {
+    background-color: #b5b8bd;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.jp-no-solution {
+    padding: 5px;
+    font-size: .8em;
+    background-color: #3a2a45;
+    border-top: 2px solid #554461;
+    border-left: 2px solid #554461;
+    border-right: 2px solid #180a1f;
+    border-bottom: 2px solid #180a1f;
+    color: #FFF;
+    display: none;
+}
+.jp-no-solution span {
+    font-size: 1em;
+    display: block;
+    text-align: center;
+    font-weight: 700;
+}
+.jp-no-solution a {
+    color: #FFF;
+}
+.jp-play .joicon {
+    width: 30px;
+    height: 30px;
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/sprite1.png);
+    background-size: 550px;
+    background-repeat: no-repeat;
+}
+.jp-play .icon-play {
+    display: block;
+    background-position: -274px -3px;
+}
+.jp-play .icon-pause {
+    display: none;
+    background-position: -469px -3px;
+}
+.jp-state-playing .jp-play .icon-pause {
+    display: block;
+}
+.jp-state-playing .jp-play .icon-play {
+    display: none;
+}

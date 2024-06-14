@@ -1,0 +1,19 @@
+<div class="round-gallery-wrap">
+	<ul class="round-gallery clearfix">
+		<f:for each="{galerieItems}" as="item" key="itemk">
+			<f:link.page pageUid='{item.link}'>
+				<li style="width:{item.width}%;padding-bottom:{item.width}%;">
+					<div class="image" style="background-image:url('<f:uri.image src="{item.uid}" treatIdAsReference="TRUE" />')">
+						<div class="desc">{item.discription}</div>
+					</div>
+					<div class="title d-none d-md-block">
+						{item.title}
+					</div>
+					<div class="title_mobile d-md-none">
+						{item.title}
+					</div>
+				</li>
+			</f:link.page>
+		</f:for>
+	</ul>
+</div>

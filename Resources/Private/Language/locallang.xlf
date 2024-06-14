@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages">
+		<header/>
+		<body>
+			<trans-unit id="cookie.teaser">
+                <source><![CDATA[<span>By using this website, you agree to the use of cookies. For more information, please see our privacy policy </span>]]></source>
+			</trans-unit>
+			<trans-unit id="cookie.teaserhinten">
+                <source><![CDATA[<a id="cookieOk" href="javascript:void(0)">OK</a>]]></source>
+			</trans-unit>
+			<trans-unit id="cookie.teaserdatenschutz">
+                <source>privacy policy</source>
+			</trans-unit>
+			<trans-unit id="headerElements">
+				<source>Header-Elemente</source>
+			</trans-unit>
+			<trans-unit id="menu">
+				<source>Menu</source>
+			</trans-unit>
+			<trans-unit id="teaserElements">
+				<source>Teaser-Elemente</source>
+			</trans-unit>
+			<trans-unit id="ce001">
+				<source>Bildkachel/Teaserbox mit externem Link bzw. Lightbox (ce001 - stable)</source>
+				<target>Bildkachel/Teaserbox mit externem Link bzw. Lightbox (ce001 - stable)</target>
+			</trans-unit>
+			<trans-unit id="ce001.layout">
+				<source>Layout für Darstellung</source>
+				<target>Layout für Darstellung</target>
+			</trans-unit>
+			<trans-unit id="ce001.layout.0">
+				<source>Standarddarstellung (Abbildung oberhalb des Blocks aus Überschrift und Beschreibung)</source>
+				<target>Standarddarstellung (Abbildung oberhalb des Blocks aus Überschrift und Beschreibung)</target>
+			</trans-unit>
+			<trans-unit id="ce001.layout.1">
+				<source>Alternative Darstellung 1 (Überschrift und Beschreibung als halbtransparentes Overlay über der Abbildung)</source>
+				<target>Alternative Darstellung 1 (Überschrift und Beschreibung als halbtransparentes Overlay über der Abbildung)</target>
+			</trans-unit>
+			<trans-unit id="ce001.layout.2">
+				<source>Layout 2</source>
+				<target>Layout 2</target>
+			</trans-unit>
+			<trans-unit id="ce001.effects">
+				<source>Effekte bei Hover</source>
+				<target>Effekte bei Hover</target>
+			</trans-unit>
+			<trans-unit id="ce001.effects.1">
+				<source>Effekt 1; Bild zoom-in, Info (Titel,Beschreibung) vom Box-Boden einscrollen</source>
+				<target>Effekt 1; Bild zoom-in, Info (Titel,Beschreibung) vom Box-Boden einscrollen</target>
+			</trans-unit>
+			<trans-unit id="ce001.effects.2">
+				<source>Effekt 2; Bild zoom-in, Info (Titel) fix, Hintergrund fade-in</source>
+				<target>Effekt 2; Bild zoom-in, Info (Titel) fix, Hintergrund fade-in</target>
+			</trans-unit>
+			<trans-unit id="ce001.cropWidth">
+				<source>Weite (Pixel) auf die das Bild zugeschnitten werden soll</source>
+				<target>Weite (Pixel) auf die das Bild zugeschnitten werden soll</target>
+			</trans-unit>			
+			<trans-unit id="ce001.cropHeight">
+				<source>Höhe (Pixel) auf die das Bild zugeschnitten werden soll</source>
+				<target>Höhe (Pixel) auf die das Bild zugeschnitten werden soll</target>
+			</trans-unit>
+			<trans-unit id="c01">
+				<source>Bild/Text-Teaser mit Link</source>
+				<target>Bild/Text-Teaser mit Link</target>
+			</trans-unit>
+			<trans-unit id="c02">
+				<source>Überschrift und Fließtext</source>
+				<target>Überschrift und Fließtext</target>
+			</trans-unit>
+			<trans-unit id="c03">
+				<source>Video- und Textelement </source>
+				<target>Video- und Textelement  </target>
+			</trans-unit>
+			<trans-unit id="c04">
+			    <source>Bild / Text versetzt im Content </source>
+			    <target>Bild / Text versetzt im Content </target>
+			</trans-unit>
+			<trans-unit id="c05">
+			    <source>Auflistung: Linie oder Wertetabelle </source>
+			    <target>Auflistung: Linie oder Wertetabelle </target>
+			</trans-unit>
+			<trans-unit id="c06">
+			    <source>Awards Liste</source>
+			    <target>Awards Liste</target>
+			</trans-unit>
+            <trans-unit id="c07">
+                <source>Chronik Timeline</source>
+                <target>Chronik Timeline</target>
+            </trans-unit>
+			<trans-unit id="c08">
+				<source>Rezepte Navigation</source>
+				<target>Rezepte Navigation</target>
+			</trans-unit>
+			<trans-unit id="c09">
+				<source>Produkte Slider</source>
+				<target>Produkte Slider</target>
+			</trans-unit>
+			<trans-unit id="c10">
+				<source>Frontend für den Zugriff auf die JO-Event API (c10 - stable)</source>
+				<target>Frontend für den Zugriff auf die JO-Event API (c10 - stable)</target>
+			</trans-unit>
+			<trans-unit id="c11">
+				<source>Kontaktbox</source>
+				<target>Kontaktbox</target>
+			</trans-unit>
+			<trans-unit id="c11.more">
+				<source>More information</source>
+			</trans-unit>
+			<trans-unit id="c11.less">
+				<source>Less information</source>
+			</trans-unit>
+			<trans-unit id="c11.digital.service">
+				<source>Explore digital services</source>
+			</trans-unit>
+			<trans-unit id="c11.show.video">
+				<source>Show video</source>
+			</trans-unit>
+			<trans-unit id="c11.show.audio">
+				<source>Show audio</source>
+			</trans-unit>
+			<trans-unit id="c11.digitalisat">
+				<source>To the digitised version</source>
+			</trans-unit>
+			<trans-unit id="c11.backToOverview">
+				<source>Back to overview</source>
+			</trans-unit>
+			<trans-unit id="c11.citation.link">
+				<source>Copy citation link</source>
+			</trans-unit>
+			<trans-unit id="c11.collection.prev">
+				<source>Previous collection</source>
+			</trans-unit>
+			<trans-unit id="c11.collection.next">
+				<source>Next collection</source>
+			</trans-unit>
+			<trans-unit id="c11.listview">
+				<source>List view</source>
+			</trans-unit>
+			<trans-unit id="c11.gridview">
+				<source>Grid view</source>
+			</trans-unit>
+			<trans-unit id="c11.filter">
+				<source>Filter</source>
+			</trans-unit>
+			<trans-unit id="c11.collection.to">
+				<source>to the collection</source>
+			</trans-unit>
+			<trans-unit id="c11.delete.all">
+				<source>delete all filter</source>
+			</trans-unit>
+			<trans-unit id="c11.search.criteria.match">
+				<source>These objects match your search criteria:</source>
+			</trans-unit>
+			<trans-unit id="c11.project.status">
+				<source>Project status</source>
+			</trans-unit>
+			<trans-unit id="c11.slider.false">
+				<source>All</source>
+			</trans-unit>
+			<trans-unit id="c11.slider.true">
+				<source>Current</source>
+			</trans-unit>
+			<trans-unit id="c11.found.nothing">
+				<source>No data available</source>
+			</trans-unit>
+			<trans-unit id="c11.cite.link">
+				<source>Citation link</source>
+			</trans-unit>
+			<trans-unit id="c11.copy.clipboard">
+				<source>copy to the clipboard</source>
+			</trans-unit>
+			<trans-unit id="c11.inventory">
+				<source>to the inventory</source>
+			</trans-unit>
+			<trans-unit id="c11.show.inventory">
+				<source>show inventory</source>
+			</trans-unit>
+			<trans-unit id="c11.trailer.exhibition">
+				<source>Trailer for the exhibition</source>
+			</trans-unit>
+			<trans-unit id="c11.trailer.exhibition.hide">
+				<source>Hide exhibition trailer</source>
+			</trans-unit>
+			<trans-unit id="c11.audio.listen">
+				<source>Listen to the audio recording of the DLF</source>
+			</trans-unit>
+			<trans-unit id="c11.audio.hide">
+				<source>Hide DLF audio recording</source>
+			</trans-unit>
+			<trans-unit id="c11.topicdb">
+				<source>Project type</source>
+			</trans-unit>
+			<trans-unit id="c11.keywords">
+				<source>Topic</source>
+			</trans-unit>
+			<trans-unit id="c11.times">
+				<source>Time period</source>
+			</trans-unit>
+			<trans-unit id="c11.classfication">
+				<source>Institution</source>
+			</trans-unit>
+			<trans-unit id="c12">
+				<source>Verschiedene Galerieansichten oder einzelnes Bildelement (c12 - stable)</source>
+				<target>Verschiedene Galerieansichten oder einzelnes Bildelement (c12 - stable)</target>
+			</trans-unit>
+			<trans-unit id="c13">
+				<source>Diverse Call-to-Action-Buttons (c13 - stable)</source>
+				<target>Diverse Call-to-Action-Buttons (c13 - stable)</target>
+			</trans-unit>
+			<trans-unit id="c14">
+				<source>Youtube Integration</source>
+				<target>Youtube Integration</target>
+			</trans-unit>
+			<trans-unit id="allRecipes">
+				<source>Alle Rezepte</source>
+				<target>Alle Rezepte</target>
+			</trans-unit>
+			<trans-unit id="dealerSearch">
+				<source>Händlersuche</source>
+				<target>Händlersuche</target>
+			</trans-unit>
+			<trans-unit id="linkToDealer">
+				<source>ZU DEN HANDELSPARTNERN</source>
+				<target>ZU DEN HANDELSPARTNERN</target>
+			</trans-unit>
+			<trans-unit id="ok">
+				<source>OK</source>
+				<target>OK</target>
+			</trans-unit>
+			<trans-unit id="more">
+				<source>...mehr</source>
+				<target>...mehr</target>
+			</trans-unit>
+			<trans-unit id="headerImage">
+				<source>Header Bild</source>
+				<target>Header Bild</target>
+			</trans-unit>
+			<trans-unit id="gMaps">
+				<source>Google Maps</source>
+				<target>Google Maps</target>
+			</trans-unit>
+			<trans-unit id="c15">
+				<source>Darstellung eines Logos mit und ohne Verlinkung (C15 - stable)</source>
+				<target>Darstellung eines Logos mit und ohne Verlinkung (C15 - stable)</target>
+			</trans-unit>
+			<trans-unit id="c16">
+				<source>Teaserboxen Text/Bild (final)</source>
+				<target>Teaserboxen Text/Bild (final)</target>
+			</trans-unit>
+			<trans-unit id="c17">
+				<source>Diverse Slideshows (C17 - stable)</source>
+				<target>Diverse Slideshows (C17 - stable)</target>
+			</trans-unit>
+			<trans-unit id="c18">
+				<source>JONews</source>
+				<target>JONews</target>
+			</trans-unit>
+			<trans-unit id="c19">
+				<source>JONewsSlider</source>
+				<target>JONewsSlider</target>
+			</trans-unit>
+			<trans-unit id="c20">
+				<source>Gallery</source>
+				<target>Gallery</target>
+			</trans-unit>
+			<trans-unit id="c21">
+				<source>Element zum Springen zu Vorgänger und Nachfolger innerhalb der Seitenstruktur (C21 - stable)</source>
+				<target>Element zum Springen zu Vorgänger und Nachfolger innerhalb der Seitenstruktur (C21 - stable)</target>
+			</trans-unit>
+			<trans-unit id="c22">
+				<source>C22</source>
+				<target>C22</target>
+			</trans-unit>
+			<trans-unit id="c23">
+				<source>C23</source>
+				<target>C23</target>
+			</trans-unit>
+			<trans-unit id="c24">
+				<source>Versch. News Darstellungen</source>
+				<target>Versch. News Darstellungen</target>
+			</trans-unit>
+			<trans-unit id="c24.forschen">
+				<source>Forschen</source>
+				<target>Forschen</target>
+			</trans-unit>
+			<trans-unit id="c24.lernen">
+				<source>Lernen</source>
+				<target>Lernen</target>
+			</trans-unit>
+			<trans-unit id="c24.inspirieren">
+				<source>Inspirieren</source>
+				<target>Inspirieren</target>
+			</trans-unit>
+			<trans-unit id="c24.alleobjekte">
+				<source>alle Objekte des Monats anzeigen</source>
+				<target>alle Objekte des Monats anzeigen</target>
+			</trans-unit>
+			<trans-unit id="c24.fulloverview">
+				<source>Zur vollständigen Übersicht</source>
+				<target>Zur vollständigen Übersicht</target>
+			</trans-unit>
+			<trans-unit id="c24.objektdesmonats">
+				<source>Objekt des Monats</source>
+				<target>Objekt des Monats</target>
+			</trans-unit>
+			<trans-unit id="tags">
+				<source>Stichworte:</source>
+				<target>Stichworte:</target>
+			</trans-unit>
+			<trans-unit id="category">
+				<source>Kategorien:</source>
+				<target>Kategorien:</target>
+			</trans-unit>
+			<trans-unit id="createdby">
+				<source>erstellt von</source>
+				<target>erstellt von</target>
+			</trans-unit>
+			<trans-unit id="teasertext">
+				<source>Teasertext</source>
+				<target>Teasertext</target>
+			</trans-unit>
+			<trans-unit id="maintext">
+				<source>Haupttext</source>
+				<target>Haupttext</target>
+			</trans-unit>
+			<trans-unit id="related-files">
+				<source>Related Files</source>
+				<target>Related Files</target>
+			</trans-unit>
+			<trans-unit id="related-links">
+				<source>Related Links</source>
+				<target>Related Links</target>
+			</trans-unit>
+			<trans-unit id="backToOverview">
+				<source>Zurück zur Übersicht</source>
+				<target>Zurück zur Übersicht</target>
+			</trans-unit>
+			<trans-unit id="more">
+				<source>mehr erfahren</source>
+				<target>mehr erfahren</target>
+			</trans-unit>
+			<trans-unit id="img.proof">
+				<source>Abb.:</source>
+				<target>Abb.:</target>
+			</trans-unit>
+			<trans-unit id="back">
+				<source>Zurück</source>
+				<target>Zurück</target>
+			</trans-unit>
+			<trans-unit id="c18.more">
+				<source>Mehr...</source>
+				<target>Mehr...</target>
+			</trans-unit>
+			<trans-unit id="c18.less">
+				<source>Weniger...</source>
+				<target>Weniger...</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.layout">
+                <source>Layout</source>
+                <target>Layout</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.layout.1">
+                <source>Fullscreen Bild</source>
+                <target>Fullscreen Bild</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.layout.2">
+                <source>Fullscreen Text</source>
+                <target>Fullscreen Text</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.layout.3">
+                <source>Text und Bild</source>
+                <target>Text und Bild</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textlayout.title">
+                <source>Textlayout</source>
+                <target>Textlayout</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textlayout.1">
+                <source>Unten Links</source>
+                <target>Unten Links</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textlayout.2">
+                <source>Unten Rechts</source>
+                <target>Unten Rechts</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textlayout.3">
+                <source>Oben Links</source>
+                <target>Oben Links</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textlayout.4">
+                <source>Oben Rechts</source>
+                <target>Oben Rechts</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textblock">
+                <source>Textfeld</source>
+                <target>Textfeld</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textposition.title">
+                <source>Text Position</source>
+                <target>Text Position</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textposition.1">
+                <source>Text Links</source>
+                <target>Text Links</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textposition.2">
+                <source>Text Rechts</source>
+                <target>Text Rechts</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textabstand.title">
+                <source>Text Abstand</source>
+                <target>Text Abstand</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textabstand.1">
+                <source>Klein</source>
+                <target>Klein</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textabstand.2">
+                <source>Mittel</source>
+                <target>Mittel</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue_fullscreen.textabstand.3">
+                <source>Weit</source>
+                <target>Weit</target>
+			</trans-unit>
+				<trans-unit id="tx_jomoserbase_reise_flexform.imenue.cropWidth">
+                <source>Weite (Pixel) auf die das Bild zugeschnitten werden soll</source>
+                <target>Weite (Pixel) auf die das Bild zugeschnitten werden soll</target>
+			</trans-unit>
+			<trans-unit id="tx_jomoserbase_reise_flexform.imenue.cropHeight">
+                <source>Höhe (Pixel) auf die das Bild zugeschnitten werden soll</source>
+                <target>Höhe (Pixel) auf die das Bild zugeschnitten werden soll</target>
+			</trans-unit>
+			<trans-unit id="download">
+				<source>Download</source>
+				<target>Download</target>
+			</trans-unit>
+			<trans-unit id="title">
+				<source>Titel</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="layout.choose">
+				<source>Wählen sie Ihr Layout</source>
+				<target>Wählen sie Ihr Layout</target>
+			</trans-unit>
+			<trans-unit id="layout.choose.1">
+				<source>Layout 1</source>
+				<target>Layout 1</target>
+			</trans-unit>
+			<trans-unit id="layout.choose.2">
+				<source>Layout 2</source>
+				<target>Layout 2</target>
+			</trans-unit>
+			<trans-unit id="imageselect">
+				<source>Bild auswählen</source>
+				<target>Bild auswählen</target>
+			</trans-unit>
+			<trans-unit id="c25">
+				<source>Left Grid - Right Calender</source>
+				<target>Left Grid - Right Calender</target>
+			</trans-unit>
+			<trans-unit id="c26">
+				<source>NK Personen Ausgabe</source>
+				<target>NK Personen Ausgabe</target>
+			</trans-unit>
+			<trans-unit id="c31">
+				<source>VideoLoader</source>
+				<target>VideoLoader</target>
+			</trans-unit>
+			<trans-unit id="c32">
+				<source>Vorher Nachher Slider Tool</source>
+				<target>Vorher Nachher Slider Tool</target>
+			</trans-unit>
+			<trans-unit id="LaVe">
+				<source>Landesvertreter</source>
+				<target>Landesvertreter</target>
+			</trans-unit>
+			<trans-unit id="FaVe">
+				<source>Fachgebietsvertreter</source>
+				<target>Fachgebietsvertreter</target>
+			</trans-unit>
+			<trans-unit id="common">
+				<source>JOContent-Element Einstellungen</source>
+				<target>JOContent-Element Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="you.are.here">
+				<source>Your current location is:</source>
+			</trans-unit>
+			<trans-unit id="pdf.export">
+                <source>export as PDF file</source>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>

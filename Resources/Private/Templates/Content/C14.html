@@ -1,0 +1,9 @@
+<f:if condition="{settings.headline}">
+<div class="col-md-12">
+    <div class="headline"><h2><f:format.html parseFuncTSPath="">{settings.headline}</f:format.html></h2></div>
+</div>
+</f:if>
+<f:if condition="{settings.vid}">
+    <iframe id="iframe" src="https://www.youtube.com/embed/{settings.vid}?rel=0" class="col-md-12" height="{settings.height}" frameborder="0" allowfullscreen><br /></iframe>
+    <div class=" col-md-12 space-medium"></div>
+</f:if>

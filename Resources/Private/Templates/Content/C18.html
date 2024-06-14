@@ -1,0 +1,70 @@
+<div class="news_wrap {settings.listgrid}">
+	<ul class="row c18 newslist list-unstyled">
+		<f:for each="{objects}" as="item" key="subitemkey" iteration="subi">
+			 <f:cycle values="{0: 'odd', 1: 'even'}" as="toggle">
+				<li class="{toggle} <f:if condition="{settings.modenews} == 'modenews2'"><f:then>col-md-4</f:then><f:else>col-md-12</f:else></f:if>">
+					<f:link.action pageUid="{settings.detailpage}" class="row py-4" arguments="{detail:'{item.uid}'}">
+						<f:render section="imgContent" arguments="{_all}"/>
+						<div class="text_wrap <f:if condition="{subi.isEven}">right</f:if> <f:if condition='{listgrid.txt} != 12'>col-sm-12 col-lg-{listgrid.txt}</f:if>">
+							<f:if condition="{settings.hidedate}">
+								<f:then></f:then>
+								<f:else>
+									<div class="date text-muted">
+										<f:format.date format="d.m.y">{item.datetime}</f:format.date>
+									</div>
+								</f:else>
+							</f:if>
+							<h3 class="mt-0 mb-1">{item.title}</h3>
+							<div class="news_txt">
+								<f:if condition="{item.teaser}">
+									<f:then>
+										{item.teaser -> f:format.crop(maxCharacters: '250', respectWordBoundaries:'1') -> f:format.stripTags()}
+									</f:then>
+									<f:else>
+										{item.bodytext -> f:format.crop(maxCharacters: '250', respectWordBoundaries:'1') -> f:format.stripTags()}
+									</f:else>
+								</f:if>
+							</div>
+							<div class="joNewsMore mt-4">...<f:translate key="more" /></div>
+						</div>
+					</f:link.action>
+				</li>
+			 </f:cycle>
+		</f:for>
+	</ul>
+	<f:if condition="{settings.linktofulllist}">
+		<div class="bzvl">
+			<f:link.typolink parameter="{settings.linktofulllist}">
+			   Zur vollständigen Übersicht
+			</f:link.typolink>
+		</div>
+	</f:if>
+</div>
+
+<f:section name="imgContent">
+	<f:if condition="{item.falMedia}">
+		<f:then>
+			<f:alias map="{mediaElement: '{item.falMedia.0}'}">
+				<f:if condition="{mediaElement.originalResource.type} == 2">
+					<div class="img-container <f:if condition="{listgrid.img} != 12">col-sm-12 col-lg-{listgrid.img}</f:if>">
+						<div class="img-container-w">
+							<f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" maxWidth="{settings.bildweiteliste}m" maxHeight="{settings.bildhoeheliste}m" minWidth="{settings.bildweiteliste}c" minHeight="{settings.bildhoeheliste}m" width="{settings.bildweiteliste}m" height="{settings.bildhoeheliste}m"/>
+							<f:if condition="{mediaElement.alternative}">
+								<div class="img-proof"><f:translate key="img.proof" /> {mediaElement.alternative}</div>
+							</f:if>
+						</div>
+					</div>
+				</f:if>
+			</f:alias>
+		</f:then>
+		<f:else>
+			<f:if condition="{placeholder.0}">
+				<div class="img-container <f:if condition="{listgrid.img} != 12">col-sm-12 col-lg-{listgrid.img}</f:if>">
+					<div class="img-container-w">
+						<f:image src="{placeholder.0.uid}" title="{mediaElement.originalResource.title}" treatIdAsReference="true" alt="{mediaElement.originalResource.alternative}" maxWidth="{settings.bildweiteliste}c" maxHeight="{settings.bildhoeheliste}m" minWidth="{settings.bildweiteliste}c" minHeight="{settings.bildhoeheliste}m" width="{settings.bildweiteliste}c" height="{settings.bildhoeheliste}m"/>
+					</div>
+				</div>
+			</f:if>
+		</f:else>
+	</f:if>
+</f:section>

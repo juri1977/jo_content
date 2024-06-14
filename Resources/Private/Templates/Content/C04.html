@@ -1,0 +1,53 @@
+<f:if condition="{settings.layout} == 1">
+	<div class="c04 images_only row no-gutters number_{data.imagesnew -> f:count()}">
+		<f:for each="{data.imagesnew}" as="img" iteration="i">
+		    <div class="{data.col} <f:if condition='{img.title}'>teasertext </f:if>">
+		    	<f:image src="{img.uid}" treatIdAsReference="true" width="{settings.cropWidth}c" height="{settings.cropHeight}c" maxHeight="{settings.cropHeight}" maxWidth="{settings.cropWidth}" minWidth="{settings.cropWidth}" minHeight="{settings.cropHeight}" /> 
+		    	<div class="fsImageOverlay {data.layoutclass}">
+		    		<div class="fsOverlayTitle title">{img.title}</div> 
+		    		<div class="fsOverlayDescription">{img.description}</div>
+					<f:if condition="{img.link}">
+						<f:link.typolink parameter="{img.link}" class="more_link">Jetzt anschauen</f:link.typolink>
+					</f:if>
+		    	</div>
+		    </div>
+		</f:for>
+	</div>
+</f:if>
+
+<f:if condition="{settings.layout} == 2">
+	<div class="c04 text_only">
+		<div class="{data.textpadding} textblock">
+			<f:format.html>{settings.textblock}</f:format.html> 
+		</div>
+	</div>
+</f:if>
+
+<f:if condition="{settings.layout} == 3">
+	<f:if condition="{settings.textposition} == 1">
+		<div class="row number_2">
+			<div class="col-md-6">
+				<f:image src="{data.imagesnew.0.uid}" treatIdAsReference="true" width="{settings.cropWidth}c" height="{settings.cropHeight}c" maxHeight="{settings.cropHeight}" maxWidth="{settings.cropWidth}" minWidth="{settings.cropWidth}" minHeight="{settings.cropHeight}" /> 
+			    	<div class="fsImageOverlay {data.layoutclass}">
+			    		<div class="fsOverlayTitle title">{data.imagesnew.0.title}</div> 
+			    		<div class="fsOverlayDescription">{data.imagesnew.0.description}</div>
+			    		<f:link.typolink parameter="{data.imagesnew.0.link}">Link</f:link.typolink>
+			    	</div>
+			</div>
+			<div class="col-md-6 {data.textpadding}"><f:format.html>{settings.textblock}</f:format.html></div>
+		</div>
+	</f:if>
+	<f:if condition="{settings.textposition} == 2">
+		<div class="row number_2">
+			<div class="col-md-6 {data.textpadding}"><f:format.html>{settings.textblock}</f:format.html></div>
+			<div class="col-md-6">
+				<f:image src="{data.imagesnew.0.uid}" treatIdAsReference="true" width="{settings.cropWidth}c" height="{settings.cropHeight}c" maxHeight="{settings.cropHeight}" maxWidth="{settings.cropWidth}" minWidth="{settings.cropWidth}" minHeight="{settings.cropHeight}" /> 
+			    	<div class="fsImageOverlay {data.layoutclass}">
+			    		<div class="fsOverlayTitle title">{data.imagesnew.0.title}</div> 
+			    		<div class="fsOverlayDescription">{data.imagesnew.0.description}</div>
+			    		<f:link.typolink parameter="{data.imagesnew.0.link}">Link</f:link.typolink>
+			    	</div>
+			</div>
+		</div>
+	</f:if>
+</f:if>

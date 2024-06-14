@@ -1,0 +1,333 @@
+<f:variable name="imageperslide" value="1"/>
+<f:if condition="{settings.imageperslide}">
+	<f:variable name="imageperslide" value="{settings.imageperslide}"/>
+</f:if>
+<div class="joc17 direct_wrap direct_layout_{settings.layout}">
+	<f:switch expression="{settings.layout}">
+		<f:case value="4">
+			<f:if condition="{settings.engine}==2">
+				<f:then>
+					<f:render section="slickslider" arguments="{_all}"/>
+				</f:then>
+				<f:else>
+					<f:render section="boostrap_carousel" arguments="{_all}"/>
+				</f:else>
+			</f:if>
+		</f:case>
+		<f:defaultCase>
+			<div>This View is not configured. Call us to get support. ;)</div>
+		</f:defaultCase>
+	</f:switch>
+</div>
+
+<f:comment>
+	<!--
+	alternative Darstellung in eine section
+	default darstellung in sektion
+
+	sektionen auswählen in abhängigkeit von visualisierungsvariable {item.visualisierung}
+
+	css in die c17.css packen 
+	-->
+</f:comment>
+<f:section name="boostrap_carousel">
+	<f:variable name="carouselinterval" value="0"/>
+	<f:if condition="{settings.carouselinterval}"> 
+		<f:variable name="carouselinterval" value="{settings.carouselinterval}"/>
+	</f:if>
+	<f:render section="link" arguments="{_all}"/>
+	<f:if condition="{settings.carouselfade}">
+		<f:variable name="carouselfade" value="' carousel-fade'"/>
+	</f:if>
+	<div id="c17Carousel-{data.uid}" class="c17Carousel carousel slide{carouselfade}" data-ride="carousel" data-interval="{carouselinterval}"{f:if(condition: '{settings.galleryHeight}', then: ' style="height: {settings.galleryHeight}vh;"')}>
+		<ul class="carousel-indicators">
+			<f:for each="{galerieItems}" as="item" key="itemk" iteration="i">
+				<f:variable name="active" value=""/>
+				<f:if condition="{i.isFirst}"> 
+					<f:variable name="active" value=" active"/>
+				</f:if>
+				<li data-target="#c17Carousel-{data.uid}" data-slide-to="{i.index}" class="{active}"></li>
+			</f:for>
+	  	</ul>
+	  	<div class="carousel-inner">
+			<f:for each="{galerieItems}" as="items" key="pitemk" iteration="pi">
+				<f:variable name="isfirstclass" value=""/>
+		  		<f:if condition="{pi.isFirst}"> 
+		  			<f:variable name="isfirstclass" value=" active"/>
+		  		</f:if>
+				<div class="carousel-item{isfirstclass}">
+					<div class="row h-100 no-gutters">
+						<f:for each="{items}" as="item" key="itemk" iteration="i">
+							<f:render section="carousel_default" arguments="{_all}"/>
+						</f:for>
+					</div>
+				</div>
+			</f:for>
+		</div>
+		<a class="carousel-control-prev" href="#c17Carousel-{data.uid}" data-slide="prev">
+		    <span class="carousel-control-prev-icon"></span>
+	  	</a>
+	  	<a class="carousel-control-next" href="#c17Carousel-{data.uid}" data-slide="next">
+		    <span class="carousel-control-next-icon"></span>
+	  	</a>
+	</div>
+</f:section>
+
+<f:section name="carousel_default">
+	<f:if condition="{settings.useBackgroundImg}">
+		<f:then>
+			<div class="col position-relative item-backgroundimg" style="background-image: url(<f:uri.image src='{item.uid}' treatIdAsReference='TRUE' width='{settings.width}' height='{settings.height}c' />)">
+				<f:if condition="{settings.useImageAsBtn} && ({settings.detailpage} || {item.link})">
+					<f:then>
+						<f:if condition="{settings.detailpage}">
+							<f:then>
+								<f:link.typolink class="bg_img_link" parameter="{settings.detailpage}">
+									<f:render section="title_link_description" arguments="{_all}" />
+								</f:link.typolink>
+							</f:then>
+							<f:else>
+								<f:link.typolink class="bg_img_link" parameter="{item.link}">
+									<f:render section="title_link_description" arguments="{_all}" />
+								</f:link.typolink>
+							</f:else>
+						</f:if>
+					</f:then>
+					<f:else>
+						<f:render section="title_link_description" arguments="{_all}" />
+					</f:else>
+				</f:if>
+			</div>
+		</f:then>
+		<f:else>
+			<div class="col overflow-hidden position-relative h-100 item-block">
+				<f:if condition="{settings.useImageAsBtn} && ({settings.detailpage} || {item.link})">
+					<f:then>
+						<f:if condition="{settings.detailpage}">
+							<f:then>
+								<f:link.typolink class="bg_img_link" parameter="{settings.detailpage}">
+									<f:image src="{item.uid}" treatIdAsReference="TRUE" width="{settings.width}" height="{settings.height}c" />
+									<f:render section="title_link_description" arguments="{_all}"/>
+								</f:link.typolink>
+							</f:then>
+							<f:else>
+								<f:link.typolink class="bg_img_link" parameter="{item.link}">
+									<f:image src="{item.uid}" treatIdAsReference="TRUE" width="{settings.width}" height="{settings.height}c" />
+									<f:render section="title_link_description" arguments="{_all}"/>
+								</f:link.typolink>
+							</f:else>
+						</f:if>
+					</f:then>
+					<f:else>
+						<f:if condition="{settings.lightbox}">
+							<f:then>
+								<a href="{f:uri.image(src: item.uid, treatIdAsReference: 1)}" class="lightbox-link" data-lightbox="lightbox">
+									<f:image src="{item.uid}" treatIdAsReference="TRUE" width="{settings.width}" height="{settings.height}c" />
+								</a>
+							</f:then>
+							<f:else>
+								<f:image src="{item.uid}" treatIdAsReference="TRUE" width="{settings.width}" height="{settings.height}c" />
+							</f:else>
+						</f:if>
+						<f:render section="title_link_description" arguments="{_all}"/>
+					</f:else>
+				</f:if>
+			</div>
+		</f:else>
+	</f:if>
+</f:section>
+
+<f:section name="title_link_description">
+	<f:if condition="({settings.showTitleAndSub} && ({item.title} || {item.description}) || (!{settings.detailpage} && !{settings.useImageAsBtn} && {item.link}))">
+		<div class="link_and_description">
+			<f:if condition="{settings.showTitleAndSub} && ({item.title} || {item.description})">
+				<div class="carousel-caption">
+					<f:if condition="!{item.link} || {settings.detailpage}">
+						<f:if condition="{item.title}">
+							<h5>{item.title}</h5>
+						</f:if>
+					</f:if>
+					<f:if condition="{item.description}">
+						<f:format.html>{item.description}</f:format.html>
+					</f:if>
+				</div>
+			</f:if>
+			<f:if condition="!{settings.detailpage} && !{settings.useImageAsBtn} && {item.link}">
+				<f:variable name="title" value="default value - please change image title"/>
+				<f:if condition="{item.title}"> 
+					<f:variable name="title" value="{item.title}"/>
+				</f:if>
+				<div class="c17_cta">
+					<f:link.typolink parameter="{item.link}">{title}</f:link.typolink>
+				</div>
+			</f:if>
+		</div>
+	</f:if>
+</f:section>
+
+<f:comment>
+	<!--
+		Slicklider ist nicht getestet und nicht konfiguriert
+	-->
+</f:comment>
+
+<f:section name="slickslider">
+	<f:comment>
+	<!--
+	<f:render section="link" arguments="{_all}"/>
+	-->
+	</f:comment>
+	<f:variable name="variablewidth">
+		<f:if condition="{settings.variablewidth}"> data-variablewidth="{settings.variablewidth}"</f:if>
+	</f:variable>
+	<div class="joSlickSlider" data-slidenum="{settings.imageperslide}"{variablewidth}>
+		<f:for each="{galerieItems}" as="items" key="itemsk" iteration="ik">
+			<f:for each="{items}" as="item" key="itemk" iteration="i">
+				<f:if condition='{item.file.related} && {item.file.related.0}'>
+					<f:then>
+						<div class="slider-item img-player-starter" data-id="{item.file.uid}">
+					</f:then>
+					<f:else>
+						<div class="slider-item">
+					</f:else>
+				</f:if>
+					<f:variable name="poster"><f:if condition="{item.file.related} && {item.file.related.0}"><f:uri.image image="{item.file.related.0}" width="{settings.width}" height="{settings.height}" /></f:if></f:variable>
+
+					<f:if condition="{item.file.related} && {item.file.related.0}">
+						<f:then>
+							<f:image image="{item.file.related.0}" width="{settings.width}" height="{settings.height}" />
+							<f:media class="hidden-video embed-responsive-item" file="{item.file}" width="{settings.width}" height="{settings.height}" additionalAttributes="{poster: poster}" />
+						</f:then>
+						<f:else>
+							<f:if condition="{settings.lightbox}">
+								<f:then>
+									<a href="{f:uri.image(image: item.file)}" class="lightbox-link" data-lightbox="lightbox">
+										<f:media file="{item.file}" width="{settings.width}" height="{settings.height}" additionalAttributes="{poster: poster}" />
+									</a>
+								</f:then>
+								<f:else>
+									<f:if condition="{settings.showLinkAroundImg} && {item.link}">
+										<f:then>
+											<f:link.typolink class="slider-img-link" parameter="{item.link}">
+												<f:media file="{item.file}" width="{settings.width}" height="{settings.height}" additionalAttributes="{poster: poster}" />
+											</f:link.typolink>
+										</f:then>
+										<f:else>
+											<f:media file="{item.file}" width="{settings.width}" height="{settings.height}" additionalAttributes="{poster: poster}" />
+										</f:else>
+									</f:if>
+								</f:else>
+							</f:if>
+						</f:else>
+					</f:if>
+
+
+					<f:if condition="{settings.showTitleAndSub} && ({item.title} || {item.description})">
+			    		<f:if condition="{item.link}">
+							<f:then>
+								<f:link.typolink class="slider-text-link" parameter="{item.link}">
+									<div class="slider-text-block">
+										<f:if condition="{item.title}">
+											<h5>{item.title}</h5>
+										</f:if>
+										<f:if condition="{item.description}">
+											<f:format.html>{item.description}</f:format.html>
+										</f:if>
+									</div>
+								</f:link.typolink>
+							</f:then>
+							<f:else>
+								<div class="slider-text-block">
+									<f:if condition="{item.title}">
+										<h5>{item.title}</h5>
+									</f:if>
+									<f:if condition="{item.description}">
+										<f:format.html>{item.description}</f:format.html>
+									</f:if>
+								</div>
+							</f:else>
+						</f:if>
+				    </f:if>
+				</div>
+			</f:for>
+		</f:for>
+	</div>
+</f:section>
+
+
+<f:section name="link">
+	<f:if condition="!{settings.useImageAsBtn} && {settings.detailpage}">
+		<f:variable name="title" value="default value - please change link title"/>
+		<f:if condition="{settings.buttontext}"> 
+			<f:variable name="title" value="{settings.buttontext}"/>
+		</f:if>
+	   	<div class="link_wrap">
+	        <f:link.typolink parameter="{settings.detailpage}">{title}</f:link.typolink>
+	    </div>
+	</f:if>
+</f:section>
+
+
+<f:comment>
+	<!--
+	
+	Hier kommen ältere Blöcke - ggf. brauchen wir die nicht mehr
+
+	<ul class="direct">
+		<f:for each="{galerieItems}" as="item" key="itemk" iteration="i">
+			<li <f:if condition="{i.isFirst} && {settings.layout} != 2">class="active"</f:if>>
+				<f:if condition="{item.link}">
+					<f:then>
+						<a href="{item.link}">
+							<f:render section="teaser_content" arguments="{_all}"/>
+						</a>
+					</f:then>
+					<f:else>
+						<f:render section="teaser_content" arguments="{_all}"/>
+					</f:else>
+				</f:if>
+			</li>
+		</f:for>
+	</ul>
+
+	<f:section name="teaser_content">
+	<div class="image" style="background-image:url('<f:uri.image src="{item.uid}" treatIdAsReference="TRUE" width="{settings.width}" height="{settings.height}c" />');">
+		<div class="imgContent">
+			<f:if condition="{item.contenttitle}">
+				<h2 class="imgHeader"><f:format.nl2br>{item.contenttitle}</f:format.nl2br></h2>
+			</f:if>
+			<f:if condition="{item.description}">
+				<div class="desc"><f:format.nl2br><f:format.crop maxCharacters="180" respectWordBoundaries="TRUE" respectHtml="TRUE">{item.description}</f:format.crop></f:format.nl2br></div>
+			</f:if>
+		</div>
+	</div>
+	<f:if condition="{item.title}">
+		<div class="title" <f:if condition="{item.css}">style="{item.css}"</f:if>>
+			{item.title}
+		</div>
+	</f:if>
+</f:section>
+
+
+
+<f:section name="carousel_alternativ">
+	<div class="container-fluid" style="padding-bottom:{item.aspectDb}%;">
+		<div class="row weekImgOuter">
+			<f:if condition="{item.aspectratio} <= 1" >
+				<f:then>
+					<div class="col-sm-4 weekImgLeft portrait"><f:image src="{item.uid}" width="" height="600"/></div>
+				</f:then>
+				<f:else>
+					<div class="col-sm-4 weekImgLeft landscape"><f:image src="{item.uid}" width="600" height=""/></div>
+					 
+				</f:else>
+			</f:if>
+			<div class="col-sm-4 weekTextRight">
+				<div class="weekTextSubline">{item.title}</div>
+				<div class="weekTextHeadline">{item.description}</div>
+			</div>
+		</div>
+	</div>
+</f:section>
+
+	-->
+</f:comment>

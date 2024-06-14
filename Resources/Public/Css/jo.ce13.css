@@ -1,0 +1,19 @@
+.frame-type-jocontent_c13 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.frame-type-jocontent_c13 .link-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.frame-type-jocontent_c13 .link-container a {
+  background-color: #788A29;
+  color: #fff;
+  padding: 15px 25px;
+  text-transform: uppercase;
+  display: inline-block;
+  font-weight: 600;
+}

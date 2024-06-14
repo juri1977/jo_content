@@ -1,0 +1,24 @@
+{namespace jo=JO\JoContent\ViewHelpers}
+<f:if condition="{images}">
+	<div class="jo-ce15">
+		<f:for each="{images}" as="item" key="itemk">
+			<f:variable name="img_block">
+				<f:if condition="{settings.svginline}">
+					<f:then>
+						<jo:svg image="{item}" />
+					</f:then>
+					<f:else>
+						<f:image image="{item}" width="{settings.cropWidth}c" height="{settings.cropHeight}c" alt="{item.title}"/>
+					</f:else>
+				</f:if>
+			</f:variable>
+
+			<f:if condition="{item.link}">
+				<f:then>
+					<f:link.typolink parameter="{item.link}"><f:format.raw>{img_block}</f:format.raw></f:link.typolink>
+				</f:then>
+				<f:else><f:format.raw>{img_block}</f:format.raw></f:else>
+			</f:if>
+		</f:for>
+	</div>
+</f:if>	

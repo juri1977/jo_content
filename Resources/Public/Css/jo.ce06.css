@@ -1,0 +1,32 @@
+.t_stream{
+	list-style-type:none;
+}
+.t_stream li{
+	background-color:rgba(0,0,0,0.1);
+	margin: 0 0 15px 0;
+}
+.t_stream li h2{
+	font-size:17px;
+	padding:0;
+	margin:0 0 10px;
+}
+.t_media img{
+	width:100%;
+	height:auto;
+	margin: 0 0 10px;
+}
+.t_stream .t_user{
+	font-weight:400;
+}
+.t_stream .t_date{	
+	font-size:14px;
+}
+.t_stream  .t_retweet,
+.t_stream .t_user,
+.t_stream .t_date{
+	line-height:130%;
+}
+.t_stream .t_text_wrap,
+.t_stream .t_media_wrap{
+	padding:0;
+}

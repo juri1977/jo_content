@@ -1,0 +1,29 @@
+{namespace ce=JO\JoContent\ViewHelpers}                      
+<f:if condition="{settings.image}">
+	<div class="row no-gutters">
+		<f:for each="{settings.image -> ce:maxplode()}" as="item" iteration="i">
+			<div class="items col-xl-6 col-lg-12">    
+				<div class="proxy">
+					<f:if condition="{item.link}">
+						<f:then>
+							<f:link.typolink parameter="{item.link}">		
+								<f:render section="DirectEntry" arguments="{_all}"/>
+							</f:link.typolink>
+						</f:then>	
+						<f:else>	
+							<f:render section="DirectEntry" arguments="{_all}"/>
+						</f:else>
+					</f:if>					
+				</div>
+			</div>
+		</f:for>				
+	</div>
+</f:if>
+<f:section name="DirectEntry">	
+	<div id="picture_{i.cycle}" style="background-image: url(<f:uri.image src="{item.uid}" treatIdAsReference="TRUE" width="{settings.width}" height="{settings.height}c" />);">
+	</div>
+	<h2><strong>{item.title}</strong></h2>
+	<f:if condition="{item.description}">
+		<f:format.html>{item.description}</f:format.html>
+	</f:if>
+</f:section>

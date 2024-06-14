@@ -1,0 +1,126 @@
+<div class="row no-gutters c16 h-100 overflow-hidden">
+    <div class="col-12">
+        <f:if condition="{images}">
+        	<f:then>
+	        	<f:if condition="{settings.layout} == 2">
+					<f:then>
+						<f:if condition="{settings.ctalink}">
+			        		<f:then>
+						         <div class="image cover justify-content-center d-flex align-items-end h-100" style="background-image:url('<f:uri.image image="{images.0}" width="{settings.bildweite}m" height="{settings.bildhoehe}m" />');">
+						            <div class="text text-center">
+							            <f:if condition="{settings.headline}">
+								            <h2>{settings.headline}</h2>
+								        </f:if>
+								        <f:link.typolink class="d-inline-block more" parameter="{settings.ctalink}">
+								        	mehr erfahren
+								        </f:link.typolink>
+							       	</div>
+						       	</div>
+					        </f:then>
+					        <f:else>
+					        	<div class="image cover justify-content-center d-flex align-items-end  h-100" style="background-image:url('<f:uri.image image="{images.0}" width="{settings.bildweite}m" height="{settings.bildhoehe}m" />');">
+							        <div class="text text-center">
+							            <f:if condition="{settings.headline}">
+								            <h2>{settings.headline}</h2>
+								        </f:if>
+								        <f:if condition="{settings.teaser}">
+								        	<div>{settings.teaser}</div>
+								        </f:if>
+							       	</div>
+							    </div>
+					    	</f:else>
+					    </f:if>
+					</f:then>
+					<f:else>
+						<f:if condition="{settings.ctalink}">
+			        		<f:then>
+					        	<f:link.typolink class="d-block" parameter="{settings.ctalink}">
+						            <div class="image" style="background-image:url('<f:uri.image image="{images.0}" width="{settings.bildweite}m" height="{settings.bildhoehe}m" />');"></div>
+						            <div class="text">
+							            <f:if condition="{settings.headline}">
+								            <h2>{settings.headline}</h2>
+								        </f:if>
+								        <f:if condition="{settings.teaser}">
+								        	<div>{settings.teaser}</div>
+								        </f:if>
+							       	</div>
+					            </f:link.typolink>
+					        </f:then>
+					        <f:else>
+					        	<div class="image" style="background-image:url('<f:uri.image image="{images.0}" width="{settings.bildweite}m" height="{settings.bildhoehe}m" />');"></div>
+						        <div class="text">
+						            <f:if condition="{settings.headline}">
+							            <h2>{settings.headline}</h2>
+							        </f:if>
+							        <f:if condition="{settings.teaser}">
+							        	<div>{settings.teaser}</div>
+							        </f:if>
+						       	</div>
+					    	</f:else>
+					    </f:if>
+					</f:else>
+				</f:if>
+			</f:then>
+			<f:else>
+				<f:if condition="{settings.layout} == 2">
+					<f:then>
+						<f:if condition="{settings.ctalink}">
+			        		<f:then>
+						         <div class="image cover justify-content-center d-flex align-items-end h-100 no-dark c16_bgcolor">
+						            <div class="text text-center">
+							            <f:if condition="{settings.headline}">
+								            <h2>{settings.headline}</h2>
+								        </f:if>
+								        <f:link.typolink class="d-inline-block more" parameter="{settings.ctalink}">
+								        	mehr erfahren
+								        </f:link.typolink>
+							       	</div>
+						       	</div>
+					        </f:then>
+					        <f:else>
+					        	<div class="image cover justify-content-center d-flex align-items-end no-dark h-100 c16_bgcolor">
+							        <div class="text text-center">
+							            <f:if condition="{settings.headline}">
+								            <h2>{settings.headline}</h2>
+								        </f:if>
+								        <f:if condition="{settings.teaser}">
+								        	<div>{settings.teaser}</div>
+								        </f:if>
+							       	</div>
+							    </div>
+					    	</f:else>
+					    </f:if>
+					</f:then>
+					<f:else>
+						<f:if condition="{settings.ctalink}">
+			        		<f:then>
+					        	<f:link.typolink class="d-block" parameter="{settings.ctalink}">
+						            <div class="image" style="background-color: #e61f4a;"></div>
+						            <div class="text">
+							            <f:if condition="{settings.headline}">
+								            <h2>{settings.headline}</h2>
+								        </f:if>
+								        <f:if condition="{settings.teaser}">
+								        	<div>{settings.teaser}</div>
+								        </f:if>
+							       	</div>
+					            </f:link.typolink>
+					        </f:then>
+					        <f:else>
+					        	<div class="image" style="background-color: #e61f4a;"></div>
+						        <div class="text">
+						            <f:if condition="{settings.headline}">
+							            <h2>{settings.headline}</h2>
+							        </f:if>
+							        <f:if condition="{settings.teaser}">
+							        	<div>{settings.teaser}</div>
+							        </f:if>
+						       	</div>
+					    	</f:else>
+					    </f:if>
+					</f:else>
+				</f:if>
+			</f:else>
+        </f:if>
+    </div>
+</div>

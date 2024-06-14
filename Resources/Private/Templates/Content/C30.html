@@ -1,0 +1,593 @@
+{namespace jo=JO\JoContent\ViewHelpers}
+<f:comment>
+	<!--
+<style>
+	
+
+	.link {
+	  padding:5px 10px;
+	  margin: 5px 0 0 0;
+	  border-radius: 3px;
+	}
+	.facettes{
+		margin-bottom:30px;
+	}
+	.facettes .wrap{
+		padding: .75rem 1.25rem;
+		background-color: #fff;
+		border: 1px solid rgba(0,0,0,.125);
+		border-radius: 3px;
+	}
+	.facettes.active .wrap{
+		color: #fff;
+		background-color: #007bff;
+		border-color: #007bff;
+	}
+	h5{
+		padding: 10px 0 5px;
+		margin:0;
+		text-decoration: underline;
+		font-size:16px;
+	}
+	
+</style>
+<div class="container">
+	<f:if condition="{searcharray}">
+		<div class="row">
+			<div class="col-12">
+				<f:link.action style="margin-bottom:20px;" class="d-inline-block text-white bg-dark link" action="c30" arguments="{removefilters:'1'}">				
+					alle Filter löschen
+				</f:link.action>
+			</div>
+		</div>
+	</f:if>
+</div>
+<f:if condition="{feusers}">
+	<div class="container">
+		<ul class="row" style="list-style-type: none; padding:0;">
+			<h2 class="col-12">Veranstalter</h2>
+			<f:for each="{feusers}" as="items">
+				<li class="col-md-3 facettes <f:if condition='{jo:inarray(arraycontains:\'{searcharray.content.addorganizer}\', keytofind:\'{items.uid}\')}'>active</f:if>">
+					<div class="wrap h-100">
+						<h4>
+							<f:if condition="{items.company}">
+								<f:then>
+									{items.company}
+								</f:then>
+								<f:else>
+									{items.username}
+								</f:else>
+							</f:if>
+						</h4>
+						<div class="bodytext">
+							<div><f:if condition="{items.address}">{items.address}</f:if></div>
+							<div><f:if condition="{items.zip}">{items.zip}</f:if> <f:if condition="{items.city}">{items.city}</f:if></div>
+							<div><f:if condition="{items.email}">E-Mail: {items.email}</f:if></div>
+							<div><f:if condition="{items.telephone}">Telefon: {items.telephone}</f:if></div>
+							<div>
+								<f:if condition="{jo:inarray(arraycontains:'{searcharray.content.addorganizer}', keytofind:'{items.uid}')}">
+									<f:then>
+										<f:link.action class="d-inline-block text-white bg-dark link" action="c30" arguments="{removeorganizer:'{items.uid}'}">
+											abwählen
+										</f:link.action>
+									</f:then>
+									<f:else>
+										<f:link.action class="d-inline-block text-white bg-dark link" action="c30" arguments="{addorganizer:'{items.uid}'}">				
+											auswählen
+										</f:link.action>
+									</f:else>
+								</f:if>
+							</div>
+						</div>
+					</div>
+				</li>
+			</f:for>
+		</ul>
+	</div>
+</f:if>
+<f:if condition="{veranstalterarray}">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<a style="margin-bottom:20px;" class="btn btn-primary d-block text-left" data-toggle="collapse" href="#collapseVeranstalter" role="button" aria-expanded="false" aria-controls="collapseVeranstalter">
+				    <h2>Veranstalter</h2>
+				  </a>
+			</div>
+		</div>
+		<div class="collapse" id="collapseVeranstalter">
+			<ul class="row" style="list-style-type: none; padding:0;">
+				<f:for each="{veranstalterarray.veranstalter}" as="items">
+					<li class="col-md-3 facettes <f:if condition='{jo:inarray(arraycontains:\'{searcharray.content.addveranstalter}\', keytofind:\'{items.id}\')}'>active</f:if>">
+						<div class="wrap h-100">
+							<h4>
+								<f:if condition="{items.name}">
+									<f:then>
+										{items.name}
+									</f:then>
+									<f:else>
+										{items.id}
+									</f:else>
+								</f:if>
+							</h4>
+							<div class="bodytext">
+								<div>
+									<f:if condition="{jo:inarray(arraycontains:'{searcharray.content.addveranstalter}', keytofind:'{items.id}')}">
+										<f:then>
+											<f:link.action class="d-inline-block text-white bg-dark link" action="c30" arguments="{removeveranstalter:'{items.id}'}">
+												abwählen
+											</f:link.action>
+										</f:then>
+										<f:else>
+											<f:link.action class="d-inline-block text-white bg-dark link" action="c30" arguments="{addveranstalter:'{items.id}'}">				
+												auswählen
+											</f:link.action>
+										</f:else>
+									</f:if>
+								</div>
+							</div>
+						</div>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</div>
+</f:if>
+<f:if condition="{spielortearray}">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<a style="margin-bottom:20px;" class="btn btn-primary d-block text-left" data-toggle="collapse" href="#collapseSpielorte" role="button" aria-expanded="false" aria-controls="collapseSpielorte">
+				    <h2>Spielorte</h2>
+				  </a>
+			</div>
+		</div>
+		<div class="collapse" id="collapseSpielorte">
+			<ul class="row" style="list-style-type: none; padding:0;">
+				<f:for each="{spielortearray.spielort}" as="items">
+					<li class="col-md-3 facettes <f:if condition='{jo:inarray(arraycontains:\'{searcharray.content.addspielort}\', keytofind:\'{items.id}\')}'>active</f:if>">
+						<div class="wrap h-100">
+							<h4>
+								<f:if condition="{items.name}">
+									<f:then>
+										{items.name}
+									</f:then>
+									<f:else>
+										{items.id}
+									</f:else>
+								</f:if>
+							</h4>
+							<div class="bodytext">
+								<div>
+									<f:if condition="{jo:inarray(arraycontains:'{searcharray.content.addspielort}', keytofind:'{items.id}')}">
+										<f:then>
+											<f:link.action class="d-inline-block text-white bg-dark link" action="c30" arguments="{removespielort:'{items.id}'}">
+												abwählen
+											</f:link.action>
+										</f:then>
+										<f:else>
+											<f:link.action class="d-inline-block text-white bg-dark link" action="c30" arguments="{addspielort:'{items.id}'}">				
+												auswählen
+											</f:link.action>
+										</f:else>
+									</f:if>
+								</div>
+							</div>
+						</div>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</div>
+</f:if>
+<f:if condition="{eventsarray}">
+	<div class="container">
+		<div>
+			<ul class="row" style="list-style-type: none; padding:0;">
+				<f:for each="{eventsarray}" as="items">
+					<li class="col-md-12" style="padding:20px;border-bottom:#000000 1px solid;">
+						<div class="wrap h-100">
+							<h2>{items.name}, {items.startDate}</h2>
+							<div class="bodytext">
+								<div>{items.description}</div>
+								<f:if condition="{items.location}">
+									<h5>Spielort:</h5>
+									{items.location.name}
+								</f:if>
+								<f:if condition="{items.performer}">
+									<h5>Veranstalter:</h5>
+									{items.performer.name}
+								</f:if>
+							</div>
+						</div>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</div>
+</f:if>
+-->
+</f:comment>
+
+				<f:comment>
+					<f:debug>{items}</f:debug>
+				</f:comment>
+
+
+
+<f:comment>
+	<!--
+	<f:if condition="{datum.ajaxSend}==0">
+	<script type="text/javascript">
+		var uri = '<f:uri.action action="veranstaltungen" controller="Elements" pageType="3324" />';
+		var siteUid = '{data.pid}';
+		var joEventdatum = {jo:timestampconvert(formarray:{tag:'{datum.aktag}',monat:'{datum.akmonat}',jahr:'{datum.akjahr}'})};
+		var settings = {};
+		settings.bildhoehe = {settings.bildhoehe};
+		settings.bildweite = {settings.bildweite};
+		settings.anzahl = {settings.anzahl};
+	</script>
+	<div class="joClearfix joEventKalenderNavi">
+		<div class="joEventJahr">
+			<ul class="joClearfix joEventKalenderUl">
+				<li class="joEventsJahr">
+					{datum.akjahr}
+					<ul class="joJahre">
+						<li class="joNextJahrLi <f:if condition="{datum.akjahr}=={datum.todayjahrbig}"> joAktiv</f:if>">
+							<f:link.action action="veranstaltungen" arguments="{joEventDatum:'{jo:timestampconvert(formarray:{tag:1,monat:\'{datum.todaymonat}\',jahr:\'{datum.todayjahrbig}\'})}'}">{datum.todayjahrbig}</f:link.action>
+						</li>
+						<li class="joNextJahrLi <f:if condition="{datum.nextjahr}=={datum.akjahr}"> joAktiv</f:if>">	
+							<f:link.action action="veranstaltungen" arguments="{joEventDatum:'{jo:timestampconvert(formarray:{tag:1,monat:1,jahr:\'{datum.nextjahr}\'})}'}">{datum.nextjahr}</f:link.action>
+						</li>
+						<li class="joNextJahrLi <f:if condition="{datum.prevjahr}=={datum.akjahr}"> joAktiv</f:if>">	
+							<f:link.action action="veranstaltungen" arguments="{joEventDatum:'{jo:timestampconvert(formarray:{tag:1,monat:1,jahr:\'{datum.prevjahr}\'})}'}">{datum.prevjahr}</f:link.action>
+						</li>
+					</ul>
+				</li>
+				<f:if condition="{veranstaltungenNavi}">
+					<f:then>
+						<f:for each="{veranstaltungenNavi}" as="monate" key="keyvalue">
+							<li class="joEventsMonate<f:if condition="{datum.akmonat}=={keyvalue}"> joAktiv</f:if>">
+								<f:if condition="{monate} == 1">
+									<f:then>
+										<f:link.action action="veranstaltungen" arguments="{joEventDatum:'{jo:timestampconvert(formarray:{tag:1,monat:\'{keyvalue}\',jahr:\'{datum.akjahr}\'})}'}">{keyvalue}</f:link.action>
+									</f:then>
+									<f:else>
+										{keyvalue}
+									</f:else>
+								</f:if>
+							</li>
+						</f:for>
+					</f:then>
+					<f:else>
+						<f:for each="{0:1, 1:2, 2:3, 3:4, 4:5, 5:6,6:7,7:8,8:9,9:10,10:11,11:12 }" as="monate">
+							<li class="joEventsMonate<f:if condition="{datum.akmonat}=={monate}"> joAktiv</f:if>">
+								<f:link.action action="veranstaltungen" arguments="{joEventDatum:'{jo:timestampconvert(formarray:{tag:1,monat:\'{monate}\',jahr:\'{datum.akjahr}\'})}'}">{monate}</f:link.action>
+							</li>
+						</f:for>
+					</f:else>
+				</f:if>
+			</ul>
+		</div>
+	</div>
+	<div>
+	<f:if condition="{datum.aktag}>1">
+		<f:then>
+			<f:link.action action="veranstaltungen" arguments="{joEventDatum:'{jo:timestampconvert(formarray:{tag:1,monat:\'{datum.todaymonat}\',jahr:\'{datum.todayjahr}\'})}'}">{f:translate(key:'LLL:EXT:jo_base/Resources/Private/Language/locallang.xml:monatanzeigen_pi5')}</f:link.action>
+		</f:then>
+		<f:else>
+			<f:link.action action="veranstaltungen" arguments="{joEventDatum:'{jo:timestampconvert(formarray:{tag:\'{datum.todaytag}\',monat:\'{datum.todaymonat}\',jahr:\'{datum.todayjahr}\'})}'}">{f:translate(key:'LLL:EXT:jo_base/Resources/Private/Language/locallang.xml:aktuelleanzeigen_pi5')}</f:link.action>
+		</f:else>
+	</f:if>
+	</div>
+	<ul class="joGebaeudeTeaser gg joFliesstext joVeranstaltungsteaser">
+	</f:if>
+	<f:for each="{veranstaltungen}" as="teaseritems" iteration="durchlauf">
+		<li class="joGebaeudeTeaserItem joClearfix <f:if condition='{datum.ajaxSend}'>joToggleAfter</f:if>"> 
+			<f:if condition="{teaseritems.headlineyesno}==1">
+				<div class="joEventDatumVeranstaltung">
+					{teaseritems.datestart->jo:datumformat(formstring:'%A')}, <f:format.date format="d.m.Y">{teaseritems.datestart}</f:format.date> 
+				</div>
+			</f:if>
+			<f:if condition="{teaseritems.image}">
+				<div class="joVeranstaltungsTeaserBild float-start">
+					<f:for each="{teaseritems.image}" as="img" iteration="l">
+						<f:if condition="{l.isFirst}">
+							<f:image src="{img.uid}" treatIdAsReference="1" alt="{teaseritems.title} {teaseritems.first_name} {teaseritems.middle_name} {teaseritems.last_name}" title="{teaseritems.title} {teaseritems.first_name} {teaseritems.middle_name} {teaseritems.last_name}" width="{settings.bildweite}c" height="{settings.bildhoehe}c"/>
+						</f:if>
+					</f:for>
+				</div>
+			</f:if>
+			<div class="joVeranstaltungsTeaserTextContent float-start">
+				<div class="joVeranstaltungsTeaserinnenabstand">
+					<f:if condition="{teaseritems.datestart }">
+						<p class="joVeranstaltungsTeaserAdresse d-inline">		
+							<f:format.date format="H:i ">{teaseritems.datestart}</f:format.date>{f:translate(key:'LLL:EXT:jo_base/Resources/Private/Language/locallang.xml:uhrzeit_pi5')}
+							 <f:for each="{teaseritems.mmeventplaces}" as="staette"> 
+								| {staette.name}
+							</f:for>
+						</p>
+					</f:if>
+					<h3 class="joVeranstaltungsTeaserHeadline">
+						<f:format.html>{teaseritems.title}</f:format.html>
+					</h3>
+					<f:if condition="{teaseritems.deschfm }">
+						<p class="joVeranstaltungsTeaserAdresse d-inline">		
+							<f:format.html>{teaseritems.deschfm }</f:format.html>
+						</p>
+					</f:if>
+					<f:if condition="{teaseritems.nopricehfm}">
+						<f:then>
+							<f:if condition="{teaseritems.pricehfm}<1">
+								<p class="joVeranstaltungsTeaserAdresse d-inline">		
+									<f:format.html>{f:translate(key:'LLL:EXT:jo_base/Resources/Private/Language/locallang.xml:preis_pi5')} {f:translate(key:'LLL:EXT:jo_base/Resources/Private/Language/locallang.xml:feiereintritt_pi5')} </f:format.html> 
+								</p>
+							</f:if>
+							<f:if condition="{teaseritems.vvkint}">
+								<div class="joVeranstaltungsTeaserVvkInt"><f:format.html>{teaseritems.vvkint}</f:format.html></div>
+							</f:if>
+						</f:then>
+						<f:else>
+							<div class="joVeranstaltungsTeaserPreis">	
+								<f:if condition="{teaseritems.pricehfm }">{f:translate(key:'LLL:EXT:jo_base/Resources/Private/Language/locallang.xml:preis_pi5')} <f:format.html>{teaseritems.pricehfm }</f:format.html> {f:translate(key:'LLL:EXT:jo_base/Resources/Private/Language/locallang.xml:euro_pi5')}</f:if><f:if condition="{teaseritems.discounthfm}"><f:if condition="{teaseritems.pricehfm}">, {f:translate(key:'LLL:EXT:jo_base/Resources/Private/Language/locallang.xml:ermaessigung_pi5')} <f:format.html>{teaseritems.discounthfm }</f:format.html> {f:translate(key:'LLL:EXT:jo_base/Resources/Private/Language/locallang.xml:euro_pi5')}</f:if></f:if>
+								<f:if condition="{teaseritems.vvkint}">
+									<div class="joVeranstaltungsTeaserVvkInt"><f:format.html>{teaseritems.vvkint}</f:format.html></div>
+								</f:if>
+							</div>
+						</f:else>
+					</f:if>
+				</div>
+			</div>
+		</li>
+	</f:for>
+	<f:if condition="{datum.ajaxSend}==0">
+	</ul>
+	<f:if condition="{veranstaltungen}">
+		<div class="joMoreArrow">weitere {settings.anzahl} Veranstaltungen anzeigen</div>
+	</f:if>
+	</f:if>
+	-->
+</f:comment>
+
+<f:section name="dates">
+	<div class="row first">
+		<div class="col-12 joEventJahr">
+			<ul class="kal_switch list-unstyled d-flex">
+				<li>{datum.selectedmonatname} {datum.selectedjahrnumber}</li>
+				<f:if condition="{datum.prevmonth}">
+					<li class="prev ms-4 h-auto cursor-pointer">
+						<f:link.action class="d-block" action="c30" pageType="2345" arguments="{ajaxSend:'1',loadDate:'{datum.prevmonthtimestamp}'}" additionalParams="{ceid:'{data.uid}'}">vor</f:link.action>
+					</li>
+				</f:if>
+				<li class="next ms-3 h-auto cursor-pointer">
+					<f:link.action class="d-block" action="c30" pageType="2345" arguments="{ajaxSend:'1',loadDate:'{datum.nextmonthtimestamp}'}" additionalParams="{ceid:'{data.uid}'}">next</f:link.action>
+				</li>
+			</ul>
+			<ul class="kal_days d-flex list-unstyled overflow-auto">
+				<f:for each="{daysofthemonth}" as="days" key="key">
+					<li class="d_{days.events} t_{days.today} passed_{days.passed} text-center w-100 position-relative">
+						<div class="fl">{days.firstletter}</div>
+						<div class="da">
+							<f:if condition="{days.events} == 1">
+								<f:then>
+									<span>{key}</span>
+								</f:then>
+								<f:else>
+									{key}
+								</f:else>
+							</f:if>
+						</div>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</div>
+</f:section>
+<f:section name="events">
+	<f:switch expression="{view}">
+	   <f:case value="2">
+	   		<f:render section="archive" arguments="{_all}"/>
+	   		<div class="eventlist event-grid row w-100">
+				<f:render section="eventdata" arguments="{_all}"/>
+			</div>
+			<f:render section="moreevents" arguments="{_all}"/>
+		</f:case>
+		<f:case value="10">
+	   		<div class="eventlist event-id overflow-hidden row g-0 p-0">
+				<f:render section="eventdatafull" arguments="{_all}"/>
+			</div>
+		</f:case>
+	   	<f:defaultCase>
+	   		<f:render section="dates" arguments="{_all}"/>
+	   		<div class="eventlist eventSlider overflow-hidden row g-0">
+				<f:render section="eventdata" arguments="{_all}"/>
+			</div>
+			<f:render section="moreevents" arguments="{_all}"/>
+		</f:defaultCase>
+	</f:switch>
+</f:section>
+<f:section name="eventdata">
+	<f:if condition="{veranstaltungen->f:count()}>0">
+		<f:then>
+			<f:for each="{veranstaltungen}" as="teaseritems" iteration="durchlauf">
+				<div class="eventitem">
+					<f:link.action class="joVeranstaltungslink d-block h-100" pageUid="{settings.link}" arguments="{detail:'{teaseritems.id}'}" additionalParams="{ceid:'{data.uid}'}">
+						<div class="eventWrapper d-flex flex-column h-100">
+							<f:if condition="{teaseritems.image} && {teaseritems.image.contentUrl}">
+								<div class="teaserimage">
+									<img class="w-100 h-auto" src="{teaseritems.image.contentUrl}" absolute="true" alt="{teaseritems.image.copyrightHolder}: {teaseritems.image.copyrightNotice}" title="{teaseritems.image.copyrightHolder}: {teaseritems.image.copyrightNotice}" width="{settings.bildweite}c" height="{settings.bildhoehe}c"/>
+								</div>
+							</f:if>
+							<div class="teasertext">
+								<div class="joVeranstaltungsTeaserinnenabstand">
+									<f:if condition="{teaseritems.startDate}">
+										<p class="joVeranstaltungsTeaserAdresse d-inline">
+											<f:format.date format="%a, %d.%m.%Y">{teaseritems.startDate}</f:format.date>,		
+											<f:format.date format="H:i">{teaseritems.startDate}</f:format.date> Uhr<br/>
+											<f:for each="{teaseritems.location}" as="sv" iteration="si">
+												{sv.address.addressLocality}, {sv.name}<f:if condition="{si.isLast}!=1">, </f:if>
+											</f:for>
+										</p>
+									</f:if>
+									<h3 class="joVeranstaltungsTeaserHeadline">
+										<f:format.html>{teaseritems.name}</f:format.html>
+									</h3>
+								</div>
+								<f:for each="{teaseritems.identifier}" as="sv" iteration="si">
+									<div>{sv.name}:{sv.value}</div>
+								</f:for>
+							</div>
+						</div>
+					</f:link.action>
+				</div>
+			</f:for>
+		</f:then>
+		<f:else>
+			<div class="col-md-4 eventitem">
+				keine veranstaltungen gefunden -> label in sprachdatei bitte und besser formulieren
+			</div>
+		</f:else>
+	</f:if>
+</f:section>
+<f:section name="eventdatafull">
+	<f:if condition="{veranstaltungen->f:count()}>0">
+		<f:then>
+			<f:for each="{veranstaltungen}" as="teaseritems" iteration="durchlauf">
+				
+					<div class="row g-0 pt-5">
+						<div class="col-12 col-md-9 pe-5">
+							<div class="teasertext">
+								<div class="joVeranstaltungsTeaserinnenabstand">
+									<f:if condition="{teaseritems.startDate}">
+										<p class="joVeranstaltungsTeaserAdresse d-inline">
+											<f:format.date format="%a, %d.%m.%Y">{teaseritems.startDate}</f:format.date>,		
+											<f:format.date format="H:i">{teaseritems.startDate}</f:format.date> Uhr<br/>
+											<f:for each="{teaseritems.location}" as="sv" iteration="si">
+												{sv.address.addressLocality}, {sv.name}<f:if condition="{si.isLast}!=1">, </f:if>
+											</f:for>
+										</p>
+									</f:if>
+									<h3 class="joVeranstaltungsTeaserHeadline">
+										<f:format.html>{teaseritems.name}</f:format.html>
+									</h3>
+									<p>
+										<f:format.html>{teaseritems.about}</f:format.html>
+									</p>
+									<f:if condition="{teaseritems.location}">
+										<div><br><b>Veranstaltungsort:</b></div>
+										<f:for each="{teaseritems.location}" as="sv" iteration="si">
+											<div>
+												{sv.name}<br>
+												{sv.address.streetAddress}<br>
+												{sv.address.postalCode} {sv.address.addressLocality}<br>
+											</div>
+										</f:for>
+									</f:if>
+									<f:if condition="{teaseritems.performer}">
+										<div><br><b>Veranstalter:</b></div>
+										<div>
+											{teaseritems.performer.name}
+										</div>
+									</f:if>
+									<f:if condition="{teaseritems.identifier}">
+										<div><br><b>Identifikatoren:</b></div>
+										<f:for each="{teaseritems.identifier}" as="sv" iteration="si">
+											<div>{sv.name}:{sv.value}</div>
+										</f:for>
+									</f:if>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-md-3">
+							<f:if condition="{teaseritems.image} && {teaseritems.image.contentUrl}">
+								<div class="teaserimage">
+									<img class="w-100 h-auto" src="{teaseritems.image.contentUrl}" absolute="true" alt="{teaseritems.name}" title="{teaseritems.name}" />
+								</div>
+								<figcaption>{teaseritems.image.copyrightHolder}</figcaption>
+							</f:if>
+						</div>
+					</div>
+					<f:link.action class="eventBack d-flex position-relative w-auto align-items-center underline g-0 mt-4 ps-3">
+						<f:translate key="back" />
+					</f:link.action>
+				
+			</f:for>
+		</f:then>
+		<f:else>
+			<li class="col-md-12 eventitem">
+				keine veranstaltungen gefunden -> label in sprachdatei bitte und besser formulieren
+			</li>
+		</f:else>
+	</f:if>
+</f:section>
+<f:section name="moreevents">
+	<f:if condition="{settings.link}">
+		<div class="row second">
+			<div class="col-12 text-end morelink">
+				<f:link.typolink class="d-inline-block" parameter="{settings.link}">
+				   Zum Veranstaltungskalender
+				</f:link.typolink>
+			</div>
+		</div>
+	</f:if>
+</f:section>
+<f:section name="archive">
+	<f:if condition="{settings.archive} && {month}">
+		<ul class="joEventKalenderUl m-0">
+			<li class="joEventsJahr position-relative float-start">
+				{datum.selectedjahrnumber}
+				<ul class="joJahre">
+					<f:if condition="{datum.todayjahrbig}">
+						<li class="joNextJahrLi <f:if condition="{datum.todayjahrbig}=={datum.todayjahrbig}"> joAktiv</f:if>">
+							<f:link.action pageType="2345" arguments="{ajaxSend:'1',loadDate:'{jo:timestampconvert(formarray:{tag:1,monat:\'{datum.todaymonat}\',jahr:\'{datum.todayjahrbig}\'})}'}">{datum.todayjahrbig}</f:link.action>
+						</li>
+					</f:if>
+					<f:if condition="{datum.nextjahr}">
+						<li class="joNextJahrLi <f:if condition="{datum.nextjahr}=={datum.todayjahrbig}"> joAktiv</f:if>">	
+							<f:link.action pageType="2345" arguments="{ajaxSend:'1',loadDate:'{jo:timestampconvert(formarray:{tag:1,monat:1,jahr:\'{datum.nextjahr}\'})}'}">{datum.nextjahr}</f:link.action>
+						</li>
+					</f:if>
+					<f:if condition="{datum.prevjahr}">
+						<li class="joNextJahrLi <f:if condition="{datum.prevjahr}=={datum.todayjahrbig}"> joAktiv</f:if>">	
+							<f:link.action pageType="2345" arguments="{ajaxSend:'1',loadDate:'{jo:timestampconvert(formarray:{tag:1,monat:1,jahr:\'{datum.prevjahr}\'})}'}">{datum.prevjahr}</f:link.action>
+						</li>
+					</f:if>
+				</ul>
+			</li>
+		</ul>
+		<ul>
+			<f:for each="{month}" as="monate" key="key">
+				<li class="float-start joEventsMonate<f:if condition="{monate.currentmonth}"> joAktiv</f:if>">
+					<f:if condition="{monate.active}">
+						<f:then>
+							<f:link.action pageType="2345" arguments="{ajaxSend:'1', loadDate:'{jo:timestampconvert(formarray:{tag:1,monat:\'{key}\',jahr:\'{datum.selectedjahrnumber}\'})}'}">{key}</f:link.action>
+						</f:then>
+						<f:else>
+							{key}
+						</f:else>
+					</f:if>
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+</f:section>
+<f:section name="map">
+	<h2>Events auf der Karte</h2>
+		<f:if condition="{geojson}">
+			<script>var localgeojson = <f:format.raw>{geojson}</f:format.raw>;</script>
+		</f:if>
+	<div id="ol4-mapdiv">
+		
+	</div>
+</f:section>
+<f:if condition="{datum.ajaxSend}">
+	<f:then>
+		<f:render section="events" arguments="{_all}"/>
+		<f:render section="map" arguments="{_all}"/>
+	</f:then>
+	<f:else>
+		<div class="eventOuterwrap container">
+			<f:render section="events" arguments="{_all}"/>
+			<f:render section="map" arguments="{_all}"/>
+		</div>
+	</f:else>
+</f:if>

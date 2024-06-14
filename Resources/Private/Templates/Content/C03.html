@@ -1,0 +1,17 @@
+<div class="container">
+   <div class="row">
+       <div class="page_image col-md-12"><h2>{settings.headline}</h2></div>
+   </div>
+   <div class="row">
+      <f:switch expression="{settings.modi}">
+         <f:case value="mode2">
+            <div class="page_image col-md-6"><f:format.html>{settings.contenthtml}</f:format.html></div>
+            <div class="page_image col-md-6"><f:format.html>{settings.bodytext}</f:format.html></div>
+         </f:case>
+         <f:defaultCase>
+            <div class="page_image col-md-6"><f:format.html>{settings.bodytext}</f:format.html></div>        
+            <div class="page_image col-md-6"><f:format.raw>{settings.contenthtml}</f:format.raw></div>
+         </f:defaultCase>
+      </f:switch>
+   </div>
+</div>

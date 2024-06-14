@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+	<meta>		
+		<langDisable>1</langDisable>
+	</meta>	
+	<sheets>
+		<eutinnews>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Newsfrontend Eutin</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+		
+	                <settings.titelbig>
+						<TCEforms>
+							<label>ToDo - Config einbauen</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.titelbig>
+
+					<settings.prevlink>
+						<TCEforms>
+							<label>Manuelle vorherige Seite (Überschreibt automatische Einstellung)</label>
+							<config>
+								<type>input</type>
+								<renderType>inputLink</renderType>
+							</config>
+						</TCEforms>
+					</settings.prevlink>
+					<settings.nextlink>
+						<TCEforms>
+							<label>Manuelle nächste Seite (Überschreibt automatische Einstellung)</label>
+							<config>
+								<type>input</type>
+								<renderType>inputLink</renderType>
+							</config>
+						</TCEforms>
+					</settings.nextlink>
+				</el>
+			</ROOT>
+		</eutinnews>
+	</sheets>
+</T3DataStructure>

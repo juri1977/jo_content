@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <ROOT>
+        <type>array</type>
+        <el>
+			<settings.layout>
+				<TCEforms>
+					<label>LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:ce001.layout</label>
+					<config type="array">
+						<type>select</type>
+                        <renderType>selectSingle</renderType>
+						<items type="array">
+							<numIndex index="0" type="array">
+							  <numIndex index="0">LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:ce001.layout.0</numIndex>
+							  <numIndex index="1">0</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+							  <numIndex index="0">LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:ce001.layout.1</numIndex>
+							  <numIndex index="1">1</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.layout>
+			<settings.effects>
+				<TCEforms>
+					<label>LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:ce001.effects</label>
+					<config type="array">
+						<type>select</type>
+                        <renderType>selectSingle</renderType>
+						<items type="array">
+							<numIndex index="0" type="array">
+							  <numIndex index="0">LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:ce001.effects.1</numIndex>
+							  <numIndex index="1">1</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.effects>
+			<settings.cropWidth>
+				<TCEforms>
+					<label>LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:ce001.cropWidth</label>
+					<config>
+						<type>input</type>
+						<eval>integer,trim</eval>
+					</config>
+				</TCEforms>
+			</settings.cropWidth>
+			<settings.cropHeight>
+				<TCEforms>
+					<label>LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:ce001.cropHeight</label>
+					<config>
+						<type>input</type>
+						<eval>integer,trim</eval>
+					</config>
+				</TCEforms>
+			</settings.cropHeight>
+            <settings.images>
+                <TCEforms>
+                    <label>Abbildungen als Basis der Bildkacheln/Teaserboxen</label>
+                    <description>
+                      Sie können auf der Ebene der Abbildungen Links zu internen oder externen Webseiten definieren. Insofern Sie dort keinen Link hinterlegen, öffnet sich bei Klick auf die Bildkachel die eine vergrößerte Version der Abbildung. 
+                    </description>
+                    <config>
+                        <type>inline</type>
+                        <maxitems>100</maxitems>
+                        <foreign_table>sys_file_reference</foreign_table>
+                        <foreign_field>uid_foreign</foreign_field>
+                        <foreign_sortby>sorting_foreign</foreign_sortby>
+                        <foreign_table_field>tablenames</foreign_table_field>
+                        <foreign_match_fields type="array">
+                            <fieldname>image</fieldname>
+                        </foreign_match_fields>
+                        <foreign_label>uid_local</foreign_label>
+                        <foreign_selector>uid_local</foreign_selector>
+                        <overrideChildTca>
+                          <columns>
+                              <uid_local>
+                                  <config>
+                                      <appearance>
+                                          <elementBrowserType>file</elementBrowserType>
+                                          <elementBrowserAllowed>jpg,jpeg,png,svg</elementBrowserAllowed>
+                                      </appearance>
+                                  </config>
+                              </uid_local>
+                          </columns>
+                          <types type="array">
+                              <numIndex index="2">
+                                  <showitem>--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showitem>
+                              </numIndex>
+                          </types>
+                        </overrideChildTca>
+                        <behaviour>
+                          <localizationMode>select</localizationMode>
+                          <localizeChildrenAtParentLocalization>1</localizeChildrenAtParentLocalization>
+                        </behaviour>
+                        <appearance type="array">
+                        <newRecordLinkAddTitle>1</newRecordLinkAddTitle>
+                            <headerThumbnail>
+                                <field>uid_local</field>
+                                <height>64</height>
+                                <width>64</width>
+                            </headerThumbnail>
+                        </appearance>
+                    </config>
+                </TCEforms>
+            </settings.images>
+            <settings.kachel_desktop>
+                <TCEforms>
+                    <label>Kachelgröße Desktop</label>
+                    <config type="array">
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <items type="array">
+                            <numIndex index="0" type="array">
+                              <numIndex index="0">bitte auswählen</numIndex>
+                              <numIndex index="1">0</numIndex>
+                            </numIndex>
+                            <numIndex index="1" type="array">
+                              <numIndex index="0">col-md-1</numIndex>
+                              <numIndex index="1">1</numIndex>
+                            </numIndex>
+                            <numIndex index="2" type="array">
+                              <numIndex index="0">col-md-2</numIndex>
+                              <numIndex index="1">2</numIndex>
+                            </numIndex>
+                            <numIndex index="3" type="array">
+                              <numIndex index="0">4 Spalten (col-md-3)</numIndex>
+                              <numIndex index="1">3</numIndex>
+                            </numIndex>
+                            <numIndex index="4" type="array">
+                              <numIndex index="0">3 Spalten (col-md-4)</numIndex>
+                              <numIndex index="1">4</numIndex>
+                            </numIndex>
+                            <numIndex index="5" type="array">
+                              <numIndex index="0">col-md-5</numIndex>
+                              <numIndex index="1">5</numIndex>
+                            </numIndex>
+                            <numIndex index="6" type="array">
+                              <numIndex index="0">col-md-6</numIndex>
+                              <numIndex index="1">6</numIndex>
+                            </numIndex>
+                            <numIndex index="7" type="array">
+                              <numIndex index="0">col-md-7</numIndex>
+                              <numIndex index="1">7</numIndex>
+                            </numIndex>
+                            <numIndex index="8" type="array">
+                              <numIndex index="0">col-md-8</numIndex>
+                              <numIndex index="1">8</numIndex>
+                            </numIndex>
+                            <numIndex index="9" type="array">
+                              <numIndex index="0">col-md-9</numIndex>
+                              <numIndex index="1">9</numIndex>
+                            </numIndex>
+                            <numIndex index="10" type="array">
+                              <numIndex index="0">col-md-10</numIndex>
+                              <numIndex index="1">10</numIndex>
+                            </numIndex>
+                            <numIndex index="11" type="array">
+                              <numIndex index="0">col-md-11</numIndex>
+                              <numIndex index="1">11</numIndex>
+                            </numIndex>
+                            <numIndex index="12" type="array">
+                              <numIndex index="0">1 Spalte (col-md-12)</numIndex>
+                              <numIndex index="1">12</numIndex>
+                            </numIndex>
+                        </items>
+                    </config>
+                </TCEforms>
+            </settings.kachel_desktop>
+            <settings.kachel_mobile>
+                <TCEforms>
+                    <label>Kachelngröße Mobile</label>
+                    <config type="array">
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <items type="array">
+                            <numIndex index="0" type="array">
+                              <numIndex index="0">bitte auswählen</numIndex>
+                              <numIndex index="1">0</numIndex>
+                            </numIndex>
+                            <numIndex index="1" type="array">
+                              <numIndex index="0">col-1</numIndex>
+                              <numIndex index="1">1</numIndex>
+                            </numIndex>
+                            <numIndex index="2" type="array">
+                              <numIndex index="0">col-2</numIndex>
+                              <numIndex index="1">2</numIndex>
+                            </numIndex>
+                            <numIndex index="3" type="array">
+                              <numIndex index="0">col-3</numIndex>
+                              <numIndex index="1">3</numIndex>
+                            </numIndex>
+                            <numIndex index="4" type="array">
+                              <numIndex index="0">col-4</numIndex>
+                              <numIndex index="1">4</numIndex>
+                            </numIndex>
+                            <numIndex index="5" type="array">
+                              <numIndex index="0">col-5</numIndex>
+                              <numIndex index="1">5</numIndex>
+                            </numIndex>
+                            <numIndex index="6" type="array">
+                              <numIndex index="0">col-6</numIndex>
+                              <numIndex index="1">6</numIndex>
+                            </numIndex>
+                            <numIndex index="7" type="array">
+                              <numIndex index="0">col-7</numIndex>
+                              <numIndex index="1">7</numIndex>
+                            </numIndex>
+                            <numIndex index="8" type="array">
+                              <numIndex index="0">col-8</numIndex>
+                              <numIndex index="1">8</numIndex>
+                            </numIndex>
+                            <numIndex index="9" type="array">
+                              <numIndex index="0">col-9</numIndex>
+                              <numIndex index="1">9</numIndex>
+                            </numIndex>
+                            <numIndex index="10" type="array">
+                              <numIndex index="0">col-10</numIndex>
+                              <numIndex index="1">10</numIndex>
+                            </numIndex>
+                            <numIndex index="11" type="array">
+                              <numIndex index="0">col-11</numIndex>
+                              <numIndex index="1">11</numIndex>
+                            </numIndex>
+                            <numIndex index="12" type="array">
+                              <numIndex index="0">col-12</numIndex>
+                              <numIndex index="1">12</numIndex>
+                            </numIndex>
+                        </items>
+                    </config>
+                </TCEforms>
+            </settings.kachel_mobile>
+        </el>
+    </ROOT>
+</T3DataStructure>

@@ -1,0 +1,335 @@
+mod.wizards.newContentElement.wizardItems.jocontent {
+    header = JO Contentelemente
+    elements {
+        jocontent_ce001 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:ce001
+            description = Content-Element CE001
+            tt_content_defValues {
+                CType = jocontent_ce001
+            }
+        }
+
+        jocontent_c01 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c01
+            description = Content-Element C01
+            tt_content_defValues {
+                CType = jocontent_c01
+            }
+        }
+
+        jocontent_c02 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c02
+            description = Content-Element C02
+            tt_content_defValues {
+                CType = jocontent_c02
+            }
+        }
+
+        jocontent_c03 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c03
+            description = Content-Element C03
+            tt_content_defValues {
+                CType = jocontent_c03
+            }
+        }
+
+        jocontent_c04 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c04
+            description = Content-Element C04
+            tt_content_defValues {
+                CType = jocontent_c04
+            }
+        }
+
+        jocontent_c05 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c05
+            description = Content-Element C05
+            tt_content_defValues {
+                CType = jocontent_c05
+            }
+        }
+
+        jocontent_c06 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c06
+            description = Content-Element C06
+            tt_content_defValues {
+                CType = jocontent_c06
+            }
+        }
+
+        jocontent_c07 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c07
+            description = Content-Element C07
+            tt_content_defValues {
+                CType = jocontent_c07
+            }
+        }
+
+        jocontent_c08 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c08
+            description = Content-Element C08
+            tt_content_defValues {
+                CType = jocontent_c08
+            }
+        }
+
+        jocontent_c09 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c09
+            description = Content-Element C09 (bitte nicht benutzen, benötigt fix)
+            tt_content_defValues {
+                CType = jocontent_c09
+            }
+        }
+
+        jocontent_c10 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c10
+            description = Content-Element C10
+            tt_content_defValues {
+                CType = jocontent_c10
+            }
+        }
+
+        jocontent_c11 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c11
+            description = Content-Element C11
+            tt_content_defValues {
+                CType = jocontent_c11
+            }
+        }
+
+        jocontent_c12 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c12
+            description = Content-Element C12
+            tt_content_defValues {
+                CType = jocontent_c12
+            }
+        }
+
+        jocontent_c13 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c13
+            description = Content-Element C13
+            tt_content_defValues {
+                CType = jocontent_c13
+            }
+        }
+
+        jocontent_c14 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c14
+            description = Content-Element C14
+            tt_content_defValues {
+                CType = jocontent_c14
+            }
+        }
+
+        jocontent_c15 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c15
+            description = Content-Element C15
+            tt_content_defValues {
+                CType = jocontent_c15
+            }
+        }
+
+        jocontent_c16 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c16
+            description = Content-Element C16
+            tt_content_defValues {
+                CType = jocontent_c16
+            }
+        }
+
+        jocontent_c17 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c17
+            description = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c17
+            tt_content_defValues {
+                CType = jocontent_c17
+            }
+        }
+
+        jocontent_c18 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c18
+            description = Content-Element C18
+            tt_content_defValues {
+                CType = jocontent_c18
+            }
+        }
+
+        jocontent_c19 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c19
+            description = Slider-Element C19
+            tt_content_defValues {
+                CType = jocontent_c19
+            }
+        }
+
+        jocontent_c20 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c20
+            description = Content-Element C20 (bitte nicht benutzen, benötigt fix)
+            tt_content_defValues {
+                CType = jocontent_c20
+            }
+        }
+
+        jocontent_c21 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c21
+            description = Content-Element C21
+            tt_content_defValues {
+                CType = jocontent_c21
+            }
+        }
+
+        jocontent_c22 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c22
+            description = Content-Element C22
+            tt_content_defValues {
+                CType = jocontent_c22
+            }
+        }
+
+        jocontent_c23 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c23
+            description = Content-Element C23 (Slider wie c20? benötigt fix)
+            tt_content_defValues {
+                CType = jocontent_c23
+            }
+        }
+
+        jocontent_c24 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c24
+            description = Content-Element C24
+            tt_content_defValues {
+                CType = jocontent_c24
+            }
+        }
+
+        jocontent_c25 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c25
+            description = Content-Element C25 - Left Grid - Right Calender
+            tt_content_defValues {
+                CType = jocontent_c25
+            }
+        }
+
+        jocontent_c26 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c26
+            description = Content-Element C26 - NK Personen Ausgabe
+            tt_content_defValues {
+                CType = jocontent_c26
+            }
+        }
+
+        jocontent_c30 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c30
+            description = Content-Element C30 - Event API Ausgabe
+            tt_content_defValues {
+                CType = jocontent_c30
+            }
+        }
+
+        jocontent_c31 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c31
+            description = Content-Element C31 - Videoloader
+            tt_content_defValues {
+                CType = jocontent_c31
+            }
+        }
+
+        jocontent_c32 {
+            iconIdentifier = jo_content-extension
+            title = LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:c32
+            description = Content-Element C32 - Vorher Nachher Slider Tool
+            tt_content_defValues {
+                CType = jocontent_c32
+            }
+        }
+
+        jocontent_c33 {
+            iconIdentifier = jo_content-extension
+            title = Content-Element C33 - RUHR Start Gallery
+            description = RUHR Start Gallery
+            tt_content_defValues {
+                CType = jocontent_c33
+            }
+        }
+
+        jocontent_c34 {
+            iconIdentifier = jo_content-extension
+            title = Content-Element C34 - Iframe mit Poster, welches man wegklicken kann
+            description = Iframe mit Poster, welches man wegklicken kann und somit das Iframe startet
+            tt_content_defValues {
+                CType = jocontent_c34
+            }
+        }
+
+        jocontent_c35 {
+            iconIdentifier = jo_content-extension
+            title = Video Player DBT (c35)
+            description = Video Player DBT (c35)
+            tt_content_defValues {
+                CType = jocontent_c35
+            }
+        }
+    }
+
+    show := addToList(jocontent_ce001)
+    show := addToList(jocontent_c01)
+    show := addToList(jocontent_c02)
+    show := addToList(jocontent_c03)
+    show := addToList(jocontent_c04)
+    show := addToList(jocontent_c05)
+    show := addToList(jocontent_c06)
+    show := addToList(jocontent_c07)
+    show := addToList(jocontent_c08)
+    show := addToList(jocontent_c09)
+    show := addToList(jocontent_c10)
+    show := addToList(jocontent_c11)
+    show := addToList(jocontent_c12)
+    show := addToList(jocontent_c13)
+    show := addToList(jocontent_c14)
+    show := addToList(jocontent_c15)
+    show := addToList(jocontent_c16)
+    show := addToList(jocontent_c17)
+    show := addToList(jocontent_c18)
+    show := addToList(jocontent_c19)
+    show := addToList(jocontent_c20)
+    show := addToList(jocontent_c21)
+    show := addToList(jocontent_c22)
+    show := addToList(jocontent_c23)
+    show := addToList(jocontent_c24)
+    show := addToList(jocontent_c25)
+    show := addToList(jocontent_c26)
+    show := addToList(jocontent_c30)
+    show := addToList(jocontent_c31)
+    show := addToList(jocontent_c32)
+    show := addToList(jocontent_c33)
+    show := addToList(jocontent_c34)
+    show := addToList(jocontent_c35)
+}

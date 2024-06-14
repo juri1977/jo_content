@@ -1,0 +1,36 @@
+<f:if condition="{stream}">
+	<ul class="t_stream">
+		<f:for each="{stream}" as="items" iteration="i">
+			<li>
+				<div class="row">
+					<div class="t_text_wrap col-sm-12 col-md-<f:if condition="{items.entities.media.0.media_url_https} ||  {items.quoted_status.entities.media.0.media_url_https} || {items.retweeted_status.entities.media.0.media_url_https}"><f:then>8</f:then><f:else>12</f:else></f:if>">
+						<f:if condition="{items.retweeted_status}">
+							<f:then>
+								<h2><f:format.html>{items.retweeted_status.text}</f:format.html></h2>
+								<div class="t_retweet">Retweet eines Beitrages von <b>{items.retweeted_status.user.screen_name}</b></div>
+							</f:then>
+							<f:else>
+								<h2><f:format.html>{items.text}</f:format.html></h2>
+							</f:else>
+						</f:if>
+						<div class="t_user">{items.user.screen_name}</div>
+						<div class="t_date"><f:format.date format="d.m.Y - H:i">{items.created_at}</f:format.date></div>
+					</div>
+					<f:if condition="{items.entities.media.0.media_url_https} ||  {items.quoted_status.entities.media.0.media_url_https} || {items.retweeted_status.entities.media.0.media_url_https}">
+						<div class="col-sm-12 col-md-4 t_media_wrap">
+							<f:if condition="{items.entities.media.0.media_url_https}">
+								<div class="t_media"><img src="{items.entities.media.0.media_url_https}?name=small"></div>
+							</f:if>
+							<f:if condition="{items.quoted_status.entities.media.0.media_url_https}">
+								<div class="t_media"><img src="{items.quoted_status.entities.media.0.media_url_https}?name=small"></div>
+							</f:if>
+							<f:if condition="{items.retweeted_status.entities.media.0.media_url_https}">
+								<div class="t_media"><img src="{items.retweeted_status.entities.media.0.media_url_https}?name=small"></div>
+							</f:if>
+						</div>
+					</f:if>
+				</div>
+			</li>
+		</f:for>
+	</ul>
+</f:if>

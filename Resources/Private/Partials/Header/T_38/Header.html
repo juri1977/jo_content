@@ -1,0 +1,25 @@
+<div class="joTop">
+	<nav class="navbar navbar-dark navbar-expand-lg">
+		<div class="logo col-4 col-lg-4">
+			<f:if condition="{logo}">
+				<f:format.html parseFuncTSPath="">{logo}</f:format.html>
+			</f:if>
+		</div>
+		<div class="second_control clearfix col-3 col-md-8 d-lg-none">
+			<div class="navbar-toggler-container clearfix">
+				<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+		</div>
+		<div class="second_control clearfix col-12 col-lg-8">
+			<div class="collapse navbar-collapse" id="navbar">
+				<f:cObject typoscriptObjectPath="lib.mainMenu_1_nopics" />
+				<f:if condition="{merkliste}">
+					<f:format.html parseFuncTSPath="">{merkliste}</f:format.html>
+				</f:if>
+			</div>
+		</div>
+	</nav>
+	<f:if condition="{language}"><f:format.html parseFuncTSPath="">{language}</f:format.html></f:if>
+</div>

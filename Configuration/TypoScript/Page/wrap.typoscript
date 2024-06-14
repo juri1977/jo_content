@@ -1,0 +1,100 @@
+/**
+ *	p-Tags entfernen
+ */
+tt_content.stdWrap.innerWrap >
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines >
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.P.class >
+
+lib.math = TEXT
+lib.math {
+	current = 1
+	prioriCalc = 1
+}
+
+// Layout section_frame CSS
+tt_content.stdWrap {
+  innerWrap.cObject {
+    default {
+      10.cObject.default.value = <div id="l{field:uid}"
+      20 {
+        10.value = 
+        15 = CASE
+        15 {
+          key.field = layout
+          default = TEXT
+          default {
+            value =
+            insertData = 1
+          }
+          1 < .default
+          1.value = layout-{field:layout}
+          1.noTrimWrap =  | | | 
+          2 < .1
+          3 < .1
+          4 < .1
+          5 < .default
+          5.value = visible-xs-block
+          5.noTrimWrap =  | | | 
+          6 < .default
+          6.value = hidden-xs
+          6.noTrimWrap =  | | | 
+        }
+        17 = CASE
+        17{
+          key.field = CType
+          default = TEXT
+          default {
+            value = 
+            insertData = 1
+          }
+          gridelements_pi1 < .default
+          gridelements_pi1.value = grd-el-cnt
+          gridelements_pi1.noTrimWrap =  | | | 
+        }
+      }
+    }
+  }
+}
+
+
+tt_content.image.20.1.imageLinkWrap {
+  JSwindow = 0
+  directImageLink = 1
+  linkParams.ATagParams { 
+    dataWrap = class="lightbox" rel="lightbox{field:uid}"
+  }
+}
+
+tt_content.image.20.imageStdWrap.dataWrap >
+tt_content.image.20.columnStdWrap.wrap >
+tt_content.image.20.rendering.noCaption.rowStdWrap.wrap >
+tt_content.image.20.rendering.noCaption.noRowsStdWrap.wrap >
+tt_content.image.20.rendering.noCaption.lastRowStdWrap.wrap >
+
+tt_content.html.prefixComment >
+tt_content.stdWrap.innerWrap.override = |
+tt_content.stdWrap.innerWrap.override.if {
+equals = html
+value.field = CType
+}
+
+# br tags in headline zulassen
+lib.stdheader.10.setCurrent.htmlSpecialChars = 0
+lib.stdheader.10.setCurrent.parseFunc {
+  allowTags = br
+  denyTags = *
+  constants=1
+  nonTypoTagStdWrap.HTMLparser = 1
+  nonTypoTagStdWrap.HTMLparser {
+     keepNonMatchedTags=1
+     htmlSpecialChars = 2
+     allowTags = br
+     removeTags = *
+  }
+}
+
+lib.fluidContent.settings.media.popup {
+  directImageLink = 1
+  JSwindow = 0
+  linkParams.ATagParams.dataWrap = class="lightbox" rel="lightbox{field:uid}" data-lightbox="lightbox{field:uid}"
+}

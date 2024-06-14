@@ -1,0 +1,36 @@
+<div id="c{data.uid}" class="gridcontent grid-8-4 clearfix grid-layout-{data.layout} grid-frame-{data.frame_class} row{f:if(condition: '{data.space_before_class}', then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: '{data.space_after_class}', then: ' frame-space-after-{data.space_after_class}')}">
+    <f:if condition="{0:data.frame_class}=={0:'custom-timeline'}"><div class="tl-bar"></div></f:if>
+    <f:if condition="{data.header}">
+        <f:if condition="{data.layout} == 100 || {data.layout} == 101">
+            <f:then>
+                <div class="col-12 grid-header{f:if(condition: '{data.layout} == 101', then: ' collapsed')}" data-toggle="collapse" data-target="#grid-collapse-{data.uid}" role="button" aria-expanded="{f:if(condition: '{data.layout} == 100', then: 'true', else: 'false')}" aria-controls="grid-collapse-{data.uid}">
+            </f:then>
+            <f:else>
+                <div class="col-12 grid-header">
+            </f:else>
+        </f:if>
+            <f:render section="Header" optional="true">
+                <f:render partial="Header/All" arguments="{_all}" />
+            </f:render>
+        </div>
+    </f:if>
+
+    <f:if condition="{data.layout} == 100 || {data.layout} == 101">
+        <div class="grid-collapse collapse{f:if(condition: '{data.layout} == 100', then: ' show')}" id="grid-collapse-{data.uid}">
+            <div class="row">
+    </f:if>
+    <div id="c{data.uid}-1" class="col-12 col-md-8 colnr-1 noPadding">
+        <f:for each="{children.1.0}" as="child">
+            <f:cObject typoscriptObjectPath="tt_content.{child.data.CType}" data="{child.data}" table="tt_content" />
+        </f:for>
+    </div>
+    <div id="c{data.uid}-2" class="col-12 col-md-4 colnr-2 noPadding">
+        <f:for each="{children.1.1}" as="child">
+            <f:cObject typoscriptObjectPath="tt_content.{child.data.CType}" data="{child.data}" table="tt_content" />
+        </f:for>
+    </div>
+    <f:if condition="{data.layout} == 100 || {data.layout} == 101">
+            </div>
+        </div>
+    </f:if>
+</div>

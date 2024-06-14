@@ -1,0 +1,492 @@
+{namespace jo=JO\JoContent\ViewHelpers}
+<f:comment>
+  <!--
+  Schalter, um diverse Teile des Plugins via Ajax zu laden - kommt aus Flexform
+  -->
+</f:comment>
+<f:variable name="ajaxpagetype" value="0"/>
+<f:variable name="ajaxpagetypecssclass" value=""/>
+<f:if condition="{settings.ajaxload}">
+  <f:variable name="ajaxpagetype" value="300"/>
+  <f:variable name="ajaxpagetypecssclass" value=" t300"/>
+</f:if>
+<f:switch expression="{subaction}">
+    <f:case value="list"><f:render section="list_alt_1" arguments="{_all}"/></f:case>
+    <f:case value="archiv">
+    	<f:render section="archivheader" arguments="{_all}"/>
+    	<f:render section="list_alt_1" arguments="{_all}"/>
+    </f:case>
+    <f:case value="detail"><f:render section="detail" arguments="{_all}"/></f:case>
+</f:switch>
+
+<f:section name="archivheader">
+	<f:comment>
+		<f:debug>{_all}</f:debug>
+	</f:comment>
+	<div class="filter-select-container">
+		<h4 class="filter-title">Filter</h4>
+		<ul class="nav nav-tabs" id="events-tab" role="tablist">
+		  <li class="nav-item" role="presentation">
+		    <button class="nav-link{f:if(condition: '{activefilter.tabact} == 1 || !{activefilter.tabact}', then: ' active show')}" id="jahr-event-tab" data-toggle="tab" data-target="#jahr-event-tab-con" type="button" role="tab" aria-controls="jahr-event-tab-con" aria-selected="true">Jahr</button>
+		  </li>
+		  <f:if condition="{filter.veranstalter}">
+			  <li class="nav-item" role="presentation">
+			    <button class="nav-link{f:if(condition: '{activefilter.tabact} == 2', then: ' active show')}" id="veranstalter-event-tab" data-toggle="tab" data-target="#veranstalter-event-tab-con" type="button" role="tab" aria-controls="veranstalter-event-tab-con" aria-selected="false">Veranstalter</button>
+			  </li>
+			</f:if>
+		  <li class="nav-item" role="presentation">
+		    <button class="nav-link" id="kat-event-tab" data-toggle="tab" data-target="#kat-event-tab-con" type="button" role="tab" aria-controls="kat-event-tab-con" aria-selected="false">Kategorien</button>
+		  </li>
+		</ul>
+
+		<div class="tab-content">
+		  	<div class="tab-pane fade{f:if(condition: '{activefilter.tabact} == 1 || !{activefilter.tabact}', then: ' show active')}" id="jahr-event-tab-con" role="tabpanel" aria-labelledby="jahr-event-tab">
+			  	<div class="row no-gutters">
+				  	<f:for each="{filter.year}" as="val">
+				  		<f:variable name="active" value="" />
+				  		<f:if condition="{val.name} == {activefilter.actyear}"><f:variable name="active" value=" active" /></f:if>
+							<f:variable name="link"><f:uri.action arguments="{startdate:'{val.id}', actyear:'{val.name}', orgother:'{activefilter.veranstalter.connected}', tabact:'1'}" additionalParams="{ceid:'{ce.uid}'}" pageType="{ajaxpagetype}"></f:uri.action></f:variable>
+
+							<div class="button_wrap col-md-4{active}">
+								<div class="joCheck-container">
+								 	<a class="joCheck{ajaxpagetypecssclass}" href="{link}">&nbsp;</a>
+								</div>
+								<a class="add{ajaxpagetypecssclass}" href="{link}">{val.name}</a>
+							</div>
+						</f:for>
+					</div>
+			  </div>
+			  <f:if condition="{filter.veranstalter}">
+				<div class="tab-pane fade{f:if(condition: '{activefilter.tabact} == 2', then: ' show active')}" id="veranstalter-event-tab-con" role="tabpanel" aria-labelledby="veranstalter-event-tab">
+					<div class="row no-gutters">
+				  	<f:for each="{filter.veranstalter}" as="val">
+				  		<f:variable name="active" value=""/>
+				  		<f:variable name="link"><f:uri.action arguments="{startdate:'{items.configuration.dateconfig.thismonthtimestamp}', actyear:'{activefilter.actyear}', orgid:'{val.id}', orgother:'{activefilter.veranstalter.connected}', tabact:'2'}" additionalParams="{ceid:'{ce.uid}'}" pageType="{ajaxpagetype}"></f:uri.action></f:variable>
+				  		<f:if condition="{jo:inarray(arraycontains:'{activefilter.veranstalter.connected}', keytofind:'{val.id}')}">
+				  			<f:variable name="active" value=" active"/>
+				  			<f:variable name="link"><f:uri.action arguments="{startdate:'{items.configuration.dateconfig.thismonthtimestamp}', removeorgid:'{val.id}', actyear:'{activefilter.actyear}', orgother:'{activefilter.veranstalter.connected}', tabact:'2'}" additionalParams="{ceid:'{ce.uid}'}" pageType="{ajaxpagetype}"></f:uri.action></f:variable>
+				  		</f:if>
+				  		<div class="button_wrap col-md-4{active}" data-id="{val.id}">
+					  		<div class="joCheck-container">
+								<a class="joCheck{ajaxpagetypecssclass}" href="{link}">&nbsp;</a>
+							</div>
+							<a class="add{ajaxpagetypecssclass}" href="{link}">{val.name}</a>
+						</div>
+				  	</f:for>
+				  </div>
+				</div>
+			</f:if>
+			  <div class="tab-pane fade" id="kat-event-tab-con" role="tabpanel" aria-labelledby="kat-event-tab">
+			  	<f:for each="{items.configuration.classifications.Kategorie}" as="category">
+					<div class="category-item d-inline-block text-uppercase" data-kat="{category.name}">
+						<span>{category.name}</span>
+					</div>
+				</f:for>
+			  </div>
+		</div>
+
+		<f:comment>
+			<!--
+			<select class="filter-year{ajaxpagetypecssclass}">
+				<option>Bitte auswählen</option>
+				<f:for each="{filter.year}" as="val">
+					<f:variable name="link"><f:uri.action arguments="{startdate:'{val.id}', orgid:'{activefilter.veranstalter}'}" additionalParams="{ceid:'{ce.uid}'}" pageType="{ajaxpagetype}"></f:uri.action></f:variable>
+					<option value="{link}">{val.name}</option>
+				</f:for>
+			</select>
+			<f:if condition="{filter.veranstalter}">
+				<select class="filter-ver{ajaxpagetypecssclass}">
+					<option>Bitte auswählen</option>
+					<f:for each="{filter.veranstalter}" as="val">
+						<f:variable name="link"><f:if condition="{activefilter.veranstalter} == {val.id}"><f:then><f:uri.action arguments="{startdate:'{items.configuration.dateconfig.thismonthtimestamp}'}" additionalParams="{ceid:'{ce.uid}'}" pageType="{ajaxpagetype}"></f:uri.action></f:then><f:else><f:uri.action arguments="{startdate:'{items.configuration.dateconfig.thismonthtimestamp}', orgid:'{val.id}'}" additionalParams="{ceid:'{ce.uid}'}" pageType="{ajaxpagetype}"></f:uri.action></f:else></f:if></f:variable>
+						<option value="{link}"><f:if condition="{activefilter.veranstalter} == {val.id}">
+							<f:then>{val.name} Aktiver Filter - entfernen</f:then>
+							<f:else>{val.name}</f:else>
+						</f:if></option>
+					</f:for>
+				</select>
+			</f:if>
+			-->
+		</f:comment>
+	</div>
+</f:section>
+
+<f:section name="list_alt_1">
+	<f:if condition="{items.configuration}">
+		<div class="cat-events category d-flex align-items-center">
+			<f:comment>
+			<!----
+					<span class="col col-md-12 sort-by">Sortieren nach</span>
+			---->
+			</f:comment>
+			<f:for each="{items.configuration.classifications.Kategorie}" as="category">
+				<div class="category-item d-inline-block text-uppercase" data-kat="{category.name}">
+					<span>{category.name}</span>
+				</div>
+			</f:for>
+		</div>
+	</f:if>
+	<f:if condition="{items.configuration.dateconfig}">
+		<div class="dateSelect-container text-left position-sticky">
+			<div class="cal_nav>">
+				<div class="dateMonth d-flex justify-content-between align-items-center text-uppercase">
+					<span class="date-prev position-relative">
+						<f:link.action pageType="{ajaxpagetype}" 
+							class="d-flex align-items-center position-relative font-weight-bold{ajaxpagetypecssclass}"
+							arguments="{startdate:'{items.configuration.dateconfig.prevmonthtimestamp}',orgother:'{activefilter.veranstalter.connected}'}" additionalParams="{ceid:'{ce.uid}'}">
+							{items.configuration.dateconfig.prevmonthnameshort}
+							<span class="date-next-prev ps-1 ps-md-2">
+								{items.configuration.dateconfig.prevyear}
+							</span>
+						</f:link.action>
+					</span>
+					<span class="date-current cursor-default">
+						{items.configuration.dateconfig.startmonthnameshort} {items.configuration.dateconfig.startyear}
+					</span>
+					<span class="date-next position-relative">
+						<f:if condition="{items.configuration.dateconfig.shownext}">
+							<f:link.action pageType="{ajaxpagetype}" 
+								class="d-flex align-items-center position-relative font-weight-bold{ajaxpagetypecssclass}"
+								arguments="{startdate:'{items.configuration.dateconfig.nextmonthtimestamp}',orgother:'{activefilter.veranstalter.connected}'}" additionalParams="{ceid:'{ce.uid}'}">
+								{items.configuration.dateconfig.nextmonthnameshort}
+								<span class="date-next-year ps-1 ps-md-2">
+									{items.configuration.dateconfig.nextyear}
+								</span>
+							</f:link.action>
+						</f:if>
+					</span>
+				</div>
+			</div>
+		</div>
+	</f:if>
+	<f:if condition="{items.dates}">
+		<f:then>
+			<h2>{items.configuration.dateconfig.startmonthname} {items.configuration.dateconfig.startyear}</h2>
+			<div class="c10 events list_alt_1 row g-0">
+				<f:for each="{items.dates}" as="days">
+					<f:for each="{days.items}" as="item" iteration="i">
+						<f:variable name="kategorie" value="" />
+						<f:if condition="{item.identifier}">
+							<f:for each="{item.identifier}" as="val">
+								<f:if condition="'Kategorie' == {val.name}">
+									<f:if condition="{kategorie}">
+										<f:then>
+											<f:variable name="kategorie" value="{kategorie},{val.value}" />
+										</f:then>
+										<f:else>
+											<f:variable name="kategorie" value="{val.value}" />
+										</f:else>
+									</f:if>
+								</f:if>
+							</f:for>
+						</f:if>
+						<div class="col-6 align-items-center" data-kat="{kategorie}">
+							<div class="row g-0">
+								<f:variable name="col" value="12" />
+								<f:if condition="{item.image}">
+									<f:variable name="col" value="6" />
+									<div class="col-6">
+										<img src="{item.image.0.contentUrl}" alt="{item.image.0.description}" style="width:100%;height:auto;" />
+										<f:if condition="{item.image.0.caption} || {item.image.0.creator} || {item.image.0.license}">
+											<figcaption>{item.image.0.caption}<f:if condition="{item.image.0.caption}"><br/></f:if>{item.image.0.creator}<f:if condition="{item.image.0.creator}">, </f:if>{item.image.0.license}</figcaption>
+										</f:if>
+									</div>
+								</f:if>
+								<div class="col-{col}">
+									<div class="time text-end">
+										<f:format.date format="d.m H:i">{item.startDate}</f:format.date> - <f:format.date format="H:i">{item.endDate}</f:format.date> Uhr
+									</div>
+									<h2 class="item-headline">{item.name}</h2>
+									<f:if condition="{item.description}">
+										<div class="item-desc g-0">
+											<f:if condition="{jo:isarray(value:'{item.description}')}">
+												<f:then>
+													<f:format.crop maxCharacters="200" respectWordBoundaries="true" respectHtml="true">
+														{item.description.0}
+													</f:format.crop>
+												</f:then>
+												<f:else>
+													<f:format.crop maxCharacters="200" respectWordBoundaries="true" respectHtml="true">
+														{item.description}
+													</f:format.crop>
+												</f:else>
+											</f:if>
+										</div>
+										<div class="detail_link g-0">
+											<f:variable name="detailId" value="" />
+											<f:if condition="{item.identifier}">
+												<f:for each="{item.identifier}" as="val">
+													<f:if condition="'SP-ID' == {val.name}">
+														<f:variable name="detailId" value="{val.value}" />
+													</f:if>
+												</f:for>
+											</f:if>
+											<f:link.action pageType="{ajaxpagetype}" class="d-inline-block{ajaxpagetypecssclass}" arguments="{detail: '{detailId}', startdate:'{items.configuration.dateconfig.thismonthtimestamp}', orgother:'{activefilter.veranstalter.connected}'}" additionalParams="{ceid:'{ce.uid}'}">Details ansehen</f:link.action>
+										</div>
+									</f:if>
+								</div>
+							</div>
+						</div>
+					</f:for>
+				</f:for>
+			</div>
+		</f:then>
+		<f:else>
+			<div class="c10-no-data">keine Daten gefunden</div>
+		</f:else>
+	</f:if>
+</f:section>
+
+<f:section name="list">
+	<f:if condition="{items.configuration}">
+		<div class="cat-events category d-flex align-items-center">
+			<f:comment>
+			<!----
+					<span class="col col-md-12 sort-by">Sortieren nach</span>
+			---->
+			</f:comment>
+			<f:for each="{items.configuration.classifications.Kategorie}" as="category">
+				<div class="category-item d-inline-block text-uppercase" data-kat="{category.name}">
+					<span>{category.name}</span>
+				</div>
+			</f:for>
+		</div>
+	</f:if>
+	<f:if condition="{items.configuration.dateconfig}">
+		<div class="dateSelect-container text-left position-sticky">
+			<div class="cal_nav>">
+				<div class="dateMonth d-flex justify-content-between align-items-center text-uppercase">
+					<span class="date-prev position-relative">
+						<f:link.action pageType="{ajaxpagetype}" 
+							class="d-flex align-items-center position-relative font-weight-bold{ajaxpagetypecssclass}"
+							arguments="{startdate:'{items.configuration.dateconfig.prevmonthtimestamp}'}" additionalParams="{ceid:'{ce.uid}'}">
+							{items.configuration.dateconfig.prevmonthnameshort}
+							<span class="date-next-prev ps-1 ps-md-2">
+								{items.configuration.dateconfig.prevyear}
+							</span>
+						</f:link.action>
+					</span>
+					<span class="date-current cursor-default">
+						{items.configuration.dateconfig.startmonthnameshort} {items.configuration.dateconfig.startyear}
+					</span>
+					<span class="date-next position-relative">
+						<f:link.action pageType="{ajaxpagetype}" 
+							class="d-flex align-items-center position-relative font-weight-bold{ajaxpagetypecssclass}"
+							arguments="{startdate:'{items.configuration.dateconfig.nextmonthtimestamp}'}" additionalParams="{ceid:'{ce.uid}'}">
+							{items.configuration.dateconfig.nextmonthnameshort}
+							<span class="date-next-year ps-1 ps-md-2">
+								{items.configuration.dateconfig.nextyear}
+							</span>
+						</f:link.action>
+					</span>
+				</div>
+			</div>
+		</div>
+	</f:if>
+	<f:if condition="{items.dates}">
+		<f:then>
+			<div class="c10 events no-gutters">
+				<f:for each="{items.dates}" as="days">
+					<div class="event-item row align-items-center">
+						<div class="col-3 col-md-2 left-wrap text-start">
+							<div class="date-month">{days.info.day}</div>
+							<div class="daynameshort">{days.info.daynameshort}</div>
+						</div>
+						<div class="col-9 col-md-10 right-wrap">
+							<f:for each="{days.items}" as="item" iteration="i">
+								<f:variable name="kategorie" value="" />
+								<f:if condition="{item.identifier}">
+									<f:for each="{item.identifier}" as="val">
+										<f:if condition="'Kategorie' == {val.name}">
+											<f:if condition="{kategorie}">
+												<f:then>
+													<f:variable name="kategorie" value="{kategorie},{val.value}" />
+												</f:then>
+												<f:else>
+													<f:variable name="kategorie" value="{val.value}" />
+												</f:else>
+											</f:if>
+										</f:if>
+									</f:for>
+								</f:if>
+								<div class="row align-items-center day-item" data-kat="{kategorie}">
+									<div class="row g-0">
+										<h2 class="item-headline col-md-10">{item.name}</h2>
+										<div class="time col-md-2 d-none d-md-block text-end">
+											<f:format.date format="H:i">{item.startDate}</f:format.date> -
+											<f:format.date format="H:i">{item.endDate}</f:format.date>
+										</div>
+									</div>
+									<f:if condition="{item.description}">
+										<div class=" g-0">
+											<f:if condition="{jo:isarray(value:'{item.description}')}">
+												<f:then>
+													<f:format.crop maxCharacters="200" respectWordBoundaries="true" respectHtml="true">
+														{item.description.0}
+													</f:format.crop>
+												</f:then>
+												<f:else>
+													<f:format.crop maxCharacters="200" respectWordBoundaries="true" respectHtml="true">
+														{item.description}
+													</f:format.crop>
+												</f:else>
+											</f:if>
+										</div>
+										<div class="detail_link g-0">
+											<f:variable name="detailId" value="" />
+											<f:if condition="{item.identifier}">
+												<f:for each="{item.identifier}" as="val">
+													<f:if condition="'SP-ID' == {val.name}">
+														<f:variable name="detailId" value="{val.value}" />
+													</f:if>
+												</f:for>
+											</f:if>
+											<f:link.action pageType="{ajaxpagetype}" class="d-inline-block{ajaxpagetypecssclass}" arguments="{detail: '{detailId}', startdate:'{items.configuration.dateconfig.thismonthtimestamp}'}" additionalParams="{ceid:'{ce.uid}'}">Details ansehen</f:link.action>
+										</div>
+									</f:if>
+								</div>
+							</f:for>
+						</div>
+					</div>
+				</f:for>
+			</div>
+		</f:then>
+		<f:else>
+			<div class="c10-no-data">keine Daten gefunden</div>
+		</f:else>
+	</f:if>
+</f:section>
+
+<f:section name="detail">
+	<f:if condition="{items.dates}">
+		<f:then>
+			<div class="c10 events detail no-gutters">
+				<f:for each="{items.dates}" as="days">
+					<div class="event-item row">
+						<div class="col-12 col-lg-1 left-wrap text-start ps-0">
+							<div class="date-month">{days.info.day}</div>
+							<div class="daynameshort">{days.info.daynameshort}</div>
+							<f:for each="{days.items}" as="item" iteration="i">
+								<h2 class="item-headline d-block d-lg-none col-md-10 pt-3">{item.name}</h2>
+							</f:for>
+						</div>
+						<div class="col-12 col-md-11 right-wrap">
+							<f:for each="{days.items}" as="item" iteration="i">
+								<div class="row day-item">
+									<div class="col-12 detail_link p-0">
+										<f:link.action pageType="{ajaxpagetype}" class="d-inline-block mt-3{ajaxpagetypecssclass}" arguments="{startdate:'{items.configuration.dateconfig.thismonthtimestamp}',orgother:'{activefilter.veranstalter.connected}'}" additionalParams="{ceid:'{ce.uid}'}">
+											zurück
+										</f:link.action>
+									</div>
+									<div class="img_wrap g-0 col-12 col-lg-6">
+										<f:if condition="{item.image}">
+											<f:for each="{item.image}" as="img">
+												<div class="day-item-img-wrapper">
+													<img src="{img.contentUrl}" alt="{img.description}" />
+													<f:if condition="{img.caption} || {img.creator} || {img.license}">
+														<figcaption>{img.caption}<f:if condition="{img.caption}"><br/></f:if>{img.creator}<f:if condition="{img.creator}">, </f:if>{img.license}</figcaption>
+													</f:if>
+												</div>
+											</f:for>
+										</f:if>
+									</div>
+									<div class="col-12 col-lg-6 ps-0 ps-lg-4 pt-3 pt-lg-0 mb-5">
+										<div class="item-headline-date">{days.info.day}.{days.info.month}.{days.info.year}</div>
+										<h2 class="item-headline d-none d-lg-block">{item.name}</h2>
+										<f:if condition="{item.startDate}">
+											<div class="time mb-3">
+												<f:format.date format="H:i">{item.startDate}</f:format.date><f:if condition="{item.endDate}"> -
+												<f:format.date format="H:i">{item.endDate}</f:format.date></f:if><br/>
+												<f:if condition="{item.doorTime}">Einlass: <f:format.date format="H:i">{item.doorTime}</f:format.date><br/></f:if>
+												<f:if condition="{item.duration}">Dauer: <jo:durationtime format="%H:%I" date="{item.duration}"/><br/></f:if>
+											</div>
+										</f:if>
+										<f:if condition="{item.description}">
+											<div class="desc">
+												<f:if condition="{jo:isarray(value:'{item.description}')}">
+													<f:then>
+														{item.description.0}
+														<f:comment>
+														<!--
+														<f:for each="{item.description}" as="desc" iteration="desc_i">
+															<f:format.nl2br>{desc}</f:format.nl2br><f:if condition="!{desc_i.isLast}"><br/><br/></f:if>
+														</f:for>
+														-->
+														</f:comment>
+													</f:then>
+													<f:else>
+														<f:format.nl2br>{item.description}</f:format.nl2br>
+													</f:else>
+												</f:if>
+											</div>
+										</f:if>
+									</div>
+									<f:if condition="{item.description.1} || {item.offers.url} || {item.url}">
+										<div class="col-12 bottom-wrap day-item-d-wrap">
+											<h2>Details</h2>
+											<div>
+												<f:if condition="{jo:isarray(value:'{item.description}')} && {item.description} && {item.description.1}">
+													<div>
+														<f:format.nl2br>{item.description.1}</f:format.nl2br>
+													</div>
+												</f:if>
+												<f:if condition="{item.offers} && {item.offers.url}">
+													<div>
+														<f:link.external class="vorverkauf" uri="{item.offers.url}" target="_blank">Kartenvorverkauf</f:link.external>
+													</div>
+												</f:if>
+												<f:if condition="{item.url}">
+													<div>
+														<f:link.external class="website" uri="{item.url}" target="_blank">Website</f:link.external>
+													</div>
+												</f:if>
+											</div>
+										</div>
+									</f:if>
+									<div class="col-12 bottom-wrap day-item-org">
+										<h2>Veranstalter</h2>
+										<div class="organizer_wrap">
+											<f:if condition="{item.organizer}">
+												{item.organizer.name}<br/>
+												<f:if condition="{item.organizer.telephone}">
+													Tel.: {item.organizer.telephone}<br/>
+												</f:if>
+												<f:if condition="{item.organizer.faxNumber}">
+													Fax: {item.organizer.faxNumber}<br/>
+												</f:if>
+												<f:if condition="{item.organizer.email}">
+													E-Mail: {item.organizer.email}<br/>
+												</f:if>
+												<f:if condition="{item.organizer.address}">
+													<f:format.nl2br>{item.organizer.address}</f:format.nl2br><br/>
+												</f:if>
+												<f:if condition="{item.organizer.url}">
+													<f:link.external class="website" uri="{item.organizer.url}" target="_blank">Website</f:link.external>
+												</f:if>
+											</f:if>
+										</div>
+									</div>
+									<div class="col-12 bottom-wrap day-item-org">
+										<h2>Veranstaltungsort</h2>
+										<div class="location_wrap">
+											<f:for each="{item.location}" as="loc">
+												{loc.name}
+												<f:if condition="{loc.address}">
+													{loc.address.streetAddress}<br/>
+													{loc.address.postalCode} {loc.address.addressLocality}
+												</f:if>
+											</f:for>
+										</div>
+									</div>
+								</div>
+							</f:for>
+						</div>
+					</div>
+				</f:for>
+			</div>
+		</f:then>
+		<f:else>
+			<div class="c10-no-data">keine Daten gefunden</div>
+		</f:else>
+	</f:if>
+</f:section>

@@ -1,0 +1,13 @@
+<div class="c32-container">
+	<f:if condition="{vorherImage} && count({vorherImage}) > 0 && {nachherImage} && count({nachherImage}) > 0">
+		<f:then>
+			<div class="c32-images">
+				<f:image image="{vorherImage.0}" width="{settings.width}" height="{settings.height}" />
+				<f:image image="{nachherImage.0}" width="{settings.width}" height="{settings.height}" />
+			</div>
+		</f:then>
+		<f:else>
+			<div class="c32-error">Bilder sind nicht richtig konfiguriert.</div>
+		</f:else>
+	</f:if>
+</div>

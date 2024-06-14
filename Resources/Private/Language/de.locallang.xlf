@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages">
+		<header/>
+		<body>
+			<trans-unit id="cookie.teaser">
+                <source><![CDATA[<span>By using this website, you agree to the use of cookies. For more information, please see our </span>]]></source>
+                <target><![CDATA[<span>Diese Webseite verwendet Cookies. Durch die Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu. Nähere Informationen finden Sie in unseren </span>]]></target>
+			</trans-unit>
+			<trans-unit id="cookie.teaserhinten">
+                <source><![CDATA[<a id="cookieOk" href="javascript:void(0)">OK</a>]]></source>
+                <target><![CDATA[<a id="cookieOk" href="javascript:void(0)">OK</a>]]></target>
+			</trans-unit>
+			<trans-unit id="cookie.teaserdatenschutz">
+                <source>privacy policy</source>
+                <target>Datenschutzbestimmungen</target>
+			</trans-unit>
+			<trans-unit id="you.are.here">
+				<source>Your current location is:</source>
+				<target>Sie befinden sich hier:</target>
+			</trans-unit>
+			<trans-unit id="c11.more">
+				<source>More information</source>
+				<target>Mehr erfahren</target>
+			</trans-unit>
+			<trans-unit id="c11.less">
+				<source>Less information</source>
+				<target>Weniger erfahren</target>
+			</trans-unit>
+			<trans-unit id="c11.digital.service">
+				<source>Explore digital services</source>
+				<target>Digitale Angebote erkunden</target>
+			</trans-unit>
+			<trans-unit id="c11.show.video">
+				<source>Show video</source>
+				<target>Video anzeigen</target>
+			</trans-unit>
+			<trans-unit id="c11.show.audio">
+				<source>Show audio</source>
+				<target>Audio anzeigen</target>
+			</trans-unit>
+			<trans-unit id="c11.digitalisat">
+				<source>To the digitised version</source>
+				<target>Zum Digitalisat</target>
+			</trans-unit>
+			<trans-unit id="c11.backToOverview">
+				<source>Back to overview</source>
+				<target>Zurück zur Übersicht</target>
+			</trans-unit>
+			<trans-unit id="c11.citation.link">
+				<source>Copy citation link</source>
+				<target>Zitierlink kopieren</target>
+			</trans-unit>
+			<trans-unit id="c11.collection.prev">
+				<source>Previous collection</source>
+				<target>Vorige Sammlung</target>
+			</trans-unit>
+			<trans-unit id="c11.collection.next">
+				<source>Next collection</source>
+				<target>Nächste Sammlung</target>
+			</trans-unit>
+			<trans-unit id="c11.listview">
+				<source>List view</source>
+				<target>Listenansicht</target>
+			</trans-unit>
+			<trans-unit id="c11.gridview">
+				<source>Grid view</source>
+				<target>Gridansicht</target>
+			</trans-unit>
+			<trans-unit id="c11.filter">
+				<source>Filter</source>
+				<target>Filter</target>
+			</trans-unit>
+			<trans-unit id="c11.collection.to">
+				<source>to the collection</source>
+				<target>zur Sammlung</target>
+			</trans-unit>
+			<trans-unit id="c11.delete.all">
+				<source>delete all filter</source>
+				<target>Alle Filter löschen</target>
+			</trans-unit>
+			<trans-unit id="c11.search.criteria.match">
+				<source>These objects match your search criteria:</source>
+				<target>Diese Objekte entsprechen Ihren Suchkriterien:</target>
+			</trans-unit>
+			<trans-unit id="c11.project.status">
+				<source>Project status</source>
+				<target>Projektstatus</target>
+			</trans-unit>
+			<trans-unit id="c11.slider.false">
+				<source>All</source>
+				<target>Alle</target>
+			</trans-unit>
+			<trans-unit id="c11.slider.true">
+				<source>Current</source>
+				<target>Laufend</target>
+			</trans-unit>
+			<trans-unit id="c11.found.nothing">
+				<source>No data available</source>
+				<target>keine Daten vorhanden</target>
+			</trans-unit>
+			<trans-unit id="c11.cite.link">
+				<source>Citation link</source>
+				<target>Zitierlink</target>
+			</trans-unit>
+			<trans-unit id="c11.copy.clipboard">
+				<source>copy to the clipboard</source>
+				<target>in die Zwischenablage kopieren</target>
+			</trans-unit>
+			<trans-unit id="c11.inventory">
+				<source>to the inventory</source>
+				<target>Zum Bestand</target>
+			</trans-unit>
+			<trans-unit id="c11.show.inventory">
+				<source>show inventory</source>
+				<target>Bestand anzeigen</target>
+			</trans-unit>
+			<trans-unit id="c11.trailer.exhibition">
+				<source>Trailer for the exhibition</source>
+				<target>Trailer zur Ausstellung</target>
+			</trans-unit>
+			<trans-unit id="c11.trailer.exhibition.hide">
+				<source>Hide exhibition trailer</source>
+				<target>Trailer zur Ausstellung verbergen</target>
+			</trans-unit>
+			<trans-unit id="c11.audio.listen">
+				<source>Listen to the audio recording of the DLF</source>
+				<target>Audioaufzeichnung des DLF anhören</target>
+			</trans-unit>
+			<trans-unit id="c11.audio.hide">
+				<source>Hide DLF audio recording</source>
+				<target>Audioaufzeichnung des DLF verbergen</target>
+			</trans-unit>
+			<trans-unit id="c11.topicdb">
+				<source>Project type</source>
+				<target>Projekttyp</target>
+			</trans-unit>
+			<trans-unit id="c11.keywords">
+				<source>Topic</source>
+				<target>Thema</target>
+			</trans-unit>
+			<trans-unit id="c11.times">
+				<source>Time period</source>
+				<target>Zeitraum</target>
+			</trans-unit>
+			<trans-unit id="c11.classfication">
+				<source>Institution</source>
+				<target>Institution</target>
+			</trans-unit>
+			<trans-unit id="pdf.export">
+                <source>export as PDF file</source>
+                <target>als PDF-Datei exportieren</target>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>

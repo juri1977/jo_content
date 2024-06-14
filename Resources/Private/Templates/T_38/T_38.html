@@ -1,0 +1,79 @@
+<f:if condition="{settings.javascript}">
+	<script> var global_js = <f:format.json>{settings.javascript}</f:format.json></script>
+</f:if>
+<f:spaceless>
+<f:render partial="PrintHint" arguments="{_all}" />
+<div class="joOuterDiv joKultur layout-{data.layout}">
+	<div class="joFixed">
+		<f:if condition="{headerPartial}">
+			<f:then>
+				<f:render partial="{headerPartial}" arguments="{_all}" />
+			</f:then>
+			<f:else>
+				<f:render partial="Header/T_38/Header" arguments="{_all}" />
+			</f:else>
+		</f:if>
+	</div>
+	<f:if condition="{fullscreen}">
+		<f:then>
+			<f:format.html parseFuncTSPath="">{fullscreen}</f:format.html>
+		</f:then>
+		<f:else>
+			<div class="content_wrap">
+				<f:if condition="{header}">	
+					<div class="header_fullscreen position-relative">
+						<f:format.html parseFuncTSPath="">{header}</f:format.html>
+						<f:comment>
+							<f:if condition="{col_5}">
+								<div class="hc">
+									<f:format.html parseFuncTSPath="">{col_5}</f:format.html>
+								</div>
+							</f:if>
+							<f:debug>{_all}</f:debug>
+						</f:comment>
+						<f:if condition="{searchbar}">
+							<div class="position-absolute searchbar">
+								<f:form controller="Museo" action="list" extensionName="JoMuseo" pluginName="pi1009" pageUid="{searchbar}" class="main_search" name="suche" noCache="1" method="POST"  >
+									<f:form.submit class="d-inline-block search_button" name="search_submit" value="" />
+									<f:form.textfield class="search_box d-inline-block" name="fulltext" value="" placeholder="Suche" />
+								</f:form>
+							</div>
+						</f:if>
+						<f:comment>
+							<f:if condition="{teaser}">
+								<div class="position-absolute teaser">
+									<h3>Veranstaltung</h3><br>
+									<div>Nächstes Eventtest</div><br>
+									<div>Testort, Teststrasse 12</div><br>
+									<div>29.10.2021</div>
+								</div>
+							</f:if>
+						</f:comment>
+					</div>
+				</f:if>
+				<f:if condition='{level} > 1'>
+					<div class="bcp d-flex align-items-center"><span class="bcp_label"><f:translate key="LLL:EXT:jo_content/Resources/Private/Language/locallang.xlf:you.are.here"/></span><f:cObject typoscriptObjectPath="lib.rootline" /></div>
+				</f:if>
+				<f:if condition="{mainContent}">
+					<div class="joStartSegment" id="joTopAnchor">
+						<div class="main_content clearfix">
+							<!--TYPO3SEARCH_begin--><f:format.html parseFuncTSPath="">{mainContent}</f:format.html><!--TYPO3SEARCH_end-->
+						</div>
+					</div>
+				</f:if>
+			</div>
+		</f:else>
+	</f:if>
+	<f:render partial="Footer" arguments="{_all}" />
+	<div id="mobile-hidden" class="d-none d-sm-none d-md-block"></div>
+	<a href="/" class="back-to-top">
+		<div class="vp">
+			<div class="joSprite" title="Scroll to Top"></div>
+		</div>
+	</a>
+</div>
+<f:render partial="Cookie" arguments="{_all}" />
+<div id="joAjaxloader" style="display: none;">
+    <div class="joLoader"></div>
+</div>
+</f:spaceless>

@@ -1,0 +1,48 @@
+<f:switch expression="{settings.modi}">
+    <f:case value="mode2">
+        <div class="page_article container">
+            <div class="page_article_con row">
+                <div class="page_image col-md-12">
+                    <f:if condition="{images}">
+                        <f:for each="{images}" as="item" iteration="i">
+                            <f:image image="{item}" treatIdAsReference="true" width="1500" />
+                            <figcaption>
+                                {item.properties.title}<br>
+                                {item.properties.description}
+                            </figcaption>
+                        </f:for>
+                     </f:if>
+                </div>
+                <div class="page_image col-md-12">
+                    <h2>{settings.headline}</h2>
+                    <f:if condition="{settings.bodytext}">
+                        <div class="bodytext"><f:format.html>{settings.bodytext}</f:format.html></div>
+                    </f:if>
+                </div>
+             </div>
+        </div>  
+    </f:case>
+    <f:defaultCase>
+        <div class="page_article container">
+            <div class="page_article_con row">
+                <div class="page_image col-md-3">
+                    <f:if condition="{images}">
+                        <f:for each="{images}" as="item" iteration="i">
+                            <f:image image="{item}" treatIdAsReference="true" width="500" />
+                            <figcaption>
+                                {item.properties.title}<br>
+                                {item.properties.description}
+                            </figcaption>
+                        </f:for>
+                     </f:if>
+                </div>
+                <div class="page_image col-md-9">
+                    <h2>{settings.headline}</h2>
+                    <f:if condition="{settings.bodytext}">
+                        <div class="bodytext"><f:format.html>{settings.bodytext}</f:format.html></div>
+                    </f:if>
+                </div>
+             </div>
+        </div>  
+    </f:defaultCase>
+</f:switch>

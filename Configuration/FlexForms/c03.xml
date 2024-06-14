@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <meta>      
+        <langDisable>1</langDisable>
+    </meta> 
+    <ROOT>
+        <type>array</type>
+        <el>
+            <settings.headline>
+                <TCEforms>
+                    <label>Überschrift</label>
+                    <config>
+                        <type>input</type>
+                        <size>20</size>
+                        <max>255</max>
+                        <eval>trim</eval>
+                    </config>
+                </TCEforms>
+            </settings.headline>
+             <settings.bodytext>
+                <TCEforms>
+                    <label>Textinhalt</label>
+                    <config>
+                        <type>text</type>
+                        <cols>48</cols>
+                        <rows>5</rows>
+                        <enableRichtext>1</enableRichtext>
+                    </config>
+                </TCEforms>
+            </settings.bodytext>
+            <settings.contenthtml>
+                <TCEforms>
+                    <label>HTML Content</label>
+                    <config>
+                        <type>text</type>
+                        <cols>48</cols>
+                        <rows>5</rows>
+                    </config>
+                </TCEforms>
+            </settings.contenthtml>
+            <settings.modi>
+                <TCEforms>
+                    <label>Darstellung der Inhalte</label>
+                    <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <size>1</size>
+                        <items type="array">
+                            <numIndex index="0" type="array">
+                                <numIndex index="0">HTML links neben dem Text</numIndex>
+                                <numIndex index="1">mode1</numIndex>
+                            </numIndex>
+                            <numIndex index="1" type="array">
+                                <numIndex index="0">HTML rechts neben dem Text</numIndex>
+                                <numIndex index="1">mode2</numIndex>
+                            </numIndex>
+                        </items>
+                        <minitems>1</minitems>
+                    </config>
+                </TCEforms>
+            </settings.modi>
+        </el>
+    </ROOT>
+</T3DataStructure>

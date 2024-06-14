@@ -1,0 +1,132 @@
+.joCompetitionBackground,
+.eventOuterwrap {
+    overflow: hidden;
+}
+.eventOuterwrap .first.row,
+.eventOuterwrap .second.row {
+    margin: 0 25px;
+}
+.joEventJahr {
+    margin: 0 0 20px;
+}
+.kal_days {
+    padding: 5px 0;
+    margin: 0 -10px;
+}
+.kal_days li {
+    padding: 0 5px;
+}
+.kal_days .fl {
+    color: #bcbcbc;
+}
+.t_1 .fl:after{
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 12px;
+    padding: 3px;
+    font-weight: bold;
+    background-color: #008B00;
+    border-radius: 50%;
+}
+.kal_days .da span{
+    background-color: grey;
+    color:#ffffff;
+    padding: 0 2px;
+}
+.d_0.t_1 .fl{
+    font-weight: bold;
+    color:#000000;
+}
+.passed_1{
+    opacity:0.2;
+}
+.eventlist {
+    padding: 0 31px;
+}
+.joVeranstaltungslink {
+    margin: 0 20px;
+}
+.eventWrapper {
+    margin: 0 5px;
+    transition: box-shadow .4s;
+}
+.eventitem .teaserimage,
+.eventitem .teasertext {
+    transition: box-shadow .4s;
+}
+.eventitem .teaserimage {
+    max-height: 300px;
+}
+.eventlist .eventitem .teasertext {
+    background-color: #f8f8f8;
+    padding: 15px;
+    position: relative;
+    flex: 1;
+}
+.joFooter a,
+.eventlist .joVeranstaltungsTeaserAdresse,
+.eventlist .joTbhHover h2 {
+    font-size: 20px;
+}
+.joVeranstaltungsTeaserHeadline {
+    padding: 10px 0 0;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    font-size: 22px;
+}
+.kal_switch .prev {
+    background: no-repeat url(../Images/C30/arrow_left.svg);
+}
+.kal_switch .next {
+    background: no-repeat url(../Images/C30/arrow_right.svg);
+}
+.kal_switch .prev:hover {
+    background: no-repeat url(../Images/C30/arrow_left_green.svg);
+}
+.kal_switch .next:hover {
+    background: no-repeat url(../Images/C30/arrow_right_green.svg);
+}
+.kal_switch .prev:hover,
+.kal_switch .next:hover {
+    background-size: contain;
+}
+.kal_switch .prev,
+.kal_switch .next {
+    width: 25px;
+    background-size: contain;
+    margin: 2px 0 0;
+}
+.kal_switch .prev a,
+.kal_switch .next a {
+    font-size: 0;
+    width: 100%;
+    height: 100%;
+}
+.kal_switch .next.ms-3 {
+    margin-left: 1rem;
+}
+.slick-prev.slick-arrow, .slick-next.slick-arrow {
+    background-image: url(../Images/C30/forward.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    z-index: 1;
+}
+.slick-prev.slick-arrow {
+    transform: rotate(180deg) translate(0, 50%);
+}
+.slick-slide img {
+    max-height: 100%;
+}
+@media (min-width: 992px) {
+    .eventOuterwrap .row.first, .eventOuterwrap .second.row {
+        margin: 0 -15px;
+    }
+    .eventSlider {
+        margin: 0 -75px;
+    }
+}

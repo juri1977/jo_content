@@ -1,0 +1,151 @@
+<div class="plugin-content joNewsPlugin C24Kacheln">
+	<f:variable name="spalten" value="2"/>
+	<f:if condition="{settings.col}">
+		<f:variable name="spalten" value="{settings.col}"/>
+	</f:if>
+	<f:render section="default_view" arguments="{_all}" />
+	<f:if condition="{settings.linknewsfull}">
+		<div class="text-end col-sm-12">
+			<f:link.typolink class="d-inline-block tonewslist position-relative"  parameter="{settings.linknewsfull}" title="<f:translate key='linkfull_pi2' />">
+				<f:translate key="linkfull_pi2" />
+			</f:link.typolink>
+		</div>
+	</f:if>
+</div>
+
+<f:section name="default_view">
+	<ul class="list-unstyled objectwrap masonry-col-{spalten}">
+		<f:for each="{newsByCategories}" as="teaseritems">
+			<li class="height-fit-content item">
+				<f:if condition="{settings.displayMoreLinkText}">
+					<f:then>
+						<f:render section="newsitems" arguments="{_all}" />
+					</f:then>
+					<f:else>
+						<f:link.action class="wrapped_link" pageUid="{settings.link}" arguments="{joNewsDetail:'{teaseritems.uid}',joRefererId:'{data.pid}'}">
+							<f:render section="newsitems" arguments="{_all}" />
+						</f:link.action>
+					</f:else>
+				</f:if>
+			</li>
+		</f:for>
+	</ul>
+	<f:render section="fulllist" arguments="{_all}" />
+</f:section>
+
+<f:section name="fulllist">
+	<f:if condition="{settings.linktofulllist}">
+		<div class="fulllist">
+			<f:link.page pageUid="{settings.linktofulllist}" title="<f:translate key='c24.fulloverview' />">
+				<span class="fl-icon"></span>
+				<span class="fl-txt"><f:translate key="c24.fulloverview" /></span>
+			</f:link.page>
+		</div>
+	</f:if>
+</f:section>
+
+<f:section name="dateblock">
+	<f:if condition="!{settings.killregulardate}">
+		<div class="dateblock">
+			<f:if condition="{settings.dformatdirekt}">
+				<f:then>		            			
+					<f:format.date format="{settings.dformatdirekt}">{teaseritems.datetime}</f:format.date>
+				</f:then>
+				<f:else>
+					<f:if condition="{settings.dateformat}">
+						<f:then>
+							<f:format.date format="{settings.dateformat}">{teaseritems.datetime}</f:format.date>		
+						</f:then>
+						<f:else>
+							<f:format.date format="%B %Y">{teaseritems.datetime}</f:format.date>
+						</f:else>
+					</f:if>
+				</f:else>
+			</f:if>
+		</div>
+	</f:if>
+</f:section>
+
+<f:section name="readmore">
+	<f:if condition="{settings.displayMoreLinkText}"> 
+		<div class="read-more">
+			<f:link.action pageUid="{settings.link}" arguments="{joNewsDetail:'{teaseritems.uid}',joRefererId:'{data.pid}'}">{settings.displayMoreLinkText}</f:link.action>
+		</div>
+	</f:if>
+</f:section>
+
+<f:section name="categories">
+	<f:if condition="{settings.kategorieanzeigen}"> 
+		<f:if condition="{teaseritems.categories}"> 
+			<ul class="categories_wrap list-unstyled">
+				<f:for each="{teaseritems.categories}" as="cat">
+					<li class="cat_id_{cat.uid}">{cat.title}</li>
+				</f:for>
+			</ul>
+		</f:if>
+	</f:if>
+</f:section>
+
+<f:section name="newsitems">
+	<div class="joTeaserboxWrap h-auto">
+		<f:if condition="{teaseritems.title} && {teaseritems.showheadline} == '2'">
+			<h2>
+				<f:format.html>{teaseritems.title}</f:format.html>
+			</h2>
+		</f:if>
+		<f:if condition="{teaseritems.falMedia}">
+			<div class="C24Kacheln_wrap position-relative">
+				<f:render section="categories" arguments="{_all}" />
+				<div class="joTeaserBild w-100 h-auto overflow-hidden">
+					<f:if condition="{f:count(subject:'{teaseritems.falMedia}')} > 1">
+						<f:then>
+							<f:image
+								class="w-100 h-auto"
+								image="{teaseritems.falMedia.0}"
+								alt="{teaseritems.title}"
+								title="{teaseritems.title}"
+								width="{settings.bildweiteklein}c"
+								height="{settings.bildhoeheklein}c" 
+							/>
+						</f:then>
+						<f:else>
+							<f:image
+								class="w-100 h-auto"
+								image="{teaseritems.falMedia.0}"
+								alt="{teaseritems.title}"
+								title="{teaseritems.title}"
+								width="{settings.bildweiteklein}c"
+								height="{settings.bildhoeheklein}c"
+							/>
+						</f:else>
+					</f:if>
+				</div>
+			</div>
+		</f:if>
+		<div class="joTeaserTextContent">
+			<f:render section="dateblock" arguments="{_all}" />
+			<f:if condition="{teaseritems.title} && {teaseritems.showheadline} == '1'">
+				<h2>
+					<f:format.html>{teaseritems.title}</f:format.html>
+				</h2>
+			</f:if>
+			<f:variable name="previewtext" value="{teaseritems.teaser}"/>
+			<f:if condition="{teaseritems.bodytext}">
+				<f:variable name="previewtext" value="{teaseritems.bodytext}"/>
+			</f:if>
+			<f:if condition="{previewtext}">
+				<f:if condition="{settings.cropklein}">
+					<f:then>
+						<f:format.crop maxCharacters="{settings.cropklein}" respectWordBoundaries="true" respectHtml="true">
+							<f:format.stripTags>{previewtext}</f:format.stripTags>
+						</f:format.crop>
+					</f:then>
+					<f:else>
+						<f:format.html>{previewtext}</f:format.html>
+					</f:else>
+				</f:if>
+			</f:if>
+		</div>
+		<f:render section="readmore" arguments="{_all}" />
+	</div>
+</f:section>

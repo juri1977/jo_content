@@ -1,0 +1,195 @@
+<div class="joPers-content">
+	<f:if condition="{items} || {all_inst}">
+		<f:then>
+			<f:if condition="{detail}">
+				<f:then>
+					<f:render section="buildInst" arguments="{_all}"/>
+				</f:then>
+				<f:else>
+					<f:if condition="{items}">
+						<f:render section="buildPerson" arguments="{_all}"/>
+					</f:if>
+					<f:if condition="{all_inst}">
+						<f:render section="institute" arguments="{_all}"/>
+					</f:if>
+				</f:else>
+			</f:if>
+		</f:then>
+		<f:else>
+			<f:render section="error" arguments="{_all}"/>
+		</f:else>
+	</f:if>
+</div>
+
+<f:section name="error">
+	<div class="alert alert-info">
+		Leider wurde nichts gefunden.
+	</div>
+</f:section>
+
+<f:section name="institute">
+	<h2 class="inst-h2 pt-5">Institutionen</h2>
+	<h3 class="inst-h3">Bundesland</h3>
+	<div class="row fed-con">
+		<f:for each="{all_fedstate}" as="items">
+			<div class="col-md-2">
+				<div class="fed-item h-100" data-state="{items.uid}">
+					{items.name}
+				</div>
+			</div>
+		</f:for>
+	</div>
+	<f:if condition="{all_typ}">
+		<h3 class="inst-h3">Typen</h3>
+		<div class="row fed-con">
+			<f:for each="{all_typ}" as="items">
+				<div class="col-md-2">
+					<div class="fed-item h-100" data-typ="{items}">					
+					<f:if condition="{f:translate(key:'{items}')}">
+						<f:then>
+							{f:translate(key:'{items}')}
+						</f:then>
+						<f:else>
+							{items}
+						</f:else>
+					</f:if>						
+					</div>
+				</div>
+			</f:for>
+		</div>
+	</f:if>
+	<div class="row inst-con">
+		<f:for each="{all_inst}" as="items" key="key" iteration="i">
+			<div class="inst-item col-12" data-state="{items.federalstate.uid}" data-typ="{items.typ}">
+				<h3>
+					<f:link.action class="joInst-link" arguments="{inst_id: items.uid}">
+						{items.city} | {items.name}
+					</f:link.action>
+				</h3>
+				<f:if condition="{items.typ}">
+					⇒ <f:if condition="{f:translate(key:'{items.typ}')}">
+						<f:then>
+							{f:translate(key:'{items.typ}')}
+						</f:then>
+						<f:else>
+							{items.typ}
+						</f:else>
+					</f:if><br/>
+				</f:if>
+				<f:format.html>{items.street}</f:format.html> <f:format.html>{items.streetnumber}</f:format.html><br>
+				<f:format.html>{items.zip}</f:format.html> <f:format.html>{items.city}</f:format.html><br>
+				<f:format.html>Telefon: {items.phone}</f:format.html><br>
+				<!-- 
+					<f:format.html>Fax: {items.fax}</f:format.html><br>
+					<f:format.html>Website: {items.website}</f:format.html><br><br>
+				-->
+			</div>
+		</f:for>
+		<div class="inst-item col-12 nothing" data-state="-1" data-typ="-1">
+			<div class="alert">Leider wurde nichts gefunden. Bitte versuchen Sie andere Optionen.</div>
+		</div>
+	</div>
+</f:section>
+
+<f:section name="loadModal">
+	<div class="modal fade" id="joPers-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</f:section>
+
+<f:section name="buildPerson">
+	<div class="joPers-container row">
+		<f:for each="{items}" as="val" key="key" iteration="i">
+			<div id="{key}" class="joPers-item col-md">
+				<h3 class="label font-weight-bold"><f:translate key="{key}" /></h3>
+				<f:for each="{val}" as="pers_v" key="pers_k" iteration="j">
+					<div class="joPers-link-con">
+						<f:link.action class="joPers-link" arguments="{pers_id: pers_v.uid}">
+							 <f:if condition="{pers_v.departmenttext}">{pers_v.departmenttext} - </f:if><f:if condition="{pers_v.title}">{pers_v.title} </f:if>{pers_v.firstname} {pers_v.lastname}
+						</f:link.action>
+					</div>
+				</f:for>
+			</div>
+		</f:for>
+	</div>
+	<f:comment>
+		<f:render section="loadModal" arguments="{_all}"/>
+	</f:comment>
+</f:section>
+
+<f:section name="buildInst">
+	<div class="joInst-container {f:if(condition: '{inst_detail}', then: 'instDetail', else: '')}">
+		<div class="joInst-item">
+			<div class="row">
+				<f:if condition="!{inst_detail}">
+					<div class="col-md-6">
+						<f:for each="{items.employee}" as="pers_v" key="pers_k" iteration="j">							
+							<div class="row">
+								<div class="col-md-6">
+									<div class="joInst-pers">
+										<h3 class="label font-weight-bold"><f:if condition="{pers_v.title}">{pers_v.title} </f:if>{pers_v.firstname} {pers_v.lastname}</h3>
+									</div>
+									<f:format.html>{pers_v.departmenttext}</f:format.html><br><br>
+									<f:format.html>{pers_v.description}</f:format.html><br>
+
+									<f:format.html><b>E-Mail:</b> {pers_v.email}</f:format.html><br><br>
+
+									<f:format.html>{pers_v.publikationen}</f:format.html>
+								</div>
+								<div class="col-md-6">
+									<f:if condition="{pers_v.image}">
+										<f:image image="{pers_v.image}" height="400" style="width:100%;height:auto;"/>
+									</f:if>
+								</div>
+							</div>
+						</f:for>
+					</div>
+				</f:if>
+				<div class="{f:if(condition: '{inst_detail}', then: 'col-md-6', else: 'col-md-6')}">
+					<div class="row"> 
+						<div class="col-md-6">
+							<h3>{items.name}</h3>
+							<f:format.html>{items.street}</f:format.html> <f:format.html>{items.streetnumber}</f:format.html><br>
+							<f:format.html>{items.zip}</f:format.html> <f:format.html>{items.city}</f:format.html><br><br>
+							<f:format.html><b>Telefon:</b> {items.phone}</f:format.html><br>
+							<f:format.html><b>Fax:</b> {items.fax}</f:format.html><br><br>
+							<f:format.html><b>Website: </b>{items.website}</f:format.html><br><br>
+						</div>
+						<div class="col-md-6">
+							<f:if condition="{items.image}">
+								<f:image image="{items.image}" height="400" style="width:100%;"/>
+							</f:if>
+						</div>
+					</div>
+					<div class="joInst-data">
+						<div class="joInst-desc">
+							<f:format.html>{items.description}</f:format.html>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 text-right">
+					<f:link.page class="d-inline-block" style="color:#ffffff; background-color: #cdcc00; padding: 10px 20px;margin-top:50px;">
+						<f:if condition="{inst_detail}">
+							<f:then>Alle Instituitionen anzeigen</f:then>
+							<f:else>Alle Mitglieder anzeigen</f:else>
+						</f:if>
+					</f:link.page>
+				</div>
+			</div>
+		</div>
+	</div>
+</f:section>

@@ -1,0 +1,40 @@
+{namespace ce=JO\JoContent\ViewHelpers}
+
+<div class="cluster" style="background-color: {settings.background};">
+	<div class="row cluster-head">
+		<f:if condition="{settings.icon}"><f:image src="{settings.icon}" class="cluster-icon" treatIdAsReference="true"/></f:if>
+		<!--treatIdAsReference="true"-->
+		<f:if condition="{settings.headline}"><p class="cluster-headline">{settings.headline}</p></f:if>
+	</div>
+    <div class="cluster-body">
+	    <f:if condition="{settings.textfield}"><f:format.html>{settings.textfield}</f:format.html></f:if>
+    </div>
+</div>
+<!--  -->
+<!--<ul class="timeline-v2">
+    <f:if condition="{settings.list}">
+    <f:for each="{settings.list}" as="item">
+        <li class="equal-height-columns">
+            <div class="cbp_tmtime equal-height-column"><span>{item.data.year}</span></div>
+            <i class="cbp_tmicon rounded-x hidden-xs"></i>
+            <div class="cbp_tmlabel equal-height-column">
+                <div class="row">
+                    <f:if condition="{item.data.image">
+                    <div class="col-md-4">
+                        <f:for each="{item.data.image -> ce:explode()}" as="imageUid" iteration="ii">
+                            <f:image src="file:{imageUid}" class="img-responsive" alt="" />
+                        </f:for>
+                        <div class="md-margin-bottom-20"></div>
+                    </div>
+                    </f:if>
+                    <f:if condition="{item.data.text">
+                    <div class="col-md-6">
+                        <p>{item.data.text}</p>
+                    </div>
+                    </f:if>
+                </div>
+            </div>
+        </li>
+    </f:for>
+    </f:if>
+</ul>-->

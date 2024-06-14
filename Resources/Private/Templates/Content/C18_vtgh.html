@@ -1,0 +1,84 @@
+<div id="joNewsContainer_c18">
+	<f:if condition="{topNews}">
+		<div class="joTopNews-container clearfix">
+			<f:for each="{topNews}" as="news">
+				<div class="joTopNews">
+					<f:for each="{news.contentElements}" as="content">
+						<div class="col-md-6">
+							<f:format.raw>{content.bodytext}</f:format.raw>
+						</div>
+					</f:for>
+				</div>
+			</f:for>
+		</div>
+	</f:if>
+	
+	<f:if condition="{categories}">
+		<div class="joNews-category">
+			<ul>
+				<f:for each="{categories}" as="category">
+					<li <f:if condition="{category.item.uid} == {curCat}">class="active"</f:if>>
+						<f:link.action title="{category.item.title}" pageUid="{settings.listPid}" additionalParams="{catId:category.item.uid}" section="joNewsContainer_c18">
+							{category.item.title}
+						</f:link.action>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</f:if>
+
+	<f:if condition="{date}">
+		<div class="joNews-menu-view">
+			<ul>
+				<f:for each="{date.single}" key="year" as="months">
+					<f:if condition="{year} == {curYear}">
+						<f:then>
+							<li class="date-menu-list active">
+						</f:then>
+						<f:else>
+							<li class="date-menu-list">
+						</f:else>
+					</f:if>
+						<f:link.action pageUid="{listPid}" additionalParams="{year:year,catId:curCat}" section="joNewsContainer_c18">{year}</f:link.action>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</f:if>
+
+	<f:if condition="{newsRecord}">
+		<f:then>
+			<div class="joNews-list-view row">
+				<f:for each="{newsRecord}" as="joSubSubIndex" iteration="josubiteration">
+					<div class="col-md-6 col-xs-12 col-12">
+						<f:for each="{joSubSubIndex}" as="newsItem" >
+							<div class="joArticle-news">
+								<div class="header">
+									<h3>
+										<span class="h3-headline" itemprop="headline">{newsItem.title}</span>
+										<f:if condition="{newsItem.archive}">
+											<span class="date-archive"> bis <f:format.date format="%d. %B">{newsItem.archive}</f:format.date></span>
+										</f:if>
+										<f:if condition="{newsItem.author}">
+											<i> - {newsItem.author}</i>
+										</f:if>
+									</h3>
+								</div>
+								<div class="teaser-text">
+									<f:if condition="{newsItem.bodytext}">
+										<div itemprop="description"><f:format.html>{newsItem.bodytext}</f:format.html></div>
+									</f:if>
+								</div>
+							</div>
+						</f:for>
+					</div>
+				</f:for>
+			</div>
+		</f:then>
+		<f:else>
+			<div class="no-news-found">
+				<f:translate key="list_nonewsfound" />
+			</div>
+		</f:else>
+	</f:if>
+</div>

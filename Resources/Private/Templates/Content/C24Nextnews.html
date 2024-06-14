@@ -1,0 +1,25 @@
+{namespace joPluginbasehelper=JO\JoSolrsystem\ViewHelpers}
+<ul class="joSlidePane joClearfix joNewsPlugin joNewsListShowlast">
+	<f:for each="{newsByCategories}" as="teaseritems" iteration="iterated">
+		<li class="joNewsbox <f:if condition="{iterated.isLast}">joLast</f:if>"> 
+			<f:link.action pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{teaseritems.uid}',joRefererId:'{pagecontentdata.pid}'}">				
+				<div class="joClearfix">
+					<div class="joNewsTextContent">
+						<div class="joNewsDatedata"><f:format.date format="%A, den %d.%m.%Y, %H:%M Uhr">@{teaseritems.datetime}</f:format.date></div>
+						<f:if condition="{teaseritems.title}">
+							<h2 class="joNewsHeadline">
+								{teaseritems.title}	
+							</h2>
+						</f:if>
+						<f:if condition="{teaseritems.short}">
+							<h3 class="joNewsSubHeadline">
+								<f:format.nl2br>{teaseritems.short}</f:format.nl2br>
+							</h3>
+						</f:if>							
+					</div>
+					<div class="joMore">mehr dazu</div>
+				</div>
+			</f:link.action>
+		</li>
+	</f:for>
+</ul>

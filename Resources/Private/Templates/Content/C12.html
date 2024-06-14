@@ -1,0 +1,201 @@
+{namespace jobasehelper=JO\JoSolrsystem\ViewHelpers}
+<f:variable name="bg_color" value=""/>
+<f:if condition="{settings.background}">
+	<f:variable name="bg_color" value="background-color:{settings.background};"/>
+</f:if>
+<f:variable name="gutters" value=" no-gutters"/>
+<f:if condition="{settings.gutters}">
+	<f:variable name="gutters" value=""/>
+</f:if>
+<f:variable name="imagecol" value="6"/>
+<f:if condition="{settings.imagecol}">
+	<f:variable name="imagecol" value="{settings.imagecol}"/>
+</f:if>
+
+
+<f:switch expression="{settings.layout}">
+	<f:case value="5">
+		<f:variable name="img-text-num" value="50"/>
+		<f:for each="{images}" as="image">
+			<f:cycle values="{0: 'text', 1: 'bild'}" as="zebra">
+				<f:render section="{zebra}" arguments="{_all}"/>
+			</f:cycle>
+		</f:for>
+	</f:case>
+	<f:case value="6">
+		<f:variable name="img-text-num" value="50"/>
+		<f:for each="{images}" as="image">
+			<f:cycle values="{0: 'bild', 1: 'text'}" as="zebra">
+				<f:render section="{zebra}" arguments="{_all}"/>
+			</f:cycle>
+		</f:for>
+	</f:case>
+	<f:case value="7">
+		<f:variable name="img-text-num" value="100" />
+		<f:variable name="imagecol" value="12" />
+		<f:for each="{images}" as="image">
+			<f:render section="text" arguments="{_all}"/>
+		</f:for>
+	</f:case>
+	<f:defaultCase>
+		<f:variable name="img-text-num" value="50"/>
+		<div class="row{gutters} effect{settings.effect} imgmod{settings.imagemod} padding{settings.padding}">
+			<f:for each="{images}" as="image" iteration="i">
+				<f:switch expression="{settings.layout}">
+					<f:case value="1">			
+						<div class="image-block col-12">
+							<figure>
+								<f:render section="image" arguments="{_all}"/>
+							</figure>
+						</div>
+					</f:case>
+					<f:case value="2">			
+						<div class="image-block col-12 col-md-6">
+							<figure>
+								<f:render section="image" arguments="{_all}"/>
+							</figure>
+						</div>
+					</f:case>
+					<f:case value="3">			
+						<div class="image-block col-12 col-md-4">
+							<figure>
+								<f:render section="image" arguments="{_all}"/>
+							</figure>
+						</div>
+					</f:case>
+					<f:case value="4">			
+						<div class="image-block col-12 col-md-3">
+							<figure>
+								<f:render section="image" arguments="{_all}"/>
+							</figure>
+						</div>
+					</f:case>	
+					<f:defaultCase>
+						<div class="image-block col">
+							<f:render section="image" arguments="{_all}"/>
+						</div>
+					</f:defaultCase>
+				</f:switch>
+			</f:for>
+		</div>
+	</f:defaultCase>
+</f:switch>
+
+
+<f:section name="image">
+	<f:comment>
+		<!--
+		<f:debug>{image.properties.licence}</f:debug>
+		<f:debug>{image.properties.rightsowner}</f:debug>
+		<f:debug>{image.properties.originator}</f:debug>
+		-->
+	</f:comment>
+	<div class="img_wrap">
+		<f:if condition="{settings.lightbox} =='1' && (!{image.link} || {settings.useBtnOnImg})">
+			<f:then>
+				<a href="<f:uri.image image='{image}' width='{settings.lbwidth}' height=''/>" data-lightbox="lightbox" data-title="{image.properties.title}">
+					<div class="img_inner_wrap">
+						<f:image image="{image}" class="gallery-image" alt="" width="{settings.width}c" height="{settings.height}"/>
+						<f:if condition="{image.properties.licence} || {image.properties.rightsowner} || {image.properties.originator}">
+							<small><f:if condition="{image.properties.rightsowner}">{image.properties.rightsowner} </f:if><f:if condition="{image.properties.originator}">{image.properties.originator} </f:if><f:if condition="{image.properties.licence}">{image.properties.licence}</f:if></small>
+						</f:if>
+					</div>
+					<f:comment>
+						<!-- @all die abfrage muss man anders machen, wenn kein text neben bild, soll ja figcaption kommen -->
+					</f:comment>
+					<f:if condition="{image.properties.description} && {settings.layout} != 5 && {settings.layout} != 6 && {settings.layout} != 7">
+						<figcaption><f:format.html>{image.properties.description}</f:format.html></figcaption>
+					</f:if>
+				</a>
+				<f:if condition="{settings.useBtnOnImg} && {image.link}">
+					<f:link.typolink class="lnk-wr" parameter="{image.link}">{settings.useBtnOnImgText}</f:link.typolink>
+				</f:if>
+			</f:then>
+			<f:else>
+				<f:if condition="{image.link}">
+					<f:then>
+						<f:if condition="{settings.useBtnOnImg}">
+							<f:then>
+								<div class="img_inner_wrap">
+									<f:image image="{image}" class="gallery-image" alt="" width="{settings.width}c" height="{settings.height}"/>
+									<f:if condition="{image.properties.licence} || {image.properties.rightsowner} || {image.properties.originator}">
+										<small class="img_disclaimer"><f:if condition="{image.properties.rightsowner}">Rechteinhaber: {image.properties.rightsowner}<f:if condition="{image.properties.originator} || {image.properties.licence}">,</f:if> </f:if><f:if condition="{image.properties.originator}">Urheber: {image.properties.originator}<f:if condition="{image.properties.licence}">,</f:if> </f:if><f:if condition="{image.properties.licence}">{image.properties.licence}</f:if></small>
+									</f:if>
+								</div>
+								<f:if condition="{image.properties.description} && {settings.layout} != 5 && {settings.layout} != 6 && {settings.layout} != 7">
+									<figcaption><f:format.html>{image.properties.description}</f:format.html></figcaption>
+								</f:if>
+								<f:link.typolink class="lnk-wr" parameter="{image.link}">{settings.useBtnOnImgText}</f:link.typolink>
+							</f:then>
+							<f:else>
+								<f:link.typolink parameter="{image.link}">
+									<div class="img_inner_wrap">
+										<f:image image="{image}" class="gallery-image" alt="" width="{settings.width}c" height="{settings.height}"/>
+										<f:if condition="{image.properties.licence} || {image.properties.rightsowner} || {image.properties.originator}">
+											<small class="img_disclaimer"><f:if condition="{image.properties.rightsowner}">Rechteinhaber: {image.properties.rightsowner}<f:if condition="{image.properties.originator} || {image.properties.licence}">,</f:if> </f:if><f:if condition="{image.properties.originator}">Urheber: {image.properties.originator}<f:if condition="{image.properties.licence}">,</f:if> </f:if><f:if condition="{image.properties.licence}">{image.properties.licence}</f:if></small>
+										</f:if>
+									</div>
+									<f:if condition="{image.properties.description} && {settings.layout} != 5 && {settings.layout} != 6 && {settings.layout} != 7">
+										<figcaption><f:format.html>{image.properties.description}</f:format.html></figcaption>
+									</f:if>
+								</f:link.typolink>
+							</f:else>
+						</f:if>
+					</f:then>
+					<f:else>
+						<div class="img_inner_wrap">
+							<f:image image="{image}" class="gallery-image" alt="" width="{settings.width}c" height="{settings.height}" />
+							<f:if condition="{image.properties.licence} || {image.properties.rightsowner} || {image.properties.originator}">
+								<small class="img_disclaimer"><f:if condition="{image.properties.rightsowner}">Rechteinhaber: {image.properties.rightsowner}<f:if condition="{image.properties.originator} || {image.properties.licence}">,</f:if> </f:if><f:if condition="{image.properties.originator}">Urheber: {image.properties.originator}<f:if condition="{image.properties.licence}">,</f:if> </f:if><f:if condition="{image.properties.licence}">{image.properties.licence}</f:if></small>
+							</f:if>
+						</div>
+						<f:if condition="{image.properties.description} && {settings.layout} != 5 && {settings.layout} != 6 && {settings.layout} != 7">
+							<figcaption><f:format.html>{image.properties.description}</f:format.html></figcaption>
+						</f:if>
+					</f:else>
+				</f:if>
+			</f:else>
+		</f:if>
+	</div>
+</f:section>
+
+<f:section name="textbox">
+	<f:if condition="{image.properties.title} || {image.properties.description}">
+		<div class="image-textbox">
+			<f:if condition="{image.properties.title}">
+			    <div>{image.properties.title}</div>
+			</f:if>
+			<f:if condition="{image.properties.description}">
+			    <f:format.html>{image.properties.description}</f:format.html>
+			</f:if>
+			<f:if condition="{settings.link}">
+				<f:link.typolink class="image-textbox-link" parameter="{settings.link}">{settings.linktext}</f:link.typolink>
+			</f:if>
+		</div>
+	</f:if>
+</f:section>
+
+<f:section name="bild">
+	<div class="row{gutters} effect{settings.effect} text-image-{img-text-num} imgmod{settings.imagemod} padding{settings.padding}">
+		<div class="image-text-text col">
+			<div class="d-flex h-100" style="{bg_color}">
+				<f:render section="textbox" arguments="{_all}"/>
+			</div>
+		</div>
+		<div class="image-text-image col-12 col-md-{imagecol}">
+			<f:render section="image" arguments="{_all}"/>
+		</div>
+	</div>
+</f:section>
+<f:section name="text">
+	<div class="row{gutters} effect{settings.effect} image-text-{img-text-num} imgmod{settings.imagemod} padding{settings.padding}">
+		<div class="image-text-image col-12 col-md-{imagecol}">
+			<f:render section="image" arguments="{_all}"/>
+		</div>
+		<div class="image-text-text col">
+			<div class="d-flex  h-100" style="{bg_color}">
+				<f:render section="textbox" arguments="{_all}"/>
+			</div>
+		</div>
+	</div>
+</f:section>

@@ -1,0 +1,70 @@
+<f:spaceless>
+<div class="joOuterDiv layout-{data.layout} d-flex flex-column {extraClass}{f:if(condition: '{detail}', then: ' detail-view', else: '')}{f:if(condition: ' {data.pageclass}', then: '{data.pageclass}', else: '')}">
+	<a id="skippy" class="skippy visually-hidden-focusable overflow-hidden sr-only sr-only-focusable" href="#content">
+  		<div class="container">
+    		<span class="skiplink-text">Zum Hauptinhalt</span>
+  		</div>
+    </a>
+
+	<f:render partial="PrintHint" arguments="{_all}" />
+
+	<f:if condition="!{disableHeader}">
+		<header id="joNavi">
+			<f:if condition="{headerPartial}">
+				<f:then>
+					<f:render partial="{headerPartial}" arguments="{_all}" />
+				</f:then>
+				<f:else>
+					<f:render partial="Header/T_39/Header" arguments="{_all}" />
+				</f:else>
+			</f:if>
+		</header>
+	</f:if>
+
+	<f:if condition="!{disableContent}">
+		<f:if condition="{beforeMain}">
+			<f:format.html>{beforeMain}</f:format.html>
+		</f:if>
+		<main id="maincontent">
+			<f:if condition="{beforeInMain}">
+				<f:format.html>{beforeInMain}</f:format.html>
+			</f:if>
+			<f:if condition="{banner}">
+				<div class="joBannerWrapper">
+					<f:format.html parseFuncTSPath="">{banner}</f:format.html>
+				</div>
+			</f:if>
+			<div class="joMainWrapper">
+				<!--TYPO3SEARCH_begin--><f:format.html parseFuncTSPath="">{mainContent}</f:format.html><!--TYPO3SEARCH_end-->
+			</div>
+
+			<div id="mobile-hidden" class="d-none d-sm-none d-md-block"></div>
+			
+			<f:render partial="Cookie" arguments="{_all}" />
+
+			<div id="joAjaxloader" style="display: none;">
+			    <div class="joLoader"></div>
+			</div>
+
+			<a href="/" class="back-to-top">
+				<div class="vp">
+					<div class="joSprite" title="Scroll to Top"></div>
+				</div>
+			</a>
+			<f:if condition="{afterInMain}">
+				<f:format.html>{afterInMain}</f:format.html>
+			</f:if>
+		</main>
+		<f:if condition="{afterMain}">
+			<f:format.html>{afterMain}</f:format.html>
+		</f:if>
+	</f:if>
+	<f:if condition="!{disableFooter}">
+		<footer class="mt-auto">
+			<div class="footer-wrap py-5">
+				<f:cObject typoscriptObjectPath="lib.footerContent" />
+			</div>
+		</footer>
+	</f:if>
+</div>
+</f:spaceless>

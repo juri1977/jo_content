@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+	<meta>		
+		<langDisable>1</langDisable>
+	</meta>	
+	<sheets>
+		<jonews>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Newsfrontend JO</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.modenews>
+                        <TCEforms>
+                            <label>Ansicht auswählen</label>
+                            <onChange>reload</onChange>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <size>1</size>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">Bild links/Text rechts alternierend</numIndex>
+                                        <numIndex index="1">modenews1</numIndex>
+                                    </numIndex>
+									<numIndex index="1">
+										<numIndex index="0">News nebeneinander</numIndex>
+										<numIndex index="1">modenews2</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">Listview ohne Detailview</numIndex>
+										<numIndex index="1">modenews3</numIndex>
+									</numIndex>
+                                </items>
+                                <minitems>1</minitems>
+                            </config>
+                        </TCEforms>
+                    </settings.modenews>
+					<settings.listgrid>
+                        <TCEforms>
+                            <label>Gridlayout Listenübersicht</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <size>1</size>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">Bild 3 /Text 9</numIndex>
+                                        <numIndex index="1">grid_3_9</numIndex>
+                                    </numIndex>
+									<numIndex index="1">
+										<numIndex index="0">Bild 6 /Text 6</numIndex>
+                                        <numIndex index="1">grid_6_6</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">Bild 7 /Text 5</numIndex>
+                                        <numIndex index="1">grid_7_5</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">Bild 8 /Text 4</numIndex>
+                                        <numIndex index="1">grid_8_4</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">Bild 5 /Text 7</numIndex>
+                                        <numIndex index="1">grid_5_7</numIndex>
+									</numIndex>
+									<numIndex index="5">
+										<numIndex index="0">Bild 4 /Text 8</numIndex>
+                                        <numIndex index="1">grid_4_8</numIndex>
+									</numIndex>
+									<numIndex index="6">
+										<numIndex index="0">Bild / Text übereinander</numIndex>
+                                        <numIndex index="1">grid_12_12</numIndex>
+									</numIndex>
+									<numIndex index="7">
+										<numIndex index="0">Text / Bild übereinander</numIndex>
+                                        <numIndex index="1">grid_12_12</numIndex>
+									</numIndex>
+                                </items>
+                                <minitems>1</minitems>
+                            </config>
+                        </TCEforms>
+                    </settings.listgrid>
+					<settings.limit>
+						<TCEforms>
+							<label>Anzahl der News, die auf einer Seite dargestellt werden sollen</label>
+							<config>
+								<type>input</type>
+								<size>100</size>
+							</config>
+						</TCEforms>
+					</settings.limit>
+					<settings.anzahl>
+						<TCEforms>
+							<label>Anzahl der News, die generell ausgelesen werden sollen</label>
+							<config>
+								<type>input</type>
+								<size>100</size>
+							</config>
+						</TCEforms>
+					</settings.anzahl>
+					<settings.images>
+		                <TCEforms>
+		                    <label>Placeholderbild auswählen</label>
+		                    <config>
+		                        <type>inline</type>
+		                        <maxitems>1</maxitems>
+		                        <foreign_table>sys_file_reference</foreign_table>
+		                        <foreign_table_field>tablenames</foreign_table_field>
+		                        <foreign_label>uid_local</foreign_label>
+		                        <foreign_sortby>sorting_foreign</foreign_sortby>
+		                        <foreign_selector>uid_local</foreign_selector>
+		                        <foreign_types type="array">
+		                            <numIndex index="2" type="array">
+		                                <showitem>--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showitem>
+		                            </numIndex>
+		                        </foreign_types>
+		                        <foreign_selector_fieldTcaOverride type="array">
+		                            <config>
+		                                <appearance>
+		                                    <elementBrowserType>file</elementBrowserType>
+		                                    <elementBrowserAllowed>jpg,png</elementBrowserAllowed>
+		                                </appearance>
+		                            </config>
+		                        </foreign_selector_fieldTcaOverride>
+		                        <foreign_match_fields type="array">
+		                            <fieldname>image</fieldname>
+		                        </foreign_match_fields>
+		                        <appearance type="array">
+		                            <newRecordLinkAddTitle>1</newRecordLinkAddTitle>
+		                            <headerThumbnail>
+		                                <field>uid_local</field>
+		                                <height>64</height>
+		                                <width>64</width>
+		                            </headerThumbnail>
+		                        </appearance>
+		                    </config>
+		                </TCEforms>
+		            </settings.images>
+					<settings.bildweiteliste>
+						<TCEforms>
+							<label>Bildweite Liste</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+							</config>
+						</TCEforms>
+					</settings.bildweiteliste>
+					<settings.bildhoeheliste>
+						<TCEforms>
+							<label>Bildhöhe Liste</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+							</config>
+						</TCEforms>
+					</settings.bildhoeheliste>
+					<settings.bildweitedetail>
+						<TCEforms>
+							<label>Bildweite Detail</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+							</config>
+						</TCEforms>
+					</settings.bildweitedetail>
+					<settings.bildhoehedetail>
+						<TCEforms>
+							<label>Bildhöhe Detail</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+							</config>
+						</TCEforms>
+					</settings.bildhoehedetail>
+					<settings.hidedate>                   
+						<TCEforms>
+							<label>Datum Ausgabe verbergen</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.hidedate>
+					<settings.startingpoint>
+					  <TCEforms>
+						<exclude>1</exclude>
+						<label>Datensatzsammlung</label>
+						<config>
+						  <type>group</type>
+						<internal_type>db</internal_type>
+							<allowed>pages</allowed>
+						<size>3</size>
+						<maxitems>50</maxitems>
+						<minitems>0</minitems>
+						<show_thumbs>1</show_thumbs>
+						<wizards>
+						  <suggest>
+							<type>suggest</type>
+						  </suggest>
+						</wizards>
+						</config>
+					  </TCEforms>
+					</settings.startingpoint>
+					<settings.recursive>
+						<TCEforms>
+							<label>LLL:EXT:lang/locallang_general.xlf:LGL.recursive</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.recursive.I.inherit</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.0</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.1</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.2</numIndex>
+										<numIndex index="1">2</numIndex>
+									</numIndex>
+									<numIndex index="5" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.3</numIndex>
+										<numIndex index="1">3</numIndex>
+									</numIndex>
+									<numIndex index="6" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.4</numIndex>
+										<numIndex index="1">4</numIndex>
+									</numIndex>
+									<numIndex index="7" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.5</numIndex>
+										<numIndex index="1">250</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.recursive>
+				</el>
+			</ROOT>
+		</jonews>
+		<additional>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Optional</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.orderBy>
+						<TCEforms>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderBy</label>
+							<config>
+								<type>select</type>
+								<itemsProcFunc>GeorgRinger\News\Hooks\ItemsProcFunc->user_orderBy</itemsProcFunc>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderBy.tstamp</numIndex>
+										<numIndex index="1">tstamp</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderBy.datetime</numIndex>
+										<numIndex index="1">datetime</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderBy.crdate</numIndex>
+										<numIndex index="1">crdate</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderBy.title</numIndex>
+										<numIndex index="1">title</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.orderBy>
+					<settings.orderDirection>
+						<TCEforms>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderDirection</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderDirection.asc</numIndex>
+										<numIndex index="1">asc</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderDirection.desc</numIndex>
+										<numIndex index="1">desc</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.orderDirection>
+					<settings.dateField>
+						<TCEforms>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.dateField</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.dateField.datetime</numIndex>
+										<numIndex index="1">datetime</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.dateField.archive</numIndex>
+										<numIndex index="1">archive</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.dateField>
+					<settings.detailpage>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>Detail Page</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+								<wizards>
+									<suggest>
+										<type>suggest</type>
+									</suggest>
+								</wizards>
+							</config>
+						</TCEforms>
+					</settings.detailpage>
+					<settings.linktofulllist>
+						<TCEforms>
+				        <label>
+				            Link zur vollständigen Liste
+				        </label>
+				        <config>
+				            <type>input</type>
+				            <renderType>inputLink</renderType>
+				        </config>
+				    </TCEforms>
+					</settings.linktofulllist>
+
+					<!-- Category Mode -->
+					<settings.categoryConjunction>
+						<TCEforms>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction.all</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction.or</numIndex>
+										<numIndex index="1">or</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction.and</numIndex>
+										<numIndex index="1">and</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction.notor</numIndex>
+										<numIndex index="1">notor</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction.notand</numIndex>
+										<numIndex index="1">notand</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.categoryConjunction>
+
+					<!-- Category -->
+					<settings.categories>
+						<TCEforms>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categories</label>
+							<config>
+								<type>select</type>
+								<renderMode>tree</renderMode>
+								<renderType>selectTree</renderType>
+								<treeConfig>
+									<dataProvider>GeorgRinger\News\TreeProvider\DatabaseTreeDataProvider</dataProvider>
+									<parentField>parent</parentField>
+									<appearance>
+										<maxLevels>99</maxLevels>
+										<expandAll>TRUE</expandAll>
+										<showHeader>TRUE</showHeader>
+										<width>600</width>
+									</appearance>
+								</treeConfig>
+								<foreign_table>sys_category</foreign_table>
+								<foreign_table_where>AND (sys_category.sys_language_uid = 0 OR sys_category.l10n_parent = 0) ORDER BY sys_category.sorting</foreign_table_where>
+								<size>15</size>
+								<minitems>0</minitems>
+								<maxitems>99</maxitems>
+							</config>
+						</TCEforms>
+					</settings.categories>
+					<settings.hideMoreButton>                   
+						<TCEforms>
+							<label>Verstecke den More Button</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.hideMoreButton>
+				</el>
+			</ROOT>
+		</additional>
+	</sheets>
+</T3DataStructure>
+

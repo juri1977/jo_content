@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+	<ROOT>
+	    <TCEforms>
+	        <sheetTitle>Vorher Nachher Slide</sheetTitle>
+	    </TCEforms>
+	    <type>array</type>
+	    <el>
+			<settings.voher>
+		        <TCEforms>
+		            <label>Vorher Bild</label>
+		            <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>vorher_image</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>jpg,jpeg,png,svg</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>1</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+		        </TCEforms>
+		    </settings.voher>
+		    <settings.nachher>
+		        <TCEforms>
+		            <label>Nachher Bild</label>
+		            <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>nachher_image</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>jpg,jpeg,png,svg</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>1</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+		        </TCEforms>
+		    </settings.nachher>
+		    <settings.width>
+	            <TCEforms>
+	                <label>Bilder Weite</label>
+	                <config>
+	                    <type>input</type>
+	                </config>
+	            </TCEforms>
+	        </settings.width>
+	        <settings.height>
+	            <TCEforms>
+	                <label>Bilder Höhe</label>
+	                <config>
+	                    <type>input</type>
+	                </config>
+	            </TCEforms>
+	        </settings.height>
+	    </el>
+	</ROOT>
+</T3DataStructure>

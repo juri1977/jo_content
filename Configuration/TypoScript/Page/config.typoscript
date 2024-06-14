@@ -1,0 +1,44 @@
+config  {
+	doctype=html5
+	xmlprologue=none
+	htmlTag_setParams=none
+	xhtml_cleaning=0
+
+    absRefPrefix = /
+
+    #spamProtectEmailAddresses = ascii
+    #spamProtectEmailAddresses_atSubst = (at)
+
+    removeDefaultJS = external
+    inlineStyle2TempFile = 1
+    noScaleUp = 1
+    meaningfulTempFilePrefix = 50
+
+    compressCss = 0
+    concatenateCss = 0
+    compressJs = 0
+    concatenateJs = 0
+    no_cache = 1
+    disablePrefixComment = 1
+    moveJsFromHeaderToFooter = 1
+
+    prefixLocalAnchors = all
+    simulateStaticDocuments = 0
+
+    tx_realurl_enable = 0
+	disableImgBorderAttr = 1
+	language = de
+    locale_all = de_DE.UTF8
+    htmlTag_setParams = lang="de"
+    htmlTag_langKey = de_DE
+	sys_language_uid = 0
+	/*
+	 * L - Sprache
+	 * v - View der Listenübersicht - Museo
+	 * m - Merkliste - Museo
+	 */
+    linkVars = L,v,cs,sv
+
+    # zeigt komplette Fehlermeldung an nur im dev benutzen
+    contentObjectExceptionHandler = 0
+}

@@ -1,0 +1,10 @@
+page {
+	includeCSS {
+		file3 >
+		font  = {$path.full.css}Fonts/RobotoCondensed.css
+		base = {$path.full.css}T_38/t_38_base.css
+		portal_base = {$path.full.css}T_38/t_38_portal.css
+	}
+	includeJS.base = {$path.full.javascript}T_38/t_38_base.js
+	10.file = {$path.full.templates}T_38/T_38.html
+}

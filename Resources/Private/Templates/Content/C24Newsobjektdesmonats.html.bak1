@@ -1,0 +1,140 @@
+{namespace joPluginbasehelper=JO\JoSolrsystem\ViewHelpers}
+<div class="joSlidePane joNewsPlugin joNewsObjectofTheMonth">
+	<div class="row no-gutters">
+		<f:if condition="{newsByCategories.0.ar}=='landscape'">
+			<f:then>
+				<div class="joNewsbox_top landscape mainpic items col-3">
+					<f:render section="first_text" arguments="{_all}" />
+				</div>
+				<div class="joNewsbox_top landscape mainpic items col-6">
+					<f:render section="main_object" arguments="{_all}" />
+				</div>
+				<div class="joNewsbox_top landscape items first col-3">
+					<div class="image_grid">
+						<f:render section="second_row" arguments="{_all}" />
+					</div>
+				</div>
+			</f:then>
+			<f:else>
+				<div class="joNewsbox_top landscape mainpic items col-3">
+					<f:render section="first_text" arguments="{_all}" />
+				</div>
+				<div class="joNewsbox_top portrait items col-3">
+					<f:render section="main_object" arguments="{_all}" />
+				</div>
+				<div class="joNewsbox_top portrait items first col-6">
+					<div class="image_grid">
+						<f:render section="second_row_long" arguments="{_all}" />
+					</div>
+				</div>
+			</f:else>
+		</f:if>
+	</div>
+</div>
+<f:section name="first_text">
+	<div class="joNewsbox_top_title">
+		<h3><f:translate key="c24.forschen" /></h3>
+		<h3><f:translate key="c24.lernen" /></h3>
+		<h3><f:translate key="c24.inspirieren" /></h3>
+	</div>
+</f:section>
+<f:section name="second_row_long">
+	<div class="image_grid width50"><f:render section="second_row" arguments="{_all}" /></div>
+	<div class="image_grid width50"><f:render section="third_row" arguments="{_all}" /></div>
+</f:section>
+<f:section name="second_row">
+	<div class="row_wrap">
+		<f:if condition="{newsByCategories.1.value.falMedia.0}">
+			<div class="image_big">
+				<f:link.action class="img_link" pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{newsByCategories.1.value.uid}',joRefererId:'{settings.linktofulllist}'}">
+					<div class="joImageElement" style="background-image:url('<f:uri.image image="{newsByCategories.1.value.falMedia.0}" width="500c" height="500c" />');">&nbsp;</div>
+					<div class="joImageText_container">
+						<div class="joImageText">
+							<div class="joImageText-date"><f:format.date format="%B %Y">@{newsByCategories.1.value.datetime}</f:format.date></div>
+							{newsByCategories.1.value.title}
+						</div>
+					</div>
+				</f:link.action>
+			</div>
+		</f:if>
+	</div>
+	<div class="row_wrap">
+		<f:if condition="{newsByCategories.2.value.falMedia.0}">
+			<div class="image_small">
+				<f:link.action class="img_link" pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{newsByCategories.2.value.uid}',joRefererId:'{settings.linktofulllist}'}">
+					<div class="joImageElement" style="background-image:url('<f:uri.image image="{newsByCategories.2.value.falMedia.0}" width="500c" height="500c" />');">&nbsp;</div>
+					<div class="joImageText_container">
+						<div class="joImageText"><div class="joImageText-date"><f:format.date format="%B %Y">@{newsByCategories.2.value.datetime}</f:format.date></div>{newsByCategories.2.value.title}</div>
+					</div>
+				</f:link.action>
+			</div>
+		</f:if>
+		<div class="image_small to_full_list">
+			<f:link.page pageUid="{settings.linktofulllist}" title="Zur vollständigen Übersicht">
+				<f:translate key="c24.alleobjekte" />
+			</f:link.page>
+		</div>
+	</div>
+</f:section>
+<f:section name="third_row">
+	<div class="row_wrap">
+		<f:if condition="{newsByCategories.3.value.falMedia.0}">
+			<div class="image_big">
+				<f:link.action class="img_link" pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{newsByCategories.3.value.uid}',joRefererId:'{settings.linktofulllist}'}">
+					<div class="joImageElement" style="background-image:url('<f:uri.image image="{newsByCategories.3.value.falMedia.0}" width="500c" height="500c" />');">&nbsp;</div>
+					<div class="joImageText_container">
+						<div class="joImageText"><div class="joImageText-date"><f:format.date format="%B %Y">@{newsByCategories.3.value.datetime}</f:format.date></div>{newsByCategories.3.value.title}</div>
+					</div>
+				</f:link.action>
+			</div>
+		</f:if>
+		<f:if condition="{newsByCategories.4.value.falMedia.0}">
+			<div class="image_small">
+				<f:link.action class="img_link" pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{newsByCategories.4.value.uid}',joRefererId:'{settings.linktofulllist}'}">
+					<div class="joImageElement" style="background-image:url('<f:uri.image image="{newsByCategories.4.value.falMedia.0}" width="500c" height="500c" />');">&nbsp;</div>
+					<div class="joImageText_container">
+						<div class="joImageText"><div class="joImageText-date"><f:format.date format="%B %Y">@{newsByCategories.4.value.datetime}</f:format.date></div>{newsByCategories.4.value.title}</div>
+					</div>
+				</f:link.action>
+			</div>
+		</f:if>
+	</div>
+	<div class="row_wrap">
+		<f:if condition="{newsByCategories.5.value.falMedia.0}">
+			<div class="image_small">
+				<f:link.action class="img_link" pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{newsByCategories.5.value.uid}',joRefererId:'{settings.linktofulllist}'}">
+					<div class="joImageElement" style="background-image:url('<f:uri.image image="{newsByCategories.5.value.falMedia.0}" width="500c" height="500c" />');">&nbsp;</div>
+					<div class="joImageText_container">
+						<div class="joImageText"><div class="joImageText-date"><f:format.date format="%B %Y">@{newsByCategories.5.value.datetime}</f:format.date></div>{newsByCategories.5.value.title}</div>
+					</div>
+				</f:link.action>
+			</div>
+		</f:if>
+	</div>
+</f:section>
+ <f:section name="main_object">
+	<f:if condition="{newsByCategories.0.value.falMedia.0}">
+		<f:if condition="{settings.linktofulllist}">
+			<f:then>
+				<f:link.action class="img_link" pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{newsByCategories.0.value.uid}',joRefererId:'{settings.linktofulllist}'}">
+					<div class="joImageElement" style="background-image:url('<f:uri.image image="{newsByCategories.0.value.falMedia.0}" width="800" />');">&nbsp;</div>
+					<div class="joImageText_container">
+						<div class="joImageText">
+							<div class="joImageText-date"><f:translate key="c24.objektdesmonats" /> <f:format.date format="%B %Y">@{newsByCategories.0.value.datetime}</f:format.date></div>
+							<div class="joImageText-title">{newsByCategories.0.value.title}</div>
+							<div class="joImageText-text">
+								<f:format.crop maxCharacters="150" respectWordBoundaries="false" respectHtml="true">
+									<f:format.stripTags>{newsByCategories.0.value.bodytext}</f:format.stripTags>
+								</f:format.crop>
+							</div>
+						</div>
+						<div class="joImageElement-icon"></div>
+					</div>
+				</f:link.action>
+			</f:then>
+			<f:else>
+				<div class="joImageElement" style="background-image:url('<f:uri.image image="{newsByCategories.1.value.falMedia.0}" width="800" />');">&nbsp;</div>
+			</f:else>
+		</f:if>
+	</f:if>
+</f:section>

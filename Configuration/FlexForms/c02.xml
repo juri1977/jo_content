@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <ROOT>
+        <type>array</type>
+        <el>
+            <settings.datafile>
+             <TCEforms>
+                    <label>Datei</label>  
+                    <config>
+                        <type>inline</type>
+                        <maxitems>1</maxitems>
+                        <foreign_table>sys_file_reference</foreign_table>
+                        
+                        <foreign_table_field>tablenames</foreign_table_field>
+                        <foreign_label>uid_local</foreign_label>
+                        <foreign_sortby>sorting_foreign</foreign_sortby>
+                        <foreign_selector>uid_local</foreign_selector>
+                        <foreign_selector_fieldTcaOverride type="array">
+                            <config>
+                                <appearance>
+                                    <elementBrowserType>file</elementBrowserType>
+                                    <elementBrowserAllowed>json,csv</elementBrowserAllowed>
+                                </appearance>
+                            </config>
+                        </foreign_selector_fieldTcaOverride>
+                        <foreign_match_fields type="array">
+                            <fieldname>file</fieldname>
+                        </foreign_match_fields>
+                    </config>
+                </TCEforms>
+            </settings.datafile>
+
+
+            <settings.pointcolor>
+                <TCEforms>
+                    <label>Punkt Farbe</label>
+                    <config>
+                        <type>input</type>
+                        <size>7</size>
+                        <max>7</max>
+                        <min>7</min>
+                        <eval>trim</eval>
+                    </config>
+                </TCEforms>
+            </settings.pointcolor>
+
+
+            <settings.clustercolor>
+                <TCEforms>
+                    <label>Cluster Farbe</label>
+                    <config>
+                        <type>input</type>
+                        <size>7</size>
+                        <max>7</max>
+                        <min>7</min>
+                        <eval>trim</eval>
+                    </config>
+                </TCEforms>
+            </settings.clustercolor>
+
+            <settings.linecolor>
+                <TCEforms>
+                    <label>Linien Farbe</label>
+                    <config>
+                        <type>input</type>
+                        <size>7</size>
+                        <max>7</max>
+                        <min>7</min>
+                        <eval>trim</eval>
+                    </config>
+                </TCEforms>
+            </settings.linecolor>
+
+            <settings.linewidth>
+                <TCEforms>
+                    <label>Linien Breite</label>
+                    <config>
+                        <type>input</type>
+                        <size>2</size>
+                        <max>2</max>
+                        <min>1</min>
+                        <eval>trim</eval>
+                    </config>
+                </TCEforms>
+            </settings.linewidth>
+
+
+        </el>
+    </ROOT>
+</T3DataStructure>

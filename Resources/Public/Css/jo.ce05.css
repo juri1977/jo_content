@@ -1,0 +1,29 @@
+.ow05{
+    position:relative;
+    width: 100%;
+    margin:0 auto;
+    padding: 30px 0;
+}
+.ow05 img{
+    width:100%;
+    height:auto;
+}
+.ow05 .w05hl{
+    position:absolute;
+    background-color:grey;
+    left:0;
+    bottom:20%;
+    font-size:30px;
+    padding:5px 30px;
+}
+.ow05 .bzvl{
+    padding-top:30px;
+    text-align: center;
+}
+.ow05 .bzvl a {
+    background-color: #726c66;
+    padding: 10px 15px;
+    display: inline-block;
+    margin-bottom: 15px;
+    color: white;
+}

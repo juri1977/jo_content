@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+	<ROOT>
+	    <TCEforms>
+	        <sheetTitle>RUHR Start Gallery</sheetTitle>
+	    </TCEforms>
+	    <type>array</type>
+	    <el>
+			<settings.bild1>
+		        <TCEforms>
+		            <label>Bild 1</label>
+		            <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>bild1</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>jpg,jpeg,png,svg</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+							<types type="array">
+								<numIndex index="2">
+									<showitem>--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showitem>
+								</numIndex>
+							</types>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>1</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+		        </TCEforms>
+		    </settings.bild1>
+		    <settings.bild2>
+		        <TCEforms>
+		            <label>Bild 2</label>
+		            <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>bild2</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>jpg,jpeg,png,svg</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+							<types type="array">
+								<numIndex index="2">
+									<showitem>--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showitem>
+								</numIndex>
+							</types>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>1</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+		        </TCEforms>
+		    </settings.bild2>
+		    <settings.bild3>
+		        <TCEforms>
+		            <label>Bild 3</label>
+		            <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>bild3</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>jpg,jpeg,png,svg</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+							<types type="array">
+								<numIndex index="2">
+									<showitem>--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showitem>
+								</numIndex>
+							</types>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>1</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+		        </TCEforms>
+		    </settings.bild3>
+		    <settings.bild4>
+		        <TCEforms>
+		            <label>Bild 4</label>
+		            <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>bild4</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>jpg,jpeg,png,svg</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+							<types type="array">
+								<numIndex index="2">
+									<showitem>--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showitem>
+								</numIndex>
+							</types>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>1</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+		        </TCEforms>
+		    </settings.bild4>
+		    <settings.bild5>
+		        <TCEforms>
+		            <label>Bild 5</label>
+		            <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>bild5</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>jpg,jpeg,png,svg</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+							<types type="array">
+								<numIndex index="2">
+									<showitem>--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showitem>
+								</numIndex>
+							</types>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>1</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+		        </TCEforms>
+		    </settings.bild5>
+		    <settings.bild6>
+		        <TCEforms>
+		            <label>Bild 6</label>
+		            <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>bild6</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>jpg,jpeg,png,svg</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+							<types type="array">
+								<numIndex index="2">
+									<showitem>--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showitem>
+								</numIndex>
+							</types>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>1</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+		        </TCEforms>
+		    </settings.bild6>
+		    <settings.bild7>
+		        <TCEforms>
+		            <label>Bild 7 - (mittlerer Kasten)</label>
+		            <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>bild7</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>jpg,jpeg,png,svg</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+							<types type="array">
+								<numIndex index="2">
+									<showitem>--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showitem>
+								</numIndex>
+							</types>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>1</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+		        </TCEforms>
+		    </settings.bild7>
+		    <settings.farbe1>
+	            <TCEforms>
+	                <label>Farbe 1</label>
+	                <config>
+	                    <type>input</type>
+	                    <renderType>colorpicker</renderType>
+	                </config>
+	            </TCEforms>
+	        </settings.farbe1>
+	        <settings.farbe2>
+	            <TCEforms>
+	                <label>Farbe 2</label>
+	                <config>
+	                    <type>input</type>
+	                    <renderType>colorpicker</renderType>
+	                </config>
+	            </TCEforms>
+	        </settings.farbe2>
+	        <settings.farbe3>
+	            <TCEforms>
+	                <label>Farbe 3</label>
+	                <config>
+	                    <type>input</type>
+	                    <renderType>colorpicker</renderType>
+	                </config>
+	            </TCEforms>
+	        </settings.farbe3>
+	        <settings.farbe4>
+	            <TCEforms>
+	                <label>Farbe 4</label>
+	                <config>
+	                    <type>input</type>
+	                    <renderType>colorpicker</renderType>
+	                </config>
+	            </TCEforms>
+	        </settings.farbe4>
+	        <settings.farbe5>
+	            <TCEforms>
+	                <label>Farbe 5</label>
+	                <config>
+	                    <type>input</type>
+	                    <renderType>colorpicker</renderType>
+	                </config>
+	            </TCEforms>
+	        </settings.farbe5>
+	        <settings.width>
+	            <TCEforms>
+	                <label>Bilder Weite</label>
+	                <config>
+	                    <type>input</type>
+	                </config>
+	            </TCEforms>
+	        </settings.width>
+	        <settings.height>
+	            <TCEforms>
+	                <label>Bilder Höhe</label>
+	                <config>
+	                    <type>input</type>
+	                </config>
+	            </TCEforms>
+	        </settings.height>
+	        <settings.bodytext>
+                <TCEforms>
+                    <label>Überschrift in der Mitte (optional)</label>
+                    <config>
+                        <type>input</type>
+                    </config>
+                </TCEforms>
+            </settings.bodytext>
+            <settings.vorschaubild>
+		        <TCEforms>
+		            <label>Bild 6</label>
+		            <config>
+						<type>inline</type>
+						<foreign_table>sys_file_reference</foreign_table>
+						<foreign_field>uid_foreign</foreign_field>
+						<foreign_sortby>sorting_foreign</foreign_sortby>
+						<foreign_table_field>tablenames</foreign_table_field>
+						<foreign_match_fields>
+							<fieldname>vorschau</fieldname>
+						</foreign_match_fields>
+						<foreign_label>uid_local</foreign_label>
+						<foreign_selector>uid_local</foreign_selector>
+						<overrideChildTca>
+							<columns>
+								<uid_local>
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>svg</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</uid_local>
+							</columns>
+							<types type="array">
+								<numIndex index="2">
+									<showitem>--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showitem>
+								</numIndex>
+							</types>
+						</overrideChildTca>
+
+						<minitems>0</minitems>
+						<maxitems>1</maxitems>
+
+						<appearance>
+							<useSortable>1</useSortable>
+							<headerThumbnail>
+								<field>uid_local</field>
+								<width>45c</width>
+								<height>45</height>
+							</headerThumbnail>
+							<createNewRelationLinkTitle>LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference</createNewRelationLinkTitle>
+						</appearance>
+
+						<behaviour>
+							<allowLanguageSynchronization>1</allowLanguageSynchronization>
+						</behaviour>
+					</config>
+		        </TCEforms>
+		    </settings.vorschaubild>
+	    </el>
+	</ROOT>
+</T3DataStructure>

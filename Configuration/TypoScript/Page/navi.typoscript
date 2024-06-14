@@ -1,0 +1,280 @@
+/**
+ *	Sprachen
+ */
+lib.sprachen = COA
+lib.sprachen {
+   10 = HMENU
+   10 {
+      special = language
+      special.value = 0,1
+	  addQueryString = 1
+
+      1 = TMENU
+      1 {
+         wrap = |
+         NO = 1
+         NO {
+			doNotLinkIt = 1
+            stdWrap.cObject = TEXT
+            stdWrap.cObject {
+              value = De || En
+              insertData = 1
+            }
+			wrapItemAndSub = <li>|</li>
+        }
+         ACT < .NO
+         ACT = 1
+         ACT.wrapItemAndSub = <li class="active">|</li>
+      }
+    }
+	wrap = <ul class="lang">|</ul>
+}
+
+/**
+ *	Zweite Navigationsebene
+ */
+lib.direct = COA
+lib.direct {
+	10 = HMENU
+	10{
+		entryLevel = 1
+		doNotLinkIt = 1
+		1 = TMENU
+		1 {
+			NO {
+				doNotLinkIt = 1
+				before.cObject = COA
+				before.cObject {
+					10 = FILES
+					10 {
+						references {
+							table = pages
+							fieldName = media
+						}
+						renderObj = IMAGE
+						renderObj {
+							file {
+								import.data = file:current:publicUrl
+							}
+							altText.field = title
+							titleText.field = title
+						}
+						stdWrap.wrap = <div class="image">|</div>
+					}
+					20 = TEXT
+					20 {
+						field = title
+						wrap = <div class="title">|</div>
+					}
+					stdWrap.typolink.parameter.field = uid
+					if.isTrue.field = media
+				}
+				stdWrap.if.isFalse.field = media
+				wrapItemAndSub = <li>|</li>
+			}
+			ACT < .NO
+			ACT = 1
+			ACT.ATagParams = class="active"
+		}
+	}
+	stdWrap.required = 1
+	stdWrap.wrap = <div class="direct_wrap"><ul class="direct clearfix">|</ul></div>
+}
+/**
+ *	Ausgabe der bei den Menüelementen hinterlegten Bildern
+ */
+lib.renderMediaRessource = COA
+lib.renderMediaRessource {
+	before.cObject = COA
+	before.cObject {
+		5 = FILES
+		5 {
+			references {
+				table = pages
+				fieldName = media
+			}
+			renderObj = IMAGE
+			renderObj {
+				file{
+					import.data = file:current:publicUrl
+				}
+				wrap = <div class="icons_container">|</div>
+				params = class="icons"
+				altText.field = title
+				titleText.field = title
+			}
+		}
+		10 = TEXT
+		10 {
+			field = title
+			wrap = <div class="icons_text">|</div>
+		}
+		stdWrap.typolink.parameter.field = uid
+		if.isTrue.field = media
+	}
+	stdWrap.if.isFalse.field = media
+}
+
+/**
+ *	Hauptmenü rendern
+ */
+lib.mainMenu = HMENU
+lib.mainMenu {
+	1 = TMENU
+	1 {
+		wrap = <ul class="nav navbar-nav navbar-right menue hidden-xs">|</ul>
+		expAll = 1
+		NO {
+			wrapItemAndSub = <li class="nav-item">|</li>
+			ATagTitle.field = subtitle//title
+
+			allStdWrap.append = COA
+		    allStdWrap.append {
+		        20 = FILES
+		        20 {
+		          references {
+		            table = pages
+		            uid.data = uid
+		            fieldName = media
+		          }
+		          renderObj = IMAGE
+		          renderObj.file.import.data = file:current:publicUrl
+		          renderObj.stdWrap.typolink.parameter.data = file:current:link
+		          renderObj.stdWrap.typolink.ATagParams = class="logo-mobile-right"
+		        }
+		    }
+		}
+		NO.wrapItemAndSub.override.cObject = COA
+        NO.wrapItemAndSub.override.cObject {
+            if {
+                value = 4
+                equals.field = doktype
+                isTrue = 1
+                isTrue.if {
+                    value.data = page:uid
+                    equals.field = shortcut
+                }
+            }
+            10 = TEXT
+            10.value = <li class="nav-item active">|</li>
+        }
+		ACT < .NO
+		ACT = 1
+		ACT {
+			wrapItemAndSub = <li class="nav-item active">|</li>
+		}
+		IFSUB < .NO
+		IFSUB = 1
+		IFSUB {
+			wrapItemAndSub = <li class="nav-item with-sub">|</li>
+		}
+		ACTIFSUB < .ACT
+		ACTIFSUB = 1
+		ACTIFSUB {
+			wrapItemAndSub = <li class="nav-item with-sub active">|</li>
+		}
+		/*
+		IFSUB < .NO
+		IFSUB = 1
+		IFSUB {
+			wrapItemAndSub = <li class="dropdown joFirst">|</li> |*| <li class="dropdown">|</li> |*| <li class="dropdown joLast">|</li>
+			ATagParams = class="dropdown-toggle disabled" data-toggle="dropdown" aria-expanded="true"
+		}
+		ACTIFSUB < .ACT
+		ACTIFSUB = 1
+		ACTIFSUB {
+			wrapItemAndSub = <li class="dropdown joFirst active">|</li> |*| <li class="dropdown active">|</li> |*| <li class="dropdown joLast active">|</li>
+			ATagParams = class="dropdown-toggle disabled" data-toggle="dropdown" aria-expanded="true"
+		}
+		*/
+	}
+	2 < .1
+	2 {
+		wrap = <div class="sub_btn"></div><ul class="sub-menu tgl_menu">|</ul>
+	}
+	3 < .2
+    3 {
+        wrap = <div class="sub_btn"></div><div class="dropdown-menu-right tgl_menu"><ul class="dropdown-menu-2">|</ul></div>
+    }
+	4 < .2
+    4 {
+        wrap = <div class="sub_btn"></div><div class="dropdown-menu-right tgl_menu"><ul class="dropdown-menu-3">|</ul></div>
+    }
+	5 < .2
+}
+
+// Nur die Erste Menuebene
+lib.mainMenu_1 < lib.mainMenu
+lib.mainMenu_1.1.IFSUB >
+lib.mainMenu_1.1.ACTIFSUB >
+lib.mainMenu_1.2 >
+lib.mainMenu_1.3 >
+lib.mainMenu_1.4 >
+lib.mainMenu_1.5 >
+
+// Nur die Erste Menuebene ohne Page_Ressource
+lib.mainMenu_1_nopics < lib.mainMenu_1
+lib.mainMenu_1_nopics.1.NO.allStdWrap >
+lib.mainMenu_1_nopics.1.ACT.allStdWrap >
+
+// Nur die zweite Menüebene mit entsprechenden Page-Resourcen
+lib.subMenu_1 < lib.mainMenu
+lib.subMenu_1.wrap = <div class="submenu_2">|</div>
+lib.subMenu_1.entryLevel = 1
+lib.subMenu_1.1.wrap = <ul class="nav row justify-content-center">|</ul>
+lib.subMenu_1.1.NO < lib.renderMediaRessource
+lib.subMenu_1.1.NO.doNotLinkIt = 1
+lib.subMenu_1.1.NO.wrapItemAndSub = <li class="col">|</li>
+lib.subMenu_1.1.ACT < lib.subMenu_1.1.NO
+lib.subMenu_1.1.ACT.wrapItemAndSub = <li class="col active">|</li>
+lib.subMenu_1.2 >
+lib.subMenu_1.2 >
+lib.subMenu_1.3 >
+lib.subMenu_1.4 >
+lib.subMenu_1.5 >
+
+lib.mobileNavi = COA
+lib.mobileNavi {
+	10 < lib.mainMenu
+	10.1.wrap = <ul class="nav mobile-nav mobile-main-nav hidden-md hidden-lg">|</ul>
+	10.1.NO.allStdWrap.append >
+	10.1.IFSUB.stdWrap.wrap = |<span class="mobile-nav-arrow" data-target="collapse-parent-next"></span>
+	10.1.ACTIFSUB.stdWrap.wrap = |<span class="mobile-nav-arrow" data-target="collapse-parent-next"></span>
+	10.2.wrap = <ul class="nav mobile-sub-nav collapse">|</ul>
+	20 < lib.headerheadline
+	20.wrap = <ul class="nav mobile-nav headerheadline hidden-md hidden-lg"><li>|</li></ul>
+}
+
+lib.mobileLogo = HMENU
+lib.mobileLogo {
+	special = directory
+	special.value = 16
+	1 < lib.mainMenu.1
+	1.NO.ATagParams = class="jo-nav-{field:uid} nav-logo-text"
+	1.wrap = <ul class="nav-logo hidden-md hidden-lg">|</ul>
+}
+
+lib.metanavimobile = COA
+lib.metanavimobile{
+  10 = HMENU
+  10 {
+    special = directory
+    special.value = {$jometanavi}
+    1 = TMENU
+    1 {
+      NO.wrapItemAndSub  = <li class="joMetanaviLi elem-{register:count_MENUOBJ}">|</li><li class="joMetanaviLi"></li> |*| <li class="joMetanaviLi">|</li><li class="joMetanaviLi"></li> |*| <li class="joMetanaviLi">|</li>
+      NO.wrapItemAndSub.insertData = 1
+      ACT < .NO
+      ACT = 1
+      ACT.wrapItemAndSub  = <li class="joMetanaviLi aktiv elem-{register:count_MENUOBJ}">|</li><li class="joMetanaviLi"></li> |*| <li class="joMetanaviLi aktiv">|</li><li class="joMetanaviLi"></li> |*| <li class="joMetanaviLi aktiv">|</li>
+      ACT.wrapItemAndSub.insertData = 1
+    }
+    1.noBlur = 1
+  }
+  20 < lib.lastmodified
+  20 {
+    noTrimWrap =  |<li class="joMetanaviLi"></li><li class="joMetanaviLi joMetanaviUpdate">{LLL:EXT:jo_bkr_base/Resources/Private/Language/locallang.xml:update_jobase} | </li>|
+    insertData = 1
+  }
+  wrap = <ul class="joMetanaviUl joClearfix">|</ul>
+}

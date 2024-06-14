@@ -1,0 +1,2043 @@
+/* startpage - start */
+.entrymask {
+    width: 100%;
+    height: 80vh;
+    border-bottom: 1px solid var(--default_bg);
+}
+#entrymask-carousel {
+    height: 100%;
+}
+#entrymask-carousel .carousel-inner,
+#entrymask-carousel .carousel-item {
+    height: 100%;
+}
+.entrymask .searchfield {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    width: 830px;
+    max-width: 80%;
+}
+.entrymask .searchform {
+    height: auto;
+    padding: 0;
+}
+.entrymask .search_button {
+    background-color: var(--default_bg);
+    color: #fff;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    height: 65px;
+    background-image: none;
+    margin: 0;
+    width: auto;
+    font-size: 20px;
+    padding: 5px 25px;
+    text-transform: uppercase;
+}
+.entrymask #joSearch {
+    display: flex;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 60%);
+}
+.entrymask .searchform .search_box {
+    height: 65px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 22px;
+    width: 100%;
+    padding: 0 40px 0 30px;
+    background-color: rgb(255 255 255 / 90%);
+}
+.entrymask-menu {
+    display: none;
+}
+.entrymask.withbackground {
+    background-color: #efefef;
+}
+.entrymask.withoutbackground {
+	height: auto;
+}
+.entrymask.withoutbackground .searchfield {
+    position: relative;
+    top: unset;
+    left: unset;
+    transform: unset;
+    width: 100%;
+    max-width: 100%;
+}
+.entrymask.withoutbackground .searchform-con {
+	margin: 0;
+}
+.entrymask.withoutbackground .search_box {
+	text-transform: uppercase;
+    font-size: 20px;
+}
+#entrymask-carousel .carousel-item.active img {
+    transform: scale(1) translate(-50%, -158px);
+}
+#entrymask-carousel .carousel-item.active img {
+    animation: breath 45s ease infinite;
+}
+/* Links in Objektansicht */
+.load_child_elements {
+    text-align:center;
+}
+.load_child_elements a,
+.detailEntityLink {
+    display: inline-block;
+    background-color: rgba(0,0,0,1);
+    padding: 5px 5px 5px 0;
+    border-radius: 5px;
+    position: relative;
+    line-height: 100%;
+    color: #ffffff;
+    margin: 3px 0;
+}
+.load_child_elements a,
+.detailEntityLink,
+.detailEntityLink:hover {
+    text-decoration: none;
+    position: relative;
+    color: white;
+}
+.item_wrap .detailEntityLink {
+    padding: 0;
+    margin: 0;
+}
+.item_wrap.va .detailEntityLink,
+.item_wrap.ha .detailEntityLink {
+/*
+    display: block;
+*/
+}
+/* Feedbackformular */
+.feedback_wrap a{
+    color: #e51008;
+}
+.feedback_wrap .upperFeedback{
+    padding: 0 0 20px;
+}
+.feedback_wrap form .form-control,
+.feedback-submit {
+    font-size: initial;
+}
+
+body .load_child_elements a, 
+body a.detailEntityLink,
+body a.detaillink {
+  display: inline-block;
+  background-color: transparent;
+  color: #e51008;
+  max-width: calc(100% - 30px);
+  vertical-align: middle;
+  line-height: 140%;
+  text-decoration: none;
+}
+body a.detaillink:hover,
+body .load_child_elements a:hover,
+body a.detailEntityLink:hover {
+  color: #000000;
+}
+body .item_wrap.ha a.detailEntityLink{
+    max-width: unset;
+    padding: 0;
+}
+
+@keyframes breath {
+    0% {
+        transform: scale(1) translate(-50%, -158px);
+    }
+    50% {
+        transform: scale(1.07) translate(-50%, -158px);
+    }
+    100% {
+        transform: scale(1) translate(-50%, -158px);
+    }
+}
+#entrymask-carousel .carousel-item::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#entrymask-carousel .carousel-indicators {
+	bottom: 15px;
+}
+#entrymask-carousel .carousel-indicators li {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    border: 1px solid #fff;
+}
+#entrymask-carousel .carousel-indicators li {
+    border-radius: 100%;
+}
+#entrymask-carousel .lt01 > a {
+    display: none;
+}
+#entrymask-carousel .c-bg-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Facette Links Only */
+.facettes-links-only {
+    margin: 15px 0 0 0;
+    justify-content: flex-end;
+}
+.facettes-links-only li {
+    margin-left: 5px;
+}
+.facettes-links-only a {
+    background-color: #788A29;
+    color: white;
+    display: block;
+    font-size: 26px;
+    text-align: center;
+    padding: 5px 10px;
+}
+/* Facette Links Only - End */
+/* Backbutton Detail Classicview */
+.joDetail .classic_view .medium_back {
+    padding: 40px 0;
+    align-items: center;
+}
+.joDetail .classic_view .medium_back .bl {
+  color: black;
+  justify-content: flex-end;
+  align-items: center;
+}
+.joDetail .classic_view .bl .joSprite {
+  background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_red.svg);
+  background-position: -531px -57px;
+  width: 30px;
+  height: 30px;
+  transform: rotate(180deg);
+  margin-right: 10px;
+}
+
+div#classificationTopic,
+.joSprite.classificationTopic {
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_white.svg);
+    background-position: -577px -291px;
+}
+/* Additional Headline */
+.classic_view .medium_back .objecttype_headline{
+    margin: 0 0 0 20px;
+    background-color: #383838;
+    color: #ffffff;
+    padding: 5px 10px;
+    line-height: 100%;
+}
+.classic_view .medium_back .title_headline{
+    margin: 0 0 0 20px;   
+}
+/* Ende Backbutton Detail Classicview */
+/* Merkliste Icon Detail Classic view */
+.joDetail .classic_view .colbox {
+    /*
+    flex: 1;
+    */
+    margin-right: 5px;
+    text-align: right;
+}
+.joDetail .classic_view h2 {
+    margin-top: 0;
+    font-size: 22px; 
+    margin-bottom: 25px;
+}
+/* List and Table Icon - start */
+.joListandtable {
+  padding-right: 0;
+  margin-right: 5px;
+}
+.joListandtable {
+}
+.joListandtable a {
+  width: 40px;
+  height: 40px;
+  color: transparent;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  background-image: url(/typo3conf/ext/jo_template/Resources/Public/Images/sprite_portal_black.svg);
+  background-color: transparent;
+  background-size: 860px;
+  background-repeat: no-repeat;
+}
+.joListandtable .list_icon,
+.joListandtable .grid_icon {
+  background-position: -2px -258px;
+  background-size: 860px;
+}
+.joListandtable .list_icon {
+  background-position: -689px -174px;
+}
+.joListandtable li:hover a{
+  background-image: url(/typo3conf/ext/jo_template/Resources/Public/Images/sprite_portal_white.svg);
+}
+.joListandtable .active a {
+  background-image: url(/typo3conf/ext/jo_template/Resources/Public/Images/sprite_portal_white.svg);
+}
+.joListandtable > li {
+  padding: 0;
+}
+.joListandtable > li:first-child {
+  padding: 0 5px;
+}
+
+.search_mask_outer_wrap{
+    align-items: center;
+}
+/* Facetten Checkboxen und Links - Allgemein */
+.facettes .tab-pane .button_wrap .joCheck {
+    background-color: transparent;
+    border: 1px solid rgba(255,255,255,.4);
+    cursor: pointer;
+    color: transparent;
+    user-select: none;
+    width: 23px;
+    height: 23px;
+    margin: 0 4px 0 0;
+    padding: 0;
+    min-height: 23px;
+    line-height: 23px;
+}
+.facettes .tab-pane .index_col .button_wrap {
+    display: flex;
+    margin-bottom: 3px;
+}
+.facettes .tab-pane .joCheck.joCheckColor_active::before {
+    content: " ";
+    width: 21px;
+    height: 21px;
+    opacity: .8;
+    display: block;
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_white.svg);
+    background-color: transparent;
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: -302px -2px;
+}
+.facettes .tab-pane .joCheck.joCheckColor_active {
+    background-color: #696b6d;
+}
+.facettes .tab-pane .add.joCheckColor_inactive {
+    transition: background-color 0.3s ease;
+}
+.facettes .tab-pane .add.joCheckColor_active, 
+.facettes .tab-pane .add.joCheckColor_inactive:hover {
+    background-color: rgba(255,255,255,.3);
+}
+/* Ende Facetten Checkboxen und Links - Allgemein */
+/* Map View2 */
+.facette_dropdown {
+
+}
+.facette_dropdown .joControls-container,
+.facette_dropdown .item_sorting_con {
+    
+    position: relative;
+    
+    /*
+    height: 70px;
+    */
+}
+.facette_dropdown .joControls-container,
+.facette_dropdown .item_sorting_con {
+    /*
+    padding-right: 15px;
+    */
+}
+.facette_dropdown .joControls,
+.facette_dropdown .item_sorting {
+    /*
+    display: inline-block;
+    padding: 0;
+    */
+    /*
+    position: absolute;
+    top: 0px;
+    */
+    /*
+    padding: 10px;
+    */
+    z-index: 10;
+}
+.facette_dropdown .sort_switch_wrap {
+    z-index: 5;
+}
+.facette_dropdown .joControls li,
+.facette_dropdown .item_sorting li {
+    /*
+    display: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    min-width: 150px;
+    min-width: unset;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    */
+}
+/*
+.facette_dropdown .joControls li:first-child,
+.facette_dropdown .item_sorting li:first-child {
+    display: block;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+.facette_dropdown .joControls li.mb-selected,
+.facette_dropdown .item_sorting li.mb-selected {
+    padding-left: 0;
+    padding-right: 0;
+}
+.facette_dropdown .joControls li:last-child,
+.facette_dropdown .item_sorting li:last-child {
+    border-bottom: 1px solid black;
+}
+.facette_dropdown .joControls.open li,
+.facette_dropdown .item_sorting.open li {
+    display: block;
+}
+*/
+.facette_dropdown .joControls li:nth-child(3) {
+    /* display: none!important; */
+}
+.facette_dropdown .joControls li,
+.facette_dropdown .item_sorting li {
+    margin: 0;
+}
+.facette_dropdown .joControls li .c_button,
+.facette_dropdown .item_sorting li .c_button {
+    margin-right: 0;
+}
+.facette_dropdown .joControls li.selected .c_button,
+.facette_dropdown .item_sorting li.selected .c_button {
+    border-color: #cd3336;
+}
+.facette_dropdown .joControls li.selected,
+.facette_dropdown .joControls li.selected:hover,
+.facette_dropdown .item_sorting li.selected,
+.facette_dropdown .item_sorting li.selected:hover {
+    color: #cd3336;
+}
+.facette_dropdown .joControls li.selected .t01,
+.facette_dropdown .joControls li.selected:hover .t01,
+.facette_dropdown .item_sorting li.selected .t01,
+.facette_dropdown .item_sorting li.selected:hover .t01 {
+    /*
+    color: #cd3336;
+    */
+}
+.alternativeview_1 .search_masks{
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 40px 0;
+}
+.alternativeview_1 .search_masks.has_bg_img{
+    padding: 350px 0 150px;
+    margin-bottom: 50px; 
+}
+.alternativeview_1 {
+    background-color: #ffffff;
+}
+.alternativeview_1 .fi01 {
+    
+}
+.alternativeview_1 .fo01 {
+}
+.alternativeview_1 .tl01 {
+    width: 100%;
+}
+.alternativeview_1 .v01 {
+}
+.alternativeview_1 .c_button {
+    height: auto;
+    width: auto;
+    display: flex;
+}
+.alternativeview_1 .c_button .joSprite {
+    height: 50px;
+    width: 50px;
+}
+.alternativeview_1 .t01 {
+    color: var(--link_normal_color);
+}
+.alternativeview_1 .c_button.active .t01,
+.alternativeview_1 .c_button:hover .t01 {
+    color: var(--link_hover_color);
+}
+
+
+
+/* Padding searchportal left/right */
+.joGridview,
+.alternativeview_1 .filter_wrap,
+.alternativeview_1 .search_masks.has_bg_img,
+.joDetail .classic_view .text_containers,
+.joDetail .classic_view .medium_back,
+.joDetail .classic_view .breadcrumbs-container {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+/* Padding searchportal left/right end */
+
+.facette_dropdown.alternativeview_1 .t01
+.facette_dropdown .item_sorting a {
+    width: 100%!important;
+    max-width: 100%!important;
+}
+.facette_dropdown .item_sorting a {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: black;
+    display: block;
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+.facette_dropdown .mb-opt {
+    position: relative;
+}
+.facette_dropdown .mb-selected span,
+.facette_dropdown .mb-opt span {
+    border-bottom: 1px solid #000;
+    display: block;
+    padding: 5px 35px;
+    border-radius: 0;
+}
+.facette_dropdown .mb-opt.selected span {
+    border-color: #cd3336;
+}
+.facette_dropdown .mb-selected {
+    position: relative;
+}
+.facette_dropdown .mb-selected:after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_black.svg);
+    background-color: transparent;
+    background-size: 600px;
+    background-repeat: no-repeat;
+    background-position: -338px -39px;
+    right: 15px;
+    top: calc(50% - 8px);
+    transform: rotate(90deg);
+}
+.facette_dropdown .controls_wrap {
+    background-color: transparent;
+}
+.facette_dropdown .alt_view .joControls li a.c_button {
+    width: 100%;
+    /*
+    padding-bottom: 0;
+    */
+}
+#map-list .facette_dropdown .alt_view .joControls li a.c_button {
+    width: 100%;
+    height: auto;
+    padding-bottom: 0;
+}
+#map-list .facette_dropdown .alt_view .joControls li a.c_button .joSprite {
+    background-size: 700px;
+}
+#map-list .facette_dropdown a.c_button[href="#locationFirstletter"] .joSprite {
+    background-position: -72px 0vw;
+}
+#map-list .facette_dropdown a.c_button[href="#entityFirstletter"] .joSprite {
+    background-position: -280px -36px;
+}
+#map-list .facette_dropdown a.c_button[href="#locationClassification"] .joSprite {
+    background-position: -279px -107px;
+}
+#map-list .facette_dropdown a.c_button[href="#objectType"] .joSprite {
+    background-position: -664px 0;
+}
+#map-list .facette_dropdown a.c_button #joDeleteIcon .joSprite {
+    background-position: -421px -1px;
+}
+.facette_dropdown #searchparams {
+    /*
+    margin-left: -15px;
+    margin-right: -15px;
+    */
+    padding: 0 15px 15px;
+}
+.facette_dropdown .joControls .showfilter,
+.facette_dropdown .joControls.open li.showfilter {
+    display: none;
+}
+.delete_text,
+.showfilter_text {
+    display: none;
+}
+.facette_dropdown .showfilter a,
+.facette_dropdown #joDeleteIcon {
+    display: flex!important;
+}
+.facette_dropdown .delete_text,
+.facette_dropdown .showfilter_text {
+    display: block;
+    color: white;
+}
+.facette_dropdown .alt_view .joControls li a.c_button.active {
+    color: white;
+}
+.map_layout_2 #ol4-mapdiv {
+    height: 100%;
+}
+#mapdiv {
+    position: relative;
+}
+.map_overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .45);
+    z-index: 10;
+    opacity: 0;
+    transition: opacity .4s ease;
+    cursor: pointer;
+}
+.map_overlay:hover {
+    opacity: 1;
+}
+.map_overlay_text {
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+/* Map View2 - End */
+
+/* Classic View */
+.joDetail .subheadline,
+.classic_view .content_block_wrap{
+    padding: 20px 0;
+}
+.classic_view .leftcol .content_block_wrap.line_top:first-child,
+.classic_view .rightcol .content_block_wrap.line_top:first-child,
+.classic_view .leftcol .content_block_wrap.line_top_bottom:first-child,
+.classic_view .rightcol .content_block_wrap.line_top_bottom:first-child{
+    margin-top:20px;
+}
+.classic_view .content_block_wrap.padding-right{
+    padding-right:15px;
+}
+.classic_view .content_block_wrap.padding-left{
+    padding-left:15px;
+}
+.classic_view .content_block_wrap .content_block {
+    background-color:#ebebeb;
+    padding:30px;
+}
+.classic_view .content_block_wrap.transparent .content_block{
+    background-color: unset;
+    padding: 0;
+}
+.classic_view  .item_info_wrap {
+    padding: 5px 0 5px;
+}
+.classic_view .flex-column.item_info_wrap .value {
+    padding-left: 0;
+}
+.classic_view .content_block h3 {
+    position:relative;
+    display: block;
+    padding-bottom: 10px;
+    border-bottom: none;
+    text-transform: unset;
+    display: block;
+    margin:0;
+}
+.classic_view .content_block h3[data-toggle="collapse"]:before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 7.5px);
+    right: 0px;
+    display: block;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_black.svg);
+    background-color: transparent;
+    background-size: 300px;
+    background-repeat: no-repeat;
+    background-position: -255px -30px;
+}
+.classic_view .content_block h3[data-toggle="collapse"].collapsed:before {
+    background-position: -270px 0px;
+}
+.classic_view .content_block h3 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.classic_view .section_inner_wrap .inner_collapse_wrap {
+    padding-top: 15px;
+}
+.classic_view .leftcol .content_block_wrap:first-child .section_inner_wrap .inner_collapse_wrap,
+.classic_view .rightcol .content_block_wrap:first-child .section_inner_wrap .inner_collapse_wrap {
+    padding-top:0;
+}
+.classic_view .leftcol{
+    padding-right:40px;
+}
+.moreimageblock .inner_collapse_wrap {
+    display: flex;
+}
+.moreimageblock .subtype_moreimages {
+    width:25%;
+    padding-right: 1px;
+}
+.moreimageblock .subtype_moreimages .bg-img {
+    padding-top:100%;  
+    width: 100%;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.detail-gallery-container {
+    overflow: auto;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 50px;
+}
+.detail-img-gallery-img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform .5s ease;
+}
+.detail-img-gallery-img:hover {
+    transform: scale(1.02);
+}
+.detail-gallery-item-wrapper {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 10px;
+}
+.detail-gallery-btn-con {
+    position: absolute;
+    top: 55px;
+    right: 6px;
+    width: 40px;
+    padding-right: 0;
+    padding-left: 0;
+    margin-bottom: 15px;
+    z-index: 20;
+}
+.detail-gallery-btn {
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_white.svg);
+    background-size: 700px;
+    background-repeat: no-repeat;
+    background-position: 3px -206px;
+    border-radius: 0;
+    background-color: #000000;
+    color: rgba(255,255,255,0.8);
+    padding: 0;
+    font-size: 0;
+    transition: color 1s;
+    width: 46px;
+    height: 46px;
+    border: 3px solid white;
+    border-radius: 0;
+}
+.line_top_bottom{
+    border-top:1px solid #000000;
+    border-bottom:1px solid #000000;
+}
+.line_top{
+    border-top:1px solid #000000;
+}
+.hide {
+    display: none!important;
+}
+.localizeMap-box-info,
+.drw-box-info {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
+    cursor: pointer;
+    padding-right: 20px;
+    user-select: none;
+    font-size: 18px;
+}
+.localizeMap-box-info {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    bottom: unset;
+}
+.localizeMap-box-close,
+.drw-box-close {
+    position: absolute;
+    right: 2px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_white.svg);
+    background-size: 400px;
+    background-position: -240px 0px;
+    opacity: .75;
+}
+.localizeMap_button {
+  top: 90px;
+}
+.localizeMap2_button {
+  top: 132px;
+}
+/* AND OR Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    min-width: 50px;
+    height: 25px;
+    margin-bottom: 0;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.switch input {
+    display: none;
+}
+.switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #686b6d;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 19px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.switch input.check:checked ~ .slider {
+    background-color: #383838;
+}
+.switch .trueText {
+    display: none;
+    position: absolute;
+    color: white;
+    font-style: normal;
+    left: 12px;
+    top: 1.5px;
+    user-select: none;
+}
+.switch input.check:checked ~ .trueText {
+    display: block;
+}
+.switch .falseText {
+    display: block;
+    position: absolute;
+    color: white;
+    font-style: normal;
+    right: 9px;
+    top: 1.5px;
+    user-select: none;
+}
+.switch input.check:checked ~ .falseText {
+    display: none;
+}
+.switch input.check:focus ~ .slider {
+    box-shadow: 0 0 1px #009ee2;
+}
+.switch input.check:checked ~ .slider:before {
+    -webkit-transform: translateX(23px);
+    -ms-transform: translateX(23px);
+    transform: translateX(23px);
+}
+.switch .square {
+    border-radius: 15px;
+}
+.switch .square:before {
+    border-radius: 50%;
+}
+/* Allgemeine Klassen */
+.pointer {
+  cursor: pointer;
+}
+/* Listview */
+.joListNotableContainer .list_notable {
+  margin: 30px 0 0;
+}
+.joListNotableContainer .list_notable .img {
+  padding: 0px;
+}
+/* Grid View */
+.joGridview .grid-wrap {
+  min-height: 150px;
+}
+.joGridview.horizontal .sw,
+.joGridview.horizontal .sw div {
+    display: inline;
+}
+.joGridview.horizontal .sw.delimiter{
+    padding-right: 3px;
+}
+
+.joListNotableContainer .list_notable,
+.joGridview .grid-link {
+  background-color: #d2d3cd;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 1s ease;
+}
+.joListNotableContainer .list_notable:hover,
+.joGridview .grid-link:hover{
+     background-color: #aeaeae;
+}
+.joGridview .img_grid_wrap,
+.joGridview .grid-wrap,
+.joGridview .grid-link  {
+  height:100%;
+}
+.joGridview .grid_img_link{
+  width:30%;
+  padding-right: 10px;
+}
+.joGridview .img_grid_wrap,
+.joGridview .grid-text-container{
+  flex: 1;
+}
+
+.list-view .grid-img,
+.joGridview .grid-img {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 0%;
+  max-height: 100%;
+}
+.list-view .grid-img {
+  padding-bottom: 100%;
+}
+.list-view .grid-img.pl,
+.joGridview .grid-img.pl {
+  background-size: 60%;
+  padding: 25% 0;
+}
+.list_notable h2,
+.joGridview .grid-text-container h2 {
+    padding: 0 0 5px 0;
+    margin: 0 0 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 140%;
+}
+.joGridview .item_info_wrap {
+    /*
+    flex-direction: column;
+    */
+}
+/* Gridview Merkliste */
+.joGridview .listBookmarkRemove span,
+.joGridview .listBookmark span{
+    display: none!important;
+}
+
+.joGridview  .colbox .listBookmarkRemove .addGradient .joSprite,
+.joGridview .control_wrap .colbox .addGradient .joSprite {
+    background-size: 650px;
+    background-position: -614px -126px;
+    background-image: url(/typo3conf/ext/jo_template/Resources/Public/Images/sprite_portal_black.svg);
+}
+.joGridview .colbox .listBookmarkRemove .addGradient .joSprite {
+    background-position: -582px -126px;
+}
+.joGridview .control_button .listBookmarkRemove > span,
+.joGridview .listBookmarkRemove .addGradient {
+  background-color: unset;
+  color: unset;
+}
+
+.sort_and_view_wrap{
+    align-items: flex-end;
+    align-content: flex-start;
+    padding-bottom: 15px;
+}
+.img_switch_wrap{
+    padding-right:0;
+}
+.imageSwitch{
+    justify-content: end;
+    padding-left: 10px;
+}
+.show_filter_wrap{
+    text-align: center;
+}
+.show_filter_wrap .show_filter{
+    color:#ffffff;
+    background-color: rgba(0, 0, 0, .7);
+    padding:10px 60px;
+    margin: 40px auto;
+    transition: background-color 1s ease;
+    border: 2px solid white;
+}
+.show_filter_wrap .show_filter:hover{
+    background-color: rgba(0, 0, 0, .9);
+}
+.show_filter_wrap .show_filter .plus{
+    display: none;
+}
+.show_filter_wrap .show_filter .minus{
+    display: inline-block;
+}
+.show_filter_wrap .show_filter.collapsed .plus{
+    display: inline-block;
+}
+.show_filter_wrap .show_filter.collapsed .minus{
+    display: none;
+}
+/* Font Sizes */
+.joDetail .subheadline,
+.joFacetteItem,
+.list_notable h2,
+.classic_view h2,
+.classic_view .content_block h3,
+.joGridview .grid-text-container h2{
+    font-size: 18px;
+}
+.joGridview .sw,
+.dropdown-menu,
+.show_filter,
+.alt_view .results h3, 
+.alt_view .facettes h3,
+.alt_view .akt_filter h3,
+.facettes .tab-pane .button_wrap .add,
+.facettes .tab-pane .button_wrap .remove,
+.joAlphabetIndex li span, 
+.joAlphabetIndex li a, 
+.imageSwitch .image_only_label,
+.joGridview .item_info_wrap,
+.joDetail .item_info_wrap,
+.joDetail .inner_collapse_wrap,
+.list_notable .item_info_wrap{
+    font-size: 16px;
+}
+
+/* Font Weight */
+.alt_view .results h3, 
+.alt_view .facettes h3,
+.alt_view .akt_filter h3{
+    font-weight: 400;
+}
+.joDetail .subheadline,
+.classic_view h2,
+.classic_view .content_block h3,
+.list_notable h2,
+.list_notable h2 a,
+.found_wrap,
+.joDetail .item_info_wrap .label,
+.entrymask .search_button,
+.joGridview .grid-text-container h2{
+    font-weight: 600;
+}
+.item_info_wrap .label,
+.joDetail .item_info_wrap .label{
+    overflow: hidden;
+    position: relative;
+    margin-right: 10px;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto; 
+}
+
+    
+/* alphabet index - start */
+.joAlphabetIndex {
+    margin: 10px 0 0 0;
+    padding: 0;
+    list-style-type:none;
+}
+.joAlphabetIndex li {
+    text-align:center;
+    float:left;
+    margin:0 0 1px 1px;
+    position:relative;
+}
+.joAlphabetIndex li span,
+.joAlphabetIndex li a {
+    margin:0;
+    color:#ffffff;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    display:block;
+    background-color: transparent;
+    text-decoration: none;
+}
+.joAlphabetIndex li span {
+    color: rgba(255,255,255,.3);
+}
+.joAlphabetIndex li a:hover,
+.joAlphabetIndex li.active a {
+    background-color: rgba(0,121,54,1);
+    text-decoration: underline;
+}
+/* alphabet index - end */
+
+.pre_mask_title{
+    padding: 20px 0;
+}
+/* Facetten */
+.joFacettesContainer {
+    margin-top:15px;
+    position: relative;
+    overflow: hidden;
+}
+.joFacetteItem {
+    border-radius: 3px;
+    margin: 0 5px;
+    line-height: 100%;
+    background-color: #696b6d;
+    padding: 3px 5px;
+    position: relative;
+    color: #000000;
+}
+.joFacetteItem:hover .img-container {
+    opacity: 1;
+}
+/* ausgewählte Filter */
+.joSearchControl {
+  display: flex;
+}
+.joFacettedSearch {
+    border-right: #000000 1px solid;
+    padding: 0 20px;
+    margin: 5px 0;
+}
+.joFacettedSearch:first-child {
+    padding-left: 0;
+}
+.joFacettedSearch:last-child{
+    border-right: none;
+}
+.joFacetteItem,
+.joFacettedSearch span {
+    display: inline-block;
+    vertical-align: middle;
+}
+.joFacettedSearch span {
+    color: #ffffff;
+}
+
+.joFacettedSearch a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.joFacettedSearch a img {
+    position: relative;
+    width: 200px;
+}
+.joFacettedSearch .img_wrap {
+    width: 35px;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.joFacettedSearch a .img-container {
+    background-color: #bc0d12;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    border-radius: 20px;
+    color: #ffffff;
+    z-index: 150;
+    line-height: 100%;
+    width: 19px;
+    height: 19px;
+    opacity: 0;
+    overflow: hidden;
+    transition: .2s;
+}
+.joFacettedSearch a.joActive:hover .joSearchitemsDelete{
+    display:block;
+}
+.facettes .tab-pane .button_wrap .add,
+.facettes .tab-pane .button_wrap .remove {
+  color: white;
+  display: flex;
+  /*
+  flex: 1;
+  */
+  background-color: transparent;
+  padding: 0 5px;
+  min-height: 23px;
+  line-height: 100%;
+  word-break: break-word;
+  align-items: center;
+}
+.alt_view .results h3, 
+.alt_view .facettes h3,
+.alt_view .akt_filter h3{
+    margin: 0 0 4px 0;
+    padding: 15px 0 5px;
+    border-bottom: rgba(255,255,255,.25) 1px dotted;
+}
+.facettes h3,
+.akt_filter h3 {
+    color: white;
+}
+
+.joSearchControl div#sortvar,
+.joSearchControl div.sortvar {
+    background-position: -384px -146px;
+}
+.joSearchControl .img_wrap .joSprite {
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_white.svg);
+}
+/* Facette alternativview */
+.alt_view .joControls{
+    border-bottom:none;
+}
+.alt_view .joControls li{
+    margin:0;
+}
+.alt_view .joControls li a.c_button{
+    padding: 0 10px 0 0;
+}
+.alt_view .joControls li a.c_button,
+.alt_view .joTimeLineAndFilter .joFound {
+    border: none;
+    line-height: 100%;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    position: relative;
+    background-color: transparent;
+    margin:0;
+    border-radius: 0;
+}
+.alt_view .joControls li a.c_button{
+    display: flex;
+    position: relative;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+.alt_view .joControls li a.active:focus,
+.alt_view .joControls li a.active:hover,
+.alt_view .joControls li a.active,
+.alt_view .joControls li a:hover,
+.alt_view .joControls li a[aria-expanded="true"]{
+    background-color: rgba(0,0,0,.7);
+}
+.alt_view .joControls li a.active:focus,
+.alt_view .joControls li a.active:hover,
+.alt_view .joControls li a.active,
+.alt_view .joControls li a:hover,
+.alt_view .joControls li a[aria-expanded="true"],
+.alt_view .joControls li a.active:focus .t01,
+.alt_view .joControls li a.active:hover .t01,
+.alt_view .joControls li a.active .t01,
+.alt_view .joControls li a:hover .t01,
+.alt_view .joControls li a[aria-expanded="true"] .t01{
+    color:#ffffff;
+}
+/* Facette Alternativview ende */
+/* Facette default view Begin */
+.alt_view.facette_default .joControls li a.c_button{
+    display: block;
+    width: 50px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    margin-right: 1px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    position: relative;
+    background-color: transparent;
+    margin: 0;
+    border-radius: 0;
+    padding: 0;
+}
+.alt_view.facette_default .joControls li a.c_button{
+    display: block;
+    width: 50px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    margin-right: 1px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    position: relative;
+    background-color: transparent;
+    margin: 0;
+    border-radius: 0;
+    padding: 0;
+}
+.alt_view.facette_default .joControls li a.active:focus, 
+.alt_view.facette_default .joControls li a.active:hover, 
+.alt_view.facette_default .joControls li a.active, 
+.alt_view.facette_default .joControls li a:hover, 
+.alt_view.facette_default .joControls li a[aria-expanded="true"]{
+    background-color: #383838;
+}
+/* Facette Defaultview Ende */
+
+
+/* facette item sorting und filter dropdown t38 */
+.joControls-container a,
+.sort_view_dropdown a {
+    display: block;
+    padding: 3px 10px;
+}
+.joControls-container .dropdown-toggle:after,
+.sort_view_dropdown .dropdown-toggle:after {
+    display: inline-block;
+    margin:0;
+    vertical-align:unset;
+    content: '';
+    border:none;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_black.svg);
+    background-color: transparent;
+    background-size: 600px;
+    background-repeat: no-repeat;
+    background-position: -338px -39px;
+    right: -10px;
+    top: calc(50% - 8px);
+    transform: rotate(90deg);
+}
+.dropdown-menu{
+    display: none;
+}
+.joControls-container .as_textandsymbols_dropdown.dropdown-menu,
+.sort_view_dropdown .dropdown-menu {
+    min-width: 200px;
+    width: 100%;
+    padding: 0;
+    margin: 5px 0 0;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    border: unset;
+    border-radius: 0;
+    -webkit-box-shadow: 0px 7px 10px 0px #a1a1a1;
+    box-shadow: 0px 7px 10px 0px #a1a1a1;
+}
+.joControls-container .dropdown-menu li,
+.item_sorting_con .dropdown-menu li {
+    cursor: pointer;
+    padding: 0px;
+    min-width: 150px;
+    min-width: unset;
+}
+.joControls-container .dropdown-menu li:last-child a,
+.item_sorting_con .dropdown-menu li:last-child a{
+     border-bottom: none;
+}
+.joControls-container .as_textandsymbols_dropdown.dropdown-menu li a,
+.item_sorting_con .dropdown-menu a {
+    position: relative;
+    border-bottom: 1px solid #333333;
+    padding: 7px 10px;
+    transition: background-color 1s ease;
+}
+.joControls-container .as_textandsymbols_dropdown.dropdown-menu li.active a,
+.joControls-container .as_textandsymbols_dropdown.dropdown-menu a:hover
+.item_sorting_con .dropdown-menu li.active a,
+.item_sorting_con .dropdown-menu a:hover {
+    background-color: #aeaeae;
+}
+.item_sorting_con .dropdown-menu a:after {
+    content: '\2191';
+    font-size: 15px;
+    position: absolute;
+    right: 5px;
+}
+.item_sorting_con .dropdown-menu .direction_desc a:after {
+    content: '\2193';
+    font-size: 15px;
+}
+.sort_switch_wrap {
+    justify-content: flex-end
+}
+.joControls-container .dropdown-toggle,
+.item_sorting_con .dropdown-toggle {
+    padding-left: 0;
+}
+#mirador-viewer {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.btn_container {
+    position: absolute;
+}
+
+.togglefullscreen,
+.img_zoom_in,
+.img_zoom_out {
+  z-index: 1000;
+  right: 0;
+  padding: 0;
+  font-size: 0px;
+}
+.togglefullscreen {
+  top: 45px;
+}
+.img_zoom_in {
+  bottom: 50px;
+}
+.img_zoom_out {
+  bottom: 5px;
+}
+.togglefullscreen > span,
+.toggletext > span,
+.img_zoom_in > span,
+.img_zoom_out > span {
+  background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_white.svg);
+  width: 40px;
+  height: 40px;
+  color: transparent;
+  text-align: center;
+  cursor: pointer;
+  background-color: transparent;
+  background-size: 900px;
+  background-repeat: no-repeat;
+}
+.toggletext > span {
+  background-position: -589px -49px;
+}
+.toggletext.active > span {
+  transform: rotate(180deg);
+}
+.togglefullscreen > span {
+  background-position: -361px -271px;
+}
+.togglefullscreen.in_fullscreen > span {
+  background-position: -453px -271px;
+}
+.img_zoom_in > span {
+  background-position: -720px -1px;
+  background-size: 800px;
+}
+.img_zoom_out > span {
+  background-position: -679px -80px;
+  background-size: 800px;
+}
+
+.viewercontrolview_1_wrapper {
+    position: absolute;
+    bottom: 190px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    background-color: #DCDED6;
+    padding: 4px;
+    font-size: 0;
+}
+.viewercontrolview_1_wrapper .img_info,
+.viewercontrolview_1_wrapper .togglefullscreen,
+.viewercontrolview_1_wrapper .mirador-btn-wrapper,
+.viewercontrolview_1_wrapper .btn_container,
+.viewercontrolview_1_wrapper .img-prev-next,
+.viewercontrolview_1_wrapper .detail-gallery-btn-con,
+.viewercontrolview_1_wrapper .detail-annotationbutton-btn-con {
+    position: relative;
+    left: unset;
+    right: unset;
+    top: unset;
+    bottom: unset;
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+.viewercontrolview_1_wrapper .btn_container,
+.viewercontrolview_1_wrapper .img-prev-next {
+    display: flex;
+}
+.viewercontrolview_1_wrapper button {
+    padding: 0;
+    border:none;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+    background-color: unset;
+}
+.viewercontrolview_1_wrapper button:focus {
+    outline: none;
+}
+.viewercontrolview_1_wrapper .annotationbutton-btn,
+.viewercontrolview_1_wrapper .detail-gallery-btn,
+.viewercontrolview_1_wrapper .img-prev-next .btn,
+.viewercontrolview_1_wrapper .mirador-btn,
+.viewercontrolview_1_wrapper ._360viewer-btn,
+.viewercontrolview_1_wrapper .togglefullscreen span,
+.viewercontrolview_1_wrapper .img_zoom_in > span,
+.viewercontrolview_1_wrapper .img_zoom_out > span,
+.viewercontrolview_1_wrapper .img_info > span {
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    border-radius: 0;
+    display: inline-block;
+    border:0;
+    margin-right:1px;
+}
+.viewercontrolview_1_wrapper .img_info > span {
+    font-size: 0;
+    background-position: -25px -76px;
+    background-size: 500px;
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_white.svg);
+    background-repeat: no-repeat;
+}
+.viewercontrolview_1_wrapper .annotationbutton-btn {
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_white.svg);
+    background-repeat: no-repeat;
+    background-size: 500px;
+    background-position: -425px -1px;
+}
+.viewercontrolview_1_wrapper .annotationbutton-btn.active {
+    opacity: .75;
+}
+.viewercontrolview_1_wrapper .detail-gallery-btn {
+    background-size: 500px;
+    background-position: 0px -150px;
+}
+.viewercontrolview_1_wrapper .img-prev-next .btn {
+    background-size: 500px;
+    background-position: -275px -26px;
+}
+.viewercontrolview_1_wrapper .togglefullscreen > span,
+.viewercontrolview_1_wrapper .toggletext > span {
+    background-size: 600px;
+}
+.viewercontrolview_1_wrapper .togglefullscreen > span {
+    background-position: -242px -182px;
+}
+.viewercontrolview_1_wrapper .togglefullscreen.in_fullscreen > span {
+    background-position: -304px -182px;
+}
+.viewercontrolview_1_wrapper .img_zoom_in > span {
+    background-position: -450px -1px;
+    background-size: 500px;
+}
+.viewercontrolview_1_wrapper .img_zoom_out > span {
+    background-position: -425px -50px;
+    background-size: 500px;
+}
+.viewercontrolview_1_wrapper .mirador-btn {
+    background-position: -101px -175px;
+    background-size: 500px;
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_white.svg);
+    background-repeat: no-repeat;
+}
+.viewercontrolview_1_wrapper ._360viewer-btn {
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/360.svg);
+    background-repeat: no-repeat;
+    background-size: 85%;
+    background-position: center;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+    background-color: white;
+}
+.viewercontrolview_1_wrapper .image-rights {
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    background-color: black;
+    width: 100%;
+    color: white;
+    font-size: 12px;
+    list-style: none;
+    padding: 5px;
+    left: 0;
+    text-align: center;
+}
+.viewercontrolview_1_wrapper .image-rights a,
+.viewercontrolview_1_wrapper .image-rights a:hover {
+    color: white;
+}
+.prevnextitem {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+}
+.prevnextitem ~ .button_share,
+.button_share_download ~ .button_share {
+    margin-left: 0;
+}
+.prevnextitem > li {
+    display: flex;
+    align-items: center;    
+}
+.prevnextitem .itemprev a,
+.prevnextitem .itemnext a,
+.prevnextitem .itemprev span,
+.prevnextitem .itemnext span {
+    font-size: 0;
+    display: block;
+    width: 23px;
+    height: 23px;
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_black.svg);
+    background-repeat: no-repeat;
+    background-size: 500px;
+}
+.prevnextitem .itemprev span,
+.prevnextitem .itemnext span {
+    opacity: .3;
+    cursor: not-allowed;
+}
+.prevnextitem .itemprev {
+    margin-right: 5px;
+}
+.prevnextitem .itemnext {
+    margin-left: 5px;
+}
+.prevnextitem .itemprev a,
+.prevnextitem .itemprev span {
+    background-position: -27px -176px;
+}
+.prevnextitem .itemnext a,
+.prevnextitem .itemnext span {
+    background-position: -275px -27px;
+}
+/* Paginator */
+.joPaginateWrap {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.joPaginateWrap li span,
+.joPaginateWrap .pagination li {
+    display: inline-block;
+}
+.joPaginateWrap li span {
+    background-color: #ffffff;
+    opacity: 0.3;
+}
+.joPaginateWrap li span,
+.joPaginateWrap .pagination li a {
+    color: #000000;
+    border-radius: 0;
+    min-width: 50px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 7px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+}
+.joPaginateWrap .pagination li a:focus {
+    box-shadow: none;
+    outline: none;
+}
+.joPaginateWrap .pagination li.active a{
+    background-color: #34393c;
+    color:#ffffff;
+    border: #34393c 1px solid;
+}
+
+.button_share {
+    margin-left: auto;
+    position: relative;
+}
+.button_share-list {
+    list-style: none;
+    padding: 0;
+}
+.button_share-toggler,
+.share-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/sprite_social_black.svg);
+    background-repeat: no-repeat;
+    background-size: 250px;
+    background-position: 0px 0px;
+}
+.share_email .share-icon {
+    background-position: -148px -78px;
+}
+.share_fb .share-icon {
+    background-position: -112px -5px;
+}
+.share_pin .share-icon {
+    background-position: -40px -40px;
+}
+.share_tw .share-icon {
+    background-position: -76px -5px;
+}
+.share_mastodon .share-icon {
+    background-position: -40px -113px;
+}
+.button_share-toggler {
+    background-position: -6px -115px;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+}
+.button_share-toggler:focus {
+    outline: none;
+}
+#collapsebutton_share {
+    position: absolute;
+    right: 0;
+    box-shadow: rgb(0 0 0 / 50%) 0px 5px 8px 0px;
+    z-index: 10;
+    background-color: white;
+    padding: 5px;
+}
+.button_share_download {
+    margin-right: 5px;
+    margin-left: auto;
+}
+.prevnextitem ~ .button_share {
+    margin-left: 0;
+}
+.download-btn-share {
+    font-size: 0;
+    border: 0;
+    width: 30px;
+    height: 30px;
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/download_icon.svg);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: 3px 1px;
+    background-color: transparent;
+    outline: none;
+}
+.download-btn-share:focus {
+    outline: none;
+}
+/* Detailansicht */
+.joDetail {
+    padding-top: 1px;
+}
+.joDetail > .clearfix.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.joDetail .childobjects .text_containers .item_info_wrap .value,
+.joDetail .childobjects .text_containers .item_info_wrap .label {
+  overflow: hidden;
+  word-break: break-word;
+}
+.joDetail .childobjects .text_containers .item_info_wrap .value {
+  padding-left: 10px;
+}
+.joDetail .subheadline {
+    position: relative;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    margin: 20px 0;
+}
+.joDetail .colbox > a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_black.svg);
+    background-repeat: no-repeat;
+    background-size: 800px;
+    background-position: -765px -167px;
+}
+.joDetail .colbox > a.listBookmarkRemove {
+    background-position: -726px -167px;
+}
+
+.joDetail .control_button a.listBookmarkRemove > span,
+.joDetail .colbox span {
+    font-size: 0;
+    background-color: transparent;
+}
+.joDetail .classic_view .collapse_all_con {
+    display: flex;
+}
+.joDetail .classic_view .collapse_all_con > span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_black.svg);
+    background-color: transparent;
+    background-size: 800px;
+    background-repeat: no-repeat;
+}
+.joDetail .classic_view .collapse_all_p {
+    background-position: -725px -6px;
+}
+.joDetail .classic_view .collapse_all_m {
+    background-position: -685px -85px;
+}
+.joDetail .classic_view #content {
+    padding-left: 0;
+    padding-right: 0;
+}
+.detailimage_con embed{
+    width: 100%;
+    height: 95%;
+}
+.detailimage_con {
+    height: 95vh;
+}
+.detailimage_con .page_count {
+    height: 30px;
+    background-color: white;
+}
+.cloudimage-360 {
+    background-color: #DCDED6;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: calc(100% - 185px);
+}
+.cloudimage-360-inner-box {
+    height: 100%;
+    margin: 0 auto;
+}
+.cloudimage-360-inner-box {
+    display: flex;
+    align-items: center;
+}
+.cloudimage-360-inner-box canvas {
+    max-width: 100%;
+    max-height: 100%;
+}
+.colbox_export {
+
+}
+.searchinstructure_wrap a.searchinstructure,
+.results a.searchinstructure {
+    display: block;
+    color: white;
+    background-color: #383838;
+    padding: 20px;
+    position: relative;
+    font-size: 18px;
+    text-align: center;
+    display: table;
+    margin: 15px auto 0;
+}
+.searchinstructure_wrap a.searchinstructure:hover,
+.results a.searchinstructure:hover{
+    color: black;
+    background-color: #aeaeae;
+}
+
+.detail-360grad_view-link-wrapper,
+.detail-3d-link-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+.content_wrap .detail-360grad_view-link,
+.content_wrap .detail-3d-link {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    color: white;
+}
+.content_wrap .detail-360grad_view-link {
+    font-size: 0;
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_white.svg);
+    background-position: -393px -395px;
+    background-size: 1100px;
+    background-repeat: no-repeat;
+}
+.content_wrap .detail-360grad_view-link:hover,
+.content_wrap .detail-3d-link:hover {
+    color: white;
+}
+.joDeleteIcon_noResults .joFoundIcon {
+    width: 50px;
+    height: 50px;
+}
+a.icon_urn {
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    font-size: 0;
+    background-color: green;
+    border-radius: 0;
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_black.svg);
+    background-position: -344px -269px;
+    background-color: transparent;
+    background-size: 750px;
+    background-repeat: no-repeat;
+}
+a.icon_urn:after {
+    content: none!important;
+}
+.icon_iiif,
+.icon_canonical,
+.icon_canonical.item_content_wrap a {
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    font-size: 0;
+    background-color: green;
+    border-radius: 0;
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_black.svg);
+    background-position: -194px -269px;
+    background-color: transparent;
+    background-size: 750px;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+}
+.icon_canonical.item_content_wrap {
+    background-image: none;
+}
+.icon_iiif {
+    background-position: -232px -269px;
+}
+.gnd_explorer {
+    font-size: 0;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    margin-left: 15px!important;
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/sprite_portal_black.svg);
+    background-color: transparent;
+    background-size: 600px;
+    background-repeat: no-repeat;
+    background-position: -393px -213px;
+}
+.gnd_explorer:after {
+    content: none!important;
+}
+.pi1019SlickSlider .slick-slide {
+    padding: 0 15px;
+}
+.pi1019SlickSlider .slick-slide img {
+    width: 100%;
+    height: auto;
+}
+.pi1019SlickSlider .slider-text-block {
+    padding: 15px;
+    background-color: white;
+}
+.pi1019SlickSlider .slick-arrow {
+    z-index: 5;
+}
+.pi1019SlickSlider .slick-dots li {
+    display: inline-block;
+}
+.pi1019SlickSlider .slick-dots li:only-child {
+    display: none;
+}
+.pi1019SlickSlider-wrap {
+    position: relative;
+    width: 100%;
+}
+#chartjs-tooltip {
+    background-color: white;
+    transform: translateY(-110%);
+    padding: 0;
+}
+#chartjs-tooltip a {
+    display: block;
+    padding: 6px;
+}
+#chartjs-tooltip:hover {
+    opacity: 1!important;
+}
+.collbox-link-container {
+    display: flex;
+    align-items: center;
+}
+.collbox-link-container > a {
+    background-color: #383838;
+    display: block;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: white;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+}
+.collbox-link-container > a:hover {
+    color: white;
+}
+.collbox-link-container > a:last-child {
+    margin-right: 0;
+}
+.collbox-link-container .sprite_mask {
+    margin-right: 3px;
+}
+.collbox-link-container > .btn-delete {
+    background-color: #9a1515;
+}
+.collbox-link-container #del .joSprite {
+    background-image: url(/typo3conf/ext/jo_template/Resources/Public/Images/sprite_portal_white.svg);
+    background-size: 650px;
+    background-position: -392px -2px;
+}
+.collbox-link-container #export-pdf .joSprite {
+    background-image: url(/typo3conf/ext/jo_template/Resources/Public/Images/sprite_portal_white.svg);
+    background-size: 800px;
+    background-position: -446px -86px;
+}
+.collbox-link-container #export .joSprite {
+    background-image: url(/typo3conf/ext/jo_template/Resources/Public/Images/sprite_portal_white.svg);
+    background-size: 800px;
+    background-position: -486px -86px;
+}
+.colbox-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.colbox-header h2 {
+    margin: 0;
+    font-size: 60px;
+    font-weight: 500;
+}

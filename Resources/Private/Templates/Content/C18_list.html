@@ -1,0 +1,23 @@
+<f:if condition="{objects}">
+	<div class="joRelatedListContainer mb-5">
+		<f:for each="{objects}" as="item" key="subitemkey" iteration="subiter">
+			<div class="industrie-news">
+				<f:link.action class="py-4" arguments="{detail:'{item.uid}'}">
+				<h2 class="news-header">{item.title}</h2>
+				<f:if condition="{item.media}">
+					<div class="news-image">
+						<f:alias map="{mediaElement: '{item.media.0}'}">
+							<div class="outer">
+								<f:image image="{mediaElement}" title="{mediaElement.title}" width="1170" height="{settings.bildhoeheliste}c" />
+							</div>
+						</f:alias>
+					</div>
+				</f:if>
+				</f:link.action>
+				<div class="joTextContainer">
+					<div class="teasertext"><f:format.stripTags>{item.teaser}</f:format.stripTags></div>
+				</div>
+			</div>
+		</f:for>
+	</div>
+</f:if>

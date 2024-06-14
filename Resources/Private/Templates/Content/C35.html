@@ -1,0 +1,23 @@
+<f:if condition="{settings.name}">
+  <h2 id="thulb-ps-player-title">{settings.name}</h2>
+</f:if>
+<div class="thulb-ps-player">
+  <div class="thulb-ps-player-source-container thulb-ps-player-current-video"
+       data-derivateid="{settings.derivateid}"
+       data-filename="{settings.filename}"
+       data-src="{settings.link}"
+       data-title="{settings.name}"
+       data-description="{settings.description}"
+       data-baseurl="{settings.baseurl}"
+       data-sub-de="{f:if(condition: '{settings.subtitle.de}', then: 'fileadmin/untertitle/{settings.subtitle.de}')}"
+       data-sub-en="{f:if(condition: '{settings.subtitle.en}', then: 'fileadmin/untertitle/{settings.subtitle.en}')}"
+  >
+  </div>
+  <video class="thulb-ps-player-video video-js vjs-big-play-centered" controls preload="auto" width="{f:if(condition: '{settings.playerwidth}', then: '{settings.playerwidth}', else: '700')}" height="{f:if(condition: '{settings.playerheight}', then: '{settings.playerheight}', else: '394')}" type='application/x-mpegURL'>
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a web browser that
+      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+  </video>
+</div>
+<p class="thulb-ps-player-description" style="text-align: center; max-width: {f:if(condition: '{settings.playerwidth}', then: '{settings.playerwidth}px', else: '700px')}">{settings.description}</p>

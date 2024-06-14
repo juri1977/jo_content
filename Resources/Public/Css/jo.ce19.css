@@ -1,0 +1,78 @@
+#joCarouselControls {
+    margin-bottom: 30px;
+}
+#joCarouselControls .carousel-caption {
+    position: relative;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 20px;
+    color: black;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.46);
+    margin-top: 50px;
+    cursor: pointer;
+}
+#joCarouselControls .carousel-control-next-icon {
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/next.png);
+}
+#joCarouselControls .carousel-control-prev-icon {
+    background-image: url(/typo3conf/ext/jo_content/Resources/Public/Images/prev.png);
+}
+#joCarouselControls .carousel-control-next, 
+#joCarouselControls .carousel-control-prev {
+    width: -10%;
+    opacity: 1;
+}
+#joCarouselControls .carousel-control-prev {
+    left: 10%;
+    top: -20%;
+}
+#joCarouselControls .carousel-control-next {
+    right: 10%;
+    top: -20%;
+}
+#joCarouselControls .carousel-control-next-icon, 
+#joCarouselControls .carousel-control-prev-icon {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    background: transparent no-repeat center center;
+    background-size: 100% 100%;
+}
+#joCarouselControls .carousel-item .img-fluid {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+#joCarouselControls .joDreieck {
+    width: 0px;
+    height: 0px;
+    -webkit-transform:rotate(360deg);
+    border-style: solid;
+    border-width: 0 0 50px 50px;
+    border-color: transparent transparent rgba(255, 255, 255, 0.46) transparent;
+    position: absolute;
+    top: -50px;
+}
+#joCarouselControls .joDreieck.joFirst {
+    left: 0;
+}
+#joCarouselControls .joDreieck.joSecond {
+    left: 50px;
+}
+
+@media (max-width: 767px) {
+    #joCarouselControls .carousel-control-prev {
+        left: 0;
+        top: -20%;
+    }
+    #joCarouselControls .carousel-control-next {
+        right: 0;
+        top: -20%;
+    }
+}

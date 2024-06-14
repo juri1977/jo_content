@@ -1,0 +1,72 @@
+plugin.tx_web2pdf {
+  view {
+    templateRootPaths.10 = {$path.full.templatesbase}/Extensions/web2pdf/Templates
+    partialRootPaths.10 = {$path.full.templatesbase}/Extensions/web2pdf/Partials
+  }
+  settings {
+    pdfPageFormat = A4
+    pdfPageOrientation = P
+    pdfLeftMargin = 15
+    pdfRightMargin = 15
+    pdfTopMargin = 15
+    pdfStyleSheet = all
+    useCustomHeader = 0
+    useCustomFooter = 0
+
+    pdfPregSearch {
+      1 =
+    }
+
+    pdfPregReplace {
+      1 =
+    }
+
+    pdfStrSearch {
+      1 =
+    }
+
+    pdfStrReplace {
+      1 =
+    }
+  }
+}
+
+lib.web2pdf = USER
+lib.web2pdf {
+  userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+  pluginName = Pi1
+  extensionName = Web2pdf
+  vendorName = Mittwald
+  controller = Pdf
+  action = generatePdfLink
+}
+config.prefixLocalAnchors = all
+
+/**
+ *  Page Objekt modifizieren, wenn es sich um eine PDF-Ausgabe handelt
+ * @all -> TODO: irgendwie wird falscher style gestylt, wenn im backend eingestllt, dann siehts richtig aus
+ */
+[traverse(request.getQueryParams(), 'tx_web2pdf_pi1/argument') == 'printPage']
+  config {
+    no_cache = 1
+    compressCss = 0
+    concatenateCss = 0  
+    compressJs = 0
+    concatenateJs = 0
+  }
+  page {
+    includeCSS >
+    includeCSS {
+      file100 = {$path.full.css}T_39/t_39_pdf.css
+    }
+    includeJS >
+  }
+  page.10.file = {$path.full.templates}T_38/PDFDetail.html
+  /*
+  page.10.variables {
+    logo = TEXT
+    logo.value = ...
+  }
+  */
+[global]
+

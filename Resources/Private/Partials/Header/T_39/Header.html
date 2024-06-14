@@ -1,0 +1,28 @@
+<f:spaceless>
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-light {headerContaienerClass}">
+	<div class="navbar-brand logo">
+		<f:format.html parseFuncTSPath="">{headerLogo}</f:format.html>
+	</div>
+	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+	    <div class="burger-box">
+            <div class="burger-inner">
+          		<div class="top-bun"></div>
+          		<div class="patty"></div>
+          		<div class="bottom-bun"></div>
+            </div>
+      	</div>
+	</button>
+	<div class="navbar-collapse collapse" id="navbar">
+		<div class="navi-menu-contaner ml-md-auto mr-md-2">
+			<f:cObject typoscriptObjectPath="lib.mainMenu_1_nopics" />
+			<f:if condition="{merkliste}"><f:format.html parseFuncTSPath="">{merkliste}</f:format.html></f:if>
+		</div>
+		<div class="navi-search-container">
+			<f:form id="navi-search" pluginName="Pi1009" controller="Museo" extensionName="JoMuseo" name="suche" noCache="1" method="POST" >
+				<f:form.textfield class="navi-search-box d-inline-block" name="fulltext" value="" placeholder="{searchplaceholder}"/><f:form.submit class="d-inline-block navi-search-button" name="search_submit" value="Suchen" />
+			</f:form>
+		</div>
+		<f:if condition="{language}"><nav class="language"><f:format.html parseFuncTSPath="">{language}</f:format.html></nav></f:if>
+	</div>
+</nav>
+</f:spaceless>

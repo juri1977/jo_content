@@ -1,0 +1,317 @@
+.category-item {
+    border: 1px solid #002F5D;
+    padding: 0px 5px;
+    border-radius: 3px;
+    margin: 0 15px 0 0;
+    transition: .2s;
+    cursor: pointer;
+    margin-bottom:15px;
+}
+.category-item.active {
+    background: #002F5D;
+    color: #fff;
+}
+.date-month {
+    font-size: 50px;
+    color: #9F9F9F;
+}
+.joMainWrapper .time,
+.item-headline,
+.category {
+    font-size: 20px;
+    color: #002F5D;
+}
+.events.detail .event-item {
+    border-bottom: none;
+    margin-left: 0;
+    margin-right: 0;
+}
+.events.detail .daynameshort {
+    margin: -15px 0 0;
+}
+.daynameshort {
+    font-size: 18px;
+    color: #9F9F9F;
+}
+.category {
+    margin: 50px 0;
+    flex-wrap: wrap;
+}
+.date-next a,
+.date-prev a {
+    font-size: 16px;
+    color: #9F9F9F;
+    transition: .25s;
+    text-decoration: none;
+    padding: 0 5px;
+}
+.date-next:hover a,
+.date-prev:hover a,
+.date-current {
+    color: #fff;
+    color: #002F5D;
+    border-radius: 2px;
+}
+.date-current {
+    padding: 0 5px;
+}
+.dateSelect-container {
+    border-bottom: 1px solid #9F9F9F;
+    padding-bottom: 20px;
+}
+.sort-by {
+    font-size: 17px;
+}
+.event-item {
+    margin: 30px 0;
+    border-bottom: 1px solid #9f9f9f41;
+    padding-bottom: 15px;
+}
+.day-item{
+    margin-top:20px;
+    padding-top:20px;
+    border-top: 1px solid #9f9f9f41;    
+}
+.day-item:first-child{
+    padding-top:0;
+    margin-top:0;
+    border-top: none;    
+}
+.detail_link a{
+    margin-top:10px;
+    color: #fff;
+    background: #002F5D;
+    border-radius: 2px;
+    padding:2px 15px;
+}
+
+
+
+
+/* NEU */
+.frame-type-jocontent_c10 > h2 {
+    font-size: 50px;
+    color: #3A4B42;
+    text-transform: uppercase;
+    background-color: #CED1C9;
+    margin-bottom: 0;
+    padding: 15px;
+}
+.list_alt_1 {
+    background-color: #CED1C9;
+    padding: 15px;
+}
+.list_alt_1 .time {
+    color: #333333;
+    font-size: 18px;
+    font-weight: 600;
+}
+.list_alt_1 .item-headline {
+    color: #788A29;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+.list_alt_1 .item-desc {
+    font-size: 18px;
+}
+.day-item {
+    padding-right: 8.333333%;
+}
+.list_alt_1 figcaption,
+.day-item figcaption {
+    font-size: 14px;
+    padding: 5px;
+    margin-top: 1px;
+    background-color: rgb(0 0 0 / 5%);
+}
+.day-item .img_wrap {
+    padding-left: 0;
+}
+.cat-events,
+.dateSelect-container,
+.filter-select-container {
+    padding: 0 15px;    
+}
+.list_alt_1 > div {
+    padding: 15px;
+}
+.list_alt_1 .detail_link a {
+    background-color: transparent;
+    background-image: url(/typo3conf/ext/jo_template/Resources/Public/Images/Jdl/up_arrow.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    transform: rotate(90deg);
+}
+.day-item {
+    font-size: 18px;
+}
+.day-item .bottom-wrap {
+    background-color: #EBEBEB;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+.day-item .bottom-wrap h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.day-item .item-headline {
+    font-size: 30px;
+    font-weight: 600;
+    color: #788A29;
+    margin-bottom: 20px;
+}
+.day-item-img-wrapper img {
+    width: 100%;
+    height: auto;
+}
+.day-item-img-wrapper {
+    margin-bottom: 15px;
+}
+.day-item .detail_link a {
+    background-color: transparent;
+    margin: 0 0 15px 0;
+    color: #788A29;
+    position: relative;
+    padding-left: 20px;
+}
+.day-item .detail_link a:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    transform: rotate(-90deg);
+    background-color: transparent;
+    background-image: url(/typo3conf/ext/jo_template/Resources/Public/Images/Jdl/up_arrow.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.filter-ver,
+.filter-year {
+    padding: 8px;
+    border-radius: 0;
+    font-size: 20px;
+}
+
+.filter-select-container .button_wrap {
+    display: flex;
+    margin: 0 0 3px;
+    padding: 3px 3px 0 0;
+    border-radius: 5px;
+    position: relative;
+    line-height: 100%;
+    color: #ffffff;
+}
+.filter-select-container .joCheck {
+    display: block;
+    background-color: transparent;
+    border: 1px solid #788A29;
+    cursor: pointer;
+    color: transparent;
+    user-select: none;
+    width: 23px;
+    height: 23px;
+    margin: 0 4px 0 0;
+    padding: 0;
+    min-height: 23px;
+    line-height: 23px;
+}
+.filter-select-container .button_wrap.active .joCheck::before {
+    content: " ";
+    width: 21px;
+    height: 21px;
+    display: block;
+    background-image: url(/typo3conf/ext/jo_museo/Resources/Public/Images/sprite_portal_green.svg);
+    background-color: transparent;
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: -302px -2px;
+    opacity: .8;
+}
+.filter-select-container .add,
+.filter-select-container .remove {
+    display: flex;
+    width: 130%;
+    background-color: transparent;
+    padding: 0 3px;
+    font-size: 18px;
+    min-height: 23px;
+    line-height: 130%;
+    word-break: break-word;
+    transition: background-color 0.3s ease;
+}
+.filter-select-container .tab-pane {
+    padding: 15px 0;
+}
+.item-headline-date {
+    font-size: 16px;
+    color: #788A29;
+}
+.filter-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+    .list_alt_1 {
+        padding: 0 80px 30px;
+    }
+    .frame-type-jocontent_c10 > h2 {
+        padding: 30px 80px 10px;
+    }
+    .cat-events,
+    .dateSelect-container,
+    .filter-select-container {
+        padding: 0 80px;    
+    }
+}
+
+@media(min-width:1440px) {
+    .list_alt_1 {
+        padding: 0 330px 30px;
+    }
+    .frame-type-jocontent_c10 > h2 {
+        padding: 30px 330px 10px;
+    }
+    .cat-events,
+    .dateSelect-container,
+    .filter-select-container {
+        padding: 0 330px;    
+    }
+}
+/* NEU - ENDE */
+
+
+
+@media (min-width: 768px)
+{
+    .date-next a,
+    .date-prev a,
+    .date-current {
+        font-size: 20px;
+    }
+    .dateSelect-container {
+        margin: 0 0 75px;
+    }
+    .date-month {
+        font-size: 60px;
+    }
+    .daynameshort {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 992px)
+{
+    .events.detail .daynameshort {
+        margin: 0;
+    }
+}

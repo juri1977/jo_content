@@ -1,0 +1,56 @@
+<div class="joList" id="joListAnchor">
+	<div class="joSubHeadline joClearfix">
+		<h2>Die Sammlungen</h2>
+		<div class="joButton joEaseBackground">
+			<a href="#joTopAnchor">
+				<f:image src="{f:uri.resource(path:'Images/joPfeilUp.svg',extensionName:'jo_bkr_base')}" alt="{f:translate(key:'{langPath}:jo_bkr_base.overview')}" title="{f:translate(key:'{langPath}:jo_bkr_base.overview')}"/>
+			</a>
+		</div>
+		<div class="joButton joEaseBackground">
+			<a href="#joMapAnchor">
+				<f:image src="{f:uri.resource(path:'Images/joKarteWeiss.svg',extensionName:'jo_bkr_base')}" alt="{f:translate(key:'{langPath}:jo_bkr_base.view.map')}" title="{f:translate(key:'{langPath}:jo_bkr_base.view.map')}"/>
+			</a>
+		</div>
+	</div>
+	<div class="joSubContent">
+		<div class="joPlacesPlugin joListView joClearfix">
+			<f:if condition="{joPlaces.columns}">
+				<f:for each="{joPlaces.columns}" as="joIndex" iteration="joindexiteration">
+					<div class="joColumn col-sm-4 <f:if condition="{joindexiteration.isFirst}">joFirst</f:if> <f:if condition="{joindexiteration.isLast}">joLast</f:if>">
+						<f:for each="{joIndex}" key="key" as="joSubIndex" iteration="joindexsubiteration">	
+							<div class="joIndexWrapper joClearfix <f:if condition="{joindexsubiteration.isFirst}">joFirst</f:if> <f:if condition="{joindexsubiteration.isLast}">joLast</f:if>" data-index="{key}">
+								<h3 class="joIndexHeadline"><span>{key}</span></h3>
+								<div class="joSammlungen">
+									<f:for each="{joSubIndex}" as="joSubSubIndex" iteration="josubsubiteration">
+										<f:link.action pageUid="299" class="joEaseBackground joSammlungDetailTrigger" action="detail" controller="Fsusammlung" arguments="{joDetail:'{joSubSubIndex.uid}'}">
+											<div  class="joClearfix <f:if condition="{josubsubiteration.isFirst}">joFirst</f:if> <f:if condition="{josubsubiteration.isLast}">joLast</f:if>">
+												<div class="joSammlungText joSammlungsBld" style="background-image:url({f:uri.image(src:'uploads/tx_jobkrbase/{joSubSubIndex.image}',width:'100c',height:'100c')});"></div>	
+												<div class="joSammlungText joSammlungsName">{joSubSubIndex.name}</div>	
+											</div>
+										</f:link.action>
+									</f:for>
+								</div>
+							</div>
+						</f:for>
+					</div>
+				</f:for>
+			</f:if>
+		</div>
+	</div>
+</div>
+<div class="joMap" id="joMapAnchor">
+	<div class="joSubHeadline joClearfix">
+		<h2>Die Sammlungen auf der Karte</h2>
+		<div class="joButton joEaseBackground">
+			<a href="#joTopAnchor">
+				<f:image src="{f:uri.resource(path:'Images/joPfeilUp.svg',extensionName:'jo_bkr_base')}" alt="{f:translate(key:'{langPath}:jo_bkr_base.overview')}" title="{f:translate(key:'{langPath}:jo_bkr_base.overview')}"/>
+			</a>
+		</div>
+		<div class="joButton joEaseBackground">
+			<a href="#joListAnchor">
+				<f:image src="{f:uri.resource(path:'Images/joListeFilterWeiss.svg',extensionName:'jo_bkr_base')}" alt="{f:translate(key:'{langPath}:jo_bkr_base.view.list')}" title="{f:translate(key:'{langPath}:jo_bkr_base.view.list')}"/>
+			</a>
+		</div>
+	</div>
+	<f:cObject typoscriptObjectPath="lib.sammlungenalphabetmap" />
+</div>

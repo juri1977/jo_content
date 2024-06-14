@@ -1,0 +1,20 @@
+.pdfLogo {
+	color: white;
+	background-color: white;
+}
+.pdfLogo a {
+	color: white;
+	background-color: white;
+}
+.pdfLogo img {
+	color: white;
+	background-color: white;
+}
+.pdfLogo,
+.ris_object {
+	display: none;
+}
+.breadcrumbs {
+	display: none;
+}
+

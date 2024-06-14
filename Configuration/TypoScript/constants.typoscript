@@ -1,0 +1,35 @@
+# Default headline: H2
+content.defaultHeaderType = 2
+
+//pfade anlegen
+path {
+  rel {
+    prefix = EXT:jo_content/
+    css = {$path.rel.prefix}Resources/Public/Css/
+    fonts = {$path.rel.prefix}Resources/Public/Fonts/
+    javascript = {$path.rel.prefix}Resources/Public/JavaScript/
+    images = {$path.rel.prefix}Resources/Public/Images/
+    icons = {$path.rel.prefix}Resources/Public/Icons/
+    forms = {$path.rel.prefix}Resources/Private/Forms/
+    templatesbase = {$path.rel.prefix}Resources/Private/
+    templates = {$path.rel.prefix}Resources/Private/Templates/
+    partials = {$path.rel.prefix}Resources/Private/Partials/
+    layout = {$path.rel.prefix}Resources/Private/Layouts/
+    language = {$path.rel.prefix}Resources/Private/Language/
+  }
+
+  full {
+    prefix = typo3conf/ext/jo_content/
+    css = {$path.full.prefix}Resources/Public/Css/
+    fonts = {$path.rel.prefix}Resources/Public/Fonts/
+    javascript = {$path.rel.prefix}Resources/Public/JavaScript/
+    images = {$path.full.prefix}Resources/Public/Images/
+    forms = {$path.full.prefix}Resources/Private/Forms/
+    icons = {$path.full.prefix}Resources/Public/Icons/
+    templatesbase = {$path.full.prefix}Resources/Private/
+    templates = {$path.full.prefix}Resources/Private/Templates/
+    partials = {$path.full.prefix}Resources/Private/Partials/
+    layout = {$path.full.prefix}Resources/Private/Layouts/
+    language = {$path.full.prefix}Resources/Private/Language/
+  }
+}

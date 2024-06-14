@@ -1,0 +1,53 @@
+{namespace jo=JO\JoContent\ViewHelpers}
+<div class="c33-container">
+	<f:if condition="{bild1} || {bild2} || {bild3} || {bild4} || {bild5} || {bild6}">
+		<f:then>
+			<div class="c33-gallery<f:if condition='{vorschau}'> withOverlay</f:if>">
+				<div class="kasten kasten-1" style="background-color: {settings.farbe1}"></div>
+				<div class="kasten kasten-2" style="background-color: {settings.farbe2}"></div>
+				<div class="kasten kasten-3 k-img"><f:render section="image_builder" arguments="{bild: bild1.0, settings: settings}" /></div>
+				<div class="kasten kasten-4" style="background-color: {settings.farbe3}"></div>
+				<div class="kasten kasten-5" style="background-color: {settings.farbe4}"></div>
+				<div class="kasten kasten-6" style="background-color: {settings.farbe1}"></div>
+				<div class="kasten kasten-7 k-img"><f:render section="image_builder" arguments="{bild: bild2.0, settings: settings}" /></div>
+				<div class="kasten kasten-8" style="background-color: {settings.farbe4}"></div>
+				<div class="kasten kasten-9{f:if(condition: '{bild7.0}', then: ' k-img')}" style="background-color: {settings.farbe2}"><f:render section="image_builder" arguments="{bild: bild7.0, settings: settings}" /><f:if condition="{settings.bodytext}"><f:then><div class="kasten-text"><h2>{settings.bodytext}</h2></div></f:then><f:else></f:else></f:if></div>
+				<div class="kasten kasten-10 k-img"><f:render section="image_builder" arguments="{bild: bild3.0, settings: settings}" /></div>
+				<div class="kasten kasten-11" style="background-color: {settings.farbe3}"></div>
+				<div class="kasten kasten-12" style="background-color: {settings.farbe1}"></div>
+				<div class="kasten kasten-13" style="background-color: {settings.farbe4}"></div>
+				<div class="kasten kasten-14 k-img"><f:render section="image_builder" arguments="{bild: bild4.0, settings: settings}" /></div>
+				<div class="kasten kasten-15" style="background-color: {settings.farbe5}"></div>
+				<div class="kasten kasten-16 k-img"><f:render section="image_builder" arguments="{bild: bild5.0, settings: settings}" /></div>
+				<div class="kasten kasten-17" style="background-color: {settings.farbe1}"></div>
+				<div class="kasten kasten-18" style="background-color: {settings.farbe5}"></div>
+				<div class="kasten kasten-19" style="background-color: {settings.farbe3}"></div>
+				<div class="kasten kasten-20" style="background-color: {settings.farbe2}"></div>
+				<div class="kasten kasten-21 k-img"><f:render section="image_builder" arguments="{bild: bild6.0, settings: settings}" /></div>
+				<f:if condition="{vorschau}">
+					<div class="c33-overlay">
+						<jo:svg image="{vorschau.0}" />
+					</div>
+				</f:if>
+			</div>
+		</f:then>
+		<f:else>
+			<div class="c33-error">Bilder sind nicht richtig konfiguriert.</div>
+		</f:else>
+	</f:if>
+</div>
+
+<f:section name="image_builder">
+	<f:if condition="{bild}">
+		<f:if condition="{bild.link}">
+			<f:then>
+				<f:link.typolink parameter="{bild.link}">
+					<f:image image="{bild}" width="{settings.width}" height="{settings.height}" /><f:if condition="{bild.title}"><figcaption><f:format.html>{bild.title}</f:format.html></figcaption></f:if>
+				</f:link.typolink>
+			</f:then>
+			<f:else>
+				<f:image image="{bild}" width="{settings.width}" height="{settings.height}" /><f:if condition="{bild.title}"><figcaption><f:format.html>{bild.title}</f:format.html></figcaption></f:if>
+			</f:else>
+		</f:if>
+	</f:if>
+</f:section>

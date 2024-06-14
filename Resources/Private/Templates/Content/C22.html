@@ -1,0 +1,324 @@
+<f:if condition="{view} == 'list'">
+	<f:then>
+		<div class="news_wrap list-view joModus-{settings.modus}{f:if(condition: settings.mobilepreviewdis, then: ' previewdis')}">
+			<div class="news_content{f:if(condition: showActive, then: ' showActive')}">
+				<f:if condition="{viewsupport}">
+					<div class="news_view_content">
+						<div class="view_time{f:if(condition: '{view} != \'list\'', then: ' active')}"><f:link.page additionalParams="{view: 'time'}">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Ebene_1" x="0px" y="0px" viewBox="0 0 33 33" style="enable-background:new 0 0 33 33;" xml:space="preserve">
+								<g id="Gruppe_49" transform="translate(-788 -175)">
+									<rect id="Rechteck_41" x="788" y="175" class="st0" width="33" height="33"/>
+									<g id="Gruppe_44" transform="translate(-40 41.5)">
+										<rect id="Rechteck_36_1_" x="831" y="143" class="st1" width="9" height="3"/>
+										<rect id="Rechteck_34_1_" x="849" y="154" class="st1" width="10" height="2"/>
+										<rect id="Rechteck_37_1_" x="849" y="142" class="st1" width="10" height="2"/>
+										<rect id="Rechteck_35_1_" x="849" y="157" class="st1" width="10" height="2"/>
+										<rect id="Rechteck_38_1_" x="849" y="145" class="st1" width="10" height="2"/>
+										<line id="Linie_2_1_" class="st2" x1="844.5" y1="138.5" x2="844.5" y2="162.5"/>
+										<g id="Ellipse_11_1_" transform="translate(842 142)">
+											<circle class="st1" cx="2.5" cy="2.5" r="2.5"/>
+											<circle class="st3" cx="2.5" cy="2.5" r="2"/>
+										</g>
+										<g id="Ellipse_12_1_" transform="translate(842 154)">
+											<circle class="st1" cx="2.5" cy="2.5" r="2.5"/>
+											<circle class="st3" cx="2.5" cy="2.5" r="2"/>
+										</g>
+										<rect id="Rechteck_39_1_" x="831" y="155" class="st1" width="9" height="3"/>
+									</g>
+								</g>
+							</svg>
+						</f:link.page></div>
+						<div class="view_list{f:if(condition: '{view} == \'list\'', then: ' active')}"><f:link.page additionalParams="{view: 'list'}">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Ebene_1" x="0px" y="0px" viewBox="0 0 33 33" style="enable-background:new 0 0 33 33;" xml:space="preserve">
+								<g>
+									<rect id="Rechteck_41_1_" x="0" y="0" class="st0" width="33" height="33"/>
+									<g id="Gruppe_45" transform="translate(-772 -141)">
+										<g id="Rechteck_23" transform="translate(772 141)">
+											<rect x="3" y="4.5" class="st1" width="10" height="10"/>
+											<rect x="4" y="5.5" class="st2" width="8" height="8"/>
+										</g>
+										<g id="Rechteck_30" transform="translate(799 165) rotate(180)">
+											<rect x="-3" y="-4.5" class="st1" width="10" height="10"/>
+											<rect x="-2" y="-3.5" class="st2" width="8" height="8"/>
+										</g>
+										<rect id="Rechteck_26" x="787" y="153.5" class="st3" width="15" height="2"/>
+										<rect id="Rechteck_29" x="775" y="159.5" class="st3" width="15" height="2"/>
+										<rect id="Rechteck_27" x="787" y="149.5" class="st3" width="15" height="2"/>
+										<rect id="Rechteck_31" x="775" y="163.5" class="st3" width="15" height="2"/>
+										<rect id="Rechteck_28" x="787" y="145.5" class="st3" width="15" height="2"/>
+										<rect id="Rechteck_32" x="775" y="167.5" class="st3" width="15" height="2"/>
+									</g>
+								</g>
+							</svg>
+						</f:link.page></div>
+					</div>
+				</f:if>
+				<f:for each="{objects}" as="subitem" key="itemkey" iteration="n">
+					<f:for each="{subitem}" as="item" key="subitemkey" iteration="subi">
+						<div class="news-item">
+							<div class="row no-gutters">
+								<div class="col-md-9">
+									<f:if condition="!{settings.mobilepreviewdis}">
+										<div class="image-mobile-container d-md-none">
+											<f:for each="{item.falMedia}" as="image" iteration="j">
+												<f:if condition="{j.isFirst}">
+													<f:switch expression="{image.originalResource.type}">
+														<f:case value="4">
+															<f:media class="news_image video detail-img-{j.index} total-{j.total}" file="{image}" />
+														</f:case>f
+														<f:defaultCase>
+															<f:image class="news_image detail-img-{j.index} total-{j.total}" image="{image}" />
+														</f:defaultCase>
+													</f:switch>
+												</f:if>
+											</f:for>
+										</div>
+									</f:if>
+									<div class="news-link collapsed" data-toggle="collapse" data-target=".joToCollapse-{n.cycle}-{subitemkey}" aria-expanded="true">{item.title}</div>
+								</div>
+								<div class="col-md-3" data-item="{itemkey}">
+									<f:if condition="{settings.modus} == 'date'">
+										<f:then><f:format.date format="%e. %B %Y">{item.datetime}</f:format.date></f:then>
+										<f:else>{itemkey}</f:else>
+									</f:if>
+								</div>
+							</div>
+							<div class="col-md-12 joToCollapse joToCollapse-{n.cycle}-{subitemkey} collapse in">
+								<div class="joCollapseItem">
+									<div class="news_wrap">
+										<div class="row">
+											<f:if condition="{item.falMedia}">
+												<f:then>
+													<div class="col-md-9 news-info-container">
+												</f:then>
+												<f:else>
+													<div class="col-md-12 news-info-container">
+												</f:else>
+											</f:if>
+												<div class="news-info">
+													<!-- <div class="datetime">
+														<f:format.date format="%d. %B %Y">{item.datetime}</f:format.date>
+													</div> -->
+													<div class="news-title">
+														<!-- <f:format.raw>{item.title}</f:format.raw></span> -->
+														<div class="news-subtitle">{item.teaser}</div>
+													</div>
+													<div class="news-bodytext">
+														<f:format.html>{item.bodytext}</f:format.html>
+													</div>
+												</div>
+												<div class="news-detail jo-detail">
+													<f:if condition="{item.contentElements}">
+														<f:for each="{item.contentElements}" as="val" key="k">
+															<div class="news-item">
+																<div class="news-link collapsed" data-toggle="collapse" data-target=".joToCollapse-{subi.cycle}-{k}" aria-expanded="true" >{val.header}</div>
+														        <div class="joToCollapse joToCollapse-{subi.cycle}-{k} collapse in" data-parent=".news-detail">
+															      	<div class="joCollapseItem">
+																        <f:format.html>{val.bodytext}</f:format.html>
+															      	</div>
+															    </div>
+															</div>
+														</f:for>
+													</f:if>
+												</div>
+											</div>
+											<f:if condition="{item.falMedia}">
+												<div class="col-md-3 image-container">
+													<f:for each="{item.falMedia}" as="image" iteration="i">
+														<f:switch expression="{image.originalResource.type}">
+															<f:case value="4">
+																<f:media class="news_image video detail-img-{i.index} total-{i.total}" file="{image}" />
+															</f:case>
+															<f:defaultCase>
+																<a href="{f:uri.image(image: image)}" title="<f:format.raw>{subitem.0.title}</f:format.raw>" data-title="{image.title} <div class='lb-trenner'></div> {image.description}" data-lightbox="lb-66" target="">
+																	<f:image class="news_image detail-img-{i.index} total-{i.total}" image="{image}" />
+																</a>
+															</f:defaultCase>
+														</f:switch>
+													</f:for>
+												</div>
+											</f:if>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</f:for>
+				</f:for>
+			</div>
+		</div>
+	</f:then>
+	<f:else>
+		<div class="news_wrap time-view joModus-{settings.modus} count-<f:count>{objects}</f:count>">
+			<ul class="newslist clearfix leftcontent">
+				<f:for each="{objects}" as="subitem" key="itemkey" iteration="i">
+					<li class="row no-gutters<f:if condition='{i.isFirst}'> active</f:if>">
+						<f:if condition="{i.isLast} == 0">
+							<div class="vertical_line"></div>
+						</f:if>
+						<div class="item col-4 left">
+							<f:if condition="{settings.modus} == date">
+								<f:then><div class="leftitem">{itemkey}</div></f:then>
+								<f:else><div class="catname"><div class="innercat">{itemkey}</div></div></f:else>
+							</f:if>
+						</div>
+						<f:for each="{subitem}" as="item" key="subitemkey" iteration="subi">
+							<f:if condition="{subi.index} == 0">
+								<div class="d-none">
+									<div class="date">{itemkey}</div>
+								</div>
+							</f:if>
+							<div class="item col-8<f:if condition='!{subi.isFirst}'> offset-4</f:if> right">
+								<f:if condition="{item.title}">
+									<f:link.action class="joAjaxLink<f:if condition='{subi.isFirst}'> black</f:if>" action="c22" arguments="{news:item.uid}" pageType="2328">{item.title}</f:link.action>
+								</f:if>
+								<f:if condition="{subi.index} != 1">
+									<div class="date_wrap d-block">
+										<f:if condition="{subi.index} == 0">
+											<f:then>
+												<div class="date"></div>
+											</f:then>
+											<f:else>
+												<!-- <div class="date_small"></div> -->
+											</f:else>
+										</f:if>
+									</div>
+								</f:if>
+							</div>
+						</f:for>
+					</li>
+				</f:for>
+				<f:if condition="{settings.showroot}">
+					<!-- die Variable existiert noch nicht -->
+					<li class="start"><div class="menu_arrow"></div></li>
+				</f:if>
+			</ul>
+			<div class="rightcontent">
+				<f:if condition="{viewsupport}">
+					<div class="news_view_content">
+						<div class="view_time{f:if(condition: '{view} != \'list\'', then: ' active')}"><f:link.page additionalParams="{view: 'time'}">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Ebene_1" x="0px" y="0px" viewBox="0 0 33 33" style="enable-background:new 0 0 33 33;" xml:space="preserve">
+								<style type="text/css">
+									.st0{fill:#FFFFFF;}
+									.st1{fill:#A2A1A1;}
+									.st2{fill:none;stroke:#A2A1A1;}
+									.st3{fill:none;stroke:#FFFFFF;}
+								</style>
+								<g id="Gruppe_49" transform="translate(-788 -175)">
+									<rect id="Rechteck_41" x="788" y="175" class="st0" width="33" height="33"/>
+									<g id="Gruppe_44" transform="translate(-40 41.5)">
+										<rect id="Rechteck_36_1_" x="831" y="143" class="st1" width="9" height="3"/>
+										<rect id="Rechteck_34_1_" x="849" y="154" class="st1" width="10" height="2"/>
+										<rect id="Rechteck_37_1_" x="849" y="142" class="st1" width="10" height="2"/>
+										<rect id="Rechteck_35_1_" x="849" y="157" class="st1" width="10" height="2"/>
+										<rect id="Rechteck_38_1_" x="849" y="145" class="st1" width="10" height="2"/>
+										<line id="Linie_2_1_" class="st2" x1="844.5" y1="138.5" x2="844.5" y2="162.5"/>
+										<g id="Ellipse_11_1_" transform="translate(842 142)">
+											<circle class="st1" cx="2.5" cy="2.5" r="2.5"/>
+											<circle class="st3" cx="2.5" cy="2.5" r="2"/>
+										</g>
+										<g id="Ellipse_12_1_" transform="translate(842 154)">
+											<circle class="st1" cx="2.5" cy="2.5" r="2.5"/>
+											<circle class="st3" cx="2.5" cy="2.5" r="2"/>
+										</g>
+										<rect id="Rechteck_39_1_" x="831" y="155" class="st1" width="9" height="3"/>
+									</g>
+								</g>
+							</svg>
+						</f:link.page></div>
+						<div class="view_list{f:if(condition: '{view} == \'list\'', then: ' active')}"><f:link.page additionalParams="{view: 'list'}">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Ebene_1" x="0px" y="0px" viewBox="0 0 33 33" style="enable-background:new 0 0 33 33;" xml:space="preserve">
+								<style type="text/css">
+									.st0{fill:#FFFFFF;}
+									.st1{fill:none;}
+									.st2{fill:none;stroke:#A2A1A1;stroke-width:2;}
+									.st3{fill:#A2A1A1;}
+								</style>
+								<g>
+									<rect id="Rechteck_41_1_" x="0" y="0" class="st0" width="33" height="33"/>
+									<g id="Gruppe_45" transform="translate(-772 -141)">
+										<g id="Rechteck_23" transform="translate(772 141)">
+											<rect x="3" y="4.5" class="st1" width="10" height="10"/>
+											<rect x="4" y="5.5" class="st2" width="8" height="8"/>
+										</g>
+										<g id="Rechteck_30" transform="translate(799 165) rotate(180)">
+											<rect x="-3" y="-4.5" class="st1" width="10" height="10"/>
+											<rect x="-2" y="-3.5" class="st2" width="8" height="8"/>
+										</g>
+										<rect id="Rechteck_26" x="787" y="153.5" class="st3" width="15" height="2"/>
+										<rect id="Rechteck_29" x="775" y="159.5" class="st3" width="15" height="2"/>
+										<rect id="Rechteck_27" x="787" y="149.5" class="st3" width="15" height="2"/>
+										<rect id="Rechteck_31" x="775" y="163.5" class="st3" width="15" height="2"/>
+										<rect id="Rechteck_28" x="787" y="145.5" class="st3" width="15" height="2"/>
+										<rect id="Rechteck_32" x="775" y="167.5" class="st3" width="15" height="2"/>
+									</g>
+								</g>
+							</svg>
+						</f:link.page></div>
+					</div>
+				</f:if>
+				<div class="loadajax">
+					<f:for each="{objects}" as="subitem" key="itemkey" iteration="i">
+						<f:if condition="{i.isFirst}">
+							<div class="news_wrap">
+								<div class="row">
+									<f:if condition="{subitem.0.falMedia}">
+										<f:then>
+											<div class="col-lg-5 image-container">
+												<f:for each="{subitem.0.falMedia}" as="image" iteration="i">
+													<f:switch expression="{image.originalResource.type}">
+														<f:case value="4">
+															<f:media class="news_image video detail-img-{i.index} total-{i.total}" file="{image}" />
+														</f:case>
+														<f:defaultCase>
+															<a href="{f:uri.image(image: image)}" title="<f:format.raw>{subitem.0.title}</f:format.raw>" data-title="{image.title} <div class='lb-trenner'></div> {image.description}" data-lightbox="lb-66" target="">
+																<f:image class="news_image detail-img-{i.index} total-{i.total}" image="{image}" />
+															</a>
+														</f:defaultCase>
+													</f:switch>
+												</f:for>
+											</div>
+											<div class="col-lg-7 news-info-container">
+										</f:then>
+										<f:else>
+											<div class="col-md-12 news-info-container">
+										</f:else>
+									</f:if>
+										<div class="news-info">
+											<f:if condition="{settings.modus} == 'date'">
+												<div class="datetime">
+													<f:format.date format="%e. %B %Y">{subitem.0.datetime}</f:format.date>
+												</div>
+											</f:if>
+											<div class="news-title">
+												<f:format.raw>{subitem.0.title}</f:format.raw>
+												<div class="news-subtitle">{subitem.0.teaser}</div>
+											</div>
+											<div class="news-bodytext">
+												<f:format.html>{subitem.0.bodytext}</f:format.html>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="news-detail jo-detail">
+									<f:if condition="{subitem.0.contentElements}">
+										<f:for each="{subitem.0.contentElements}" as="val" key="k">
+											<div class="news-item">
+												<div class="news-link" data-toggle="collapse" data-target=".joToCollapse-{k}" aria-expanded="true" >{val.header}</div>
+										        <div class="joToCollapse joToCollapse-{k} collapse in" data-parent=".news-detail">
+											      	<div class="joCollapseItem">
+												        <f:format.html>{val.bodytext}</f:format.html>
+											      	</div>
+											    </div>
+											</div>
+										</f:for>
+									</f:if>
+								</div>
+							</div>
+						</f:if>
+					</f:for>
+				</div>
+			</div>
+		</div>
+	</f:else>
+</f:if>

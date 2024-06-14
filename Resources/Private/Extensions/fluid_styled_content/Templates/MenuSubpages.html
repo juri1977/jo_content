@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+
+	<f:if condition="{menu}">
+		<ul >
+			<f:for each="{menu}" as="page">
+				<li <f:if condition="{page.data.uid} == {f:cObject(typoscriptObjectPath: 'lib.pageId')}">class="active"</f:if>>
+					<a href="{page.link}" target="{page.target}" title="{page.title}">
+						<f:if condition="{page.files}">
+							<f:then>
+								<f:variable name="newTitle"><f:if condition="{page.files.0.title}"><f:then>{page.files.0.title}</f:then><f:else>{page.title}</f:else></f:if></f:variable>
+								<f:variable name="newAltTitle"><f:if condition="{page.files.0.alternative}"><f:then>{page.files.0.alternative}</f:then><f:else>{page.title}</f:else></f:if></f:variable>
+								<f:image image="{page.files.0}" alt="{newAltTitle}" title="{newTitle}" />
+							</f:then>
+							<f:else>
+								<span>{page.title}</span>
+							</f:else>
+						</f:if>
+					</a>
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+
+</f:section>
+</html>

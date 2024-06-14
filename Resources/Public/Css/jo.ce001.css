@@ -1,0 +1,155 @@
+.jo-ce001 .jo-ol-description {
+  /* display: none; */
+}
+.jo-ce001 .jo-img {
+  overflow: hidden;
+}
+.jo-ce001 .jo-item {
+  padding: 15px;
+}
+.jo-ce001 .jo-item .jo-img:hover {
+
+  /*z-index: 9999;*/
+}
+.jo-ce001 .jo-img img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.jo-ce001 .jo-ol-title {
+  padding: 15px;
+}
+.jo-ce001 .jo-ol-description {
+  padding: 0 20px 20px;
+}
+.jo-ce001 .jo-ol-title {
+  color: #52493F;
+  text-transform: uppercase;
+}
+.jo-ce001 .img-container {
+  overflow: hidden;
+}
+.jo-ce001 .jo-ol {
+  margin-top: 15px;
+  /*
+  position: absolute;
+  bottom: 15px;
+  */
+}
+
+/* Effekte */
+
+/* Effekt 1 */
+.jo-ce001.jo-ef-1 .jo-img img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.jo-ce001.jo-ef-1 .jo-img:hover img {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* Layout 0 */
+.jo-ce001.jo-lt-0 {
+  
+}
+.jo-ce001.jo-lt-0 .jo-ol {
+  background-color: rgb(255 255 255 / 60%);
+  color: #657701;
+  width: 100%;
+  text-align: center;
+}
+
+.jo-ce001.jo-lt-0 .jo-ol-title {
+  position: relative;
+  font-size: 22px;
+  letter-spacing: .2em;
+  color: #52493F;
+  margin: 10px 0;
+  padding: 5px 20px;
+  word-break: break-word;
+  hyphens: auto;
+  /*
+  border-left: 1px solid #DCDED6;
+  */
+}
+.jo-ce001.jo-lt-0 .jo-ol-title:before {
+    content: '';
+    display: block;
+    border-right: 1px solid #262626;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+/* Layout 1 */
+.jo-ce001.jo-lt-1 .jo-img,
+.jo-ce001.jo-lt-1 .jo-img > a {
+    height: 100%;
+}
+.jo-ce001.jo-lt-1 .jo-img img {
+    height: 100%;
+    object-fit: cover;
+}
+.jo-ce001.jo-lt-1 .jo-ol-title {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 110px;
+}
+.jo-ce001.jo-lt-1 .jo-ol {
+  position: absolute;
+  bottom: 10px;
+  background-color: rgb(255 255 255 / 80%);
+  width: 100%;
+}
+.jo-ce001.jo-lt-1 .jo-ol-title,
+.jo-ce001.jo-lt-1 .jo-ol-description {
+    color: #3A4B42;
+    padding: 5px;
+    padding: 8px;
+}
+/* Font Sizes */
+.jo-ce001 .jo-ol-description {
+  font-size: 18px;
+  color: black;
+}
+.jo-ce001 .jo-ol-title {
+  font-size: 22px;
+}
+.jo-ce001.jo-lt-1 .jo-ol-title,
+.jo-ce001.jo-lt-1 .jo-ol-description{
+    font-size: 25px;
+}
+/* Font Sizes End */
+
+/* Line Height */
+.jo-ce001.jo-lt-1 .jo-ol-title,
+.jo-ce001.jo-lt-1 .jo-ol-description{
+     line-height: 100%;
+}
+/* Line height End */
+
+/* Font Weight */
+.jo-ce001 .jo-ol-title,
+.jo-ce001.jo-lt-1 .jo-ol-description{
+    font-weight: 600;
+}
+/* Font Wight End */
+
+@media print {
+  .jo-item.col-sm-4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}

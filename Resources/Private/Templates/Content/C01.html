@@ -1,0 +1,36 @@
+<div class="thumbnails thumbnail-style thumbnail-kenburn">
+    <div class="thumbnail-img">
+        <div class="overflow-hidden">
+            <f:if condition="{images}">
+                <f:if condition="{settings.link}">
+                    <f:then>
+                        <f:link.page pageUid="{settings.link}">
+                        <f:for each="{images}" as="imageUid" iteration="ii">
+                            <f:image src="{imageUid.uid}" treatIdAsReference="1" class="img-responsive" alt="{settings.imageheadline}" />
+                        </f:for>
+                        </f:link.page>
+                    </f:then>
+                    <f:else>
+                        <f:for each="{images}" as="imageUid" iteration="ii">
+                            <f:image src="{imageUid.uid}" treatIdAsReference="1" class="img-responsive" alt="{settings.imageheadline}" />
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </f:if>
+        </div>
+        <f:if condition="{settings.imageheadline}">
+            <f:if condition="{settings.link}">
+            <f:link.page pageUid="{settings.link}" class="btn-more hover-effect">{settings.imageheadline}</f:link.page>
+            </f:if>
+        </f:if>
+    </div>
+    <div class="caption">
+        <div class="headline"><h2>{settings.headline}</h2></div>
+        <f:format.html>{settings.text}</f:format.html>
+        <f:if condition="{settings.link}">
+        <p class="no-margin-bottom">
+            <f:link.page pageUid="{settings.link}" class="read-more"><f:translate key="more" htmlEscape="false" /></f:link.page>
+        </p>
+        </f:if>
+    </div>
+</div>

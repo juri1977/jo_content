@@ -1,0 +1,452 @@
+plugin.tx_form.settings.yamlConfigurations.100 = EXT:jo_content/Configuration/Yaml/FormSetup.yaml
+
+module.tx_form.settings.yamlConfigurations.100 = EXT:jo_content/Configuration/Yaml/FormSetup.yaml
+
+plugin.tx_felogin_login {
+  view {
+    templateRootPaths.100 = EXT:jo_content/Resources/Private/Extensions/Felogin/Templates/
+  }
+}
+
+/**
+ *	Helferscripte deklarieren
+ *
+ */
+// Zugriff auf die Mediaresourcen der Page-Objekte
+temp.jopicaccess = COA
+temp.jopicaccess {
+	10 = FILES
+	10 {
+		references{
+			table = tt_content
+			uid.data = field:uid
+			fieldName = image
+		}
+		renderObj = IMAGE
+		renderObj {
+			required = 1
+			file {
+				width.field = imagewidth
+				height.field = imageheight
+				import.data = file:current:originalUid
+			}
+			params = class="header_img"
+			titleText.data = file:current:title
+			altText.data = file:current:alternative
+		}
+	}
+}
+
+lib.formDatenschutz = TEXT
+lib.formDatenschutz {
+	value = Ich habe die <a href="/datenschutzerklaerung" target="_blank">Datenschutzhinweise</a> gelesen und erkläre mich damit einverstanden.
+}
+
+[siteLanguage("title") == "English"]
+	lib.formDatenschutz.value >
+    lib.formDatenschutz.value = I have read the <a href="/privacy-policy" target="_blank">privacy policy</a> and agree to it.
+[END]
+
+lib {
+	pageId = TEXT
+	pageId.data = page:uid
+	// Aktive UID ermitteln
+
+	mountpointsubtitle = TEXT
+	mountpointsubtitle {
+		data = leveltitle:0
+		insertData = 1
+		typolink.parameter.data = leveluid : 0
+	}
+	// Untertitel des Mountpoints ermitteln
+}
+
+/**
+ * Templatepfade für die entsprechenden Extensions überschreiben bzw. festlegen
+ */
+plugin.tx_jocontent.view {
+	layoutRootPaths.10 = {$path.full.templatesbase}Layouts/
+	templateRootPaths.10 = {$path.full.templatesbase}Templates/
+	partialRootPaths.10 = {$path.full.templatesbase}Partials/
+}
+tt_content.gridelements_pi1 {
+    templateRootPaths.20 = {$path.full.templatesbase}Extensions/GridElements
+	dataProcessing {
+		10 {
+			default {
+				options {
+					resolveFlexFormData = 1
+					resolveChildFlexFormData = 0
+				}
+			}
+		}
+	}
+}
+lib.contentElement {
+	partialRootPaths.200 = {$path.full.templatesbase}Extensions/fluid_styled_content/Partials/
+	templateRootPaths.200 = {$path.full.templatesbase}Extensions/fluid_styled_content/Templates/
+}
+// Pfad zur Languagedatei
+lib.langpath = TEXT
+lib.langpath.value = LLL:EXT:jo_museo/Resources/Private/Language/locallang.xlf
+
+
+// DB Auslese der einzelnen cols
+// maincontent -> colpos = 0 
+lib.mainMiddleContent = CONTENT
+lib.mainMiddleContent < styles.content.get
+lib.mainMiddleContent{
+	table = tt_content
+	select {
+		where = colPos = 0
+		orderBy = sorting
+		languageField = sys_language_uid
+	}
+}
+// Headerbild - Es werden nur Bilder ausgelesen, Texte werden ignoriert
+lib.header = CONTENT 
+lib.header < styles.content.get
+lib.header {
+	table = tt_content
+	slide = -1
+	select {
+		where = colPos = 1
+		orderBy = sorting
+		languageField = sys_language_uid
+	}
+	renderObj < temp.jopicaccess
+}
+
+/** 
+ *  mainContent 
+ *	Inhalt der colPos 0 
+ * 	Wenn Parameter aus dem Museoplugin gefunden wurden, werden nur die Inhalte aus diesem Plugin (jo_museo) geladen
+ *	Alle anderen Contentelemente, die in der colPos hinterlegt wurden, werden nicht mit geladen
+ */
+lib.mainContent < lib.header
+lib.mainContent.select.where >
+lib.mainContent.select.where.stdWrap.cObject = COA
+lib.mainContent.select.where.stdWrap.cObject  {
+	5 = TEXT
+	5.value = colPos = 0
+	10 = TEXT
+	10 {
+		value = AND (list_type = 'jomuseo_pi1010' OR list_type = 'jomuseo_pi2011' OR list_type = 'jomuseo_pi1009')
+		noTrimWrap = | ||
+		if {
+	      	isTrue.cObject = COA
+	      	isTrue.cObject {
+	        	10 = TEXT
+	        	10.data= GP:tx_jomuseo_pi2011|action
+	        	10.if.isTrue.data = GP:tx_jomuseo_pi2011|action
+
+	        	20 = TEXT
+	        	20.data= GP:tx_jomuseo_pi1010|action
+	        	20.if.isTrue.data = GP:tx_jomuseo_pi1010|action
+
+	        	20 = TEXT
+	        	20.data= GP:tx_jomuseo_pi1009|action
+	        	20.if.isTrue.data = GP:tx_jomuseo_pi1009|action
+	      	}
+		}
+	}
+}
+// mainTopContent -> colpos = 1
+lib.mainTopContent < lib.mainMiddleContent
+lib.mainTopContent{
+	slide = -1
+	select.where = colPos = 1
+}
+// headerlogo -> colpos = 2
+lib.headerlogo < lib.mainMiddleContent
+lib.headerlogo{
+	slide = -1
+	select.where = colPos = 2
+}
+// Vollflächiger Inhalt
+lib.fullscreen < lib.header
+lib.fullscreen.select.where = colPos = 2
+lib.fullscreen.slide >
+lib.fullscreen.renderObj >
+// Banner -> colpos = 3
+lib.bannerlogo2 < lib.mainMiddleContent
+lib.bannerlogo2 {
+	slide = -1
+	select.where = colPos = 3
+}
+// footerContent -> colpos = 4
+lib.footerContent < lib.mainMiddleContent
+lib.footerContent{
+	slide = -1
+	select.where = colPos = 4
+}
+lib.vorschau < lib.mainMiddleContent
+lib.vorschau{
+	select.where = colPos = 8
+}
+
+// Logo im Header -> colpos = 5
+lib.bannerlogo < lib.mainMiddleContent
+lib.bannerlogo{
+	slide = -1
+	select.where = colPos = 5
+}
+
+
+// wenn ein Detailplugin aufgerufen wird, wir NUR dieses Plugin und sonst nichts aus dieser col ausgegeben -
+lib.mainContent.slide >
+lib.mainContent.renderObj >
+
+[globalVar = GP:ceid > 0]
+	lib.mainContent >
+	lib.mainContent = CONTENT 
+	lib.mainContent {
+		table = tt_content
+		select { 
+			uidInList.stdWrap = COA
+			uidInList.stdWrap.data = GP:ceid
+		}
+	}
+[global]
+
+lib.gpvar = COA
+lib.gpvar {
+	stdWrap.htmlSpecialChars = 1
+	10 = TEXT
+	10 {
+	    value = GP:{current}
+	    wrap3 = {^}
+	    wrap3.splitChar = ^
+	    insertData = 1
+	    stdWrap.insertData = 1
+	}
+}
+
+
+/**
+ *	Initiales Page-Rendering
+ */
+page = PAGE
+page {
+
+	bodyTagCObject = TEXT
+  	bodyTagCObject {
+  		value = <body class="b-{field:uid}">
+  		insertData = 1
+  	}
+  	meta {
+		viewport = width=device-width, initial-scale=1
+        robots = index,follow
+		format-detection = telephone = no
+		msapplication-TileImage = {$path.full.icons}Default/win8-tile-144x144.png
+		msapplication-TileColor = #ffffff
+		msapplication-navbutton-color = #ffffff
+		msapplication-square70x70logo = {$path.full.icons}Default/win8-tile-70x70.png
+		msapplication-square144x144logo = {$path.full.icons}Default/win8-tile-144x144.png
+		msapplication-square150x150logo = {$path.full.icons}Default/win8-tile-150x150.png
+		msapplication-wide310x150logo = {$path.full.icons}Default/win8-tile-310x150.png
+		msapplication-square310x310logo = {$path.full.icons}Default/win8-tile-310x310.png
+		geo.region = DE-TH
+		geo.placename = JUSTORANGE - Agentur für Informationsästhetik, Zwätzengasse 14, 07743 Jena, Deutschland
+		geo.position = 50.931451;11.589788
+		ICBM = 50.931451, 11.589788
+        <!--[if IE]>
+			X-UA-Compatible = IE=edge
+		<![endif]-->
+    }
+	includeCSS {
+		jqueryuiCss = {$path.full.css}Libs/JQuery/jquery-ui.min.css
+		file1 = {$path.full.css}Libs/Bootstrap/bootstrap.min.css
+        lightbox = {$path.full.css}Libs/Lightbox/lightbox.css
+		hamburgerMenuIcons = {$path.full.css}Libs/Hamburgers/dist/hamburgers.min.css
+    }
+    includeJS {
+		jquery = {$path.full.javascript}Libs/JQuery/jquery.min.js
+        scrollToFixed = {$path.full.javascript}Libs/ScrollToFixed/jquery-scrolltofixed-min.js
+		popper = {$path.full.javascript}Libs/Bootstrap/popper.min.js
+		jqueryui = {$path.full.javascript}Libs/JQuery/jquery-ui.min.js
+		bootstrap = {$path.full.javascript}Libs/Bootstrap/bootstrap.min.js
+        lightbox = {$path.full.javascript}Libs/Lightbox/lightbox.js
+        hoverdir = {$path.full.javascript}Libs/Hoverdir/jquery.hoverdir.min.js
+        mirador = {$path.full.javascript}Libs/Mirador/mirador.min.js
+        joTemplate = {$path.full.javascript}joTemplate.js
+    }
+	headerData {
+		2 = TEXT
+		2 {
+			value(
+				<link rel="shortcut icon" type="image/x-icon" href="{$path.full.icons}Default/favicon.ico">
+				<link rel="icon" type="image/x-icon" href="{$path.full.icons}Default/favicon.ico">
+				<link rel="icon" type="image/gif" href="{$path.full.icons}Default/favicon.gif">
+				<link rel="icon" type="image/png" href="{$path.full.icons}Default/favicon.png">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon.png">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon-57x57.png" sizes="57x57">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon-60x60.png" sizes="60x60">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon-72x72.png" sizes="72x72">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon-76x76.png" sizes="76x76">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon-114x114.png" sizes="114x114">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon-120x120.png" sizes="120x120">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon-128x128.png" sizes="128x128">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon-144x144.png" sizes="144x144">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon-152x152.png" sizes="152x152">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon-180x180.png" sizes="180x180">
+				<link rel="apple-touch-icon" href="{$path.full.icons}Default/apple-touch-icon-precomposed.png">
+				<link rel="icon" type="image/png" href="{$path.full.icons}Default/favicon-16x16.png" sizes="16x16">
+				<link rel="icon" type="image/png" href="{$path.full.icons}Default/favicon-32x32.png" sizes="32x32">
+				<link rel="icon" type="image/png" href="{$path.full.icons}Default/favicon-96x96.png" sizes="96x96">
+				<link rel="icon" type="image/png" href="{$path.full.icons}Default/favicon-160x160.png" sizes="160x160">
+				<link rel="icon" type="image/png" href="{$path.full.icons}Default/favicon-192x192.png" sizes="192x192">
+				<link rel="icon" type="image/png" href="{$path.full.icons}Default/favicon-196x196.png" sizes="196x196">
+			)
+		}
+    }
+    10 = FLUIDTEMPLATE
+	10 {
+		layoutRootPaths.10 = {$path.full.templatesbase}Layouts/
+		partialRootPaths {
+			10 = {$path.full.templatesbase}Partials/
+			20 = EXT:jo_template/Resources/Private/Partials/
+		}
+		variables {
+			# t38 braucht logo, da dort colpos 5 logo ist, irgendwann mal fixen
+			logo < lib.bannerlogo
+			banner < lib.bannerlogo2
+			mainContent < lib.mainContent
+			header < lib.header
+			langPath < lib.langpath
+			fullscreen < lib.fullscreen
+			subMenu_1 < lib.subMenu_1
+			// bannercontent < lib.mainBottomContent
+			// vorschau < lib.vorschau
+			mainTopContent < lib.mainTopContent
+		}
+	}
+}
+
+/** 
+ *	Ajaxrequests und andere Specials
+ */
+ajaxCallDetail = PAGE
+ajaxCallDetail {
+	typeNum = 2328
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+		debug = 0
+		no_cache = 1
+	}
+	10 < lib.mainMiddleContent
+}
+
+ajaxCurrent = PAGE
+ajaxCurrent {
+	typeNum = 2345
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+		debug = 0
+		no_cache = 1
+	}
+	10 >
+	10 = CONTENT 
+	10 {
+		table = tt_content
+		select {
+			uidInList.stdWrap = COA
+			uidInList.stdWrap.data = GP:ceid
+		}
+	}
+}
+
+// Ajaxcall ausschließlich für den Aufruf des Contentplugins. Es werden alle anderen Elemente auf der Seite ignoriert und NUR die aktuelle Content-UID benutzt
+// Lädt den Link, auf den man klickt via AJAX und unterdrückt den originären klick
+// wird benötigt, um:
+// - das ganze Plugin via AJAX zu laden, 
+
+
+ajaxCallContent = PAGE
+ajaxCallContent {
+    typeNum = 300
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        no_cache = 1
+    }
+    10 = CONTENT
+    10{
+        table = tt_content
+        select {
+            uidInList.stdWrap = COA
+            uidInList.stdWrap {
+                data = GP:ceid
+                intval = 1
+            }
+        }
+    }
+}
+
+[request && request.getQueryParams() && (request.getQueryParams()["type"] == 300 || request.getQueryParams()["type"] == 2345)]
+    // ajax kick wrap
+    lib.contentElement.layoutRootPaths.200 = EXT:jo_content/Resources/Private/Extensions/fluid_styled_content/Layouts/
+[END]
+
+Download = PAGE
+Download {
+	typeNum = 125
+	10 = CONTENT
+	10 {
+		table = tt_content
+		select {
+			where = colPos = 0
+			andWhere.CType = jocontent_c18
+			orderBy = sorting
+			languageField = sys_language_uid
+		}
+	}
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+		no_cache = 1
+		//additionalHeaders = Content-type:application/octet-stream
+	}
+}
+
+
+[request && request.getQueryParams() && request.getQueryParams()['type'] == 2328]
+    // ajax kick wrap
+    lib.contentElement.layoutRootPaths.200 = EXT:jo_content/Resources/Private/Extensions/fluid_styled_content/Layouts/
+[END]
+
+[request && request.getQueryParams() && request.getQueryParams()["type"] == 200]
+    // ajax kick wrap
+    lib.contentElement.layoutRootPaths.200 = EXT:jo_museo/Resources/Private/Extensions/fluid_styled_content/Layouts/
+[END]
+
+
+/*
+ * Zusätzliche FileReference Felder für video
+ * Video-Poster
+ */
+lib.videoPoster =< lib.contentElement
+lib.videoPoster {
+    ### Template-Pfad für fluid_styled_content
+    templateName = Poster
+    dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+    dataProcessing.10 {
+        as = images
+		references {
+			fieldName = uid
+			table = sys_file_reference
+		}
+    }
+    ### Bilder rekusrsiv aus der DB holen
+    dataProcessing {
+        10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+        10.references.fieldName = poster
+    }
+}

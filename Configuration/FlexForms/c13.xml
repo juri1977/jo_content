@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <ROOT>
+        <type>array</type>
+        <el>
+            <settings.layout>
+                <TCEforms>
+                    <label>Aussehen des CTA-Buttons</label>
+                    <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <size>1</size>
+                        <items type="array">
+                            <numIndex index="0" type="array">
+                                <numIndex index="0">Default</numIndex>
+                                <numIndex index="1">1</numIndex>
+                            </numIndex>
+                            <numIndex index="1" type="array">
+                                <numIndex index="0">Layout 1 (nicht konfiguriert)</numIndex>
+                                <numIndex index="1">2</numIndex>
+                            </numIndex>
+                        </items>
+                    </config>
+                </TCEforms>
+            </settings.layout>
+            <settings.teasertext>
+                <TCEforms>
+                    <label>Text, der auf dem Button erscheinen soll</label>
+                    <config>
+                        <type>input</type>
+                        <size>100</size>
+                    </config>
+                </TCEforms>
+            </settings.teasertext>
+            <settings.link>
+                <TCEforms>
+                    <label>Link, auf den der Button referenzieren soll</label>
+                    <config>
+                        <type>input</type>
+                        <renderType>inputLink</renderType>
+                    </config>
+                </TCEforms>
+            </settings.link>  
+        </el>
+    </ROOT>
+</T3DataStructure>

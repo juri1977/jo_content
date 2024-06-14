@@ -1,0 +1,146 @@
+<f:if condition="{objects}">
+	<div class="news-detail">
+		<div class="mt-4">
+			<!-- date -->
+			<f:if condition="{settings.hidedate}">
+				<f:then></f:then>
+				<f:else>
+					<span class="news-list-date">
+						<f:format.date format="d.m.Y">{objects.datetime}</f:format.date>
+					</span>
+				</f:else>
+			</f:if>
+			<!-- author -->
+			<f:if condition="{objects.author}">
+				<span class="news-list-author">
+					<f:translate key="createdby" />  <span>{objects.author}</span>
+				</span>
+				<br/>
+			</f:if>
+			<!-- categories -->
+			<f:if condition="{objects.categories}">
+				<span class="news-list-category">
+					<f:translate key="category" /> 
+					<f:for each="{objects.categories}" as="category" iteration="i">
+						<f:if condition="{category.shortcut}">
+							<f:then>
+								<f:link.page pageUid="{category.shortcut}">
+									{category.title}
+								</f:link.page>
+							</f:then>
+							<f:else>
+								{category.title}
+							</f:else>
+						</f:if>
+						<f:if condition="{i.isLast} == 0">, </f:if>
+					</f:for>
+				</span>
+			</f:if>
+		</div>
+		<h2 class="mt-0">{objects.title}</h2>
+		<div class="mb-5">
+			<f:if condition="{objects.media}">
+				<div class="img-container float-right">
+					<!-- media files -->
+					<div class="news-img-wrap">
+						<f:alias map="{mediaElement: '{objects.media.0}'}">
+							<div class="outer">
+								<a class="d-block" href="<f:uri.image src='{mediaElement.uid}' treatIdAsReference='1'/>" data-rel="lightbox" data-lightbox="lightbox" data-title="<f:render arguments='{item:mediaElement}' section='image-detail-full'/>">
+									<f:image image="{mediaElement}" title="{mediaElement.title}" alt="{mediaElement.alternative}" maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.detail.media.image.maxWidth)}" maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.detail.media.image.maxHeight)}" />
+								</a>
+							</div>
+							<f:if condition="{mediaElement.title} || {mediaElement.alternative} || {mediaElement.description}">
+								<div class="img-main-text">
+									<f:render arguments="{item:mediaElement}" section="image-detail-full"/>
+								</div>
+							</f:if>
+						</f:alias>
+					</div>
+				</div>
+			</f:if>
+			<div class="">
+				<f:comment>
+				<!--
+					<f:if condition="{objects.teaser}">
+						<div class="teaser-text mt-2">
+							<f:format.stripTags>{objects.teaser}</f:format.stripTags>
+						</div>
+					</f:if>
+				-->
+				</f:comment>
+				<f:if condition="{objects.falRelatedFiles}">
+					<div class="joNewsDownloadtext">
+						<f:for each="{objects.falRelatedFiles}" as="newsFilesitem">
+							<f:link.action pageType="125" class="joDownloadFile" action="download" controller="Content" arguments="{downloadfile:'{newsFilesitem.uid}'}">
+								<f:format.html>{newsFilesitem.description}</f:format.html>
+							</f:link.action>
+						</f:for>
+					</div>
+				</f:if>
+			</div>
+			<div class="">
+				<!-- main text -->
+				<div class="news-text-wrap mt-2">
+					<f:format.html>{objects.bodytext}</f:format.html>
+				</div>
+				<!-- restliche Bilder -->
+				<f:if condition="{objects.media->f:count()} > 1">
+					<ul class="news-effekt-controls">
+						<li id="joOption_1" class="joActive" title="Kachelansicht mit Bildern"></li>
+						<li id="joOption_2" title="Kachelansicht mit Schlagworten"></li>
+					</ul>
+					<ul id="news-effekt" class="row mt-2">
+						<f:for each="{objects.media}" as="item" key="subnumber" iteration="subcounter">
+							<f:if condition="{subcounter.cycle}>1">
+								<li class="col-md-3 col-6" style="background-image:url(<f:uri.image src='{item.uid}' treatIdAsReference='1'/>)">
+									<a href="<f:uri.image src='{item.uid}' treatIdAsReference='1'/>" data-rel="lightbox" data-lightbox="lightbox" data-title="<f:render arguments='{item:item}' section='image-detail-full'/>">
+										<div class="news-effekt-text">
+											<span>
+												<f:render arguments="{item:item}" section="image-detail"/>
+											</span>
+										</div>
+										<f:if condition="{item.alternative}">
+											<span class="img-proof"><f:translate key="img.proof" /> {item.alternative}</span>
+										</f:if>
+									</a>
+								</li>
+							</f:if>
+						</f:for>
+					</ul>
+				</f:if>
+			</div>
+			<div class="joNewsBack">
+				<f:if condition="{settings.linktofulllist}">
+					<f:then>
+						<f:link.typolink parameter="{settings.linktofulllist}"><f:translate key="backToOverview" /></f:link.typolink>
+					</f:then>
+					<f:else>
+						<f:link.action><f:translate key="backToOverview" /></f:link.action>
+					</f:else>
+				</f:if>
+			</div>
+		</div>
+	</div>
+</f:if>
+<div id="news-mobile-hidden" class="d-none d-sm-none d-md-block"></div>
+
+<f:section name="image-detail-full">
+	<f:if condition="{item.title}">
+		{item.title}<br>
+	</f:if>
+	<f:if condition="{item.alternative}">
+		<f:translate key="img.proof" />  {item.alternative}<br>
+	</f:if>
+	<f:if condition="{item.description}">
+		<f:format.html>{item.description}</f:format.html><br>
+	</f:if>
+</f:section>
+
+<f:section name="image-detail">
+	<f:if condition="{item.title}">
+		{item.title}<br>
+	</f:if>
+	<f:if condition="{item.description}">
+		<f:format.html>{item.description}</f:format.html><br>
+	</f:if>
+</f:section>

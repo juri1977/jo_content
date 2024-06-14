@@ -1,0 +1,34 @@
+<div class="c_21">
+	<f:if condition="{position}">
+		<ul class="row list-unstyled">
+			<f:if condition="{settings.prevlink}">
+				<f:then>
+					<li class="col-6{f:if(condition: '{settings.prevlink}', then: '', else: ' no-next')}">
+						<f:link.typolink class="custom-link" parameter="{settings.prevlink}"></f:link.typolink>
+					</li>
+				</f:then>
+				<f:else>
+					<li class="col-6{f:if(condition: '{position.next}', then: '', else: ' no-next')}">
+						<f:if condition="{position.prev}">
+							<f:link.page pageUid="{position.prev.uid}"><span class="p-arrow"></span>{position.prev.title}</f:link.page>
+						</f:if>
+					</li>
+				</f:else>
+			</f:if>
+			<f:if condition="{settings.nextlink}">
+				<f:then>
+					<li class="col-6{f:if(condition: '{settings.nextlink}', then: '', else: ' no-next')}">
+						<f:link.typolink class="custom-link" parameter="{settings.nextlink}"></f:link.typolink>
+					</li>
+				</f:then>
+				<f:else>
+					<li class="col-6">
+						<f:if condition="{position.next}">
+							<f:link.page pageUid="{position.next.uid}">{position.next.title}<span class="p-arrow"></span></f:link.page>
+						</f:if>
+					</li>
+				</f:else>
+			</f:if>
+		</ul>
+	</f:if>
+</div>

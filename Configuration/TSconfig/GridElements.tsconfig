@@ -1,0 +1,264 @@
+tx_gridelements.setup {
+  50_50_grid {
+    title = 50 / 50 new (6/6)
+    config {
+      colCount = 2
+      rowCount = 1
+      rows {
+        1 {
+          columns {
+            1 {
+              name = Links
+              colPos = 0
+            }
+            2 {
+              name = Rechts
+              colPos = 1
+            }
+          }
+        }
+      }
+    }
+  }
+
+  70_30_grid {
+    title = 70 / 30 new (8/4)
+    config {
+      colCount = 2
+      rowCount = 1
+      rows {
+        1 {
+          columns {
+            1 {
+              name = Links
+              colPos = 0
+            }
+            2 {
+              name = Rechts
+              colPos = 1
+            }
+          }
+        }
+      }
+    }
+  }
+
+  30_30_30_grid {
+    title = 30 / 30 / 30 new (4/4/4)
+    config {
+      colCount = 3
+      rowCount = 1
+      rows {
+        1 {
+          columns {
+            1 {
+              name = Links
+              colPos = 0
+            }
+            2 {
+              name = Mitte
+              colPos = 1
+            }
+            3 {
+              name = Rechts
+              colPos = 2
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  25_25_25_25_grid {
+    title = 25 / 25 / 25 / 25 new (3/3/3/3)
+    config {
+      colCount = 4
+      rowCount = 1
+      rows {
+        1 {
+          columns {
+            1 {
+              name = Links
+              colPos = 0
+            }
+            2 {
+              name = Mitte Links
+              colPos = 1
+            }
+            3 {
+              name = Mitte Rechts
+              colPos = 2
+            }
+            4 {
+              name = Rechts
+              colPos = 3
+            }
+          }
+        }
+      }
+    }
+  }
+
+  20_20_20_20_20_grid {
+    title = 20 / 20 / 20 / 20 / 20 new
+    config {
+      colCount = 5
+      rowCount = 1
+      rows {
+        1 {
+          columns {
+            1 {
+              name = Links
+              colPos = 0
+            }
+            2 {
+              name = Mitte Links
+              colPos = 1
+            }
+            3 {
+              name = Mitte Rechts
+              colPos = 2
+            }
+            4 {
+              name = Mitte Rechts
+              colPos = 3
+            }
+            5 {
+              name = Rechts
+              colPos = 4
+            }
+          }
+        }
+      }
+    }
+  }
+
+  100_grid {
+    title = 100 new (12)
+    config {
+      colCount = 1
+      rowCount = 1
+      rows {
+        1 {
+          columns {
+            1 {
+              name = voll
+              colPos = 0
+            }
+          }
+        }
+      }
+    }
+  }
+
+  30_70_grid {
+    title = 30 / 70 new (4/8)
+    config {
+      colCount = 2
+      rowCount = 1
+      rows {
+        1 {
+          columns {
+            1 {
+              name = Links
+              colPos = 0
+            }
+            2 {
+              name = Rechts
+              colPos = 1
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  40_60_grid {
+    title = 40 / 60 new (5/7)
+    config {
+      colCount = 2
+      rowCount = 1
+      rows {
+        1 {
+          columns {
+            1 {
+              name = Links
+              colPos = 0
+            }
+            2 {
+              name = Rechts
+              colPos = 1
+            }
+          }
+        }
+      }
+    }
+  }
+
+  60_40_grid {
+    title = 60 / 40 new (7/5)
+    config {
+      colCount = 2
+      rowCount = 1
+      rows {
+        1 {
+          columns {
+            1 {
+              name = Links
+              colPos = 0
+            }
+            2 {
+              name = Rechts
+              colPos = 1
+            }
+          }
+        }
+      }
+    }
+  }
+
+  20_80_grid {
+    title = 20 / 80 new (3/9)
+    config {
+      colCount = 2
+      rowCount = 1
+      rows {
+        1 {
+          columns {
+            1 {
+              name = Links
+              colPos = 0
+            }
+            2 {
+              name = Rechts
+              colPos = 1
+            }
+          }
+        }
+      }
+    }
+  }
+
+  80_20_grid {
+    title = 80 / 20 new (9/3)
+    config {
+      colCount = 2
+      rowCount = 1
+      rows {
+        1 {
+          columns {
+            1 {
+              name = Links
+              colPos = 0
+            }
+            2 {
+              name = Rechts
+              colPos = 1
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

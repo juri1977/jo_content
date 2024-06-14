@@ -1,0 +1,36 @@
+<f:if condition="{objects}">
+	<div id="joCarouselControls" class="carousel slide" data-ride="carousel">
+	  	<div class="carousel-inner" role="listbox">
+			<f:for each="{objects}" as="item" key="subitemkey" iteration="subiter">
+				<div class="carousel-item <f:if condition='{subiter.index} == 0'>active</f:if>">
+					<f:link.external uri="{item.falMedia.0.link}" target="_blank">
+						<f:if condition="{item.media}">
+							<f:alias map="{mediaElement: '{item.media.0}'}">
+								<f:image class="d-block img-fluid" image="{mediaElement}" title="{mediaElement.title}" alt="{mediaElement.alternative}" width="{settings.bildweiteliste}c" height="{settings.bildhoeheliste}c" onclick="window.location.href='{item.falMedia.0.link}'" />
+							</f:alias>
+						</f:if>
+						<div class="carousel-caption" onclick="window.location.href='{item.falMedia.0.link}'">
+							<div class="joDreieck joFirst d-none d-md-block"></div>
+							<div class="joDreieck joSecond d-none d-md-block"></div>
+							<h2>{item.title}</h2>
+							<f:if condition="{item.teaser}">
+								<p>{item.teaser}</p>
+							</f:if>
+							<f:if condition="{item.bodytext}">
+								<f:format.raw>{item.bodytext}</f:format.raw>
+							</f:if>
+						</div>
+					</f:link.external>
+				</div>
+			</f:for>
+		</div>
+		<a class="carousel-control-prev" href="#" data-target="#joCarouselControls" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#" data-target="#joCarouselControls" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</f:if>

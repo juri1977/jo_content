@@ -1,0 +1,57 @@
+<f:comment>
+	<!--
+		Kann noch erweitert werden - aktuell kann man alles mit CSS regeln
+	-->
+</f:comment>
+<f:switch expression="{settings.layout}">
+   <f:defaultCase><f:render section="layout_1" arguments="{_all}"/></f:defaultCase>
+</f:switch>
+
+<f:section name="layout_1">
+	<f:variable name="kachelweite_desktop" value="4"/>
+	<f:variable name="kachelweite_mobil" value="6"/>
+	<f:if condition="{settings.kachel_desktop}">
+		<f:variable name="kachelweite_desktop" value="{settings.kachel_desktop}"/>
+	</f:if>
+	<f:if condition="{settings.kachel_mobile}">
+		<f:variable name="kachelweite_mobil" value="{settings.kachel_mobile}"/>
+	</f:if>
+	<div class="jo-ce001 jo-lt-{settings.layout} jo-ef-{settings.effects} row">
+		<f:if condition="{images}">
+			<f:for each="{images}" as="item" key="itemk">
+				
+				<div class="jo-item col-{kachelweite_mobil} col-md-{kachelweite_desktop} jo-div-{itemk} {item.referenceProperties.inlinecss}">
+					<div class="jo-img position-relative">
+						<f:if condition="{item.link}">
+							<f:then>
+								<f:link.typolink parameter="{item.link}" class="d-block">
+									<div class="img-container"><f:image image="{item}" width="{settings.cropWidth}c" height="{settings.cropHeight}c" alt="{item.title}"/></div>
+									<f:render section="title_description" arguments="{_all}"/>
+								</f:link.typolink>
+							</f:then>
+							<f:else>
+								<a class="d-block" href="<f:uri.image image='{item}' />" data-lightbox="lb-{ceId}" data-title="{item.title}">
+									<div class="img-container"><f:image image="{item}" width="{settings.cropWidth}c" height="{settings.cropHeight}c" alt="{item.title}"/></div>
+									<f:render section="title_description" arguments="{_all}"/>
+								</a>
+							</f:else>
+						</f:if>
+					</div>
+				</div>
+			</f:for>
+		</f:if>
+	</div>	
+</f:section>
+
+<f:section name="title_description">
+	<f:if condition="{item.title} || {item.description}">
+		<div class="jo-ol">
+			<f:if condition="{item.title}">
+				<div class="jo-ol-title">{item.title}</div>
+			</f:if>
+			<f:if condition="{item.description}">
+				<div class="jo-ol-description"><f:format.raw>{item.description}</f:format.raw></div>
+			</f:if>
+		</div>
+	</f:if>
+</f:section>

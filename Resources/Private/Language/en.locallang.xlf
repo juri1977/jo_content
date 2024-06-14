@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages">
+		<header/>
+		<body>
+			<trans-unit id="cookie.teaser">
+                <target><![CDATA[<span>By using this website, you agree to the use of cookies. For more information, please see our </span>]]></target>
+                <source><![CDATA[<span>Diese Webseite verwendet Cookies. Durch die Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu. Nähere Informationen finden Sie in unseren </span>]]></source>
+			</trans-unit>
+			<trans-unit id="cookie.teaserhinten">
+                <source><![CDATA[<a id="cookieOk" href="javascript:void(0)">OK</a>]]></source>
+                <target><![CDATA[<a id="cookieOk" href="javascript:void(0)">OK</a>]]></target>
+			</trans-unit>
+			<trans-unit id="cookie.teaserdatenschutz">
+                <source>Datenschutzbestimmungen</source>
+				<target>Privacy Policy</target>
+			</trans-unit>
+			<trans-unit id="c24.forschen">
+				<source>Forschen</source>
+				<target>research</target>
+			</trans-unit>
+			<trans-unit id="c24.lernen">
+				<source>Lernen</source>
+				<target>learn</target>
+			</trans-unit>
+			<trans-unit id="c24.inspirieren">
+				<source>Inspirieren</source>
+				<target>inspire</target>
+			</trans-unit>
+			<trans-unit id="c24.alleobjekte">
+				<source>alle Objekte des Monats anzeigen</source>
+				<target>show all objects of the month</target>
+			</trans-unit>
+			<trans-unit id="c24.fulloverview">
+				<source>Zur vollständigen Übersicht</source>
+				<target>complete overview</target>
+			</trans-unit>
+			<trans-unit id="c24.objektdesmonats">
+				<source>Objekt des Monats</source>
+				<target>object of the month</target>
+			</trans-unit>
+			<trans-unit id="c26">
+				<source>NK Personen Ausgabe</source>
+				<target>NK Personen Ausgabe</target>
+			</trans-unit>
+			<trans-unit id="LaVe">
+				<source>Landesvertreter</source>
+				<target>Landesvertreter</target>
+			</trans-unit>
+			<trans-unit id="FaVe">
+				<source>Fachgebietsvertreter</source>
+				<target>Fachgebietsvertreter</target>
+			</trans-unit>
+			<trans-unit id="common">
+				<source>JOContent-Element Einstellungen</source>
+				<target>JOContent-Element Einstellungen</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

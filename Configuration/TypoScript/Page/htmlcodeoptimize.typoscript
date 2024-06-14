@@ -1,0 +1,7 @@
+#RTE Tuning
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.P.class >
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.remapTag >
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.DIV.class >
+
+#Angabe von Tags, die nicht mit einem zusätzlichen wrap umgeben werden dürfen
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.encapsTagList = cite, div, p, pre, h1, h2, h3, h4, h5, h6

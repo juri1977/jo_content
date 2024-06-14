@@ -1,0 +1,100 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<!--
+	=====================
+		Partials/List/Item.html Startseite Projekt Übersicht
+-->
+
+<div class="kachel-{iterator.index} article articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')} {newsItem.categories.0.title} newsKachel" itemscope="itemscope" itemtype="http://schema.org/Article">
+	<n:excludeDisplayedNews newsItem="{newsItem}"/>
+	<f:if condition="{newsItem.categories.0.uid} == 3">
+		<f:then>
+			<div class="kachel-description Partner">
+				<div class="header">
+					<div class="headline"><h5><f:format.raw>{newsItem.title}</f:format.raw></h5></div>
+				</div>
+				<div class="teaser-text">
+					<n:removeMediaTags>
+					<f:if condition="{newsItem.teaser}">
+						<f:then>
+							<div class="news-toggle-more">
+								<f:format.raw>{newsItem.teaser}</f:format.raw>
+							</div>
+						</f:then>
+					</f:if>
+					</n:removeMediaTags>
+				</div>
+			</div>
+		</f:then>
+		<f:else>
+			<div class="news-img-wrap">
+				<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}" configuration="{additionalParams:'&tx_jomonumedia_pi1091%5B%40widget_0%5D%5BcurrentPage%5D={iterator.cycle}'}">
+					<f:alias map="{mediaElement: '{newsItem.mediaPreviews.0}'}">
+						<f:if condition="{mediaElement.originalResource.type} == 2">
+							<f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}" maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}" width="300c" height="300c" />
+						</f:if>
+						<f:if condition="{mediaElement.originalResource.type} == 4">
+							<f:render partial="Detail/MediaVideo" arguments="{mediaElement: mediaElement}"/>
+						</f:if>
+						<f:if condition="{mediaElement.originalResource.type} == 5">
+							<f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}" maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}" width="300c" height="300c" />
+						</f:if>
+					</f:alias>
+				</n:link>
+				<div class="kachel-description">
+				<div class="header">
+					<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+						<span itemprop="headline">{newsItem.title}</span>
+					</n:link>
+				</div>
+				<!-- date -->
+				<span class="news-list-date">
+					<time datetime="{f:format.date(date:newsItem.datetime, format:'Y')}">
+						<f:format.date format="Y">{newsItem.datetime}</f:format.date>
+						<meta itemprop="datePublished" content="{f:format.date(date:newsItem.datetime, format:'Y')}" />
+					</time>
+				</span>
+
+				<!-- teaser -->
+				<div class="teaser-text">
+					<n:removeMediaTags>
+					<f:if condition="{newsItem.teaser}">
+						<f:then>
+							<div class="news-toggle-more" itemprop="description" data-showchar="">
+								<div class="short"><f:format.crop maxCharacters="{settings.cropMaxCharacters}" respectHtml="TRUE">{newsItem.teaser}</f:format.crop></div>
+							</div>
+						</f:then>
+						<f:else>
+							<div class="news-toggle-more" itemprop="description" data-showchar="{settings.cropMaxCharacters}">
+								<div class="short"><f:format.crop maxCharacters="{settings.cropMaxCharacters}" respectHtml="TRUE">{newsItem.bodytext}</f:format.crop></div>
+							</div>
+						</f:else>
+					</f:if>
+					</n:removeMediaTags>
+				</div>
+				<!-- footer information -->
+				<div class="footer">
+					<p>
+						<f:if condition="{newsItem.tags}">
+							<!-- Tags -->
+							<span class="news-list-tags" itemprop="keywords">
+								<f:for each="{newsItem.tags}" as="tag">
+									{tag.title}
+								</f:for>
+							</span>
+						</f:if>
+						<!-- author -->
+						<f:if condition="{newsItem.author}">
+							<span class="news-list-author">
+								<f:translate key="author" arguments="{0:newsItem.author}"/>
+							</span>
+						</f:if>
+					</p>
+				</div>
+			</div>
+			</div>
+		</f:else>
+	</f:if>
+</div>
+</html>

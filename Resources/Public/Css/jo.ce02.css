@@ -1,0 +1,42 @@
+.joLayerContainer{
+	top: 5em;
+	left: .5em;
+}
+
+.joLayerContent {
+	display: none;
+}
+
+.joLayerContent.active {
+	display: block;
+}
+
+.joLayerContent ul {
+	list-style: none;
+	margin-top: 5px;
+	margin-bottom: 0;
+	padding-left: 0;
+	background-color: rgba(255,255,255,1);
+}
+
+.joLayerContent li {
+	padding: 5px 10px;
+}
+
+.joLayerContent input {
+	margin-right: 5px;
+}
+
+.joLayerContent label {
+	font-size: 16px;
+	margin-bottom: 0;
+}
+
+#popup{
+	top: -20px;
+    left: 25px;
+}
+
+#popup-content h3{
+	margin: 15px;
+}

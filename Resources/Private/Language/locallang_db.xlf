@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-04-16T15:15:00Z" product-name="jo_content">
+		<header/>
+		<body>
+			<trans-unit id="tx_jocontent_domain_model_person">
+				<source>Person</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.gender">
+				<source>Geschlecht</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.gender.undefined">
+				<source>Unbekannt</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.gender.m">
+				<source>Mann</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.gender.f">
+				<source>Frau</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.gender.v">
+				<source>Divers</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.lastname">
+				<source>Lastname</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.firstname">
+				<source>Firstname</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.phone">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.mobile">
+				<source>Mobile</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.website">
+				<source>Website</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.fax">
+				<source>Fax</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.zip">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.street">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.streetnumber">
+				<source>Streetnumber</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.department">
+				<source>Department</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.departmenttext">
+				<source>Department Text</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.publikationen">
+				<source>Publikationen</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_person.federalstate">
+				<source>Bundesland</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut">
+				<source>Institut</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.zip">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.street">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.streetnumber">
+				<source>Streetnumber</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.phone">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.mobile">
+				<source>Mobile</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.website">
+				<source>Website</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.fax">
+				<source>Fax</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.employee">
+				<source>Employee</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_institut.federalstate">
+				<source>Bundesland</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_federalstate">
+				<source>Bundesland</source>
+			</trans-unit>
+			<trans-unit id="tx_jocontent_domain_model_federalstate.name">
+				<source>Bundesland</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_jocontent_domain_model_institut.insttype_uia">
+				<source>Universitäten, Institute und Akademien</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

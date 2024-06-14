@@ -1,0 +1,20 @@
+<f:switch expression="{settings.layout}">
+   <f:case value="1"><f:render section="layout_1" arguments="{_all}"/></f:case>
+   <f:defaultCase><f:render section="layout_1" arguments="{_all}"/></f:defaultCase>
+</f:switch>
+
+<f:section name="layout_1">
+    <div class="link-container">
+        <f:if condition="{settings.link}">
+            <f:then>
+                <f:link.typolink parameter="{settings.link}">
+                    {settings.teasertext}
+                </f:link.typolink>
+            </f:then>
+            <f:else>
+                {settings.teasertext}
+            </f:else>
+        </f:if>
+        
+    </div>
+</f:section>

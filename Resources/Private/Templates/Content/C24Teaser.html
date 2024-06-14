@@ -1,0 +1,70 @@
+{namespace joPluginbasehelper=JO\JoSolrsystem\ViewHelpers}
+<div class="jonp jont">
+	<f:for each="{newsByCategories}" as="teaseritems" iteration="iterated">
+		<div class="jonb">
+			<f:render section="horbox" arguments="{_all}"/>
+		</div>
+	</f:for>
+	<f:if condition="{settings.linktofulllist}">
+		<div class="joln">
+			<f:link.page pageUid="{settings.linktofulllist}" title="<f:translate key='c24.fulloverview' />">
+				<span class="joln-icon"></span>
+				<span class="joln-txt"><f:translate key="c24.fulloverview" /></span>
+			</f:link.page>
+		</div>
+	</f:if>
+</div>
+
+<f:section name="horbox">
+	<div class="row no-gutters">
+		<div class="joNewsTextContent <f:if condition='{teaseritems.falMedia}'><f:then>col-sm-8</f:then><f:else>col-sm-12</f:else></f:if>">
+			<div class="joNewsHeaderdata">
+				<f:format.date format="Y">{teaseritems.datetime}</f:format.date>
+			</div>
+			<div class="joNewsHeadline" title="{teaseritems.storagename.title}">
+				<h2>
+					<f:if condition="{settings.link}">
+						<f:then>
+							<f:link.action pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{teaseritems.uid}',joRefererId:'{aktuellepid}'}">{teaseritems.storagename.title}</f:link.action>
+						</f:then>
+						<f:else>{teaseritems.storagename.title}</f:else>
+					</f:if>
+				</h2>
+			</div>
+			<f:if condition="{teaseritems.bodytext}">
+				<div class="joNewsBodytext">
+					<f:if condition="{settings.link}">
+						<f:then>
+							<f:link.action pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{teaseritems.uid}',joRefererId:'{aktuellepid}'}">
+								<f:format.html>
+									{teaseritems.bodytext}
+								</f:format.html>
+							</f:link.action>
+						</f:then>
+						<f:else>
+							<f:format.html>
+								{teaseritems.bodytext}
+							</f:format.html>
+						</f:else>
+					</f:if>
+				</div>
+			</f:if>
+		</div>
+		<f:if condition="{teaseritems.falMedia}">
+			<f:for each="{teaseritems.falMedia}" as="teasersubitems" iteration="subiterated">
+				<f:if condition="{subiterated.isFirst}">
+					<div class="joNewsBild_container col-sm-4">
+						<f:if condition="{settings.link}">
+							<f:then>
+								<div class="joNewsBild" style="background-image:url('<f:uri.image image="{teasersubitems}" width="300c" height="300c" />');"><f:link.action class="hor-img-link" pageUid="{settings.link}" action="c24" arguments="{joNewsDetail:'{teaseritems.uid}',joRefererId:'{aktuellepid}'}">&nbsp;</f:link.action></div>
+							</f:then>
+							<f:else>
+								<div class="joNewsBild" style="background-image:url('<f:uri.image image="{teasersubitems}" width="300c" height="300c" />');">&nbsp;</div>
+							</f:else>
+						</f:if>
+					</div>
+				</f:if>
+			</f:for>
+		</f:if>
+	</div>
+</f:section>

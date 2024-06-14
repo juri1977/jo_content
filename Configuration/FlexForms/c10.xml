@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <ROOT>
+        <type>array</type>
+        <el>
+            <settings.mode>
+                <TCEforms>
+                    <label>JO EventAPI - Anzeigeoptionen</label>
+                    <onChange>reload</onChange>
+                    <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <size>1</size>
+                        <items type="array">
+                            <numIndex index="0" type="array">
+                                <numIndex index="0">Default - Darstellung aktueller und zukünftiger Events</numIndex>
+                                <numIndex index="1">1</numIndex>
+                            </numIndex>
+                            <numIndex index="1" type="array">
+                                <numIndex index="0">Archivmodus - Darstellung vergangener Events ab "gestern"</numIndex>
+                                <numIndex index="1">2</numIndex>
+                            </numIndex>
+                        </items>
+                        <minitems>1</minitems>
+                    </config>
+                </TCEforms>
+            </settings.mode>
+            <settings.filter>
+                <TCEforms>
+                    <label>Filtermöglichkeiten für die Events ausspielen</label>
+                    <displayCond>
+                        <OR>
+                            <numIndex index="0">FIELD:settings.mode:=:2</numIndex>
+                        </OR>
+                    </displayCond>
+                    <config>
+                        <type>select</type>
+                        <renderType>selectMultipleSideBySide</renderType>
+                        <items type="array">
+                            <numIndex index="1" type="array">
+                              <numIndex index="0">Veranstalter</numIndex>
+                              <numIndex index="1">1</numIndex>
+                            </numIndex>
+                        </items>
+                        <maxitems>10</maxitems>
+                        <size>10</size>
+                    </config>
+                </TCEforms>
+            </settings.filter>
+            <settings.years>
+                <TCEforms>
+                    <label>Anzahl der vergangenen Jahre, für die die archivierten Events anzeigbar sind</label>
+                    <displayCond>
+                        <OR>
+                            <numIndex index="0">FIELD:settings.mode:=:2</numIndex>
+                        </OR>
+                    </displayCond>
+                    <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <size>1</size>
+                        <items type="array">
+                            <numIndex index="0" type="array">
+                                <numIndex index="0">bitte auswählen wenn gewünscht</numIndex>
+                                <numIndex index="1">0</numIndex>
+                            </numIndex>
+                            <numIndex index="1" type="array">
+                                <numIndex index="0">1 Jahr</numIndex>
+                                <numIndex index="1">1</numIndex>
+                            </numIndex>
+                            <numIndex index="2" type="array">
+                                <numIndex index="0">2 Jahre</numIndex>
+                                <numIndex index="1">2</numIndex>
+                            </numIndex>
+                        </items>
+                    </config>
+                </TCEforms>
+            </settings.years>
+            <settings.currentyear>
+                <TCEforms>
+                    <label>End Jahr (wenn leer, dann wird derzeitiges Jahr genommen)</label>
+                    <config>
+                        <type>input</type>
+                        <size>20</size>
+                        <eval>trim</eval>
+                    </config>
+                </TCEforms>
+            </settings.currentyear>
+            <settings.headline>
+                <TCEforms>
+                    <label>Überschrift</label>
+                    <config>
+                        <type>input</type>
+                        <size>20</size>
+                        <max>255</max>
+                        <eval>trim</eval>
+                    </config>
+                </TCEforms>
+            </settings.headline>
+            <settings.apikey>
+                <TCEforms>
+                    <label>API Key</label>
+                    <config>
+                        <type>input</type>
+                        <size>20</size>
+                        <max>255</max>
+                        <eval>trim</eval>
+                    </config>
+                </TCEforms>
+            </settings.apikey>
+            <settings.url>
+                <TCEforms>
+                    <label>API Url</label>
+                    <config>
+                        <type>input</type>
+                        <size>20</size>
+                        <max>255</max>
+                        <eval>trim</eval>
+                    </config>
+                </TCEforms>
+            </settings.url>
+            <settings.ajaxload>
+                <TCEforms>
+                    <label>Pluginaktionen via Ajax laden</label>
+                    <config>
+                        <type>check</type>
+                    </config>
+                </TCEforms>
+            </settings.ajaxload>
+        </el>
+    </ROOT>
+</T3DataStructure>
